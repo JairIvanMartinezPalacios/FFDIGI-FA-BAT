@@ -687,33 +687,38 @@
 
   .bento-block-heading {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding-bottom: 10px;
-    margin-bottom: 2px;
+    justify-content: center;
+    gap: 6px;
+    min-height: 104px;
+    padding: 2px 6px 12px;
+    margin-bottom: 4px;
     border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    text-align: center;
   }
 
   .bento-block-index {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 38px;
-    width: 38px;
-    height: 38px;
-    border-radius: var(--md-shape-corner-s);
-    background: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 12px;
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
     font-size: 13px;
     font-weight: 900;
     font-variant-numeric: tabular-nums;
   }
 
-  .bento-block-heading-copy { min-width: 0; }
+  .bento-block-heading-copy { min-width: 0; width: 100%; }
 
   .bento-block-title {
     margin: 0;
-    color: var(--md-sys-color-on-surface);
+    color: var(--md-sys-color-primary);
     font-size: clamp(17px, 1.35vw, 21px);
     font-weight: 900;
     line-height: 1.18;
@@ -721,11 +726,81 @@
   }
 
   .bento-block-subtitle {
-    margin: 4px 0 0;
+    margin: 4px auto 0;
+    max-width: 30ch;
     color: var(--md-sys-color-on-surface-variant);
     font-size: 12px;
     line-height: 1.35;
+    text-wrap: pretty;
   }
+
+  .topology-reference {
+    margin-top: 12px;
+    overflow: hidden;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-shape-corner-m);
+    background: var(--md-sys-color-surface-container-lowest);
+  }
+
+  .topology-reference summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 12px;
+    color: var(--md-sys-color-on-surface);
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .topology-reference summary::marker { color: var(--md-sys-color-primary); }
+  .topology-reference summary::after { content: "+"; color: var(--md-sys-color-primary); font-size: 18px; font-weight: 900; line-height: 1; }
+  .topology-reference summary:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset: -3px; }
+  .topology-reference[open] summary { border-bottom: 1px solid var(--md-sys-color-outline-variant); }
+  .topology-reference[open] summary::after { content: "−"; }
+
+  .topology-reference-badge {
+    flex: none;
+    padding: 3px 7px;
+    border-radius: var(--md-shape-corner-full);
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    font-size: 9px;
+    font-weight: 900;
+  }
+
+  .topology-preview { margin: 0; padding: 10px; }
+  .topology-preview img {
+    display: block;
+    width: 100%;
+    max-height: 245px;
+    object-fit: contain;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-shape-corner-s);
+    background: #f1f2f3;
+    image-rendering: auto;
+  }
+  .topology-preview figcaption { margin-top: 8px; color: var(--md-sys-color-on-surface-variant); font-size: 11px; line-height: 1.4; }
+  .topology-open-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 40px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    border: 1px solid var(--md-sys-color-primary);
+    border-radius: var(--md-shape-corner-full);
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+  .topology-open-btn:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset: 2px; }
 
   .m3-action-callout {
     background-color: var(--md-sys-color-surface-container-highest);
@@ -1488,6 +1563,17 @@
               aria-label="Variantes del procedimiento"></div>
             <div id="mtf-path" class="m3-stepper-pills"></div>
             <div id="mtf-step" style="display:flex; flex-direction:column; gap:4px;"></div>
+            <details class="topology-reference">
+              <summary>
+                <span>GB300 System Topology</span>
+                <span class="topology-reference-badge">HARDWARE MAP</span>
+              </summary>
+              <figure class="topology-preview">
+                <img src="./gb300-board-topology.png" alt="Esquema de las dos placas del sistema GB300 con GPU, CPU, UPHY, ventiladores, PDB y módulos PCIe, NVMe y BlueField-3." width="1466" height="1350" loading="lazy" decoding="async">
+                <figcaption>Referencia de ubicación de componentes y conectividad del sistema. Imagen optimizada a 2×, sin modificar etiquetas.</figcaption>
+                <button id="mtf-topology-open" class="topology-open-btn" type="button" aria-haspopup="dialog" aria-controls="mtf-topology-modal">Ampliar esquema</button>
+              </figure>
+            </details>
           </div>
           <!-- Bloque 3.3: Disposición Final y Diagrama de Flujo de Retest -->
           <div class="bento-block-3">
@@ -1626,6 +1712,20 @@
     <button id="mtf-flowchart-close" class="flowchart-modal-close" type="button" aria-label="Cerrar diagrama">×</button>
   </div>
   <div id="mtf-flowchart-modal-content" class="flowchart-modal-content"></div>
+</dialog>
+<dialog id="mtf-topology-modal" aria-labelledby="mtf-topology-modal-title" aria-describedby="mtf-topology-modal-description">
+  <div class="flowchart-modal-head">
+    <div>
+      <span class="flowchart-modal-kicker">SYSTEM HARDWARE REFERENCE</span>
+      <h2 id="mtf-topology-modal-title">GB300 System Topology</h2>
+      <p id="mtf-topology-modal-description" class="topology-modal-description">Esquema de disposición de placas, procesadores, aceleradores, alimentación y módulos de E/S.</p>
+    </div>
+    <button id="mtf-topology-close" class="flowchart-modal-close" type="button" aria-label="Cerrar esquema topológico">×</button>
+  </div>
+  <figure class="topology-modal-figure">
+    <img src="./gb300-board-topology.png" alt="Esquema completo del sistema GB300 con las dos placas, GPU, CPU, UPHY, ventiladores, PDB, NIC, NVMe, OSFP y BlueField-3." width="1466" height="1350" decoding="async">
+    <figcaption>Versión ampliada 2× del esquema original. Se conservaron los rótulos y las relaciones del diagrama fuente.</figcaption>
+  </figure>
 </dialog>
 <script>window.FFDG = window.FFDG || {};
   // 1. DATA REPOSITORY
@@ -2650,6 +2750,20 @@
     });
     FFDG.ui.setMode("bat");
   })();</script>
+<script>(() => {
+  const dialog = document.getElementById("mtf-topology-modal");
+  const openButton = document.getElementById("mtf-topology-open");
+  const closeButton = document.getElementById("mtf-topology-close");
+  if (!dialog || !openButton || !closeButton) return;
+  openButton.addEventListener("click", () => {
+    dialog.showModal();
+    closeButton.focus();
+  });
+  closeButton.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", event => {
+    if (event.target === dialog) dialog.close();
+  });
+})();</script>
 <script>/* M3 upgrade */
   /* FFDG · Capa de mejora Material Design 3
      Uso: pega este archivo completo dentro de un <script> justo antes de </body>
@@ -2977,10 +3091,12 @@ main{max-width:none!important;padding:10px 24px 40px!important}
 .mtf-split .mtf-item-meta{grid-area:meta;padding:2px 12px 9px 0;font:11px ui-monospace,Consolas,monospace}
 .mtf-split .mtf-item-card.selected{border:2px solid var(--md-sys-color-primary);background:var(--md-sys-color-primary-container)}
 .mtf-split .mtf-row-2{padding:12px 10px 12px 12px}
-.mtf-split .mtf-row-3{position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto}
-.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:240px minmax(0,1fr)}
-.mtf-split .bento-block-3{grid-column:1/-1}
-@media(max-width:1000px){#mtf-layout.mtf-split:not(.hidden){grid-template-columns:1fr}.mtf-split .mtf-row-3{position:static;max-height:none}.mtf-split .mtf-cards-scroll-grid{max-height:360px;min-height:0}.m3-segmented-nav{grid-template-columns:1fr}}`;
+.mtf-split .mtf-row-3{position:sticky;top:12px;align-self:start;min-width:0;width:100%;max-height:calc(100vh - 24px);overflow:auto}
+.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.mtf-split .bento-block-1,.mtf-split .bento-block-2,.mtf-split .bento-block-3{min-width:0}
+@media(max-width:1240px){.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mtf-split .bento-block-3{grid-column:1/-1}}
+@media(max-width:1000px){#mtf-layout.mtf-split:not(.hidden){grid-template-columns:minmax(0,1fr)}.mtf-split .mtf-row-3{position:static;max-height:none}.mtf-split .mtf-cards-scroll-grid{max-height:360px;min-height:0}.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.m3-segmented-nav{grid-template-columns:1fr}}
+@media(max-width:700px){.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:1fr}.mtf-split .bento-block-3{grid-column:auto}.mtf-split .mtf-row-1{align-items:stretch;padding:10px}.mtf-split .mtf-row-1-search{width:100%;min-width:0;flex:1 1 100%}.mtf-split .mtf-row-1-search input{min-width:0}.mtf-split .mtf-filter-chips{max-width:100%;min-width:0;overflow-x:auto;scrollbar-width:thin}.mtf-split .mtf-row-1>label{width:100%;justify-content:center;margin-left:0!important}}`;
     document.head.appendChild(vs);
     const tileIc = {
       "nav-bat": "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
@@ -3266,6 +3382,43 @@ main{max-width:none!important;padding:10px 24px 40px!important}
     padding: 40px 12px;
     color: var(--md-sys-color-on-surface-variant);
     text-align: center;
+  }
+
+  #mtf-topology-modal {
+    width: min(1100px, calc(100vw - 32px));
+    max-width: none;
+    max-height: 92dvh;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 18px;
+    color: var(--md-sys-color-on-surface);
+    background: var(--md-sys-color-surface-container-lowest);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, .4);
+  }
+
+  #mtf-topology-modal[open] { display: flex; flex-direction: column; }
+  #mtf-topology-modal::backdrop { background: rgba(0, 0, 0, .72); }
+  .topology-modal-description { margin: 5px 0 0; color: var(--md-sys-color-on-surface-variant); font-size: 12px; }
+  .topology-modal-figure { min-height: 0; margin: 0; padding: 14px 20px 18px; overflow: auto; }
+  .topology-modal-figure img {
+    display: block;
+    width: min(100%, 1000px);
+    max-height: calc(86dvh - 120px);
+    margin: 0 auto;
+    object-fit: contain;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-shape-corner-m);
+    background: #f1f2f3;
+    image-rendering: auto;
+  }
+  .topology-modal-figure figcaption { margin-top: 8px; color: var(--md-sys-color-on-surface-variant); font-size: 11px; text-align: center; }
+
+  @media (max-width: 700px) {
+    .bento-block-heading { min-height: 92px; }
+    #mtf-topology-modal { width: calc(100vw - 20px); max-height: 96dvh; }
+    .topology-modal-figure { padding: 10px; }
+    .topology-modal-figure img { max-height: calc(88dvh - 150px); }
   }
 
   @media (max-width: 900px) {

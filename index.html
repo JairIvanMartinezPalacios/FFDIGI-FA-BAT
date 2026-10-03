@@ -685,6 +685,48 @@
     justify-content: space-between;
   }
 
+  .bento-block-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  }
+
+  .bento-block-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--md-shape-corner-s);
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    font-size: 13px;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .bento-block-heading-copy { min-width: 0; }
+
+  .bento-block-title {
+    margin: 0;
+    color: var(--md-sys-color-on-surface);
+    font-size: clamp(17px, 1.35vw, 21px);
+    font-weight: 900;
+    line-height: 1.18;
+    text-wrap: balance;
+  }
+
+  .bento-block-subtitle {
+    margin: 4px 0 0;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
   .m3-action-callout {
     background-color: var(--md-sys-color-surface-container-highest);
     padding: 8px 10px;
@@ -1393,6 +1435,13 @@
       <div id="mtf-detail" class="hidden">
         <div class="mtf-detail-horizontal-grid"><!-- Bloque 3.1: Ficha Técnica & Metadatos del Subensamble -->
           <div class="bento-block-1">
+            <header class="bento-block-heading">
+              <span class="bento-block-index" aria-hidden="true">01</span>
+              <div class="bento-block-heading-copy">
+                <h2 class="bento-block-title">Failure Record</h2>
+                <p class="bento-block-subtitle">Identificación de falla y datos técnicos</p>
+              </div>
+            </header>
             <div style="display:flex; align-items:center; gap:6px;">
               <span id="mtf-badge-station" class="mtf-tag"
                 style="background:var(--md-sys-color-primary); color:#fff;"></span>
@@ -1428,6 +1477,13 @@
           </div>
           <!-- Bloque 3.2: Instrucciones Técnicas y Consola de Comandos -->
           <div class="bento-block-2">
+            <header class="bento-block-heading">
+              <span class="bento-block-index" aria-hidden="true">02</span>
+              <div class="bento-block-heading-copy">
+                <h2 class="bento-block-title">Troubleshooting Sequence</h2>
+                <p class="bento-block-subtitle">Validaciones y acciones técnicas</p>
+              </div>
+            </header>
             <div id="mtf-variants" class="mtf-variant-picker hidden" role="group"
               aria-label="Variantes del procedimiento"></div>
             <div id="mtf-path" class="m3-stepper-pills"></div>
@@ -1435,6 +1491,13 @@
           </div>
           <!-- Bloque 3.3: Disposición Final y Diagrama de Flujo de Retest -->
           <div class="bento-block-3">
+            <header class="bento-block-heading">
+              <span class="bento-block-index" aria-hidden="true">03</span>
+              <div class="bento-block-heading-copy">
+                <h2 class="bento-block-title">Disposition Flow</h2>
+                <p class="bento-block-subtitle">Criterio de calidad, retest y ruta de decisión</p>
+              </div>
+            </header>
             <div>
               <div style="display:flex; justify-content:space-between; align-items:center;">
                 <span

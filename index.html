@@ -78,6 +78,10 @@
     --appbar-text: #e2e3d8;
   }
 
+  [data-theme="dark"] .bento-block-1 { --bento-accent: #90caf9; }
+  [data-theme="dark"] .bento-block-2 { --bento-accent: #a5d6a7; }
+  [data-theme="dark"] .bento-block-3 { --bento-accent: #ffcc80; }
+
   * {
     box-sizing: border-box;
   }
@@ -507,8 +511,9 @@
 
   /* Bloque 3.1: Metadatos Técnicos Compacto */
   .bento-block-1 {
-    background-color: var(--md-sys-color-surface-container-low);
-    border: 1px solid var(--md-sys-color-outline-variant);
+    --bento-accent: #1565c0;
+    background-color: color-mix(in srgb, var(--bento-accent) 9%, var(--md-sys-color-surface-container-low));
+    border: 1px solid color-mix(in srgb, var(--bento-accent) 34%, var(--md-sys-color-outline-variant));
     border-radius: var(--md-shape-corner-m);
     padding: 12px;
     display: flex;
@@ -543,10 +548,10 @@
 
   /* Bloque 3.2: Paso de Validación y Comandos Oficiales (Sin Espacios Muertos) */
   .bento-block-2 {
-    background-color: var(--md-sys-color-surface-container-low);
-    border-left: 4px solid var(--md-sys-color-primary);
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-left: 4px solid var(--md-sys-color-primary);
+    --bento-accent: #388e3c;
+    background-color: color-mix(in srgb, var(--bento-accent) 9%, var(--md-sys-color-surface-container-low));
+    border: 1px solid color-mix(in srgb, var(--bento-accent) 34%, var(--md-sys-color-outline-variant));
+    border-left: 4px solid var(--bento-accent);
     border-radius: var(--md-shape-corner-m);
     padding: 12px 14px;
     display: flex;
@@ -675,8 +680,9 @@
 
   /* Bloque 3.3: Acciones, Veredicto y Disposición Compacto */
   .bento-block-3 {
-    background-color: var(--md-sys-color-surface-container-low);
-    border: 1px solid var(--md-sys-color-outline-variant);
+    --bento-accent: #a66300;
+    background-color: color-mix(in srgb, var(--bento-accent) 9%, var(--md-sys-color-surface-container-low));
+    border: 1px solid color-mix(in srgb, var(--bento-accent) 34%, var(--md-sys-color-outline-variant));
     border-radius: var(--md-shape-corner-m);
     padding: 12px;
     display: flex;
@@ -694,31 +700,15 @@
     min-height: 104px;
     padding: 2px 6px 12px;
     margin-bottom: 4px;
-    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    border-bottom: 1px solid color-mix(in srgb, var(--bento-accent, var(--md-sys-color-primary)) 35%, var(--md-sys-color-outline-variant));
     text-align: center;
-  }
-
-  .bento-block-index {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 36px;
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--md-sys-color-outline-variant);
-    border-radius: 12px;
-    background: var(--md-sys-color-primary);
-    color: var(--md-sys-color-on-primary);
-    font-size: 13px;
-    font-weight: 900;
-    font-variant-numeric: tabular-nums;
   }
 
   .bento-block-heading-copy { min-width: 0; width: 100%; }
 
   .bento-block-title {
     margin: 0;
-    color: var(--md-sys-color-primary);
+    color: var(--bento-accent, var(--md-sys-color-primary));
     font-size: clamp(17px, 1.35vw, 21px);
     font-weight: 900;
     line-height: 1.18;
@@ -1511,7 +1501,6 @@
         <div class="mtf-detail-horizontal-grid"><!-- Bloque 3.1: Ficha Técnica & Metadatos del Subensamble -->
           <div class="bento-block-1">
             <header class="bento-block-heading">
-              <span class="bento-block-index" aria-hidden="true">01</span>
               <div class="bento-block-heading-copy">
                 <h2 class="bento-block-title">Failure Record</h2>
                 <p class="bento-block-subtitle">Identificación de falla y datos técnicos</p>
@@ -1553,7 +1542,6 @@
           <!-- Bloque 3.2: Instrucciones Técnicas y Consola de Comandos -->
           <div class="bento-block-2">
             <header class="bento-block-heading">
-              <span class="bento-block-index" aria-hidden="true">02</span>
               <div class="bento-block-heading-copy">
                 <h2 class="bento-block-title">Troubleshooting Sequence</h2>
                 <p class="bento-block-subtitle">Validaciones y acciones técnicas</p>
@@ -1578,7 +1566,6 @@
           <!-- Bloque 3.3: Disposición Final y Diagrama de Flujo de Retest -->
           <div class="bento-block-3">
             <header class="bento-block-heading">
-              <span class="bento-block-index" aria-hidden="true">03</span>
               <div class="bento-block-heading-copy">
                 <h2 class="bento-block-title">Disposition Flow</h2>
                 <p class="bento-block-subtitle">Criterio de calidad, retest y ruta de decisión</p>

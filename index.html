@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NVIDIA RACKS FFDG · GUÍA DE ANÁLISIS DE FALLA GB200 Y GB300</title>
 <style>
   /* ==========================================================================
@@ -857,6 +857,21 @@
     margin-bottom: 5px;
   }
 
+  .serial-builder {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .field-help {
+    display: block;
+    margin: 2px 0 8px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
   .m3-input,
   .m3-select,
   .m3-textarea {
@@ -1338,15 +1353,40 @@
         <div class="form-grid">
           <div class="field-group">
             <label class="field-label" for="serial">Serial del Nodo (S/N) *</label>
-            <input id="serial" class="m3-input" placeholder="Ej. 1652426000123" autocomplete="off">
+            <div class="serial-builder">
+              <label class="field-label" for="serial-week">Semana (2 dígitos)
+                <input id="serial-week" class="m3-input" inputmode="numeric" autocomplete="off" maxlength="2" pattern="[0-9]{2}" aria-describedby="serial-help" placeholder="WW" required>
+              </label>
+              <label class="field-label" for="serial-year">Año (2 dígitos)
+                <input id="serial-year" class="m3-input" inputmode="numeric" autocomplete="off" maxlength="2" pattern="[0-9]{2}" placeholder="AA" required>
+              </label>
+            </div>
+            <small id="serial-help" class="field-help" aria-live="polite">Se genera como 193 + semana + año + 00.</small>
+            <input id="serial" class="m3-input" aria-label="Serial del Nodo generado" placeholder="Serial generado automáticamente" autocomplete="off" readonly required>
           </div>
           <div class="field-group">
             <label class="field-label" for="part">Número de Parte (P/N) *</label>
-            <input id="part" class="m3-input" placeholder="Ej. 692-2G540-0200-000" autocomplete="off">
+            <select id="part" class="m3-select" required>
+              <option value="">-- Selecciona el número de parte --</option>
+              <option value="675-24975-2000-000">675-24975-2000-000</option>
+              <option value="675-24975-3000-000">675-24975-3000-000</option>
+              <option value="675-24975-3100-000">675-24975-3100-000</option>
+              <option value="675-24059-3000-000">675-24059-3000-000</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="employee-id">Número de empleado (FA) *</label>
+            <input id="employee-id" class="m3-input" inputmode="numeric" autocomplete="off" maxlength="6" pattern="[0-9]{6}" aria-describedby="employee-help" placeholder="Ej. 140784" required>
+            <small id="employee-help" class="field-help" aria-live="polite">Escribe el número para completar el nombre; si no está en catálogo, podrás capturarlo.</small>
           </div>
           <div class="field-group">
             <label class="field-label" for="technician">Analista de Falla (FA) *</label>
-            <input id="technician" class="m3-input" placeholder="Nombre completo" autocomplete="off">
+            <input id="technician" class="m3-input" placeholder="Se completa con el número de empleado" autocomplete="name" readonly required>
+            <div id="other-analyst-wrap" class="field-group hidden" style="margin-top:8px">
+              <label class="field-label" for="other-analyst">Otro analista</label>
+              <input id="other-analyst" class="m3-input" placeholder="Nombre completo" autocomplete="name" aria-describedby="other-analyst-help">
+              <small id="other-analyst-help" class="field-help">Captura el nombre para asociarlo a este número de empleado.</small>
+            </div>
           </div>
           <div class="field-group">
             <label class="field-label" for="station">Estación</label>
@@ -1355,7 +1395,7 @@
           </div>
           <div class="field-group full-span">
             <label class="field-label" for="failure">Código de Falla BAT (seleccionable desde el tablero) *</label>
-            <select id="failure" class="m3-select">
+            <select id="failure" class="m3-select" required>
               <option value="">-- Selecciona el código reportado en la estación --</option>
             </select>
           </div>
@@ -1870,7 +1910,14 @@
         { q: "Paso 6 · Validación con Bianca Golden y comandos", detail: "Si no existe daño físico aparente en la Bianca derecha, instalar una tarjeta Bianca Golden y ejecutar la validación de consola para confirmar la recuperación funcional del nodo.", fail: "La falla persiste con la Bianca Golden. Conservar logs, mediciones y evidencia fotográfica; escalar a FA Nivel 2 para análisis de tarjeta y ruta de control." }
       ]
     };
-    return { failureCatalog, mtfFaults, flows };
+    const analystDirectory = {
+      "140784": "Ing FA Jr. Gabriel Medina Ramirez",
+      "140785": "Alexander Cordava Villa",
+      "140783": "Brandon Garcia Olguin",
+      "140787": "Daniel Ornelas Carmona",
+      "140789": "Oscar Tomas Esparza Mendoza"
+    };
+    return { failureCatalog, mtfFaults, flows, analystDirectory };
   })();
   // 2. UI VIEW ENGINE & THEME MANAGER
   window.FFDG.ui = (() => {
@@ -2738,6 +2785,43 @@
       opt.textContent = `${item.code} | ${item.label}`;
       groups[item.familyLabel].appendChild(opt);
     });
+    const employeeIdInput = $("employee-id");
+    const analystNameInput = $("technician");
+    const otherAnalystWrap = $("other-analyst-wrap");
+    const otherAnalystInput = $("other-analyst");
+    const employeeHelp = $("employee-help");
+    let lastEmployeeId = "";
+    const serialWeekInput = $("serial-week");
+    const serialYearInput = $("serial-year");
+    const serialInput = $("serial");
+    const serialHelp = $("serial-help");
+    function syncSerial() {
+      const week = serialWeekInput.value.replace(/\D/g, "").slice(0, 2);
+      const year = serialYearInput.value.replace(/\D/g, "").slice(0, 2);
+      const validWeek = week.length === 2 && Number(week) >= 1 && Number(week) <= 53;
+      serialWeekInput.value = week;
+      serialYearInput.value = year;
+      serialInput.value = validWeek && year.length === 2 ? `193${week}${year}00` : "";
+      serialHelp.textContent = week.length === 2 && !validWeek
+        ? "Semana inválida. Usa un valor de 01 a 53."
+        : "Se genera como 193 + semana + año + 00.";
+    }
+    serialWeekInput.addEventListener("input", syncSerial);
+    serialYearInput.addEventListener("input", syncSerial);
+    function syncAnalystName() {
+      const employeeId = employeeIdInput.value.trim();
+      if (employeeId !== lastEmployeeId) otherAnalystInput.value = "";
+      lastEmployeeId = employeeId;
+      const registeredName = FFDG.data.analystDirectory[employeeId];
+      otherAnalystWrap.classList.toggle("hidden", Boolean(registeredName) || !employeeId);
+      otherAnalystInput.required = Boolean(employeeId) && !registeredName;
+      analystNameInput.value = registeredName || (employeeId ? otherAnalystInput.value.trim() : "");
+      employeeHelp.textContent = registeredName
+        ? `Analista identificado: ${registeredName}`
+        : employeeId ? "Número no registrado. Captura el nombre completo en ‘Otro analista’." : "Escribe el número para completar el nombre; si no está en catálogo, podrás capturarlo.";
+    }
+    employeeIdInput.addEventListener("input", syncAnalystName);
+    otherAnalystInput.addEventListener("input", syncAnalystName);
     $("nav-bat").addEventListener("click", () => FFDG.ui.setMode("bat"));
     $("nav-mtf").addEventListener("click", () => FFDG.ui.setMode("mtf"));
     $("start-btn").addEventListener("click", () => {
@@ -2745,8 +2829,8 @@
       const pn = $("part").value.trim();
       const tech = $("technician").value.trim();
       const failCode = $("failure").value;
-      if (!sn || !pn || !tech || !failCode) {
-        $("form-error").textContent = "Faltan campos obligatorios: Completa Serial, P/N, Analista y selecciona el Código de Falla.";
+      if (!sn || !pn || !/^\d{6}$/.test(employeeIdInput.value.trim()) || !tech || !failCode) {
+        $("form-error").textContent = "Completa semana y año del serial, selecciona P/N, captura un número de empleado de 6 dígitos con su nombre y elige una falla BAT.";
         return;
       }
       $("form-error").textContent = "";
@@ -2800,8 +2884,12 @@
       }
     });
     $("clear-btn").addEventListener("click", () => {
-      ["serial", "part", "technician", "action", "root-cause", "root-cause-evidence", "next-action", "step-note"].forEach(id => $(id).value = "");
+      ["serial", "serial-week", "serial-year", "part", "employee-id", "technician", "other-analyst", "action", "root-cause", "root-cause-evidence", "next-action", "step-note"].forEach(id => $(id).value = "");
+      otherAnalystWrap.classList.add("hidden");
+      otherAnalystInput.required = false;
+      syncAnalystName();
       $("failure").value = "";
+      $("failure").dispatchEvent(new Event("change", { bubbles: true }));
       $("classification").value = "";
       $("retest").value = "No aplica";
       FFDG.state.history = [];
@@ -2817,6 +2905,8 @@
     $("new-btn").addEventListener("click", () => {
       $("closing-card").classList.add("hidden");
       $("serial").value = "";
+      $("serial-week").value = "";
+      $("serial-year").value = "";
       $("action").value = "";
       $("root-cause").value = "";
       $("root-cause-evidence").value = "";
@@ -2898,6 +2988,7 @@
           card.type = "button";
           card.className = `bd-item${item.code === selectedCode ? " selected" : ""}`;
           card.setAttribute("aria-label", `Seleccionar ${item.code}: ${item.label}`);
+          card.setAttribute("aria-pressed", String(item.code === selectedCode));
           const code = document.createElement("b");
           code.textContent = item.code;
           const label = document.createElement("span");
@@ -2922,7 +3013,14 @@
       });
     }
     search.addEventListener("input", render);
-    select.addEventListener("change", () => { selectedCode = select.value; render(); });
+    select.addEventListener("change", () => {
+      selectedCode = select.value;
+      board.querySelectorAll(".bd-item").forEach(node => {
+        const isSelected = node.querySelector("b")?.textContent === selectedCode;
+        node.classList.toggle("selected", isSelected);
+        node.setAttribute("aria-pressed", String(isSelected));
+      });
+    });
     render();
   })();</script>
 <script>(() => {
@@ -3240,9 +3338,9 @@ ${pill(305, 16, 170, `${String(steps[0].sourceNumber || "1").replace(/[.:]$/, ""
     /* ---------- 8. VISTA: ANCHO COMPLETO, PESTAÑAS-TILE Y CATÁLOGO EN LISTA TÉCNICA ---------- */
     const vs = document.createElement("style");
     vs.textContent = `
-main{max-width:none!important;padding:10px 24px 40px!important}
+main{max-width:none!important;width:100%;min-width:0;padding:10px clamp(12px,2vw,24px) 40px!important}
 .m3-top-app-bar{position:static!important}
-.m3-segmented-nav-wrap{display:block!important;padding:16px 24px 4px!important}
+.m3-segmented-nav-wrap{display:block!important;padding:16px clamp(12px,2vw,24px) 4px!important}
 .m3-segmented-nav{display:grid!important;grid-template-columns:1fr 1fr;gap:14px;width:100%;background:none!important;border:none!important;box-shadow:none!important;padding:0!important;border-radius:0!important}
 .m3-seg-btn{height:auto!important;padding:14px 20px!important;border-radius:20px!important;border:1px solid var(--md-sys-color-outline-variant)!important;background:var(--md-sys-color-surface-container-low)!important;color:var(--md-sys-color-on-surface)!important;justify-content:flex-start!important;text-align:left;gap:16px!important}
 .m3-seg-btn.active{background:linear-gradient(115deg,#1b3600,#2d6b00 55%,#5a9a00)!important;color:#fff!important;border-color:#76b900!important;box-shadow:0 6px 18px rgba(45,107,0,.35)!important}
@@ -3254,8 +3352,8 @@ main{max-width:none!important;padding:10px 24px 40px!important}
 .view-tg{display:inline-flex;border:1px solid var(--md-sys-color-outline);border-radius:999px;overflow:hidden}
 .view-tg button{border:0;background:transparent;color:var(--md-sys-color-on-surface-variant);font:700 12px inherit;font-family:inherit;padding:6px 14px;cursor:pointer}
 .view-tg button.on{background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container)}
-#mtf-layout.mtf-split:not(.hidden){display:grid;grid-template-columns:minmax(380px,34%) minmax(0,1fr);gap:14px;align-items:start}
-.mtf-split .mtf-row-1,.mtf-split #upload-status{grid-column:1/-1}
+#mtf-layout.mtf-split:not(.hidden){display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr);gap:14px;align-items:start}
+.mtf-split .mtf-row-1,.mtf-split #upload-status{grid-column:1/-1;min-width:0;width:100%;box-sizing:border-box}.mtf-split .mtf-row-1-search{min-width:0}.mtf-split .mtf-row-1-search input{min-width:0}.mtf-split .mtf-filter-chips{min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin}.mtf-split .mtf-row-1>label{flex:0 1 auto;max-width:100%}
 .mtf-split .mtf-row-2-header>span{display:none}.view-tg button{white-space:nowrap}.mtf-row-2-header{gap:10px;flex-wrap:wrap}
 .mtf-split .mtf-cards-scroll-grid{flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;gap:8px;max-height:calc(100vh - 330px);min-height:440px;padding:2px 6px 2px 2px}
 .mtf-split .mtf-item-card{flex:none;max-width:none;width:100%;min-height:0;display:grid;grid-template-columns:64px 1fr auto;grid-template-areas:"tag title id" "tag meta meta";column-gap:12px;padding:0;border-radius:14px;border-left:0;overflow:hidden;align-items:center;background:var(--md-sys-color-surface-container-lowest)}
@@ -3270,8 +3368,18 @@ main{max-width:none!important;padding:10px 24px 40px!important}
 .mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
 .mtf-split .bento-block-1,.mtf-split .bento-block-2,.mtf-split .bento-block-3{min-width:0}
 @media(max-width:1240px){.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mtf-split .bento-block-3{grid-column:1/-1}}
-@media(max-width:1000px){#mtf-layout.mtf-split:not(.hidden){grid-template-columns:minmax(0,1fr)}.mtf-split .mtf-row-3{position:static;max-height:none}.mtf-split .mtf-cards-scroll-grid{max-height:360px;min-height:0}.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.m3-segmented-nav{grid-template-columns:1fr}}
-@media(max-width:700px){.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:1fr}.mtf-split .bento-block-3{grid-column:auto}.mtf-split .mtf-row-1{align-items:stretch;padding:10px}.mtf-split .mtf-row-1-search{width:100%;min-width:0;flex:1 1 100%}.mtf-split .mtf-row-1-search input{min-width:0}.mtf-split .mtf-filter-chips{max-width:100%;min-width:0;overflow-x:auto;scrollbar-width:thin}.mtf-split .mtf-row-1>label{width:100%;justify-content:center;margin-left:0!important}}`;
+@media(max-width:1080px){#bat-layout:not(.hidden){grid-template-columns:minmax(0,1fr)}#mtf-layout.mtf-split:not(.hidden){grid-template-columns:minmax(0,1fr)}.mtf-split .mtf-row-3{position:static;max-height:none}.mtf-split .mtf-cards-scroll-grid{max-height:360px;min-height:0}.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.m3-segmented-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#bat-layout>section,#bat-layout>aside,#bat-failure-board,#bat-board{min-width:0}
+#bat-board{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));grid-auto-flow:row;grid-auto-columns:auto;overflow-x:hidden;touch-action:pan-y}
+#bat-board .bd-col{min-width:0;max-width:100%}
+.bat-board-toolbar{min-width:0;flex-wrap:wrap}
+.bat-board-search{min-width:0}
+button,.m3-btn,.m3-seg-btn{touch-action:manipulation}
+html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+@media(max-width:700px){main{padding:8px 12px 24px!important}.m3-segmented-nav-wrap{padding:12px 12px 4px!important}.m3-card{padding:16px 14px!important}.m3-segmented-nav{grid-template-columns:minmax(0,1fr)!important}.bat-board-toolbar{align-items:stretch;flex-direction:column;gap:8px}.bat-board-search{width:100%;max-width:none;flex-basis:100%}.bat-board-hint{text-align:left}.m3-layout#bat-layout{grid-template-columns:minmax(0,1fr)}#bat-board{grid-template-columns:minmax(0,1fr);gap:10px}#bat-board .bd-col{max-height:none;min-height:0}#bat-board .bd-l{max-height:min(56svh,420px);overflow-y:auto;overscroll-behavior:contain}.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:minmax(0,1fr)}.mtf-split .bento-block-3{grid-column:auto}.m3-input,.m3-select,.m3-textarea,input,textarea,select{font-size:16px!important}.btn-row{flex-wrap:wrap}.btn-row .m3-btn{min-height:44px}}
+@media(min-width:701px) and (max-width:1080px){#bat-board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){#bat-board{scroll-behavior:auto;scroll-snap-type:none}}`;
+
     document.head.appendChild(vs);
     const tileIc = {
       "nav-bat": "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
@@ -3308,9 +3416,9 @@ main{max-width:none!important;padding:10px 24px 40px!important}
     const $ = id => document.getElementById(id);
     const css = `
 .mtf-row-1{flex-wrap:wrap}.mtf-row-1-search{flex:1 1 260px}
-#mtf-board{display:none}
+#mtf-board{display:none;min-width:0}
 .v-board .mtf-cards-scroll-grid{display:none!important}
-.v-board #mtf-board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(270px,1fr);gap:14px;overflow-x:auto;padding:4px 2px 12px;align-items:start;scroll-snap-type:x proximity}
+.v-board #mtf-board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(min(82vw,270px),1fr);gap:14px;overflow-x:auto;padding:4px 2px 12px;align-items:start;scroll-snap-type:x proximity;overscroll-behavior-x:contain;touch-action:pan-x}
 .bd-col{scroll-snap-align:start;background:var(--md-sys-color-surface-container-low);border:1px solid var(--md-sys-color-outline-variant);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;max-height:calc(100vh - 420px);min-height:300px}
 .bd-h{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:linear-gradient(120deg,var(--st),color-mix(in srgb,var(--st) 60%,#000));color:#fff;font-weight:900;font-size:20px;letter-spacing:.08em}
 .bd-h small{background:rgba(0,0,0,.3);border-radius:999px;padding:3px 12px;font-size:12px;letter-spacing:0}

@@ -78,10 +78,6 @@
     --appbar-text: #e2e3d8;
   }
 
-  [data-theme="dark"] .bento-block-1 { --bento-accent: #90caf9; }
-  [data-theme="dark"] .bento-block-2 { --bento-accent: #a5d6a7; }
-  [data-theme="dark"] .bento-block-3 { --bento-accent: #ffcc80; }
-
   * {
     box-sizing: border-box;
   }
@@ -511,9 +507,8 @@
 
   /* Bloque 3.1: Metadatos Técnicos Compacto */
   .bento-block-1 {
-    --bento-accent: #1565c0;
-    background-color: color-mix(in srgb, var(--bento-accent) 9%, var(--md-sys-color-surface-container-low));
-    border: 1px solid color-mix(in srgb, var(--bento-accent) 34%, var(--md-sys-color-outline-variant));
+    background-color: transparent;
+    border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: var(--md-shape-corner-m);
     padding: 12px;
     display: flex;
@@ -524,7 +519,7 @@
   .bento-meta-item {
     display: flex;
     flex-direction: column;
-    background-color: var(--md-sys-color-surface-container);
+    background-color: transparent;
     border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: var(--md-shape-corner-s);
     padding: 6px 9px;
@@ -548,10 +543,8 @@
 
   /* Bloque 3.2: Paso de Validación y Comandos Oficiales (Sin Espacios Muertos) */
   .bento-block-2 {
-    --bento-accent: #388e3c;
-    background-color: color-mix(in srgb, var(--bento-accent) 9%, var(--md-sys-color-surface-container-low));
-    border: 1px solid color-mix(in srgb, var(--bento-accent) 34%, var(--md-sys-color-outline-variant));
-    border-left: 4px solid var(--bento-accent);
+    background-color: transparent;
+    border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: var(--md-shape-corner-m);
     padding: 12px 14px;
     display: flex;
@@ -680,9 +673,8 @@
 
   /* Bloque 3.3: Acciones, Veredicto y Disposición Compacto */
   .bento-block-3 {
-    --bento-accent: #a66300;
-    background-color: color-mix(in srgb, var(--bento-accent) 9%, var(--md-sys-color-surface-container-low));
-    border: 1px solid color-mix(in srgb, var(--bento-accent) 34%, var(--md-sys-color-outline-variant));
+    background-color: transparent;
+    border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: var(--md-shape-corner-m);
     padding: 12px;
     display: flex;
@@ -698,9 +690,12 @@
     justify-content: center;
     gap: 6px;
     min-height: 104px;
-    padding: 2px 6px 12px;
+    padding: 14px 12px;
     margin-bottom: 4px;
-    border-bottom: 1px solid color-mix(in srgb, var(--bento-accent, var(--md-sys-color-primary)) 35%, var(--md-sys-color-outline-variant));
+    border-bottom: 0;
+    border-radius: var(--md-shape-corner-m);
+    background: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
     text-align: center;
   }
 
@@ -708,7 +703,7 @@
 
   .bento-block-title {
     margin: 0;
-    color: var(--bento-accent, var(--md-sys-color-primary));
+    color: var(--md-sys-color-on-primary);
     font-size: clamp(17px, 1.35vw, 21px);
     font-weight: 900;
     line-height: 1.18;
@@ -718,7 +713,7 @@
   .bento-block-subtitle {
     margin: 4px auto 0;
     max-width: 30ch;
-    color: var(--md-sys-color-on-surface-variant);
+    color: color-mix(in srgb, var(--md-sys-color-on-primary) 84%, transparent);
     font-size: 12px;
     line-height: 1.35;
     text-wrap: pretty;
@@ -729,7 +724,7 @@
     overflow: hidden;
     border: 1px solid var(--md-sys-color-outline-variant);
     border-radius: var(--md-shape-corner-m);
-    background: var(--md-sys-color-surface-container-lowest);
+    background: transparent;
   }
 
   .topology-reference summary {

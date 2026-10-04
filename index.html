@@ -227,6 +227,30 @@
     align-items: start;
   }
 
+  #bat-failure-board { grid-column: 1 / -1; }
+  #bat-board {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(250px, 1fr);
+    gap: 14px;
+    overflow-x: auto;
+    padding: 4px 2px 10px;
+    align-items: start;
+    scroll-snap-type: x proximity;
+  }
+  #bat-board .bd-col { scroll-snap-align: start; min-height: 260px; max-height: 420px; }
+  .bat-board-toolbar { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+  .bat-board-search { flex:1 1 280px; max-width:520px; min-width:0; }
+  .bat-board-hint { margin:0; color:var(--md-sys-color-on-surface-variant); font-size:12px; text-align:right; }
+  .bat-step-detail {
+    display: block;
+    margin-top: 10px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.55;
+  }
+
   /* MTF Tri-Row Horizontal Architecture */
   .mtf-horizontal-container {
     display: flex;
@@ -1266,6 +1290,20 @@
 </div>
 <main><!-- MODO 1: BAT WORKFLOW -->
   <div id="bat-layout" class="m3-layout">
+    <div id="bat-failure-board" class="m3-card no-print">
+      <div class="m3-card-header">
+        <h2 class="m3-card-title">Catálogo BAT · Tablero de fallas</h2>
+        <span id="bat-board-count" class="mtf-tag">0 CASOS</span>
+      </div>
+      <div class="bat-board-toolbar">
+        <div class="mtf-row-1-search bat-board-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+          <input id="bat-board-search" type="search" placeholder="Buscar por código o falla BAT..." aria-label="Buscar fallas BAT">
+        </div>
+        <p class="bat-board-hint">Selecciona una tarjeta para cargar el código en la guía.</p>
+      </div>
+      <div id="bat-board" aria-label="Tablero de fallas BAT"></div>
+    </div>
     <section>
       <div class="m3-card no-print">
         <div class="m3-card-header">
@@ -1291,7 +1329,7 @@
               style="background:var(--md-sys-color-surface-container);">
           </div>
           <div class="field-group full-span">
-            <label class="field-label" for="failure">Código de Falla en BAT (DEBUG) *</label>
+            <label class="field-label" for="failure">Código de Falla BAT (seleccionable desde el tablero) *</label>
             <select id="failure" class="m3-select">
               <option value="">-- Selecciona el código reportado en la estación --</option>
             </select>
@@ -1771,10 +1809,12 @@
         { q: "¿La señal PWM y el retorno de tacómetro responden adecuadamente?", fail: "Falla del motor o sensor tacométrico interno del ventilador. Reemplazar unidad Fan." }
       ],
       NOBOOT: [
-        { q: "¿Los arneses de la PDB (incluyendo J15) están conectados firmemente y el LED de 3.3V_STBY enciende en la placa?", fail: "Sin energía Standby. Medir pad de entrada de 12V en PDB; si hay 0V revisar PDB, si cae el voltaje aislar corto en capacitores." },
-        { q: "¿El LED 'Heartbeat' del BMC o HMC parpadea indicando que los controladores de gestión inicializaron?", fail: "BMC/HMC sin inicializar. Medir salida del regulador VRM dedicado; si está en rango, re-flashear firmware BMC." },
-        { q: "Al enviar el comando Power On, ¿se activan los reguladores de voltaje principales (VCORE) para CPU Grace y GPUs?", fail: "El CPLD bloqueó la secuencia por protección de sobrecorriente. Medir impedancia en bobinas de fases VCORE." },
-        { q: "¿Encienden los LEDs de enlace en tarjetas BF3 / CX8 o hay salida de diagnóstico en consola?", fail: "Secuencia eléctrica nominal pero sin POST (posible falla de oscilador, PCIe o memoria soldada LP5X). Escalar a TDR / Rayos X." }
+        { q: "Paso 1 · Enlace entre GPUs (B2B & Clink)", detail: "Validar el acoplamiento firme de los cables B2B (DC-SCI) y Clink entre ambas Biancas / GPUs para evitar abortos en el arranque inicial del sistema Compute Tray (CT).", fail: "Detener la secuencia. Inspeccionar y reasentar los cables B2B y Clink; revisar conectores, pines doblados y daño físico antes de repetir el arranque." },
+        { q: "Paso 2 · Ruta principal de hardware y comprobación por consola", detail: "Revisar los LEDs de Standby Power en la bahía central (1 verde y 1 azul), cables J21/J22, FP I/O BD J9 y módulos BMC/HMC. Si la ruta no corresponde a la falla, entrar al menú FA para descartar una falla funcional; comprobar BMC y NIC en IPMI, validar sus MAC y ejecutar el comando de encendido del CT. Si la consola confirma el CT encendido pero los ventiladores siguen apagados, repetir la verificación: puede existir una falla en la ruta física de control.", fail: "La ruta principal no está validada. Revisar LEDs, J21/J22, FP I/O BD J9, BMC/HMC y MACs en IPMI; corregir la comunicación o escalar la ruta física de control." },
+        { q: "Paso 3 · Comunicación y ensamble del cable J15 PDB", detail: "Inspeccionar completamente el cable J15 entre PDB y Bianca. Revisar que los puertos estén firmes y sin pines doblados o daño físico.", fail: "Reasentar o reemplazar el cable J15 / PDB según el daño encontrado. Si aparece 'Unable to write FRU via ipmitool cmd but was able to write via i2c. Please check FRU ID for PDB', validar primero conexión, FRU ID y continuidad del enlace." },
+        { q: "Paso 4 · Voltajes de salida PDB, impedancia e inspección física", detail: "Verificar voltajes PDB antes de Boot: J3 = 12 V, J4 = 0.5 V, J5 = 0.5 V, J6 = 0.5 V. Después de Boot: J3 = 12 V, J4 = 12 V, J5 = 12 V, J6 = 12 V. Medir impedancia entre Biancas (referencia: 300 Ω a 1000 kΩ) e inspeccionar la PDB para descartar fisuras, golpes o componentes desprendidos.", fail: "Los valores no corresponden a la secuencia esperada. Aislar corto o impedancia anómala, revisar PDB y Biancas, documentar la medición y reemplazar el elemento físicamente dañado." },
+        { q: "Paso 5 · Aislamiento por desconexión B2B e inspección de Bianca derecha", detail: "Desconectar el cable B2B y energizar. Si encienden únicamente los 4 ventiladores del lado izquierdo, confirmar que el defecto se encuentra en la Bianca derecha. Realizar una inspección física minuciosa de componentes y conectores.", fail: "Aislar la Bianca derecha como sospechosa. Si se detecta daño físico visible, reemplazar la tarjeta y ejecutar nuevamente la validación BAT." },
+        { q: "Paso 6 · Validación con Bianca Golden y comandos", detail: "Si no existe daño físico aparente en la Bianca derecha, instalar una tarjeta Bianca Golden y ejecutar la validación de consola para confirmar la recuperación funcional del nodo.", fail: "La falla persiste con la Bianca Golden. Conservar logs, mediciones y evidencia fotográfica; escalar a FA Nivel 2 para análisis de tarjeta y ruta de control." }
       ]
     };
     return { failureCatalog, mtfFaults, flows };
@@ -1879,7 +1919,7 @@
       const total = FFDG.state.steps.length;
       const current = FFDG.state.index + 1;
       $("step-meta").textContent = `Paso ${current} de ${total} · ${FFDG.state.activeFailure.code}`;
-      $("step-question").textContent = step.q;
+      $("step-question").innerHTML = `<strong>${escapeHtml(step.q)}</strong>${step.detail ? `<span class="bat-step-detail">${escapeHtml(step.detail).replace(/\n/g, "<br>")}</span>` : ""}`;
       $("step-note").value = "";
       $("progress-bar").style.width = `${(current / total) * 100}%`;
       $("bat-prev-btn").disabled = FFDG.state.index === 0;
@@ -2731,6 +2771,72 @@
       FFDG.ui.renderMtfDetail();
     });
     FFDG.ui.setMode("bat");
+  })();</script>
+<script>/* BAT board view */
+  (() => {
+    "use strict";
+    const board = document.getElementById("bat-board");
+    const search = document.getElementById("bat-board-search");
+    const select = document.getElementById("failure");
+    const catalog = window.FFDG?.data?.failureCatalog || [];
+    if (!board || !search || !select || !catalog.length) return;
+    let selectedCode = select.value;
+    const familyOrder = ["FRU", "LOGIC", "LEAK", "FAN", "NOBOOT"];
+    const familyRank = family => { const index = familyOrder.indexOf(family); return index < 0 ? 99 : index; };
+    function render() {
+      const query = search.value.trim().toLowerCase();
+      const matches = catalog.filter(item => `${item.code} ${item.label} ${item.familyLabel}`.toLowerCase().includes(query));
+      const groups = matches.reduce((result, item) => {
+        (result[item.family] ||= []).push(item);
+        return result;
+      }, {});
+      board.replaceChildren();
+      document.getElementById("bat-board-count").textContent = `${matches.length} CASOS`;
+      Object.keys(groups).sort((a, b) => familyRank(a) - familyRank(b)).forEach(family => {
+        const column = document.createElement("section");
+        column.className = "bd-col";
+        column.dataset.st = family;
+        const heading = document.createElement("div");
+        heading.className = "bd-h";
+        heading.title = groups[family][0].familyLabel;
+        const familyName = document.createElement("span");
+        familyName.textContent = family;
+        const count = document.createElement("small");
+        count.textContent = groups[family].length;
+        heading.append(familyName, count);
+        const list = document.createElement("div");
+        list.className = "bd-l";
+        groups[family].forEach(item => {
+          const card = document.createElement("button");
+          card.type = "button";
+          card.className = `bd-item${item.code === selectedCode ? " selected" : ""}`;
+          card.setAttribute("aria-label", `Seleccionar ${item.code}: ${item.label}`);
+          const code = document.createElement("b");
+          code.textContent = item.code;
+          const label = document.createElement("span");
+          label.textContent = item.label;
+          const meta = document.createElement("small");
+          meta.textContent = item.familyLabel;
+          card.append(code, label, meta);
+          card.addEventListener("click", () => {
+            selectedCode = item.code;
+            select.value = item.code;
+            select.dispatchEvent(new Event("change", { bubbles: true }));
+            board.querySelectorAll(".bd-item").forEach(node => node.classList.toggle("selected", node === card));
+            document.querySelector("#bat-layout > section")?.scrollIntoView({
+              behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+              block: "start"
+            });
+          });
+          list.appendChild(card);
+        });
+        column.append(heading, list);
+        board.appendChild(column);
+      });
+    }
+    search.addEventListener("input", render);
+    select.addEventListener("change", () => { selectedCode = select.value; render(); });
+    render();
   })();</script>
 <script>(() => {
   const dialog = document.getElementById("mtf-topology-modal");

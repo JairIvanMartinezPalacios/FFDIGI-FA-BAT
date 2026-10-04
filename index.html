@@ -250,6 +250,19 @@
     font-weight: 500;
     line-height: 1.55;
   }
+  #bat-board .bd-col[data-st="FRU"] { --st: #1f6fb2; }
+  #bat-board .bd-col[data-st="LOGIC"] { --st: #006874; }
+  #bat-board .bd-col[data-st="LEAK"] { --st: #a15c00; }
+  #bat-board .bd-col[data-st="FAN"] { --st: #006a6a; }
+  #bat-board .bd-col[data-st="NOBOOT"] { --st: #ba1a1a; }
+  #bat-board .bd-h { background: var(--st); }
+  #bat-board .bd-item.selected { background: color-mix(in srgb, var(--st) 22%, var(--md-sys-color-surface-container-lowest)); border-color: var(--st); }
+  [data-theme="dark"] #bat-board .bd-col[data-st="FRU"] { --st: #90caf9; }
+  [data-theme="dark"] #bat-board .bd-col[data-st="LOGIC"] { --st: #80cbc4; }
+  [data-theme="dark"] #bat-board .bd-col[data-st="LEAK"] { --st: #ffb74d; }
+  [data-theme="dark"] #bat-board .bd-col[data-st="FAN"] { --st: #80cbc4; }
+  [data-theme="dark"] #bat-board .bd-col[data-st="NOBOOT"] { --st: #ffb4ab; }
+  [data-theme="dark"] #bat-board .bd-h { color: #0e120c; }
 
   /* MTF Tri-Row Horizontal Architecture */
   .mtf-horizontal-container {
@@ -2855,6 +2868,7 @@
     if (!board || !search || !select || !catalog.length) return;
     let selectedCode = select.value;
     const familyOrder = ["FRU", "LOGIC", "LEAK", "FAN", "NOBOOT"];
+    const familyLabels = { FRU: "FRU / EEPROM", LOGIC: "LOGIC", LEAK: "LEAKAGE", FAN: "FANS", NOBOOT: "NO BOOT" };
     const familyRank = family => { const index = familyOrder.indexOf(family); return index < 0 ? 99 : index; };
     function render() {
       const query = search.value.trim().toLowerCase();
@@ -2873,7 +2887,7 @@
         heading.className = "bd-h";
         heading.title = groups[family][0].familyLabel;
         const familyName = document.createElement("span");
-        familyName.textContent = family;
+        familyName.textContent = familyLabels[family] || family;
         const count = document.createElement("small");
         count.textContent = groups[family].length;
         heading.append(familyName, count);

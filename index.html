@@ -921,6 +921,13 @@
     box-shadow: var(--md-elevation-1);
   }
 
+  .report-generate-btn {
+    min-height: 46px;
+    padding-inline: 22px;
+    font-weight: 800;
+    box-shadow: var(--md-elevation-2);
+  }
+
   .m3-btn-tonal {
     background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
@@ -1071,6 +1078,8 @@
     border-radius: 9px;
     padding: 10px 12px;
     break-inside: avoid;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .print-flow-step:not(:last-child)::after {
@@ -1085,6 +1094,9 @@
 
   .print-flow-step.is-fail { border-left-color: #c62828; }
   .print-flow-step.is-pending { border-left-color: #c58b00; }
+  .print-flow-step.is-problem { border-left-color: #e07800; background: #fff7e6; }
+  .print-flow-step.is-cause { border-left-color: #1565c0; background: #eef6ff; }
+  .print-flow-step.is-disposition { border-left-color: #2d6b00; background: #eff9e9; }
   .print-flow-result { float: right; font-weight: 800; }
   .print-flow-note { margin-top: 5px; color: #42483e; white-space: pre-wrap; }
   .print-final-card { border: 1px solid #aab59e; border-radius: 10px; padding: 12px; background: #f4f7ef; break-inside: avoid; }
@@ -1404,24 +1416,52 @@
             <textarea id="action" class="m3-textarea"
               placeholder="Describe inspección, reconexión, reemplazo o retrabajo ejecutado."></textarea>
           </div>
-          <div class="field-group full-span">
-            <label class="field-label" for="root-cause">Causa Raíz / Evidencia Concluyente (RCA):</label>
-            <textarea id="root-cause" class="m3-textarea"
-              placeholder="Explica la evidencia eléctrica que conecta la acción con la solución del defecto."></textarea>
+          <div class="field-group">
+            <label class="field-label" for="root-cause">Causa raíz / RCA *</label>
+            <select id="root-cause" class="m3-select">
+              <option value="">-- Selecciona la causa raíz --</option>
+              <optgroup label="Falla funcional">
+                <option>Falla funcional · Firmware</option>
+                <option>Falla funcional · BMC</option>
+                <option>Falla funcional · HMC</option>
+                <option>Falla funcional · Interposer</option>
+                <option>Falla funcional · Cable J21 / J22</option>
+              </optgroup>
+              <optgroup label="Daño físico">
+                <option>Daño físico · Componente</option>
+                <option>Daño físico · BMC</option>
+                <option>Daño físico · HMC</option>
+                <option>Daño físico · Interposer</option>
+                <option>Daño físico · Cable J21 / J22</option>
+                <option>Daño físico · Bianca / PDB</option>
+              </optgroup>
+              <option>Sin causa confirmada · Requiere escalación</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="next-action">Siguiente acción *</label>
+            <select id="next-action" class="m3-select">
+              <option value="">-- Selecciona la disposición operativa --</option>
+              <option>Retest / AC</option>
+              <option>Reparación</option>
+              <option>Reparación y Retest / AC</option>
+              <option>Escalar a FA Nivel 2</option>
+            </select>
           </div>
           <div class="field-group full-span">
-            <label class="field-label" for="next-action">Siguiente Acción / Pendiente:</label>
-            <input id="next-action" class="m3-input" placeholder="Ej. Ejecutar retest BAT en estación 02">
+            <label class="field-label" for="root-cause-evidence">Evidencia concluyente (RCA)</label>
+            <textarea id="root-cause-evidence" class="m3-textarea"
+              placeholder="Describe la medición, comando, inspección o evidencia que confirma la causa seleccionada."></textarea>
           </div>
         </div>
         <div class="btn-row no-print" style="margin-top:16px;">
-          <button id="pdf-btn" class="m3-btn m3-btn-filled" type="button">
+          <button id="pdf-btn" class="m3-btn m3-btn-filled report-generate-btn" type="button" aria-label="Generar reporte oficial PDF para Calidad">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z">
               </path>
             </svg>
-            Generar Reporte Oficial PDF
+            Generar Reporte Oficial · PDF Calidad
           </button>
           <button id="reopen-btn" class="m3-btn m3-btn-tonal" type="button">← Corregir Último Paso</button>
           <button id="new-btn" class="m3-btn m3-btn-outlined" type="button">Nuevo Diagnóstico</button>
@@ -1705,7 +1745,7 @@
     <div id="bat-print-steps" class="print-flow" aria-label="Diagrama de flujo de validaciones registradas"></div>
     <div class="print-section">Veredicto de calidad y análisis de causa raíz (RCA)</div>
     <div id="bat-print-final" style="margin-top:8px;"></div>
-    <div class="print-section">Evidencia Fotográfica Anexada</div>
+    <div id="bat-print-evidence-section" class="print-section">Evidencia Fotográfica Anexada</div>
     <div id="print-evidence-list" class="gallery-grid" style="margin-top:10px;"></div>
     <div id="print-quality-note" class="print-footer"></div>
   </div>
@@ -2496,6 +2536,11 @@
         $("classification").focus();
         return;
       }
+      if (!$("root-cause").value || !$("next-action").value) {
+        setPrintStatus("Selecciona la causa raíz y la siguiente acción antes de generar el reporte.", true);
+        (!$("root-cause").value ? $("root-cause") : $("next-action")).focus();
+        return;
+      }
       if (!FFDG.state.activeFailure || !FFDG.state.history.length) {
         setPrintStatus("Completa al menos una validación del diagnóstico antes de generar el reporte.", true);
         return;
@@ -2503,6 +2548,9 @@
       const generatedAt = new Date();
       const serial = $("serial").value.trim();
       const failure = FFDG.state.activeFailure;
+      const rootCause = $("root-cause").value;
+      const rootEvidence = $("root-cause-evidence").value.trim();
+      const nextAction = $("next-action").value;
       $("print-date").textContent = `Generado ${generatedAt.toLocaleString("es-MX")}`;
       const meta = $("bat-print-meta");
       meta.replaceChildren();
@@ -2529,10 +2577,29 @@
         });
       });
       const hasAnomaly = FFDG.state.history.some(item => item.result === "ANOMALÍA");
+      const lastAnomaly = [...FFDG.state.history].reverse().find(item => item.result === "ANOMALÍA");
+      addFlowNode(stepsContainer, {
+        title: "Problema identificado",
+        result: hasAnomaly ? "PROBLEMA CONFIRMADO" : "NO REPRODUCIDO",
+        detail: hasAnomaly ? `${lastAnomaly.question} · ${lastAnomaly.recommendation}` : "La secuencia registrada no reprodujo una anomalía de hardware.",
+        kind: hasAnomaly ? "is-problem" : "is-pending"
+      });
+      addFlowNode(stepsContainer, {
+        title: "Causa raíz seleccionada",
+        result: rootCause,
+        detail: rootEvidence || "Sin evidencia concluyente adicional registrada.",
+        kind: "is-cause"
+      });
+      addFlowNode(stepsContainer, {
+        title: "Disposición operativa",
+        result: nextAction,
+        detail: `Clasificación de Calidad: ${$("classification").value} · Retest: ${$("retest").value || "No registrado"}`,
+        kind: "is-disposition"
+      });
       addFlowNode(stepsContainer, {
         title: `Veredicto final · ${$("classification").value}`,
         result: hasAnomaly ? "RUTA CON ANOMALÍA" : "RUTA VALIDADA",
-        detail: `Retest: ${$("retest").value || "No registrado"} · Emitido por ${$("technician").value.trim()}`,
+        detail: `Emitido por ${$("technician").value.trim()}`,
         kind: hasAnomaly ? "is-fail" : ""
       });
       const final = $("bat-print-final");
@@ -2542,11 +2609,12 @@
       const grid = document.createElement("div");
       grid.className = "print-final-grid";
       const finalFields = [
+        ["Problema identificado", hasAnomaly ? "Anomalía registrada durante la validación" : "No reproducido durante la validación"],
+        ["Causa raíz", rootCause],
+        ["Evidencia RCA", rootEvidence || "No registrada"],
         ["Clasificación final", $("classification").value],
-        ["Estatus de retest", $("retest").value],
+        ["Siguiente acción", nextAction],
         ["Acción física ejecutada", $("action").value.trim() || "No especificada"],
-        ["Causa raíz / evidencia concluyente (RCA)", $("root-cause").value.trim() || "Pendiente de confirmación"],
-        ["Siguiente acción / pendiente", $("next-action").value.trim() || "Sin pendiente indicado"]
       ];
       finalFields.forEach(([label, value], index) => {
         const field = document.createElement("div");
@@ -2564,9 +2632,12 @@
       final.appendChild(card);
       const evidence = $("print-evidence-list");
       if (!FFDG.state.evidence.length) {
-        const empty = document.createElement("p");
-        empty.textContent = "Sin evidencia fotográfica adjunta a esta sesión.";
-        evidence.replaceChildren(empty);
+        evidence.replaceChildren();
+        evidence.classList.add("hidden");
+        $("bat-print-evidence-section").classList.add("hidden");
+      } else {
+        evidence.classList.remove("hidden");
+        $("bat-print-evidence-section").classList.remove("hidden");
       }
       $("print-quality-note").textContent = `Trazabilidad: ${FFDG.state.history.length} validación(es) registrada(s) · ${FFDG.state.evidence.length} evidencia(s) fotográfica(s) · Reporte generado para revisión de Calidad. Veredicto basado únicamente en las respuestas, observaciones y datos capturados en esta sesión.`;
       setPrintStatus("Se abrirá la ventana de impresión. Elige “Guardar como PDF” como destino para crear el archivo.");
@@ -2716,7 +2787,7 @@
       }
     });
     $("clear-btn").addEventListener("click", () => {
-      ["serial", "part", "technician", "action", "root-cause", "next-action", "step-note"].forEach(id => $(id).value = "");
+      ["serial", "part", "technician", "action", "root-cause", "root-cause-evidence", "next-action", "step-note"].forEach(id => $(id).value = "");
       $("failure").value = "";
       $("classification").value = "";
       $("retest").value = "No aplica";
@@ -2735,6 +2806,8 @@
       $("serial").value = "";
       $("action").value = "";
       $("root-cause").value = "";
+      $("root-cause-evidence").value = "";
+      $("next-action").value = "";
       FFDG.state.history = [];
       FFDG.state.diagStartedAt = null;
       FFDG.state.diagFinishedAt = null;

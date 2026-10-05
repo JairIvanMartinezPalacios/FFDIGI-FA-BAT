@@ -857,13 +857,6 @@
     margin-bottom: 5px;
   }
 
-  .serial-builder {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-
   .field-help {
     display: block;
     margin: 2px 0 8px;
@@ -1095,9 +1088,24 @@
 
   .print-flow {
     display: grid;
-    gap: 10px;
-    margin: 10px 0 18px;
+    gap: 12px;
+    width: min(100%, 760px);
+    margin: 10px auto 18px;
   }
+
+  .print-route-owner {
+    width: min(100%, 760px);
+    margin: 0 auto 12px;
+    padding: 9px 12px;
+    border: 1px solid #bdd39f;
+    border-left: 5px solid #76b900;
+    border-radius: 8px;
+    background: #f1f7e9;
+    color: #20251c;
+    font-size: 9pt;
+    break-inside: avoid;
+  }
+  .print-route-owner strong { display: block; margin-bottom: 2px; color: #315e00; font-size: 8pt; text-transform: uppercase; }
 
   .print-flow-step {
     position: relative;
@@ -1122,17 +1130,75 @@
 
   .print-flow-step.is-fail { border-left-color: #c62828; }
   .print-flow-step.is-pending { border-left-color: #c58b00; }
+  .print-flow-step.is-start { border-left-color: #2d6b00; background: #eff9e9; }
+  .print-flow-step.is-decision { border-left-color: #b77900; background: #fff8e8; }
   .print-flow-step.is-problem { border-left-color: #e07800; background: #fff7e6; }
   .print-flow-step.is-cause { border-left-color: #1565c0; background: #eef6ff; }
   .print-flow-step.is-disposition { border-left-color: #2d6b00; background: #eff9e9; }
   .print-flow-result { float: right; font-weight: 800; }
   .print-flow-note { margin-top: 5px; color: #42483e; white-space: pre-wrap; }
+  .print-flow-branches {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding-top: 18px;
+    break-inside: avoid;
+  }
+  .print-flow-branches::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 25%;
+    right: 25%;
+    height: 10px;
+    border-top: 1px solid #7b856e;
+    border-left: 1px solid #7b856e;
+    border-right: 1px solid #7b856e;
+  }
+  .print-flow-branch {
+    position: relative;
+    min-width: 0;
+    border: 1px solid #cbd5c0;
+    border-radius: 8px;
+    padding: 9px 10px;
+    background: #f4f5f2;
+    color: #5d6258;
+    font-size: 8.5pt;
+    break-inside: avoid;
+  }
+  .print-flow-branch::before {
+    content: "↓";
+    position: absolute;
+    top: -17px;
+    left: 50%;
+    color: #477900;
+    font-weight: 900;
+  }
+  .print-flow-branch strong { display: block; margin-bottom: 3px; color: #3e4538; }
+  .print-flow-branch.is-anomaly.is-active { border-color: #c62828; background: #fff0ef; color: #3f1c1c; }
+  .print-flow-branch.is-anomaly.is-active strong { color: #a51d1d; }
+  .print-flow-branch.is-clear.is-active { border-color: #2d6b00; background: #eff9e9; color: #26391a; }
+  .print-flow-branch.is-clear.is-active strong { color: #315e00; }
+  .print-flow-branches + .print-flow-step::before {
+    content: "RUTAS CONVERGEN";
+    display: block;
+    margin: -4px 0 4px;
+    color: #536149;
+    font-size: 7pt;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-align: center;
+  }
   .print-final-card { border: 1px solid #aab59e; border-radius: 10px; padding: 12px; background: #f4f7ef; break-inside: avoid; }
   .print-final-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
   .print-final-grid > div { min-width: 0; }
   .print-final-grid .wide { grid-column: 1 / -1; }
-  .print-signatures { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 32px; break-inside: avoid; }
-  .print-signature { border-top: 1px solid #555; padding-top: 5px; font-size: 9pt; }
+  .print-signatures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin-top: 28px; break-inside: avoid; }
+  .print-signature { min-width: 0; padding-top: 5px; font-size: 9pt; break-inside: avoid; }
+  .print-signature-name { display: block; margin-top: 5px; font-weight: 700; }
+  .print-signature-meta { display: block; margin-top: 2px; color: #4f554a; font-size: 8pt; }
+  .print-signature-rule { height: 1px; margin: 27px 0 5px; background: #555; }
 
   /* Responsive Breakpoints */
   @media (max-width: 1080px) {
@@ -1191,6 +1257,9 @@
       display: none !important;
     }
 
+    body[data-print-mode="bat"] .m3-segmented-nav-wrap,
+    body[data-print-mode="mtf"] .m3-segmented-nav-wrap { display: none !important; }
+
     body[data-print-mode="bat"] #bat-print-report,
     body[data-print-mode="mtf"] #mtf-print-report {
       display: block !important;
@@ -1245,6 +1314,10 @@
     .gallery-grid img {
       height: 120px;
     }
+
+    .print-route-owner { break-inside: avoid; }
+    .print-flow-branches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .print-signatures { gap: 24px; }
   }
 </style>
 <!-- SheetJS para carga y actualización dinámica de Excel FFDG en navegador -->
@@ -1353,16 +1426,7 @@
         <div class="form-grid">
           <div class="field-group">
             <label class="field-label" for="serial">Serial del Nodo (S/N) *</label>
-            <div class="serial-builder">
-              <label class="field-label" for="serial-week">Semana (2 dígitos)
-                <input id="serial-week" class="m3-input" inputmode="numeric" autocomplete="off" maxlength="2" pattern="[0-9]{2}" aria-describedby="serial-help" placeholder="WW" required>
-              </label>
-              <label class="field-label" for="serial-year">Año (2 dígitos)
-                <input id="serial-year" class="m3-input" inputmode="numeric" autocomplete="off" maxlength="2" pattern="[0-9]{2}" placeholder="AA" required>
-              </label>
-            </div>
-            <small id="serial-help" class="field-help" aria-live="polite">Se genera como 193 + semana + año + 00.</small>
-            <input id="serial" class="m3-input" aria-label="Serial del Nodo generado" placeholder="Serial generado automáticamente" autocomplete="off" readonly required>
+            <input id="serial" class="m3-input" placeholder="Ej. 1652426000123" autocomplete="off" required>
           </div>
           <div class="field-group">
             <label class="field-label" for="part">Número de Parte (P/N) *</label>
@@ -1393,7 +1457,7 @@
             <input id="station" class="m3-input" value="BAT" readonly=""
               style="background:var(--md-sys-color-surface-container);">
           </div>
-          <div class="field-group full-span">
+          <div class="field-group">
             <label class="field-label" for="failure">Código de Falla BAT (seleccionable desde el tablero) *</label>
             <select id="failure" class="m3-select" required>
               <option value="">-- Selecciona el código reportado en la estación --</option>
@@ -1795,6 +1859,7 @@
     </div>
     <div id="bat-print-meta" class="print-grid"></div>
     <div class="print-section">Ruta de diagnóstico y decisiones registradas</div>
+    <div id="bat-print-route-owner" class="print-route-owner"></div>
     <div id="bat-print-steps" class="print-flow" aria-label="Diagrama de flujo de validaciones registradas"></div>
     <div class="print-section">Veredicto de calidad y análisis de causa raíz (RCA)</div>
     <div id="bat-print-final" style="margin-top:8px;"></div>
@@ -2580,6 +2645,38 @@
       }
       container.appendChild(node);
     }
+    function addFlowBranches(container, { hasAnomaly, anomalyDescription }) {
+      const branches = document.createElement("div");
+      branches.className = "print-flow-branches";
+      branches.setAttribute("role", "group");
+      branches.setAttribute("aria-label", "Rutas posibles del punto de decisión");
+      const options = [
+        {
+          title: "SÍ · Anomalía confirmada",
+          active: hasAnomaly,
+          detail: hasAnomaly ? anomalyDescription : "Ruta no seleccionada en este diagnóstico."
+        },
+        {
+          title: "NO · Sin anomalía reproducible",
+          active: !hasAnomaly,
+          detail: hasAnomaly ? "Ruta no seleccionada en este diagnóstico." : "Las validaciones registradas no reprodujeron la falla."
+        }
+      ];
+      options.forEach((option, index) => {
+        const branch = document.createElement("article");
+        branch.className = `print-flow-branch ${index === 0 ? "is-anomaly" : "is-clear"} ${option.active ? "is-active" : "is-inactive"}`;
+        const title = document.createElement("strong");
+        title.textContent = option.title;
+        const status = document.createElement("span");
+        status.textContent = option.active ? "RUTA TOMADA" : "NO TOMADA";
+        status.style.fontWeight = "800";
+        const detail = document.createElement("div");
+        detail.textContent = option.detail;
+        branch.append(title, status, detail);
+        branches.appendChild(branch);
+      });
+      container.appendChild(branches);
+    }
     function openPrintDialog(mode, title) {
       const previousTitle = document.title;
       document.title = title;
@@ -2608,6 +2705,9 @@
       const generatedAt = new Date();
       const serial = $("serial").value.trim();
       const failure = FFDG.state.activeFailure;
+      const diagnostician = $("technician").value.trim();
+      const employeeId = $("employee-id").value.trim();
+      const reportDate = generatedAt.toLocaleDateString("es-MX");
       const rootCause = $("root-cause").value;
       const rootEvidence = $("root-cause-evidence").value.trim();
       const nextAction = $("next-action").value;
@@ -2619,13 +2719,21 @@
       addMeta("Serial del Nodo (S/N)", serial);
       addMeta("Número de Parte (P/N)", $("part").value.trim());
       addMeta("Analista de Falla (FA)", $("technician").value.trim());
+      addMeta("Número de empleado (FA)", employeeId);
       addMeta("Código de falla", failure.code);
       addMeta("Descripción reportada", failure.label, true);
       addMeta("Inicio de diagnóstico", formattedDate(FFDG.state.diagStartedAt));
       addMeta("Cierre de diagnóstico", formattedDate(FFDG.state.diagFinishedAt));
+      const routeOwner = $("bat-print-route-owner");
+      routeOwner.replaceChildren();
+      const routeOwnerLabel = document.createElement("strong");
+      routeOwnerLabel.textContent = "Responsable del diagnóstico";
+      const routeOwnerIdentity = document.createElement("span");
+      routeOwnerIdentity.textContent = `${diagnostician} · No. de empleado ${employeeId}`;
+      routeOwner.append(routeOwnerLabel, routeOwnerIdentity);
       const stepsContainer = $("bat-print-steps");
       stepsContainer.replaceChildren();
-      addFlowNode(stepsContainer, { title: "Inicio · Falla reportada en BAT", result: "INICIO", detail: `${failure.code} · ${failure.label}` });
+      addFlowNode(stepsContainer, { title: "Inicio · Falla reportada en BAT", result: "INICIO", detail: `${failure.code} · ${failure.label} · Diagnóstico: ${diagnostician} · Empleado: ${employeeId}`, kind: "is-start" });
       FFDG.state.history.forEach((item, index) => {
         const isFail = item.result === "ANOMALÍA";
         addFlowNode(stepsContainer, {
@@ -2638,6 +2746,16 @@
       });
       const hasAnomaly = FFDG.state.history.some(item => item.result === "ANOMALÍA");
       const lastAnomaly = [...FFDG.state.history].reverse().find(item => item.result === "ANOMALÍA");
+      addFlowNode(stepsContainer, {
+        title: "Punto de decisión · ¿Se confirmó una anomalía?",
+        result: hasAnomaly ? "SÍ" : "NO",
+        detail: hasAnomaly ? "La ruta continúa hacia la causa raíz de la anomalía registrada." : "La ruta continúa como falla no reproducida durante la validación.",
+        kind: "is-decision"
+      });
+      addFlowBranches(stepsContainer, {
+        hasAnomaly,
+        anomalyDescription: lastAnomaly ? `${lastAnomaly.question} · ${lastAnomaly.recommendation || "Sin recomendación registrada."}` : "Anomalía registrada."
+      });
       addFlowNode(stepsContainer, {
         title: "Problema identificado",
         result: hasAnomaly ? "PROBLEMA CONFIRMADO" : "NO REPRODUCIDO",
@@ -2687,7 +2805,21 @@
       card.appendChild(grid);
       const signatures = document.createElement("div");
       signatures.className = "print-signatures";
-      signatures.innerHTML = '<div class="print-signature">Diagnóstico realizado por · Firma</div><div class="print-signature">Revisión de Calidad · Nombre / Firma / Fecha</div>';
+      signatures.innerHTML = `
+        <div class="print-signature">
+          <strong>Diagnóstico realizado por</strong>
+          <span class="print-signature-name">${safe(diagnostician || "No registrado")}</span>
+          <span class="print-signature-meta">Número de empleado: ${safe(employeeId || "No registrado")}</span>
+          <div class="print-signature-rule" aria-hidden="true"></div>
+          <span class="print-signature-meta">Firma · Fecha: ${safe(reportDate)}</span>
+        </div>
+        <div class="print-signature">
+          <strong>Revisión de Calidad</strong>
+          <span class="print-signature-name">Claudia Itzel Almaza Lopez</span>
+          <span class="print-signature-meta">Responsable de revisión</span>
+          <div class="print-signature-rule" aria-hidden="true"></div>
+          <span class="print-signature-meta">Firma · Fecha: ${safe(reportDate)}</span>
+        </div>`;
       card.appendChild(signatures);
       final.appendChild(card);
       const evidence = $("print-evidence-list");
@@ -2791,23 +2923,6 @@
     const otherAnalystInput = $("other-analyst");
     const employeeHelp = $("employee-help");
     let lastEmployeeId = "";
-    const serialWeekInput = $("serial-week");
-    const serialYearInput = $("serial-year");
-    const serialInput = $("serial");
-    const serialHelp = $("serial-help");
-    function syncSerial() {
-      const week = serialWeekInput.value.replace(/\D/g, "").slice(0, 2);
-      const year = serialYearInput.value.replace(/\D/g, "").slice(0, 2);
-      const validWeek = week.length === 2 && Number(week) >= 1 && Number(week) <= 53;
-      serialWeekInput.value = week;
-      serialYearInput.value = year;
-      serialInput.value = validWeek && year.length === 2 ? `193${week}${year}00` : "";
-      serialHelp.textContent = week.length === 2 && !validWeek
-        ? "Semana inválida. Usa un valor de 01 a 53."
-        : "Se genera como 193 + semana + año + 00.";
-    }
-    serialWeekInput.addEventListener("input", syncSerial);
-    serialYearInput.addEventListener("input", syncSerial);
     function syncAnalystName() {
       const employeeId = employeeIdInput.value.trim();
       if (employeeId !== lastEmployeeId) otherAnalystInput.value = "";
@@ -2884,7 +2999,7 @@
       }
     });
     $("clear-btn").addEventListener("click", () => {
-      ["serial", "serial-week", "serial-year", "part", "employee-id", "technician", "other-analyst", "action", "root-cause", "root-cause-evidence", "next-action", "step-note"].forEach(id => $(id).value = "");
+      ["serial", "part", "employee-id", "technician", "other-analyst", "action", "root-cause", "root-cause-evidence", "next-action", "step-note"].forEach(id => $(id).value = "");
       otherAnalystWrap.classList.add("hidden");
       otherAnalystInput.required = false;
       syncAnalystName();
@@ -2905,8 +3020,6 @@
     $("new-btn").addEventListener("click", () => {
       $("closing-card").classList.add("hidden");
       $("serial").value = "";
-      $("serial-week").value = "";
-      $("serial-year").value = "";
       $("action").value = "";
       $("root-cause").value = "";
       $("root-cause-evidence").value = "";

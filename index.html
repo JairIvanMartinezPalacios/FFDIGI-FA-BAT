@@ -1608,20 +1608,6 @@
         <input id="mtf-search" type="search"
           placeholder="Buscar por código (ej. 020023...), estación, componente (Bianca, CX8, PDB, BF3)...">
       </div>
-      <div class="mtf-filter-chips" role="group" aria-label="Filtrar fallas por estación">
-        <button id="chip-ALL" class="filter-chip-btn active" onclick="FFDG.ui.filterStation('ALL')">TODAS
-          (113)</button>
-        <button id="chip-FLA" class="filter-chip-btn" onclick="FFDG.ui.filterStation('FLA')">FLA (20)</button>
-        <button id="chip-PRET" class="filter-chip-btn" onclick="FFDG.ui.filterStation('PRET')">PRET (8)</button>
-        <button id="chip-FLB" class="filter-chip-btn" onclick="FFDG.ui.filterStation('FLB')">FLB (17)</button>
-        <button id="chip-FLC" class="filter-chip-btn" onclick="FFDG.ui.filterStation('FLC')">FLC (2)</button>
-        <button id="chip-FCT" class="filter-chip-btn" onclick="FFDG.ui.filterStation('FCT')">FCT (13)</button>
-        <button id="chip-FTS" class="filter-chip-btn" onclick="FFDG.ui.filterStation('FTS')">FTS (19)</button>
-        <button id="chip-AST" class="filter-chip-btn" onclick="FFDG.ui.filterStation('AST')">AST (14)</button>
-        <button id="chip-IOT" class="filter-chip-btn" onclick="FFDG.ui.filterStation('IOT')">IOT (4)</button>
-        <button id="chip-NVL" class="filter-chip-btn" onclick="FFDG.ui.filterStation('NVL')">NVL (3)</button>
-        <button id="chip-RIN" class="filter-chip-btn" onclick="FFDG.ui.filterStation('RIN')">RIN (15)</button>
-      </div>
       <!-- Botón para adjuntar y actualizar automáticamente desde archivo Excel FFDG -->
       <div class="mtf-row-1-actions">
         <button id="theme-toggle" class="theme-switch-btn" type="button" aria-label="Cambiar Tema">
@@ -3491,12 +3477,14 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     "use strict";
     const $ = id => document.getElementById(id);
     const css = `
-.mtf-row-1{flex-wrap:wrap;width:min(100%,1720px);max-width:1720px;box-sizing:border-box;margin-inline:auto;justify-content:center}
-.mtf-row-1-search{width:min(100%,800px);max-width:800px;flex:0 1 800px;margin-inline:auto}
+.mtf-row-1{display:grid;grid-template-columns:minmax(0,1fr) minmax(560px,min(800px,42vw)) minmax(0,1fr);align-items:center;width:min(100%,1720px);max-width:1720px;box-sizing:border-box;margin-inline:auto;justify-content:center}
+.mtf-row-1-search{grid-column:2;width:100%;max-width:800px;min-width:0;flex:none;margin:0 auto}
 #mtf-layout .mtf-row-1-search input{text-align:center}
-.mtf-row-1 .mtf-filter-chips{min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-x:contain}
-.mtf-row-1>label{flex:0 1 auto;max-width:100%}
-@media(max-width:640px){.mtf-row-1{width:100%;max-width:100%}.mtf-row-1-search{width:100%;max-width:100%;flex:0 0 42px;margin-inline:0}#mtf-layout .mtf-row-1-search input{text-align:left}}
+.mtf-row-1-actions{grid-column:3;justify-self:end;display:flex;flex-direction:row;align-items:center;gap:8px;width:auto;max-width:100%;margin:0;flex:none}
+.mtf-row-1-actions .theme-switch-btn{width:auto;min-height:40px;padding:6px 12px;white-space:nowrap}
+.mtf-row-1-actions>label{width:auto;max-width:100%;margin:0;white-space:nowrap}
+@media(max-width:1280px){.mtf-row-1{display:flex;flex-wrap:wrap;justify-content:center}.mtf-row-1-search{order:0;flex:1 1 560px;width:min(100%,800px);max-width:800px;margin:0 auto}.mtf-row-1-actions{order:1;flex:0 1 auto;margin:0 auto}}
+@media(max-width:640px){.mtf-row-1{display:flex;flex-direction:column;align-items:stretch;width:100%;max-width:100%}.mtf-row-1-search{width:100%;max-width:100%;flex:0 0 42px;margin:0}#mtf-layout .mtf-row-1-search input{text-align:left}.mtf-row-1-actions{width:100%;flex-wrap:wrap;justify-content:center}.mtf-row-1-actions .theme-switch-btn,.mtf-row-1-actions>label{width:min(100%,190px)}}
 #mtf-board{display:none;min-width:0}
 .v-board .mtf-cards-scroll-grid{display:none!important}
 .v-board #mtf-board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(min(82vw,270px),1fr);gap:14px;overflow-x:auto;padding:4px 2px 12px;align-items:start;scroll-snap-type:x proximity;overscroll-behavior-x:contain;touch-action:pan-x}
@@ -3649,9 +3637,9 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     text-transform: none;
   }
 
-  .mtf-row-1-actions { display: flex; flex: 0 0 190px; flex-direction: column; align-items: stretch; gap: 8px; width: 190px; margin-left: auto; }
-  .mtf-row-1-actions .theme-switch-btn { width: 100%; min-height: 36px; justify-content: center; border-color: #2d6b00; color: #fff; background: #111; }
-  .mtf-row-1-actions > label { width: 100%; min-height: 40px; box-sizing: border-box; }
+  .mtf-row-1-actions { display: flex; flex: 0 0 auto; flex-direction: row; align-items: center; gap: 8px; width: auto; margin: 0; }
+  .mtf-row-1-actions .theme-switch-btn { width: auto; min-height: 40px; justify-content: center; border-color: #2d6b00; color: #fff; background: #111; white-space: nowrap; }
+  .mtf-row-1-actions > label { width: auto; min-height: 40px; box-sizing: border-box; white-space: nowrap; }
 
   .nvidia-badge-wrapper,
   .app-brand .brand-chips,
@@ -3843,7 +3831,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
       font-size: 13px !important;
     }
 
-    .mtf-row-1-actions { flex-basis: 190px; }
+    .mtf-row-1-actions { flex-basis: auto; }
   }
 
   @media (max-width: 520px) {
@@ -3890,8 +3878,8 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
       font-size: 11px !important;
     }
 
-    .mtf-row-1-actions { flex: 0 1 100%; width:100%; max-width:100%; margin-inline:auto; align-items:center; }
-    .mtf-row-1-actions .theme-switch-btn,.mtf-row-1-actions > label { width:min(100%,190px); }
+    .mtf-row-1-actions { flex: 0 1 100%; width:100%; max-width:100%; margin-inline:auto; align-items:center; justify-content:center; flex-wrap:wrap; }
+    .mtf-row-1-actions .theme-switch-btn,.mtf-row-1-actions > label { width:auto; max-width:100%; }
   }
 </style>
 <script>(() => {

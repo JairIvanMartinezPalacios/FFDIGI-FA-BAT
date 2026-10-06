@@ -3499,6 +3499,20 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     background: #000;
   }
 
+  .brand-racks {
+    position: absolute;
+    left: 290px;
+    top: 50%;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: .015em;
+    line-height: 1;
+    transform: translateY(-50%);
+    white-space: nowrap;
+  }
+
   .app-brand-divider {
     display: none;
   }
@@ -3713,6 +3727,11 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
       height: 48px;
     }
 
+    .brand-racks {
+      left: 207px;
+      font-size: 30px;
+    }
+
     .app-brand-title {
       font-size: 38px !important;
     }
@@ -3734,9 +3753,16 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     .nvidia-wordmark {
       left: 12px;
       top: 10px;
-      width: 128px;
+      width: 108px;
       height: 36px;
       transform: none;
+    }
+
+    .brand-racks {
+      left: 128px;
+      top: 28px;
+      font-size: 20px;
+      transform: translateY(-50%);
     }
 
     .app-brand-copy {
@@ -3767,7 +3793,11 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     const logo = document.createElement("img");
     logo.className = "nvidia-wordmark";
     logo.src = "./LOGO NVIDIA NEGRO.png";
-    logo.alt = "NVIDIA";
+    logo.alt = "Logotipo NVIDIA";
+    const racks = document.createElement("span");
+    racks.className = "brand-racks";
+    racks.textContent = "RACKS";
+    racks.setAttribute("aria-label", "Racks");
     const divider = document.createElement("span");
     divider.className = "app-brand-divider";
     divider.setAttribute("aria-hidden", "true");
@@ -3783,7 +3813,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     subtitle.className = "app-brand-subtitle";
     subtitle.textContent = "Guía BAT / MTF · GB200 / GB300";
     copy.append(eyebrow, title, subtitle);
-    brand.replaceChildren(logo, divider, copy);
+    brand.replaceChildren(logo, racks, divider, copy);
     brand.dataset.refreshed = "true";
     document.title = "FFDG · GB200 / GB300";
     document.querySelectorAll(".header-actions .fault-emblem").forEach(emblem => emblem.parentElement.remove());

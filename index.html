@@ -3427,7 +3427,10 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 .bd-item:focus-visible{outline:3px solid var(--md-sys-color-primary)}
 .bd-item.selected{background:var(--md-sys-color-primary-container);border-color:var(--md-sys-color-primary);border-left-color:var(--st);box-shadow:0 0 0 2px var(--md-sys-color-primary)}
 .bd-item b{font:800 11px ui-monospace,Consolas,monospace;color:var(--st)}
-.bd-item span{font-size:12.5px;font-weight:700;line-height:1.3;color:var(--md-sys-color-on-surface);text-align:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#bat-board .bd-item span,#mtf-board .bd-item span{font-size:12.5px;font-weight:700;line-height:1.3;color:var(--md-sys-color-on-surface);text-align:center!important;width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#bat-board .bd-h,#mtf-board .bd-h{position:relative;justify-content:center;text-align:center}
+#bat-board .bd-h small,#mtf-board .bd-h small{position:absolute;right:12px}
+.mtf-item-title,#mtf-detail-title{width:100%;text-align:center!important}
 .bd-item small{font:10.5px ui-monospace,Consolas,monospace;color:var(--md-sys-color-on-surface-variant);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media print{#mtf-board{display:none!important}}`;
     const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);

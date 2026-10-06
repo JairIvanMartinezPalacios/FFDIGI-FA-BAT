@@ -430,7 +430,11 @@
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
     gap: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--md-shape-corner-l);
+    background-color: var(--md-sys-color-surface-container-low);
   }
 
   .mtf-catalog-heading { grid-column: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
@@ -1625,18 +1629,18 @@
         style="background:none; border:none; color:inherit; cursor:pointer; font-weight:bold; font-size:14px;">✕</button>
     </div>
     <!-- FILA 2: CARRUSEL HORIZONTAL SIMÉTRICO DE TARJETAS (SIN ESPACIOS MUERTOS) -->
-    <div class="mtf-row-2">
-      <div class="mtf-row-2-header">
-        <div class="mtf-catalog-heading">
-          <span class="mtf-catalog-title"
-            style="font-weight:800; font-size:13px; text-transform:uppercase; color:var(--md-sys-color-primary);">Catálogo de Fallas GB200</span>
-          <span id="mtf-count" class="mtf-tag">113 CASOS</span>
-        </div>
-        <div class="mtf-design-controls">
-          <span class="mtf-design-label">Diseño</span>
-        </div>
-        <span class="mtf-scroll-hint">Desliza horizontalmente ◄ ► o selecciona una tarjeta</span>
+    <div class="mtf-row-2-header">
+      <div class="mtf-catalog-heading">
+        <span class="mtf-catalog-title"
+          style="font-weight:800; font-size:13px; text-transform:uppercase; color:var(--md-sys-color-primary);">Catálogo de Fallas GB200</span>
+        <span id="mtf-count" class="mtf-tag">113 CASOS</span>
       </div>
+      <div class="mtf-design-controls">
+        <span class="mtf-design-label">Diseño</span>
+      </div>
+      <span class="mtf-scroll-hint">Desliza horizontalmente ◄ ► o selecciona una tarjeta</span>
+    </div>
+    <div class="mtf-row-2">
       <div id="mtf-fault-list" class="mtf-cards-scroll-grid"></div>
     </div>
     <!-- FILA 3: PANEL DETALLE HORIZONTAL EN 3 BLOQUES (METADATA | INSTRUCCIONES & COMANDOS | DISPOSICIÓN) -->
@@ -3359,6 +3363,7 @@ main{max-width:none!important;width:100%;min-width:0;padding:10px clamp(12px,2vw
 .view-tg button{border:0;background:transparent;color:var(--md-sys-color-on-surface-variant);font:700 12px inherit;font-family:inherit;padding:6px 14px;cursor:pointer}
 .view-tg button.on{background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container)}
 #mtf-layout.mtf-split:not(.hidden){display:grid;grid-template-columns:minmax(0,34%) minmax(0,1fr);gap:14px;align-items:start}
+.mtf-split .mtf-row-2-header{grid-column:1/-1}
 .mtf-split .mtf-row-1,.mtf-split #upload-status{grid-column:1/-1;min-width:0;width:100%;box-sizing:border-box}.mtf-split .mtf-row-1-search{min-width:0}.mtf-split .mtf-row-1-search input{min-width:0}.mtf-split .mtf-filter-chips{min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:thin}.mtf-split .mtf-row-1>label{flex:0 1 auto;max-width:100%}
 .mtf-split .mtf-row-2-header>span{display:none}.view-tg button{white-space:nowrap}.mtf-row-2-header{gap:10px;flex-wrap:wrap}
 .mtf-split .mtf-cards-scroll-grid{flex-direction:column;flex-wrap:nowrap;justify-content:flex-start;gap:8px;max-height:calc(100vh - 330px);min-height:440px;padding:2px 6px 2px 2px}

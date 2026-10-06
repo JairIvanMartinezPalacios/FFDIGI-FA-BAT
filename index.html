@@ -3500,6 +3500,9 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 #mtf-board{display:none;min-width:0}
 .v-board .mtf-cards-scroll-grid{display:none!important}
 .v-board #mtf-board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(min(82vw,270px),1fr);gap:14px;overflow-x:auto;padding:4px 2px 12px;align-items:start;scroll-snap-type:x proximity;overscroll-behavior-x:contain;touch-action:pan-x}
+#mtf-board .bd-col{min-height:0;max-height:none}
+#mtf-board .bd-l{box-sizing:border-box;max-height:262px;overflow-y:auto;overscroll-behavior:contain}
+#mtf-board .bd-item{height:76px;min-height:76px;padding:7px 8px;overflow:hidden}
 .bd-col{scroll-snap-align:start;background:var(--md-sys-color-surface-container-low);border:1px solid var(--md-sys-color-outline-variant);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;max-height:calc(100vh - 420px);min-height:300px}
 .bd-h{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:linear-gradient(120deg,var(--st),color-mix(in srgb,var(--st) 60%,#000));color:#fff;font-weight:900;font-size:20px;letter-spacing:.08em}
 .bd-h small{background:rgba(0,0,0,.3);border-radius:999px;padding:3px 12px;font-size:12px;letter-spacing:0}
@@ -3527,7 +3530,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
         const s = t.textContent.split("/")[0].trim(); (g[s] = g[s] || []).push(c);
       });
       board.replaceChildren();
-      Object.keys(g).sort((a, b) => rank(a) - rank(b)).forEach(s => {
+      Object.keys(g).sort((a, b) => g[b].length - g[a].length || rank(a) - rank(b)).forEach(s => {
         const col = document.createElement("section"); col.className = "bd-col"; col.dataset.st = s;
         col.innerHTML = `<div class="bd-h"><span>${s}</span><small>${g[s].length}</small></div><div class="bd-l"></div>`;
         g[s].forEach(c => {

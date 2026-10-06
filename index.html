@@ -3491,7 +3491,9 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     "use strict";
     const $ = id => document.getElementById(id);
     const css = `
-.mtf-row-1{flex-wrap:wrap}.mtf-row-1-search{flex:1 1 260px}
+.mtf-row-1{flex-wrap:wrap;width:min(96%,1720px);max-width:1720px;box-sizing:border-box;margin-inline:auto;justify-content:center}
+.mtf-row-1-search{width:min(100%,1120px);max-width:1120px;flex:0 1 1120px;margin-inline:auto}
+@media(max-width:640px){.mtf-row-1{width:100%;max-width:100%}.mtf-row-1-search{width:100%;max-width:100%;flex:0 0 42px;margin-inline:0}}
 #mtf-board{display:none;min-width:0}
 .v-board .mtf-cards-scroll-grid{display:none!important}
 .v-board #mtf-board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(min(82vw,270px),1fr);gap:14px;overflow-x:auto;padding:4px 2px 12px;align-items:start;scroll-snap-type:x proximity;overscroll-behavior-x:contain;touch-action:pan-x}

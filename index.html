@@ -426,11 +426,17 @@
   }
 
   .mtf-row-2-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
+    gap: 12px;
     margin-bottom: 8px;
   }
+
+  .mtf-catalog-heading { grid-column: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .mtf-design-controls { grid-column: 2; display: flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; }
+  .mtf-design-label { color: var(--md-sys-color-on-surface-variant); font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+  .mtf-scroll-hint { grid-column: 3; justify-self: end; color: var(--md-sys-color-on-surface-variant); font-size: 11px; font-weight: 600; text-align: right; }
 
   .mtf-cards-scroll-grid {
     display: flex;
@@ -1621,14 +1627,15 @@
     <!-- FILA 2: CARRUSEL HORIZONTAL SIMÉTRICO DE TARJETAS (SIN ESPACIOS MUERTOS) -->
     <div class="mtf-row-2">
       <div class="mtf-row-2-header">
-        <div style="display:flex; align-items:center; gap:8px;">
-          <span
-            style="font-weight:800; font-size:13px; text-transform:uppercase; color:var(--md-sys-color-primary);">Catálogo
-            de Fallas GB300 · L10</span>
+        <div class="mtf-catalog-heading">
+          <span class="mtf-catalog-title"
+            style="font-weight:800; font-size:13px; text-transform:uppercase; color:var(--md-sys-color-primary);">Catálogo de Fallas GB200</span>
           <span id="mtf-count" class="mtf-tag">113 CASOS</span>
         </div>
-        <span style="font-size:11px; color:var(--md-sys-color-on-surface-variant); font-weight:600;">Desliza
-          horizontalmente ◄ ► o selecciona una tarjeta</span>
+        <div class="mtf-design-controls">
+          <span class="mtf-design-label">Diseño</span>
+        </div>
+        <span class="mtf-scroll-hint">Desliza horizontalmente ◄ ► o selecciona una tarjeta</span>
       </div>
       <div id="mtf-fault-list" class="mtf-cards-scroll-grid"></div>
     </div>
@@ -3372,6 +3379,7 @@ main{max-width:none!important;width:100%;min-width:0;padding:10px clamp(12px,2vw
 #mtf-detail .bento-block-3 .btn-row{justify-content:center}
 @media(max-width:1240px){.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mtf-split .bento-block-3{grid-column:1/-1}}
 @media(max-width:1080px){#bat-layout:not(.hidden){grid-template-columns:minmax(0,1fr)}#mtf-layout.mtf-split:not(.hidden){grid-template-columns:minmax(0,1fr)}.mtf-split .mtf-row-3{position:static;max-height:none}.mtf-split .mtf-cards-scroll-grid{max-height:360px;min-height:0}.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:minmax(0,1fr)}.mtf-split .bento-block-3{grid-column:auto}.m3-segmented-nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.mtf-row-2-header{grid-template-columns:minmax(0,1fr);justify-items:center}.mtf-catalog-heading{grid-column:1;justify-self:start}.mtf-design-controls{grid-column:1;grid-row:2;flex-wrap:wrap}.mtf-scroll-hint{grid-column:1;grid-row:3;justify-self:center;text-align:center}}
 #bat-layout>section,#bat-layout>aside,#bat-failure-board,#bat-board{min-width:0}
 #mtf-detail-title{text-align:center}
 #bat-board{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));grid-auto-flow:row;grid-auto-columns:auto;overflow-x:hidden;touch-action:pan-y}
@@ -3410,7 +3418,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
           tg.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === v));
           ml.classList.toggle("mtf-split", v.dataset.v === "split");
         });
-        hd.appendChild(tg);
+        hd.querySelector(".mtf-design-controls").appendChild(tg);
       }
     }
   })();</script>

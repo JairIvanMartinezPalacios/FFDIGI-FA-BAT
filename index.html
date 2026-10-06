@@ -1086,119 +1086,16 @@
     display: none;
   }
 
-  .print-flow {
-    display: grid;
-    gap: 12px;
-    width: min(100%, 760px);
-    margin: 10px auto 18px;
-  }
-
-  .print-route-owner {
-    width: min(100%, 760px);
-    margin: 0 auto 12px;
-    padding: 9px 12px;
-    border: 1px solid #bdd39f;
-    border-left: 5px solid #76b900;
-    border-radius: 8px;
-    background: #f1f7e9;
-    color: #20251c;
-    font-size: 9pt;
-    break-inside: avoid;
-  }
-  .print-route-owner strong { display: block; margin-bottom: 2px; color: #315e00; font-size: 8pt; text-transform: uppercase; }
-
-  .print-flow-step {
-    position: relative;
-    border: 1px solid #cbd5c0;
-    border-left: 5px solid #76b900;
-    border-radius: 9px;
-    padding: 10px 12px;
-    break-inside: avoid;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  .print-flow-step:not(:last-child)::after {
-    content: "↓";
-    position: absolute;
-    bottom: -17px;
-    left: 18px;
-    z-index: 1;
-    color: #477900;
-    font-weight: 900;
-  }
-
-  .print-flow-step.is-fail { border-left-color: #c62828; }
-  .print-flow-step.is-pending { border-left-color: #c58b00; }
-  .print-flow-step.is-start { border-left-color: #2d6b00; background: #eff9e9; }
-  .print-flow-step.is-decision { border-left-color: #b77900; background: #fff8e8; }
-  .print-flow-step.is-problem { border-left-color: #e07800; background: #fff7e6; }
-  .print-flow-step.is-cause { border-left-color: #1565c0; background: #eef6ff; }
-  .print-flow-step.is-disposition { border-left-color: #2d6b00; background: #eff9e9; }
-  .print-flow-result { float: right; font-weight: 800; }
-  .print-flow-note { margin-top: 5px; color: #42483e; white-space: pre-wrap; }
-  .print-flow-branches {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    padding-top: 18px;
-    break-inside: avoid;
-  }
-  .print-flow-branches::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 25%;
-    right: 25%;
-    height: 10px;
-    border-top: 1px solid #7b856e;
-    border-left: 1px solid #7b856e;
-    border-right: 1px solid #7b856e;
-  }
-  .print-flow-branch {
-    position: relative;
-    min-width: 0;
-    border: 1px solid #cbd5c0;
-    border-radius: 8px;
-    padding: 9px 10px;
-    background: #f4f5f2;
-    color: #5d6258;
-    font-size: 8.5pt;
-    break-inside: avoid;
-  }
-  .print-flow-branch::before {
-    content: "↓";
-    position: absolute;
-    top: -17px;
-    left: 50%;
-    color: #477900;
-    font-weight: 900;
-  }
-  .print-flow-branch strong { display: block; margin-bottom: 3px; color: #3e4538; }
-  .print-flow-branch.is-anomaly.is-active { border-color: #c62828; background: #fff0ef; color: #3f1c1c; }
-  .print-flow-branch.is-anomaly.is-active strong { color: #a51d1d; }
-  .print-flow-branch.is-clear.is-active { border-color: #2d6b00; background: #eff9e9; color: #26391a; }
-  .print-flow-branch.is-clear.is-active strong { color: #315e00; }
-  .print-flow-branches + .print-flow-step::before {
-    content: "RUTAS CONVERGEN";
-    display: block;
-    margin: -4px 0 4px;
-    color: #536149;
-    font-size: 7pt;
-    font-weight: 800;
-    letter-spacing: .05em;
-    text-align: center;
-  }
-  .print-final-card { border: 1px solid #aab59e; border-radius: 10px; padding: 12px; background: #f4f7ef; break-inside: avoid; }
-  .print-final-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
-  .print-final-grid > div { min-width: 0; }
+  .print-final-card { border: 1px solid #d7dce2; border-radius: 12px; padding: 14px; background: #fff; break-inside: avoid; }
+  .print-final-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .print-final-grid > div { min-width: 0; padding: 10px 11px; border: 1px solid #e0e4e8; border-top: 3px solid #a9231b; border-radius: 8px; background: #fafbfc; overflow-wrap: anywhere; }
   .print-final-grid .wide { grid-column: 1 / -1; }
-  .print-signatures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px; margin-top: 28px; break-inside: avoid; }
-  .print-signature { min-width: 0; padding-top: 5px; font-size: 9pt; break-inside: avoid; }
+  .print-final-grid strong { display: block; margin-bottom: 4px; color: #6f201b; font-size: 8pt; text-transform: uppercase; letter-spacing: .035em; }
+  .print-signatures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; break-inside: avoid; }
+  .print-signature { min-width: 0; padding: 12px 14px 10px; border: 1px solid #d7dce2; border-radius: 10px; background: #fff; font-size: 9pt; break-inside: avoid; }
   .print-signature-name { display: block; margin-top: 5px; font-weight: 700; }
   .print-signature-meta { display: block; margin-top: 2px; color: #4f554a; font-size: 8pt; }
-  .print-signature-rule { height: 1px; margin: 27px 0 5px; background: #555; }
+  .print-signature-rule { height: 1px; margin: 30px 0 6px; background: #7c838a; }
 
   /* Responsive Breakpoints */
   @media (max-width: 1080px) {
@@ -1280,6 +1177,18 @@
       align-items: flex-end;
     }
 
+    #bat-print-report .print-head { align-items: center; gap: 16px; border-bottom: 3px solid #b3261e; margin-bottom: 15px; }
+    #bat-print-report .print-head > .print-legacy-brand { display: none !important; }
+    .print-brand-primary { display: flex; align-items: center; gap: 15px; min-width: 0; }
+    .ingrasys-print-logo { display: block; width: 150px; height: auto; max-height: 48px; object-fit: contain; }
+    .print-brand-copy { display: grid; gap: 2px; }
+    .print-brand-kicker { color: #8c211b; font-size: 7pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .print-brand-title { margin: 0; color: #202329; font-size: 17pt; line-height: 1.05; }
+    .print-brand-subtitle { color: #555d66; font-size: 8pt; }
+    .print-doc-stamp { display: grid; gap: 3px; min-width: 150px; padding: 9px 11px; border: 1px solid #e3c3c0; border-radius: 8px; background: #fff6f5; text-align: right; }
+    .print-doc-stamp strong { color: #8c211b; font-size: 8pt; letter-spacing: .04em; text-transform: uppercase; }
+    .print-doc-stamp span { color: #41464d; font-size: 8pt; }
+
     .print-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1290,6 +1199,24 @@
       margin-bottom: 16px;
     }
 
+    .bat-print-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; border: 0; padding: 0; margin: 0 0 12px; }
+    .bat-meta-card { min-width: 0; padding: 9px 10px; border: 1px solid #e0e4e8; border-top: 3px solid #7c8792; border-radius: 8px; background: #f7f8fa; overflow-wrap: anywhere; }
+    .bat-meta-card strong { display: block; margin-bottom: 3px; color: #59636d; font-size: 7pt; letter-spacing: .035em; text-transform: uppercase; }
+    .bat-meta-card.is-primary { border-top-color: #b3261e; background: #fff7f6; }
+    .bat-meta-card.is-primary strong { color: #8c211b; }
+    .bat-meta-card.is-alert { border-top-color: #d17300; background: #fff8ed; }
+    .bat-meta-card.is-description { grid-column: 1 / -1; border-top-color: #b3261e; }
+    .bat-report-verdict { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: 8px; align-items: stretch; margin: 0 0 12px; padding: 10px; border: 1px solid #e0e4e8; border-left: 5px solid #b3261e; border-radius: 9px; background: #fff7f6; break-inside: avoid; }
+    .bat-report-verdict.is-clear { border-left-color: #3b7c3a; background: #f2f8f1; }
+    .bat-report-continuation { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 10px; padding: 7px 10px; border-left: 3px solid #b3261e; border-radius: 0 6px 6px 0; background: #f3f4f6; color: #4c535b; font-size: 8pt; font-weight: 700; break-before: page; }
+    .bat-verdict-lead { display: grid; align-content: center; gap: 3px; padding: 2px 8px; }
+    .bat-verdict-kicker { color: #737b83; font-size: 7pt; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .bat-verdict-title { color: #8c211b; font-size: 11pt; font-weight: 800; }
+    .is-clear .bat-verdict-title { color: #28632b; }
+    .bat-verdict-stat { display: grid; align-content: center; gap: 4px; min-width: 0; padding: 7px 9px; border-left: 1px solid #e2d8d7; }
+    .bat-verdict-stat strong { color: #717982; font-size: 7pt; letter-spacing: .035em; text-transform: uppercase; }
+    .bat-verdict-stat span { color: #24282d; font-size: 8.5pt; font-weight: 700; overflow-wrap: anywhere; }
+
     .print-section {
       font-weight: bold;
       border-bottom: 1px solid #000;
@@ -1298,26 +1225,52 @@
       font-size: 12pt;
     }
 
+    .bat-print-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #252a30;
+      font-weight: 800;
+      border-bottom: 1px solid #d8dde2;
+      border-left: 4px solid #b3261e;
+      padding: 4px 0 6px 9px;
+      margin-top: 15px;
+      font-size: 11pt;
+    }
+
     .print-row {
       border-bottom: 1px dotted #ccc;
       padding: 6px 0;
       font-size: 10pt;
     }
 
-    .print-flow-step:not(:last-child)::after { bottom: -17px; }
     .print-section { break-after: avoid; }
-    .print-head, .print-grid, .print-final-card { break-inside: avoid; }
+    .print-head, .bat-print-grid, .bat-report-verdict, .print-final-card { break-inside: avoid; }
     .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .gallery-grid figure { break-inside: avoid; }
-    .print-footer { margin-top: 18px; border-top: 1px solid #bbb; padding-top: 6px; font-size: 8pt; color: #555; }
+    .gallery-grid figure { break-inside: avoid; border-color: #d9dee3; border-radius: 8px; }
+    .print-footer { margin-top: 14px; border-top: 1px solid #d8dde2; padding-top: 7px; font-size: 7.5pt; line-height: 1.4; color: #59616a; }
 
     .gallery-grid img {
-      height: 120px;
+      height: 108px;
+      object-fit: contain;
+      background: #f1f3f5;
     }
 
-    .print-route-owner { break-inside: avoid; }
-    .print-flow-branches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .print-signatures { gap: 24px; }
+    .print-signatures { gap: 12px; }
+    .print-signature-rule { margin-top: 24px; }
+    .print-signature strong { color: #343a40; }
+    @media (max-width: 720px) {
+      .print-brand-primary { gap: 9px; }
+      .ingrasys-print-logo { width: 112px; max-height: 40px; }
+      .print-brand-title { font-size: 14pt; }
+      .print-doc-stamp { min-width: 0; }
+      .bat-print-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .bat-report-verdict { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .bat-verdict-lead { grid-column: 1 / -1; }
+      .print-final-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .print-signatures { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
   }
 </style>
 <!-- SheetJS para carga y actualización dinámica de Excel FFDG en navegador -->
@@ -1800,6 +1753,20 @@
   <!-- REPORTES PARA PDF CON LOGO NVIDIA -->
   <div id="bat-print-report" class="report-only">
     <div class="print-head">
+      <div class="print-brand-primary">
+        <img class="ingrasys-print-logo" src="./ingrasys-logo.png" alt="Ingrasys">
+        <div class="print-brand-copy">
+          <span class="print-brand-kicker">FFDG · Estación BAT</span>
+          <h1 class="print-brand-title">Reporte de Calidad</h1>
+          <span class="print-brand-subtitle">Diagnóstico de hardware · GB200 / GB300</span>
+        </div>
+      </div>
+      <div class="print-doc-stamp">
+        <strong>Control de Calidad</strong>
+        <span>Reporte de diagnóstico BAT</span>
+        <span id="print-date"></span>
+      </div>
+      <div class="print-legacy-brand">
       <div>
         <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
           <div style="width:40px; height:40px; background:#000; border-radius:4px; padding:2px; display:inline-block;">
@@ -1851,20 +1818,18 @@
         <p style="margin:4px 0 0; font-size:9pt; color:#666;">Reporte Oficial de Diagnóstico de Hardware · Estación
           BAT</p>
       </div>
-      <div style="text-align:right;">
-        <strong style="font-size:11pt;">FOXCONN GUADALAJARA</strong>
-        <br>
-        <span id="print-date" style="font-size:9pt; color:#555;"></span>
       </div>
     </div>
-    <div id="bat-print-meta" class="print-grid"></div>
-    <div class="print-section">Ruta de diagnóstico y decisiones registradas</div>
-    <div id="bat-print-route-owner" class="print-route-owner"></div>
-    <div id="bat-print-steps" class="print-flow" aria-label="Diagrama de flujo de validaciones registradas"></div>
-    <div class="print-section">Veredicto de calidad y análisis de causa raíz (RCA)</div>
+    <div id="bat-print-meta" class="print-grid bat-print-grid"></div>
+    <div class="print-section bat-print-section">Resumen para Calidad</div>
+    <div id="bat-print-verdict"></div>
+    <div id="bat-print-continuation" class="bat-report-continuation"></div>
+    <div class="print-section bat-print-section">Causa raíz y acciones reportadas</div>
     <div id="bat-print-final" style="margin-top:8px;"></div>
-    <div id="bat-print-evidence-section" class="print-section">Evidencia Fotográfica Anexada</div>
+    <div id="bat-print-evidence-section" class="print-section bat-print-section">Evidencia de soporte</div>
     <div id="print-evidence-list" class="gallery-grid" style="margin-top:10px;"></div>
+    <div id="bat-print-signatures-section" class="print-section bat-print-section">Firmas de diagnóstico y revisión</div>
+    <div id="bat-print-signatures" class="print-signatures"></div>
     <div id="print-quality-note" class="print-footer"></div>
   </div>
   <div id="mtf-print-report" class="report-only">
@@ -1911,9 +1876,9 @@
     "use strict";
     const failureCatalog = [
       ...[
-        ["NDBG_080", "HMC FRU EEMPROM"], ["NDBG_081", "PDB FRU EEPROM"], ["NDBG_082", "PRIMARY BIANCA FRU EEPROM"], ["NDBG_083", "SECUNDARY BIANCA FRU EEPROM"],
-        ["NDBG_084", "LEFT SIDE CX8 IO BOARD FRU EEPROM"], ["NDBG_085", "RIGHT SIDE CX8 IO BOARD FRU EEPROM"], ["NDBG_086", "NVILINK CABLE 0 FRU EEPROM"], ["NDBG_087", "NVILINK CABLE 1 FRU EEPROM"],
-        ["NDBG_088", "NVILINK CABLE 2 FRU EEPROM"], ["NDBG_089", "NVILINK CABLE 3 FRU EEPROM"], ["NDBG_090", "BF3 0 FRU EEPROM"], ["NDBG_091", "BF3 1 FRU EEPROM"], ["NDBG_092", "FRONT IO FRU EEPROM"]
+        ["NDBG_080", "HMC FRU EEPROM"], ["NDBG_081", "PDB FRU EEPROM"], ["NDBG_082", "PRIMARY BIANCA FRU EEPROM"], ["NDBG_083", "SECONDARY BIANCA FRU EEPROM"],
+        ["NDBG_084", "LEFT SIDE CX8 IO BOARD FRU EEPROM"], ["NDBG_085", "RIGHT SIDE CX8 IO BOARD FRU EEPROM"], ["NDBG_086", "NVLINK CABLE 0 FRU EEPROM"], ["NDBG_087", "NVLINK CABLE 1 FRU EEPROM"],
+        ["NDBG_088", "NVLINK CABLE 2 FRU EEPROM"], ["NDBG_089", "NVLINK CABLE 3 FRU EEPROM"], ["NDBG_090", "BF3 0 FRU EEPROM"], ["NDBG_091", "BF3 1 FRU EEPROM"], ["NDBG_092", "FRONT IO FRU EEPROM"]
       ].map(([code, label]) => ({ code, label, family: "FRU", familyLabel: "FRU / EEPROM (Bus I2C/SMBus)" })),
       { code: "NDBG_093", label: "FPGA REGISTERS VALUES AS EXPECTED", family: "LOGIC", familyLabel: "FPGA / CPLD / Lógica" },
       ...[
@@ -1921,7 +1886,7 @@
       ].map(([code, label]) => ({ code, label, family: "FRU", familyLabel: "FRU / EEPROM (Bus I2C/SMBus)" })),
       { code: "NDBG_099", label: "CPLD FAILURE", family: "LOGIC", familyLabel: "FPGA / CPLD / Lógica" },
       ...[
-        ["NDBG_100", "LEAKAGE SENSOR 0 CLODPLATE"], ["NDBG_101", "LEAKAGE SENSOR 0 MANIFOLD"], ["NDBG_102", "LEAKAGE SENSOR 1 CLODPLATE"], ["NDBG_103", "LEAKAGE SENSOR 1 MANIFOLD"]
+        ["NDBG_100", "LEAKAGE SENSOR 0 COLDPLATE"], ["NDBG_101", "LEAKAGE SENSOR 0 MANIFOLD"], ["NDBG_102", "LEAKAGE SENSOR 1 COLDPLATE"], ["NDBG_103", "LEAKAGE SENSOR 1 MANIFOLD"]
       ].map(([code, label]) => ({ code, label, family: "LEAK", familyLabel: "Sensores de Fuga Líquida" })),
       ...[
         ["NDBG_104", "FAN SPEED 1"], ["NDBG_105", "FAN SPEED 2"], ["NDBG_106", "FAN SPEED 3"]
@@ -1967,12 +1932,13 @@
         { q: "¿La señal PWM y el retorno de tacómetro responden adecuadamente?", fail: "Falla del motor o sensor tacométrico interno del ventilador. Reemplazar unidad Fan." }
       ],
       NOBOOT: [
-        { q: "Paso 1 · Enlace entre GPUs (B2B & Clink)", detail: "Validar el acoplamiento firme de los cables B2B (DC-SCI) y Clink entre ambas Biancas / GPUs para evitar abortos en el arranque inicial del sistema Compute Tray (CT).", fail: "Detener la secuencia. Inspeccionar y reasentar los cables B2B y Clink; revisar conectores, pines doblados y daño físico antes de repetir el arranque." },
-        { q: "Paso 2 · Ruta principal de hardware y comprobación por consola", detail: "Revisar los LEDs de Standby Power en la bahía central (1 verde y 1 azul), cables J21/J22, FP I/O BD J9 y módulos BMC/HMC. Si la ruta no corresponde a la falla, entrar al menú FA para descartar una falla funcional; comprobar BMC y NIC en IPMI, validar sus MAC y ejecutar el comando de encendido del CT. Si la consola confirma el CT encendido pero los ventiladores siguen apagados, repetir la verificación: puede existir una falla en la ruta física de control.", fail: "La ruta principal no está validada. Revisar LEDs, J21/J22, FP I/O BD J9, BMC/HMC y MACs en IPMI; corregir la comunicación o escalar la ruta física de control." },
-        { q: "Paso 3 · Comunicación y ensamble del cable J15 PDB", detail: "Inspeccionar completamente el cable J15 entre PDB y Bianca. Revisar que los puertos estén firmes y sin pines doblados o daño físico.", fail: "Reasentar o reemplazar el cable J15 / PDB según el daño encontrado. Si aparece 'Unable to write FRU via ipmitool cmd but was able to write via i2c. Please check FRU ID for PDB', validar primero conexión, FRU ID y continuidad del enlace." },
-        { q: "Paso 4 · Voltajes de salida PDB, impedancia e inspección física", detail: "Verificar voltajes PDB antes de Boot: J3 = 12 V, J4 = 0.5 V, J5 = 0.5 V, J6 = 0.5 V. Después de Boot: J3 = 12 V, J4 = 12 V, J5 = 12 V, J6 = 12 V. Medir impedancia entre Biancas (referencia: 300 Ω a 1000 kΩ) e inspeccionar la PDB para descartar fisuras, golpes o componentes desprendidos.", fail: "Los valores no corresponden a la secuencia esperada. Aislar corto o impedancia anómala, revisar PDB y Biancas, documentar la medición y reemplazar el elemento físicamente dañado." },
-        { q: "Paso 5 · Aislamiento por desconexión B2B e inspección de Bianca derecha", detail: "Desconectar el cable B2B y energizar. Si encienden únicamente los 4 ventiladores del lado izquierdo, confirmar que el defecto se encuentra en la Bianca derecha. Realizar una inspección física minuciosa de componentes y conectores.", fail: "Aislar la Bianca derecha como sospechosa. Si se detecta daño físico visible, reemplazar la tarjeta y ejecutar nuevamente la validación BAT." },
-        { q: "Paso 6 · Validación con Bianca Golden y comandos", detail: "Si no existe daño físico aparente en la Bianca derecha, instalar una tarjeta Bianca Golden y ejecutar la validación de consola para confirmar la recuperación funcional del nodo.", fail: "La falla persiste con la Bianca Golden. Conservar logs, mediciones y evidencia fotográfica; escalar a FA Nivel 2 para análisis de tarjeta y ruta de control." }
+        { q: "Paso 1 · ¿BAT logra resolver y hacer ping a la IP del BMC?", detail: "Distingue comunicación de encendido: la referencia GB200 L10 indica capturar S/N, MAC del BMC y MAC del host; el script espera 60 s y consulta DHCP/ARP. Que no responda el ping no confirma por sí solo que el Compute Tray carezca de alimentación.", fail: "Ruta de comunicación BMC: confirma S/N y MAC capturadas, espera de 60 s y asignación DHCP/ARP; luego verifica 12V_STBY por la ruta PDB-J58/DC-SCM, BMC carrier, conexión BMC-HMC y LAN. Registra qué validación falló antes de sustituir tarjetas." },
+        { q: "Paso 2 · Enlace entre Biancas (B2B y Clink)", detail: "Si el BMC responde pero el Compute Tray no inicia, valida el asiento de los cables B2B y Clink entre Biancas; inspecciona conectores, pines y daño físico.", fail: "Detén la secuencia. Reasienta o reemplaza únicamente el cable/conector con evidencia de mal asiento o daño; repite BAT y conserva el resultado." },
+        { q: "Paso 3 · Ruta Standby y comunicación BMC/HMC", detail: "Revisa alimentación Standby y conectores J21/J22 según el esquema de la revisión/P/N, además de FP I/O BD J9, BMC, HMC y FIO. El mapa GB200 L10 identifica PDB-J58 como ruta de +12V_STBY hacia FIO-J1 y Bianca-J13. Valida MAC/IP por consola cuando esté disponible.", fail: "Aísla la ruta de Standby/control: documenta LED/medición observada y verifica J58, conexiones DC-SCM/BMC, J21/J22 y la ruta de consola. No asumas que el síntoma de ping equivale a falta de Run Power." },
+        { q: "Paso 4 · Verificación del cableado PDB por P/N", detail: "Inspecciona el cableado y pines con el diagrama de la variante exacta. Atención: el mapa GB200 L10 adjunto ubica PDB-J15 en el backplane E1.S; no confirma PDB-J15 hacia Bianca. Confirma también la ruta de Standby J58 y salidas J55-J57 antes de reasentar o reemplazar.", fail: "Si el endpoint del cable no coincide con el esquema aprobado del P/N/revisión, detén la intervención y aclara el mapeo con ingeniería. No sustituyas una tarjeta por el nombre J15 solamente." },
+        { q: "Paso 5 · Medición PDB e inspección física", detail: "Mide solo con el procedimiento y valores nominales aprobados para el P/N/revisión. La documentación adjunta identifica J58 como +12V_STBY y J55-J57 como rutas de potencia; no valida los valores J3-J6 ni el rango de impedancia que tenía el borrador anterior. Inspecciona PDB, conectores y Biancas por daño visible.", fail: "Registra punto de prueba, condición (Standby/Run), valor medido y límite del procedimiento aplicable. Si hay desviación, desenergiza según SOP, aísla la rama y escala; no uses los valores no corroborados del borrador." },
+        { q: "Paso 6 · Aislamiento B2B y revisión de Biancas", detail: "Si el procedimiento autorizado permite aislar B2B, compara el comportamiento de ventiladores/energía por lado. Un cambio de síntoma orienta la ruta, pero no confirma por sí solo una Bianca defectuosa; inspecciona conectores y valida contra el esquema del modelo.", fail: "Documenta el lado y el cambio observado; sustituye Bianca/PDB solo después de corroborar la rama afectada y descartar cableado/conectores." },
+        { q: "Paso 7 · Confirmación con unidad Golden y retest", detail: "Solo si el procedimiento FA vigente lo autoriza y no hay daño físico evidente, instala una Bianca Golden compatible para comparación controlada. Ejecuta BAT/retest y registra si recupera comunicación BMC y encendido del CT.", fail: "Si persiste, restaura configuración aprobada, conserva logs, mediciones y fotos; escala a FA Nivel 2. Emite veredicto solo con evidencia reproducible." }
       ]
     };
     const analystDirectory = {
@@ -2619,63 +2585,12 @@
     }
     function addMeta(label, value, wide = false) {
       const cell = document.createElement("div");
-      if (wide) cell.style.gridColumn = "1 / -1";
+      const emphasis = label.includes("Serial del Nodo") || label.includes("Número de Parte")
+        ? "is-primary"
+        : label === "Código de falla" ? "is-alert" : "";
+      cell.className = `bat-meta-card ${emphasis} ${wide ? "is-description" : ""}`.trim();
       cell.innerHTML = `<strong>${safe(label)}:</strong> ${safe(value || "No registrado")}`;
       $("bat-print-meta").appendChild(cell);
-    }
-    function addFlowNode(container, { title, result, detail, note, kind = "" }) {
-      const node = document.createElement("article");
-      node.className = `print-flow-step ${kind}`.trim();
-      const status = document.createElement("span");
-      status.className = "print-flow-result";
-      status.textContent = result;
-      const heading = document.createElement("strong");
-      heading.textContent = title;
-      node.append(status, heading);
-      if (detail) {
-        const description = document.createElement("div");
-        description.textContent = detail;
-        node.appendChild(description);
-      }
-      if (note) {
-        const observation = document.createElement("div");
-        observation.className = "print-flow-note";
-        observation.textContent = `Observación: ${note}`;
-        node.appendChild(observation);
-      }
-      container.appendChild(node);
-    }
-    function addFlowBranches(container, { hasAnomaly, anomalyDescription }) {
-      const branches = document.createElement("div");
-      branches.className = "print-flow-branches";
-      branches.setAttribute("role", "group");
-      branches.setAttribute("aria-label", "Rutas posibles del punto de decisión");
-      const options = [
-        {
-          title: "SÍ · Anomalía confirmada",
-          active: hasAnomaly,
-          detail: hasAnomaly ? anomalyDescription : "Ruta no seleccionada en este diagnóstico."
-        },
-        {
-          title: "NO · Sin anomalía reproducible",
-          active: !hasAnomaly,
-          detail: hasAnomaly ? "Ruta no seleccionada en este diagnóstico." : "Las validaciones registradas no reprodujeron la falla."
-        }
-      ];
-      options.forEach((option, index) => {
-        const branch = document.createElement("article");
-        branch.className = `print-flow-branch ${index === 0 ? "is-anomaly" : "is-clear"} ${option.active ? "is-active" : "is-inactive"}`;
-        const title = document.createElement("strong");
-        title.textContent = option.title;
-        const status = document.createElement("span");
-        status.textContent = option.active ? "RUTA TOMADA" : "NO TOMADA";
-        status.style.fontWeight = "800";
-        const detail = document.createElement("div");
-        detail.textContent = option.detail;
-        branch.append(title, status, detail);
-        branches.appendChild(branch);
-      });
-      container.appendChild(branches);
     }
     function openPrintDialog(mode, title) {
       const previousTitle = document.title;
@@ -2718,85 +2633,54 @@
       addMeta("Estación", $("station").value);
       addMeta("Serial del Nodo (S/N)", serial);
       addMeta("Número de Parte (P/N)", $("part").value.trim());
-      addMeta("Analista de Falla (FA)", $("technician").value.trim());
-      addMeta("Número de empleado (FA)", employeeId);
+      addMeta("Analista FA · No. de empleado", `${diagnostician} · ${employeeId}`);
       addMeta("Código de falla", failure.code);
       addMeta("Descripción reportada", failure.label, true);
-      addMeta("Inicio de diagnóstico", formattedDate(FFDG.state.diagStartedAt));
-      addMeta("Cierre de diagnóstico", formattedDate(FFDG.state.diagFinishedAt));
-      const routeOwner = $("bat-print-route-owner");
-      routeOwner.replaceChildren();
-      const routeOwnerLabel = document.createElement("strong");
-      routeOwnerLabel.textContent = "Responsable del diagnóstico";
-      const routeOwnerIdentity = document.createElement("span");
-      routeOwnerIdentity.textContent = `${diagnostician} · No. de empleado ${employeeId}`;
-      routeOwner.append(routeOwnerLabel, routeOwnerIdentity);
-      const stepsContainer = $("bat-print-steps");
-      stepsContainer.replaceChildren();
-      addFlowNode(stepsContainer, { title: "Inicio · Falla reportada en BAT", result: "INICIO", detail: `${failure.code} · ${failure.label} · Diagnóstico: ${diagnostician} · Empleado: ${employeeId}`, kind: "is-start" });
-      FFDG.state.history.forEach((item, index) => {
-        const isFail = item.result === "ANOMALÍA";
-        addFlowNode(stepsContainer, {
-          title: `Validación ${item.step || index + 1} · ${item.question}`,
-          result: isFail ? "NO · ANOMALÍA" : "SÍ · OK",
-          detail: `${formattedDate(item.timestamp)} · Recomendación registrada: ${item.recommendation || "No registrada"}`,
-          note: item.note,
-          kind: isFail ? "is-fail" : ""
-        });
-      });
+      addMeta("Periodo de diagnóstico", `${formattedDate(FFDG.state.diagStartedAt)} · ${formattedDate(FFDG.state.diagFinishedAt)}`);
+      $("bat-print-continuation").textContent = `INGRASYS · REPORTE DE CALIDAD  |  Serial ${serial}  |  Falla ${failure.code}`;
       const hasAnomaly = FFDG.state.history.some(item => item.result === "ANOMALÍA");
-      const lastAnomaly = [...FFDG.state.history].reverse().find(item => item.result === "ANOMALÍA");
-      addFlowNode(stepsContainer, {
-        title: "Punto de decisión · ¿Se confirmó una anomalía?",
-        result: hasAnomaly ? "SÍ" : "NO",
-        detail: hasAnomaly ? "La ruta continúa hacia la causa raíz de la anomalía registrada." : "La ruta continúa como falla no reproducida durante la validación.",
-        kind: "is-decision"
-      });
-      addFlowBranches(stepsContainer, {
-        hasAnomaly,
-        anomalyDescription: lastAnomaly ? `${lastAnomaly.question} · ${lastAnomaly.recommendation || "Sin recomendación registrada."}` : "Anomalía registrada."
-      });
-      addFlowNode(stepsContainer, {
-        title: "Problema identificado",
-        result: hasAnomaly ? "PROBLEMA CONFIRMADO" : "NO REPRODUCIDO",
-        detail: hasAnomaly ? `${lastAnomaly.question} · ${lastAnomaly.recommendation}` : "La secuencia registrada no reprodujo una anomalía de hardware.",
-        kind: hasAnomaly ? "is-problem" : "is-pending"
-      });
-      addFlowNode(stepsContainer, {
-        title: "Causa raíz seleccionada",
-        result: rootCause,
-        detail: rootEvidence || "Sin evidencia concluyente adicional registrada.",
-        kind: "is-cause"
-      });
-      addFlowNode(stepsContainer, {
-        title: "Disposición operativa",
-        result: nextAction,
-        detail: `Clasificación de Calidad: ${$("classification").value} · Retest: ${$("retest").value || "No registrado"}`,
-        kind: "is-disposition"
-      });
-      addFlowNode(stepsContainer, {
-        title: `Veredicto final · ${$("classification").value}`,
-        result: hasAnomaly ? "RUTA CON ANOMALÍA" : "RUTA VALIDADA",
-        detail: `Emitido por ${$("technician").value.trim()}`,
-        kind: hasAnomaly ? "is-fail" : ""
-      });
       const final = $("bat-print-final");
       final.replaceChildren();
       const card = document.createElement("section");
       card.className = "print-final-card";
+      const verdict = document.createElement("div");
+      verdict.className = `bat-report-verdict ${hasAnomaly ? "" : "is-clear"}`.trim();
+      const lead = document.createElement("div");
+      lead.className = "bat-verdict-lead";
+      const leadLabel = document.createElement("span");
+      leadLabel.className = "bat-verdict-kicker";
+      leadLabel.textContent = "Resultado de validación";
+      const leadTitle = document.createElement("strong");
+      leadTitle.className = "bat-verdict-title";
+      leadTitle.textContent = hasAnomaly ? "Anomalía registrada" : "Falla no reproducida";
+      lead.append(leadLabel, leadTitle);
+      verdict.appendChild(lead);
+      [
+        ["Clasificación final", $("classification").value],
+        ["Acción siguiente", nextAction],
+        ["Validaciones registradas", String(FFDG.state.history.length)]
+      ].forEach(([label, value]) => {
+        const stat = document.createElement("div");
+        stat.className = "bat-verdict-stat";
+        const statLabel = document.createElement("strong");
+        statLabel.textContent = label;
+        const statValue = document.createElement("span");
+        statValue.textContent = value || "No registrado";
+        stat.append(statLabel, statValue);
+        verdict.appendChild(stat);
+      });
+      const verdictContainer = $("bat-print-verdict");
+      verdictContainer.replaceChildren(verdict);
       const grid = document.createElement("div");
       grid.className = "print-final-grid";
       const finalFields = [
-        ["Problema identificado", hasAnomaly ? "Anomalía registrada durante la validación" : "No reproducido durante la validación"],
         ["Causa raíz", rootCause],
-        ["Evidencia RCA", rootEvidence || "No registrada"],
-        ["Clasificación final", $("classification").value],
-        ["Siguiente acción", nextAction],
-        ["Acción física ejecutada", $("action").value.trim() || "No especificada"],
+        ["Evidencia de causa raíz", rootEvidence || "No registrada"],
+        ["Intervención / acción reportada", $("action").value.trim() || "No especificada"],
+        ["Estatus del retest", $("retest").value || "No registrado"],
       ];
       finalFields.forEach(([label, value], index) => {
         const field = document.createElement("div");
-        if (index > 1) field.className = "wide";
         const heading = document.createElement("strong");
         heading.textContent = `${label}: `;
         field.append(heading, document.createTextNode(value));
@@ -2820,7 +2704,7 @@
           <div class="print-signature-rule" aria-hidden="true"></div>
           <span class="print-signature-meta">Firma · Fecha: ${safe(reportDate)}</span>
         </div>`;
-      card.appendChild(signatures);
+      $("bat-print-signatures").replaceChildren(signatures);
       final.appendChild(card);
       const evidence = $("print-evidence-list");
       if (!FFDG.state.evidence.length) {
@@ -2831,7 +2715,7 @@
         evidence.classList.remove("hidden");
         $("bat-print-evidence-section").classList.remove("hidden");
       }
-      $("print-quality-note").textContent = `Trazabilidad: ${FFDG.state.history.length} validación(es) registrada(s) · ${FFDG.state.evidence.length} evidencia(s) fotográfica(s) · Reporte generado para revisión de Calidad. Veredicto basado únicamente en las respuestas, observaciones y datos capturados en esta sesión.`;
+      $("print-quality-note").textContent = `Documento para revisión de Calidad · ${FFDG.state.evidence.length} evidencia(s) adjunta(s). La liberación del nodo se rige por la disposición aprobada.`;
       setPrintStatus("Se abrirá la ventana de impresión. Elige “Guardar como PDF” como destino para crear el archivo.");
       openPrintDialog("bat", `Reporte_BAT_${serial}_${failure.code}`);
     }

@@ -3518,6 +3518,17 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     white-space: nowrap;
   }
 
+  .ingrasys-wordmark {
+    position: absolute;
+    top: 9px;
+    right: 28px;
+    display: block;
+    width: 230px;
+    max-height: 58px;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
   .app-brand-divider {
     display: none;
   }
@@ -3557,10 +3568,11 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 
   .header-actions {
     position: absolute;
-    top: 50%;
+    top: auto;
+    bottom: 10px;
     right: 28px;
     z-index: 2;
-    transform: translateY(-50%);
+    transform: none;
   }
 
   .nvidia-badge-wrapper,
@@ -3737,6 +3749,13 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
       font-size: 30px;
     }
 
+    .ingrasys-wordmark {
+      top: 8px;
+      right: 16px;
+      width: 170px;
+      max-height: 42px;
+    }
+
     .app-brand-title {
       font-size: 38px !important;
     }
@@ -3747,6 +3766,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 
     .header-actions {
       right: 16px;
+      bottom: 8px;
     }
   }
 
@@ -3763,6 +3783,13 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
       transform: none;
     }
 
+    .ingrasys-wordmark {
+      top: 8px;
+      right: 12px;
+      width: 106px;
+      max-height: 34px;
+    }
+
     .brand-racks {
       left: 128px;
       top: 28px;
@@ -3771,7 +3798,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     }
 
     .app-brand-copy {
-      top: 76px;
+      top: 68px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -3786,7 +3813,8 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     }
 
     .header-actions {
-      top: 9px;
+      top: 42px;
+      bottom: auto;
       right: 12px;
       transform: none;
     }
@@ -3803,6 +3831,10 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     racks.className = "brand-racks";
     racks.textContent = "RACKS";
     racks.setAttribute("aria-label", "Racks");
+    const ingrasys = document.createElement("img");
+    ingrasys.className = "ingrasys-wordmark";
+    ingrasys.src = "./ingrasys-logo-dark.png";
+    ingrasys.alt = "Ingrasys";
     const divider = document.createElement("span");
     divider.className = "app-brand-divider";
     divider.setAttribute("aria-hidden", "true");
@@ -3818,7 +3850,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     subtitle.className = "app-brand-subtitle";
     subtitle.textContent = "Guía BAT / MTF · GB200 / GB300";
     copy.append(eyebrow, title, subtitle);
-    brand.replaceChildren(logo, racks, divider, copy);
+    brand.replaceChildren(logo, racks, ingrasys, divider, copy);
     brand.dataset.refreshed = "true";
     document.title = "FFDG · GB200 / GB300";
     document.querySelectorAll(".header-actions .fault-emblem").forEach(emblem => emblem.parentElement.remove());

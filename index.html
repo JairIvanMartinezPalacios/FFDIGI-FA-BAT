@@ -442,6 +442,30 @@
   .mtf-design-label { color: var(--md-sys-color-on-surface-variant); font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
   .mtf-scroll-hint { grid-column: 3; justify-self: end; color: var(--md-sys-color-on-surface-variant); font-size: 11px; font-weight: 600; text-align: right; }
 
+  .mtf-customer-notifications-dialog {
+    width: min(560px, calc(100vw - 32px));
+    max-width: none;
+    max-height: min(80vh, 720px);
+    padding: 0;
+    border: 1px solid #d3d8cd;
+    border-radius: 18px;
+    color: #17200e;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .32);
+  }
+  .mtf-customer-notifications-dialog::backdrop { background: rgba(9, 14, 7, .58); }
+  .mtf-notification-head { display: flex; align-items: center; gap: 12px; padding: 18px 20px; background: #111; color: #fff; }
+  .mtf-notification-brand { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 11px; background: #76b900; color: #111; font-size: 11px; font-weight: 900; }
+  .mtf-notification-head h2 { flex: 1; margin: 0; font-size: 17px; }
+  .mtf-notification-close { width: 36px; height: 36px; border: 1px solid #72776d; border-radius: 50%; color: #fff; background: transparent; font-size: 22px; cursor: pointer; }
+  .mtf-notification-content { padding: 20px; overflow-wrap: anywhere; }
+  .mtf-notification-kicker { color: #416d00; font-size: 11px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+  .mtf-notification-content h3 { margin: 6px 0 12px; font-size: 19px; line-height: 1.3; }
+  .mtf-notification-content p { margin: 10px 0; line-height: 1.55; }
+  .mtf-notification-cases { display: grid; gap: 8px; margin: 14px 0; }
+  .mtf-notification-case { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; padding: 10px 12px; border: 1px solid #e0e5d9; border-radius: 10px; background: #f6f8f3; }
+  .mtf-notification-guidance { padding: 12px 14px; border-left: 4px solid #76b900; border-radius: 8px; background: #eff7df; }
+
   .mtf-cards-scroll-grid {
     display: flex;
     flex-wrap: wrap;
@@ -1638,8 +1662,30 @@
       <div class="mtf-design-controls">
         <span class="mtf-design-label">Diseño</span>
       </div>
-      <span class="mtf-scroll-hint">Desliza horizontalmente ◄ ► o selecciona una tarjeta</span>
+      <button type="button" class="mtf-scroll-hint mtf-notifications-button" id="mtf-notifications-open"
+        aria-haspopup="dialog" aria-controls="mtf-customer-notifications" aria-label="Customer notifications, 1 aviso de NVIDIA"
+        onclick="document.getElementById('mtf-customer-notifications').showModal()">
+        Customer notifications <span class="mtf-notification-count" aria-hidden="true">1</span>
+      </button>
     </div>
+    <dialog id="mtf-customer-notifications" class="mtf-customer-notifications-dialog" aria-labelledby="mtf-notification-title">
+      <div class="mtf-notification-head">
+        <span class="mtf-notification-brand" aria-hidden="true">NVIDIA</span>
+        <h2 id="mtf-notification-title">Customer notifications</h2>
+        <button type="button" class="mtf-notification-close" aria-label="Cerrar aviso" onclick="this.closest('dialog').close()">×</button>
+      </div>
+      <div class="mtf-notification-content">
+        <div class="mtf-notification-kicker">Aviso NVIDIA · 1</div>
+        <h3>BF3 FRU Device Description: AC Cycle confirmado</h3>
+        <p><strong>Error 054018006_048-000-0-000000000106:</strong> FRU Device Description de BF3 no encontrado; se esperaba <code>/BlueField-3 DPU/</code>.</p>
+        <div class="mtf-notification-cases" aria-label="Casos reportados">
+          <div class="mtf-notification-case"><strong>SN 1932926000090</strong><span>FTS_26 · 21/07/2026</span></div>
+          <div class="mtf-notification-case"><strong>SN 1932926000134</strong><span>FCT_18 · 22/07/2026</span></div>
+        </div>
+        <p>TE realizó Debug y AC Cycle en ambos casos y escaló la recurrencia. NVIDIA confirmó que <strong>AC Cycle es el troubleshooting correcto</strong> y mencionó una posible relación con el problema previo de I2C.</p>
+        <div class="mtf-notification-guidance"><strong>Guía:</strong> las unidades con este mismo modo de falla son candidatas para AC Cycle, según la indicación de NVIDIA.</div>
+      </div>
+    </dialog>
     <div class="mtf-row-2">
       <div id="mtf-fault-list" class="mtf-cards-scroll-grid"></div>
     </div>
@@ -3372,6 +3418,10 @@ main{max-width:none!important;width:100%;min-width:0;padding:10px clamp(12px,2vw
 .mtf-row-2-header .view-tg{border-color:#858585}
 .mtf-row-2-header .view-tg button{color:#fff}
 .mtf-row-2-header .view-tg button.on{background:#343a32;color:#fff}
+.mtf-row-2-header .mtf-notifications-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;border:1px solid #76b900;border-radius:999px;background:#76b900;color:#111!important;font-family:inherit;font-size:11px;font-weight:800;line-height:1.2;cursor:pointer;white-space:nowrap}
+.mtf-row-2-header .mtf-notifications-button:hover{background:#8fd100;border-color:#8fd100}
+.mtf-row-2-header .mtf-notifications-button:focus-visible,.mtf-notification-close:focus-visible{outline:3px solid #a8e34b;outline-offset:3px}
+.mtf-notification-count{display:inline-grid;min-width:19px;height:19px;place-items:center;padding:0 4px;border-radius:999px;background:#111;color:#fff;font-size:10px;line-height:1}
 #mtf-layout .mtf-filter-chips .filter-chip-btn{background:#76b900!important;border-color:#76b900!important;color:#111!important}
 #mtf-layout .mtf-filter-chips .filter-chip-btn:hover{background:#8fd100!important;border-color:#8fd100!important}
 #mtf-layout .mtf-filter-chips .filter-chip-btn.active,#mtf-layout .mtf-filter-chips .filter-chip-btn.active:hover{background:#4b7800!important;border-color:#4b7800!important;color:#fff!important}

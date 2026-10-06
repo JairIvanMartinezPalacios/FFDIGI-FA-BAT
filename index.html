@@ -1362,16 +1362,6 @@
       <p class="app-brand-subtitle">GUÍA DE ANÁLISIS DE FALLA</p>
     </div>
   </div>
-  <div class="header-actions">
-    <button id="theme-toggle" class="theme-switch-btn" type="button" aria-label="Cambiar Tema">
-      <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path
-          d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z">
-        </path>
-      </svg>
-      <span id="theme-text">Modo Noche</span>
-    </button>
-  </div>
 </header>
 <!-- Segmented Navigation -->
 <div class="m3-segmented-nav-wrap no-print">
@@ -1633,8 +1623,17 @@
         <button id="chip-RIN" class="filter-chip-btn" onclick="FFDG.ui.filterStation('RIN')">RIN (15)</button>
       </div>
       <!-- Botón para adjuntar y actualizar automáticamente desde archivo Excel FFDG -->
+      <div class="mtf-row-1-actions">
+        <button id="theme-toggle" class="theme-switch-btn" type="button" aria-label="Cambiar Tema">
+          <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z">
+            </path>
+          </svg>
+          <span id="theme-text">Modo Noche</span>
+        </button>
       <label class="m3-btn m3-btn-filled"
-        style="cursor:pointer; padding:6px 14px; font-size:12px; margin-left:auto; display:inline-flex; align-items:center; gap:6px; flex-shrink:0;"
+        style="cursor:pointer; padding:6px 14px; font-size:12px; display:inline-flex; align-items:center; justify-content:center; gap:6px; flex-shrink:0;"
         title="Carga el workbook FFDG GB200/GB300. Se actualizarán el catálogo, los campos de origen, procedimientos, filtros y reportes.">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
           <path
@@ -1644,6 +1643,7 @@
         <span>Actualizar Excel FFDG</span>
         <input id="excel-file-input" type="file" accept=".xlsx, .xls" style="display:none;">
       </label>
+      </div>
     </div>
     <!-- Notificación flotante de actualización -->
     <div id="upload-status" class="hidden" role="status" aria-live="polite"
@@ -3602,12 +3602,13 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 
   .ingrasys-wordmark {
     position: absolute;
-    top: 12px;
-    right: 28px;
+    top: 50%;
+    left: 84%;
     display: block;
-    width: 190px;
-    max-height: 48px;
+    width: 250px;
+    max-height: 62px;
     object-fit: contain;
+    transform: translate(-50%, -50%);
     pointer-events: none;
   }
 
@@ -3648,17 +3649,9 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     text-transform: none;
   }
 
-  .header-actions {
-    position: absolute;
-    top: auto;
-    bottom: 10px;
-    right: 28px;
-    width: 190px;
-    z-index: 2;
-    transform: none;
-    display: flex;
-    justify-content: center;
-  }
+  .mtf-row-1-actions { display: flex; flex: 0 0 190px; flex-direction: column; align-items: stretch; gap: 8px; width: 190px; margin-left: auto; }
+  .mtf-row-1-actions .theme-switch-btn { width: 100%; min-height: 36px; justify-content: center; border-color: #2d6b00; color: #fff; background: #111; }
+  .mtf-row-1-actions > label { width: 100%; min-height: 40px; box-sizing: border-box; }
 
   .nvidia-badge-wrapper,
   .app-brand .brand-chips,
@@ -3835,10 +3828,11 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     }
 
     .ingrasys-wordmark {
-      top: 8px;
-      right: 16px;
-      width: 160px;
-      max-height: 40px;
+      top: 50%;
+      left: 83.333%;
+      width: 200px;
+      max-height: 48px;
+      transform: translate(-50%, -50%);
     }
 
     .app-brand-title {
@@ -3849,12 +3843,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
       font-size: 13px !important;
     }
 
-    .header-actions {
-      right: 16px;
-      bottom: 8px;
-      width: 160px;
-      justify-content: center;
-    }
+    .mtf-row-1-actions { flex-basis: 190px; }
   }
 
   @media (max-width: 520px) {
@@ -3873,8 +3862,10 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     .ingrasys-wordmark {
       top: 8px;
       right: 12px;
-      width: 106px;
-      max-height: 34px;
+      left: auto;
+      width: 122px;
+      max-height: 38px;
+      transform: none;
     }
 
     .brand-racks {
@@ -3899,14 +3890,8 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
       font-size: 11px !important;
     }
 
-    .header-actions {
-      top: 42px;
-      bottom: auto;
-      right: 12px;
-      width: 106px;
-      transform: none;
-      justify-content: center;
-    }
+    .mtf-row-1-actions { flex: 0 1 100%; width:100%; max-width:100%; margin-inline:auto; align-items:center; }
+    .mtf-row-1-actions .theme-switch-btn,.mtf-row-1-actions > label { width:min(100%,190px); }
   }
 </style>
 <script>(() => {

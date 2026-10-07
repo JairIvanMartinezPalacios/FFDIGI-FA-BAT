@@ -844,8 +844,6 @@
   #bat-layout.bat-details-mode > section { grid-column:1 / -1; }
   #bat-layout.bat-details-mode:not(.bat-no-boot-mode) > aside { display:none; }
   .bat-detail-sequence { display:grid; gap:9px; margin:8px 0 0; padding:0; list-style:none; }
-  .bat-detail-grid { grid-template-columns:minmax(0,.9fr) minmax(0,1.25fr) minmax(0,1.25fr); align-items:stretch; }
-  .bat-detail-grid > .bento-block-1,.bat-detail-grid > .bento-block-2,.bat-detail-grid > .bento-block-3 { box-sizing:border-box; min-width:0; max-width:100%; overflow:hidden; }
   .bat-detail-sequence li { box-sizing:border-box; width:100%; min-width:0; padding:9px 10px; border:1px solid var(--md-sys-color-outline-variant); border-radius:10px; font-size:12px; line-height:1.4; overflow-wrap:anywhere; }
   .bat-detail-sequence li strong { display:flex; gap:8px; align-items:flex-start; }
   .bat-detail-sequence li strong span:first-child { flex:none; color:var(--md-sys-color-primary); }
@@ -3958,25 +3956,6 @@ main{max-width:none!important;width:100%;min-width:0;padding:10px clamp(12px,2vw
 #bat-layout>#bat-failure-board{margin-bottom:0}
 #bat-layout>section,#bat-layout>aside,#bat-failure-board,#bat-board{min-width:0}
 #mtf-detail-title{text-align:center}
-#bat-failure-detail{scroll-margin-top:10px}
-#bat-failure-detail .bat-detail-grid{gap:8px}
-#bat-failure-detail .bat-detail-grid>.bento-block-1,#bat-failure-detail .bat-detail-grid>.bento-block-2,#bat-failure-detail .bat-detail-grid>.bento-block-3{height:clamp(280px,calc(100vh - 300px),460px);min-height:0;padding:9px;gap:6px;overflow:auto}
-#bat-failure-detail .bat-detail-grid>.bento-block-1{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start}
-#bat-failure-detail .bento-block-heading{min-height:0;padding:7px;margin:0 0 2px;gap:2px}
-#bat-failure-detail .bento-block-title{font-size:15px}
-#bat-failure-detail .bento-block-subtitle{font-size:10px;line-height:1.25}
-#bat-failure-detail .bat-detail-grid>.bento-block-1>.bento-block-heading,#bat-failure-detail .bat-detail-grid>.bento-block-1>div[style],#bat-failure-detail .bat-detail-grid>.bento-block-1>h3{grid-column:1/-1;min-width:0}
-#bat-failure-detail .bat-detail-grid .bento-meta-item{min-width:0;padding:4px 6px;overflow-wrap:anywhere}
-#bat-failure-detail .bat-detail-grid .bento-meta-val{font-size:10.5px;line-height:1.25}
-#bat-failure-detail .bat-detail-grid>.bento-block-2{display:flex;flex-direction:column}
-#bat-failure-detail #bat-detail-steps{flex:1;min-height:0;overflow:auto;align-content:start;gap:6px}
-#bat-failure-detail .bat-detail-sequence li{padding:7px 8px;font-size:11px}
-#bat-failure-detail .bat-detail-step-detail{font-size:10px;line-height:1.35}
-#bat-failure-detail #bat-detail-action{padding:7px 8px;font-size:10.5px;line-height:1.35}
-#bat-failure-detail #bat-disposition-flow{max-height:180px;padding:5px}
-#bat-failure-detail .flowchart-modal-actions{margin:2px 0}
-#bat-failure-detail .bat-detail-controls{margin-top:auto;padding-top:6px}
-@media(max-width:1080px){#bat-failure-detail .bat-detail-grid>.bento-block-1,#bat-failure-detail .bat-detail-grid>.bento-block-2,#bat-failure-detail .bat-detail-grid>.bento-block-3{height:auto;max-height:none;min-height:0;overflow:visible}#bat-failure-detail #bat-detail-steps{overflow:visible}}
 #bat-failure-board .bat-board-toolbar{margin-bottom:4px}
 #bat-board{grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-flow:row;grid-auto-columns:auto;overflow-x:hidden;touch-action:pan-y;gap:10px}
 #bat-board .bd-col{min-width:0;max-width:100%;min-height:0;max-height:none}

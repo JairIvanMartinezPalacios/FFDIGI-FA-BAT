@@ -3503,10 +3503,14 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 #mtf-board{display:none;min-width:0}
 .v-board .mtf-cards-scroll-grid{display:none!important}
 .v-board #mtf-board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-flow:row;grid-auto-columns:auto;gap:10px;overflow-x:hidden;padding:4px 2px 10px;align-items:start;touch-action:pan-y}
-#mtf-layout.v-board{gap:4px}
-#mtf-layout.v-board .mtf-row-2{padding:6px 10px 0}
-#mtf-layout.v-board .mtf-row-3{padding:8px 10px}
-#mtf-layout.v-board #mtf-board{padding-bottom:2px}
+#mtf-layout.v-board{gap:0}
+#mtf-layout.v-board .mtf-row-2{padding:6px 10px 0;border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0}
+#mtf-layout.v-board .mtf-row-3{padding:0 10px 8px;border-top:0;border-top-left-radius:0;border-top-right-radius:0}
+#mtf-layout.v-board #mtf-board{padding:4px 0 0}
+#mtf-board .mtf-family-pair{display:flex;flex-direction:column;align-self:start;min-width:0;gap:0}
+#mtf-board .mtf-family-pair>.bd-col{min-width:0;max-width:100%;flex:none}
+#mtf-board .mtf-family-pair>.bd-col:first-child{border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0}
+#mtf-board .mtf-family-pair>.bd-col:last-child{border-top-left-radius:0;border-top-right-radius:0}
 #mtf-board .bd-col{min-height:0;max-height:none}
 #mtf-board .bd-h{padding:9px 10px;font-size:16px}
 #mtf-board .bd-h small{right:8px}
@@ -3534,16 +3538,6 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
     const board = document.createElement("div"); board.id = "mtf-board"; list.after(board);
     const order = ["FLA", "PRET", "FLB", "FLC", "FCT", "FTS", "AST", "IOT", "NVL", "RIN", "ALL"];
     const rank = s => { const i = order.indexOf(s); return i < 0 ? 99 : i; };
-    function placeAllBelowFlc() {
-      const all = board.querySelector('.bd-col[data-st="ALL"]');
-      const flc = board.querySelector('.bd-col[data-st="FLC"]');
-      if (!all || !flc || getComputedStyle(board).display !== "grid") return;
-      const columnCount = getComputedStyle(board).gridTemplateColumns.trim().split(/\s+/).length;
-      const flcIndex = [...board.children].indexOf(flc);
-      if (!columnCount || flcIndex < 0) return;
-      all.style.gridColumnStart = String((flcIndex % columnCount) + 1);
-      all.style.gridRowStart = String(Math.floor(flcIndex / columnCount) + 2);
-    }
     function buildBoard() {
       const g = {};
       [...list.children].forEach(c => {
@@ -3551,7 +3545,9 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
         const s = t.textContent.split("/")[0].trim(); (g[s] = g[s] || []).push(c);
       });
       board.replaceChildren();
-      Object.keys(g).sort((a, b) => g[b].length - g[a].length || rank(a) - rank(b)).forEach(s => {
+      const orderedGroups = Object.keys(g).sort((a, b) => g[b].length - g[a].length || rank(a) - rank(b));
+      const hasFlcAndAll = Boolean(g.FLC?.length && g.ALL?.length);
+      function createColumn(s) {
         const col = document.createElement("section"); col.className = "bd-col"; col.dataset.st = s;
         col.innerHTML = `<div class="bd-h"><span>${s}</span><small>${g[s].length}</small></div><div class="bd-l"></div>`;
         g[s].forEach(c => {
@@ -3564,14 +3560,20 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
           b.onclick = () => c.click();
           col.lastChild.appendChild(b);
         });
-        board.appendChild(col);
+        return col;
+      }
+      orderedGroups.forEach(s => {
+        if (s === "ALL" && hasFlcAndAll) return;
+        if (s === "FLC" && hasFlcAndAll) {
+          const pair = document.createElement("div"); pair.className = "mtf-family-pair";
+          pair.append(createColumn("FLC"), createColumn("ALL"));
+          board.appendChild(pair);
+          return;
+        }
+        board.appendChild(createColumn(s));
       });
-      requestAnimationFrame(placeAllBelowFlc);
     }
     new MutationObserver(buildBoard).observe(list, { childList: true });
-    window.addEventListener("resize", () => {
-      if (lay.classList.contains("v-board")) requestAnimationFrame(placeAllBelowFlc);
-    }, { passive: true });
     if (tg) {
       const b = document.createElement("button"); b.type = "button"; b.dataset.v = "board"; b.textContent = "Tablero";
       tg.appendChild(b);

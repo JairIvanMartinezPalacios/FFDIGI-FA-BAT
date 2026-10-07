@@ -2071,12 +2071,15 @@
     const FFDG = window.FFDG;
     const $ = (id) => document.getElementById(id);
     let currentStationFilter = 'ALL';
-    function scrollPageTo(element) {
-      if (!element) return;
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        const top = Math.max(0, element.getBoundingClientRect().top + window.scrollY - 12);
-        window.scrollTo({ top, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-      }));
+    function scrollMtfDetailIntoView() {
+      const detail = $("mtf-detail");
+      const panel = detail?.closest(".mtf-row-3");
+      if (!detail) return;
+      if (panel) panel.scrollTop = 0;
+      requestAnimationFrame(() => requestAnimationFrame(() => detail.scrollIntoView({
+        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        block: "start"
+      })));
     }
     function escapeHtml(str) {
       return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -2383,8 +2386,7 @@
           f.activeVariant = 0;
           renderMtfList();
           renderMtfDetail();
-          const detailPanel = document.querySelector(".mtf-row-3");
-          scrollPageTo(detailPanel);
+          scrollMtfDetailIntoView();
         });
         container.appendChild(card);
       });

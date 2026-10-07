@@ -3956,6 +3956,17 @@ main{max-width:none!important;width:100%;min-width:0;padding:10px clamp(12px,2vw
 #bat-layout>#bat-failure-board{margin-bottom:0}
 #bat-layout>section,#bat-layout>aside,#bat-failure-board,#bat-board{min-width:0}
 #mtf-detail-title{text-align:center}
+#bat-failure-detail .bat-detail-grid{align-items:stretch}
+#bat-failure-detail .bat-detail-grid>.bento-block-1,#bat-failure-detail .bat-detail-grid>.bento-block-2,#bat-failure-detail .bat-detail-grid>.bento-block-3{height:clamp(300px,calc(100vh - 230px),520px);min-height:0;box-sizing:border-box}
+#bat-failure-detail .bat-detail-grid>.bento-block-1{overflow:auto}
+#bat-failure-detail .bat-detail-grid>.bento-block-2{display:flex;flex-direction:column;overflow:hidden}
+#bat-failure-detail #bat-detail-steps{flex:1;min-height:0;overflow:auto;align-content:start}
+#bat-failure-detail .bat-detail-grid>.bento-block-3{display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+#bat-failure-detail #bat-detail-action{max-height:76px;flex:0 1 auto;overflow:auto}
+#bat-failure-detail #bat-disposition-flow{flex:1 1 auto;min-height:90px;max-height:none;overflow:auto}
+#bat-failure-detail .flowchart-modal-actions,#bat-failure-detail .bat-detail-controls{flex:none}
+#bat-failure-detail .bat-detail-controls{margin-top:0;padding:6px 0 0;background:var(--md-sys-color-surface-container-lowest)}
+@media(max-width:1080px){#bat-failure-detail .bat-detail-grid>.bento-block-1,#bat-failure-detail .bat-detail-grid>.bento-block-2,#bat-failure-detail .bat-detail-grid>.bento-block-3{height:auto;max-height:none;min-height:0}#bat-failure-detail .bat-detail-grid>.bento-block-2,#bat-failure-detail .bat-detail-grid>.bento-block-3{overflow:visible}#bat-failure-detail #bat-detail-steps,#bat-failure-detail #bat-disposition-flow{overflow:visible;max-height:none}#bat-failure-detail #bat-detail-action{max-height:none}#bat-failure-detail .bat-detail-controls{margin-top:8px}}
 #bat-failure-board .bat-board-toolbar{margin-bottom:4px}
 #bat-board{grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-flow:row;grid-auto-columns:auto;overflow-x:hidden;touch-action:pan-y;gap:10px}
 #bat-board .bd-col{min-width:0;max-width:100%;min-height:0;max-height:none}

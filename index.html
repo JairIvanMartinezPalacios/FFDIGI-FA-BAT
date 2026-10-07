@@ -840,6 +840,19 @@
     image-rendering: auto;
   }
   .topology-preview figcaption { margin-top: 8px; color: var(--md-sys-color-on-surface-variant); font-size: 11px; line-height: 1.4; }
+  .bat-failure-detail { grid-column: 1 / -1; }
+  .bat-failure-detail-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  .bat-failure-detail-head h2 { margin:0; font-size:20px; }
+  .bat-failure-detail-meta { color:var(--md-sys-color-on-surface-variant); font-size:12px; margin-top:5px; }
+  .bat-reference-steps { margin:14px 0 0; padding-left:24px; display:grid; gap:10px; }
+  .bat-reference-steps li { padding:10px 12px; border:1px solid var(--md-sys-color-outline-variant); border-radius:12px; line-height:1.45; }
+  .bat-reference-step-detail { display:block; margin-top:5px; color:var(--md-sys-color-on-surface-variant); font-size:12px; white-space:pre-line; }
+  #bat-layout.bat-reference-mode > section { grid-column:1 / -1; }
+  #bat-layout.bat-reference-mode > aside { display:none; }
+  .reference-images-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; padding:10px; }
+  .reference-images-grid figure { margin:0; min-width:0; padding:7px; border:1px solid var(--md-sys-color-outline-variant); border-radius:10px; background:var(--md-sys-color-surface-container-low); }
+  .reference-images-grid img { display:block; width:100%; height:140px; object-fit:contain; border-radius:7px; background:#fff; }
+  .reference-images-grid figcaption { margin-top:6px; font-size:10px; line-height:1.35; color:var(--md-sys-color-on-surface-variant); }
   .topology-open-btn {
     display: inline-flex;
     align-items: center;
@@ -1381,7 +1394,7 @@
   </div>
 </div>
 <main><!-- MODO 1: BAT WORKFLOW -->
-  <div id="bat-layout" class="m3-layout">
+  <div id="bat-layout" class="m3-layout bat-reference-mode">
     <div id="bat-failure-board" class="m3-card no-print">
       <div class="m3-card-header">
         <h2 class="m3-card-title">Catálogo BAT · Tablero de fallas</h2>
@@ -1403,13 +1416,14 @@
           </button>
           <input id="bat-pdf-file-input" type="file" accept="application/pdf,.pdf" hidden>
         </div>
-        <p class="bat-board-hint">Selecciona una tarjeta para cargar el código en la guía.</p>
+        <p class="bat-board-hint">Selecciona una falla para consultar su secuencia; No Boot abre la guía de diagnóstico.</p>
       </div>
       <p id="bat-pdf-status" class="bat-pdf-status" role="status" aria-live="polite" hidden></p>
       <div id="bat-board" aria-label="Tablero de fallas BAT"></div>
     </div>
-    <section>
-      <div class="m3-card no-print">
+    <section id="bat-detail-area" class="hidden">
+      <div id="bat-failure-detail" class="m3-card bat-failure-detail hidden" aria-live="polite"></div>
+      <div id="bat-node-form" class="m3-card no-print hidden">
         <div class="m3-card-header">
           <h2 class="m3-card-title">1. Identificación del Nodo</h2>
           <span class="mtf-tag">ESTACIÓN BAT</span>
@@ -1484,7 +1498,7 @@
             Anterior</button>
         </div>
       </div>
-      <div class="m3-card">
+      <div id="bat-history-card" class="m3-card hidden">
         <div class="m3-card-header">
           <h2 class="m3-card-title">2. Historial de Validaciones Realizadas</h2>
           <span id="history-count" class="mtf-tag">0 REGISTROS</span>
@@ -1754,12 +1768,14 @@
             <details class="topology-reference">
               <summary>
                 <span>GB300 System Topology</span>
-                <span class="topology-reference-badge">HARDWARE MAP</span>
+                <span class="topology-reference-badge">Reference Images</span>
               </summary>
               <figure class="topology-preview">
                 <img src="./gb300-board-topology.png" alt="Esquema de las dos placas del sistema GB300 con GPU, CPU, UPHY, ventiladores, PDB y módulos PCIe, NVMe y BlueField-3." width="1466" height="1350" loading="lazy" decoding="async">
                 <figcaption>Referencia de ubicación de componentes y conectividad del sistema. Imagen optimizada a 2×, sin modificar etiquetas.</figcaption>
                 <button id="mtf-topology-open" class="topology-open-btn" type="button" aria-haspopup="dialog" aria-controls="mtf-topology-modal">Ampliar esquema</button>
+                <h3 style="margin:16px 0 0;font-size:13px">Reference Images · FFDG PDF</h3>
+                <div id="mtf-reference-images" class="reference-images-grid" aria-label="Imágenes de referencia extraídas del PDF FFDG"></div>
               </figure>
             </details>
           </div>
@@ -2107,7 +2123,7 @@
       const total = FFDG.state.steps.length;
       const current = FFDG.state.index + 1;
       $("step-meta").textContent = `Paso ${current} de ${total} · ${FFDG.state.activeFailure.code}`;
-      const pdfProcedure = Boolean(FFDG.state.activeFailure.pdfImported);
+      const pdfProcedure = Boolean(FFDG.state.activeFailure.pdfImported && FFDG.state.activeFailure.family !== "NOBOOT");
       $("yes-btn").textContent = pdfProcedure ? "✓ Paso Completado" : "✓ SÍ · Pasa Verificación";
       $("no-btn").textContent = pdfProcedure ? "✕ No se pudo completar" : "✕ NO · Presenta Anomalía";
       $("step-question").innerHTML = `<strong>${escapeHtml(step.q)}</strong>${step.detail ? `<span class="bat-step-detail">${escapeHtml(step.detail).replace(/\n/g, "<br>")}</span>` : ""}`;
@@ -2135,6 +2151,24 @@
       });
       $("history-count").textContent = `${FFDG.state.history.length} REGISTROS`;
       $("history-empty").classList.toggle("hidden", FFDG.state.history.length > 0);
+    }
+    function renderBatSelection(failure) {
+      const layout = $("bat-layout");
+      const detail = $("bat-failure-detail");
+      const isNoBoot = failure?.family === "NOBOOT";
+      layout.classList.toggle("bat-reference-mode", !isNoBoot);
+      $("bat-detail-area").classList.toggle("hidden", !failure);
+      $("bat-node-form").classList.toggle("hidden", !isNoBoot);
+      $("step-card").classList.add("hidden");
+      $("bat-history-card").classList.toggle("hidden", !isNoBoot);
+      $("closing-card").classList.add("hidden");
+      detail.classList.toggle("hidden", !failure || isNoBoot);
+      if (!failure || isNoBoot) return;
+      const steps = Array.isArray(failure.steps) ? failure.steps : [];
+      const stepMarkup = steps.length
+        ? `<ol class="bat-reference-steps">${steps.map((step, index) => `<li><strong>${escapeHtml(step.q || `Paso ${index + 1}`)}</strong>${step.detail ? `<span class="bat-reference-step-detail">${escapeHtml(step.detail)}</span>` : ""}${step.fail && !step.fail.includes("No se pudo completar este paso") ? `<span class="bat-reference-step-detail"><b>Si no pasa:</b> ${escapeHtml(step.fail)}</span>` : ""}</li>`).join("")}</ol>`
+        : `<p class="bat-reference-step-detail">Este registro no incluye una secuencia de pasos en el PDF importado.</p>`;
+      detail.innerHTML = `<div class="bat-failure-detail-head"><div><h2>${escapeHtml(failure.code)} · ${escapeHtml(failure.label)}</h2><div class="bat-failure-detail-meta">${escapeHtml(failure.familyLabel || failure.family || "BAT")} · Procedimiento de referencia del FFDG</div></div><span class="mtf-tag">${steps.length} PASOS</span></div><h3 style="margin:18px 0 0;font-size:15px">Troubleshooting Sequence</h3>${stepMarkup}`;
     }
     function finish(recommendation, passed) {
       FFDG.state.diagFinishedAt = new Date().toISOString();
@@ -2629,7 +2663,7 @@
         $("excel-file-input").value = "";
       }
     }
-    return { initTheme, toggleTheme, setMode, filterStation, showStep, renderHistory, finish, renderEvidence, renderMtfList, renderMtfDetail, loadExcelFile, restoreCatalog, updateStationFilterCounts, getActiveSteps };
+    return { initTheme, toggleTheme, setMode, filterStation, showStep, renderHistory, finish, renderEvidence, renderMtfList, renderMtfDetail, renderBatSelection, loadExcelFile, restoreCatalog, updateStationFilterCounts, getActiveSteps };
   })();
   // 3. PRINT ENGINE
   window.FFDG.reports = (() => {
@@ -2913,14 +2947,18 @@
       const pn = $("part").value.trim();
       const tech = $("technician").value.trim();
       const failCode = $("failure").value;
+      const selected = failureCatalog.find(f => f.uid === failCode || f.code === failCode);
+      if (selected?.family !== "NOBOOT") {
+        $("form-error").textContent = "El diagnóstico guiado y la identificación del nodo están disponibles únicamente para la falla No Boot.";
+        return;
+      }
       if (!sn || !pn || !/^\d{6}$/.test(employeeIdInput.value.trim()) || !tech || !failCode) {
         $("form-error").textContent = "Completa semana y año del serial, selecciona P/N, captura un número de empleado de 6 dígitos con su nombre y elige una falla BAT.";
         return;
       }
       $("form-error").textContent = "";
-      const selected = failureCatalog.find(f => f.uid === failCode || f.code === failCode);
       FFDG.state.activeFailure = selected;
-      FFDG.state.steps = Array.isArray(selected.steps) && selected.steps.length ? selected.steps : flows[selected.family];
+      FFDG.state.steps = flows.NOBOOT;
       FFDG.state.index = 0;
       FFDG.state.history = [];
       FFDG.state.diagStartedAt = new Date().toISOString();
@@ -2940,7 +2978,7 @@
         FFDG.state.index += 1;
         FFDG.ui.showStep();
       } else {
-        const completion = FFDG.state.activeFailure?.pdfImported
+        const completion = FFDG.state.activeFailure?.pdfImported && FFDG.state.activeFailure?.family !== "NOBOOT"
           ? "Se completó la secuencia FA importada del FFDG BAT. Aplicar la disposición, retest o escalamiento indicados para esta falla."
           : "Toda la secuencia de alimentación e inicialización se verificó nominalmente. No se encontró defecto de hardware reproducible. Proceder a Retest controlado (NDF/NTF).";
         FFDG.ui.finish(completion, true);
@@ -3350,10 +3388,6 @@
             select.value = item.uid;
             select.dispatchEvent(new Event("change", { bubbles: true }));
             board.querySelectorAll(".bd-item").forEach(node => node.classList.toggle("selected", node === card));
-            document.querySelector("#bat-layout > section")?.scrollIntoView({
-              behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-              block: "start"
-            });
           });
           list.appendChild(card);
         });
@@ -3364,6 +3398,8 @@
     search.addEventListener("input", render);
     select.addEventListener("change", () => {
       selectedCode = select.value;
+      const selectedFailure = catalog.find(item => item.uid === selectedCode || item.code === selectedCode);
+      window.FFDG.ui.renderBatSelection(selectedFailure || null);
       board.querySelectorAll(".bd-item").forEach(node => {
         const isSelected = node.dataset.uid === selectedCode;
         node.classList.toggle("selected", isSelected);
@@ -3374,6 +3410,16 @@
     window.FFDG.refreshBatBoard = render;
   })();</script>
 <script>(() => {
+  const referenceImages = [17, 17, 23, 40, 55, 55, 55, 55, 67, 75, 75, 75, 79, 88, 89, 89, 95, 96, 100, 100, 107, 134, 142, 159, 161, 161, 172, 183, 216, 231];
+  const referenceGallery = document.getElementById("mtf-reference-images");
+  if (referenceGallery) {
+    referenceGallery.innerHTML = referenceImages.map((page, index) => {
+      const number = String(index + 1).padStart(2, "0");
+      const pageNumber = String(page).padStart(3, "0");
+      const caption = page === 216 ? "Cable Debug Guide · página 216" : page === 231 ? "Material de referencia · página 231" : `Referencia FFDG · página ${page}`;
+      return `<figure><img src="./assets/reference-images/ffdg-page-${pageNumber}-ref-${number}.png" alt="${caption}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption></figure>`;
+    }).join("");
+  }
   const dialog = document.getElementById("mtf-topology-modal");
   const openButton = document.getElementById("mtf-topology-open");
   const closeButton = document.getElementById("mtf-topology-close");

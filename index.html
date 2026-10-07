@@ -1397,9 +1397,15 @@
             <svg class="bat-theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg>
             <span class="bat-theme-text">Modo Noche</span>
           </button>
+          <button id="bat-pdf-import-btn" class="theme-switch-btn bat-pdf-import-btn" type="button" aria-label="Actualizar catálogo BAT desde PDF">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 20h14v-2H5v2zM11 16h2V8h4l-5-5-5 5h4v8z"></path></svg>
+            <span>Actualizar PDF BAT</span>
+          </button>
+          <input id="bat-pdf-file-input" type="file" accept="application/pdf,.pdf" hidden>
         </div>
         <p class="bat-board-hint">Selecciona una tarjeta para cargar el código en la guía.</p>
       </div>
+      <p id="bat-pdf-status" class="bat-pdf-status" role="status" aria-live="polite" hidden></p>
       <div id="bat-board" aria-label="Tablero de fallas BAT"></div>
     </div>
     <section>
@@ -2101,6 +2107,9 @@
       const total = FFDG.state.steps.length;
       const current = FFDG.state.index + 1;
       $("step-meta").textContent = `Paso ${current} de ${total} · ${FFDG.state.activeFailure.code}`;
+      const pdfProcedure = Boolean(FFDG.state.activeFailure.pdfImported);
+      $("yes-btn").textContent = pdfProcedure ? "✓ Paso Completado" : "✓ SÍ · Pasa Verificación";
+      $("no-btn").textContent = pdfProcedure ? "✕ No se pudo completar" : "✕ NO · Presenta Anomalía";
       $("step-question").innerHTML = `<strong>${escapeHtml(step.q)}</strong>${step.detail ? `<span class="bat-step-detail">${escapeHtml(step.detail).replace(/\n/g, "<br>")}</span>` : ""}`;
       $("step-note").value = "";
       $("progress-bar").style.width = `${(current / total) * 100}%`;
@@ -2821,6 +2830,18 @@
     const FFDG = window.FFDG;
     const { failureCatalog, flows } = FFDG.data;
     const $ = (id) => document.getElementById(id);
+    const BAT_CATALOG_STORAGE_KEY = "ffdg-bat-catalog-v1";
+    const normalizeBatText = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z0-9]+/g, " ").trim();
+    const makeBatUid = item => `${item.code}::${normalizeBatText(item.label).replace(/\s+/g, "-")}`;
+    try {
+      const savedBatCatalog = JSON.parse(localStorage.getItem(BAT_CATALOG_STORAGE_KEY) || "null");
+      if (savedBatCatalog?.version === 1 && Array.isArray(savedBatCatalog.failures) && savedBatCatalog.failures.length) {
+        failureCatalog.splice(0, failureCatalog.length, ...savedBatCatalog.failures);
+      }
+    } catch (error) {
+      console.warn("No se pudo restaurar el catálogo BAT guardado:", error);
+    }
+    failureCatalog.forEach(item => { item.uid ||= makeBatUid(item); });
     FFDG.state = {
       mode: "bat",
       activeFailure: null,
@@ -2858,7 +2879,7 @@
         select.appendChild(g);
       }
       const opt = document.createElement("option");
-      opt.value = item.code;
+      opt.value = item.uid;
       opt.textContent = `${item.code} | ${item.label}`;
       groups[item.familyLabel].appendChild(opt);
     });
@@ -2897,9 +2918,9 @@
         return;
       }
       $("form-error").textContent = "";
-      const selected = failureCatalog.find(f => f.code === failCode);
+      const selected = failureCatalog.find(f => f.uid === failCode || f.code === failCode);
       FFDG.state.activeFailure = selected;
-      FFDG.state.steps = flows[selected.family];
+      FFDG.state.steps = Array.isArray(selected.steps) && selected.steps.length ? selected.steps : flows[selected.family];
       FFDG.state.index = 0;
       FFDG.state.history = [];
       FFDG.state.diagStartedAt = new Date().toISOString();
@@ -2919,7 +2940,10 @@
         FFDG.state.index += 1;
         FFDG.ui.showStep();
       } else {
-        FFDG.ui.finish("Toda la secuencia de alimentación e inicialización se verificó nominalmente. No se encontró defecto de hardware reproducible. Proceder a Retest controlado (NDF/NTF).", true);
+        const completion = FFDG.state.activeFailure?.pdfImported
+          ? "Se completó la secuencia FA importada del FFDG BAT. Aplicar la disposición, retest o escalamiento indicados para esta falla."
+          : "Toda la secuencia de alimentación e inicialización se verificó nominalmente. No se encontró defecto de hardware reproducible. Proceder a Retest controlado (NDF/NTF).";
+        FFDG.ui.finish(completion, true);
       }
     });
     $("no-btn").addEventListener("click", () => {
@@ -3009,6 +3033,265 @@
     });
     FFDG.ui.setMode("bat");
   })();</script>
+<script src="./bat-pdf-seed.js"></script>
+<script type="module">
+  const fileInput = document.getElementById("bat-pdf-file-input");
+  const importButton = document.getElementById("bat-pdf-import-btn");
+  const status = document.getElementById("bat-pdf-status");
+  const catalog = window.FFDG?.data?.failureCatalog;
+  if (fileInput && importButton && status && Array.isArray(catalog)) {
+    const storageKey = "ffdg-bat-catalog-v1";
+    let pdfjsLibPromise;
+    const loadPdfjs = () => pdfjsLibPromise ||= import("./vendor/pdfjs/pdf.min.mjs").then(pdfjsLib => {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = new URL("./vendor/pdfjs/pdf.worker.min.mjs", import.meta.url).href;
+      return pdfjsLib;
+    });
+    const normalize = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase().replace(/[^A-Z0-9]+/g, " ").trim();
+    const canonicalLabel = value => normalize(value).replace(/\bEEMPROM\b/g, "EEPROM").replace(/\bSECUNDARY\b/g, "SECONDARY").replace(/\bNVILINK\b/g, "NVLINK").replace(/\bCLODPLATE\b/g, "COLDPLATE");
+    const correctedLabel = value => String(value || "").replace(/\bEEMPROM\b/gi, "EEPROM").replace(/\bSECUNDARY\b/gi, "SECONDARY").replace(/\bNVILINK\b/gi, "NVLINK").replace(/\bCLODPLATE\b/gi, "COLDPLATE");
+    const uidFor = item => item.uid || `${item.code}::${normalize(item.label).replace(/\s+/g, "-")}`;
+    const familyFor = label => {
+      const text = normalize(label);
+      if (/NO\s*BOOT/.test(text)) return ["NOBOOT", "No Boot / Secuencia Eléctrica"];
+      if (/LEAK|LEAKAGE|MANIFOLD/.test(text)) return ["LEAK", "Sensores de Fuga Líquida"];
+      if (/FAN|FANS|VENTILADOR/.test(text)) return ["FAN", "Ventiladores / Enfriamiento"];
+      if (/FPGA|CPLD|LOGIC|LOGICA/.test(text)) return ["LOGIC", "FPGA / CPLD / Lógica"];
+      return ["FRU", "FRU / EEPROM (Bus I2C/SMBus)"];
+    };
+    const textSimilarity = (left, right) => {
+      const a = new Set(canonicalLabel(left).split(/\s+/).filter(Boolean));
+      const b = new Set(canonicalLabel(right).split(/\s+/).filter(Boolean));
+      const union = new Set([...a, ...b]);
+      if (!union.size) return 0;
+      let shared = 0;
+      a.forEach(token => { if (b.has(token)) shared += 1; });
+      return shared / union.size;
+    };
+    const setStatus = message => {
+      status.hidden = false;
+      status.textContent = message;
+    };
+    try {
+      const savedCatalog = JSON.parse(localStorage.getItem(storageKey) || "null");
+      if (savedCatalog?.version === 1 && Array.isArray(savedCatalog.failures) && savedCatalog.fileName) {
+        setStatus(`Catálogo BAT restaurado desde ${savedCatalog.fileName}; los cambios se guardan en este navegador.`);
+      }
+    } catch (error) {
+      console.warn("No se pudo leer el registro de actualización BAT:", error);
+    }
+    function pageLines(items) {
+      const rows = [];
+      items.filter(item => item.str?.trim()).forEach(item => {
+        const y = item.transform?.[5] || 0;
+        let row = rows.find(candidate => Math.abs(candidate.y - y) <= 2.25);
+        if (!row) rows.push(row = { y, items: [] });
+        row.items.push({ x: item.transform?.[4] || 0, str: item.str });
+      });
+      return rows.sort((a, b) => b.y - a.y).map(row => row.items.sort((a, b) => a.x - b.x)
+        .map(item => item.str).join(" ").replace(/NDBG_\s+(\d+)/gi, "NDBG_$1")
+        .replace(/\s+/g, " ").trim()).filter(Boolean);
+    }
+    function parseBatPage(lines, fileName) {
+      const heading = lines.find(line => /^Error\s+.*NDBG_/i.test(line));
+      if (!heading) return [];
+      const codeMatches = [...heading.matchAll(/NDBG_\s*\d+/gi)].map(match => match[0].replace(/\s+/g, "").toUpperCase());
+      const codes = [...new Set(codeMatches)];
+      if (!codes.length) return [];
+      const stationLine = lines.find(line => /^Station\s*:/i.test(line));
+      const stations = stationLine?.replace(/^Station\s*:\s*/i, "").split(/[,/;&]+/).map(value => value.trim().toUpperCase()) || [];
+      if (!stations.includes("BAT")) return [];
+      const descriptionStart = lines.findIndex(line => /Error Description\s*\(s\)\s*:/i.test(line));
+      const stepsStart = lines.findIndex(line => /^FA\s+Steps\b/i.test(line));
+      if (descriptionStart < 0 || stepsStart < 0 || stepsStart <= descriptionStart) return [];
+      const descriptionLines = lines.slice(descriptionStart + 1, stepsStart).filter(line =>
+        !/^Back to error list$|^Last Update\s*:/i.test(line) && !/^Station\s*:/i.test(line));
+      const labelsByCode = new Map();
+      const unlabeledDescriptions = [];
+      const noteLines = [];
+      let activeDescriptionCode = "";
+      let inNote = false;
+      descriptionLines.forEach(line => {
+        if (/^Note\s*:/i.test(line)) {
+          inNote = true;
+          noteLines.push(line.replace(/^Note\s*:\s*/i, "").trim());
+          return;
+        }
+        if (inNote) {
+          noteLines.push(line.trim());
+          return;
+        }
+        const match = line.match(/^\s*(NDBG_\s*\d+)\s*:\s*(.*)$/i);
+        if (match) {
+          activeDescriptionCode = match[1].replace(/\s+/g, "").toUpperCase();
+          labelsByCode.set(activeDescriptionCode, match[2].trim());
+        } else if (activeDescriptionCode) {
+          labelsByCode.set(activeDescriptionCode, `${labelsByCode.get(activeDescriptionCode)} ${line.trim()}`.trim());
+        } else {
+          const referencedCode = line.match(/\b(NDBG_\s*\d+)\b/i)?.[1]?.replace(/\s+/g, "").toUpperCase();
+          if (referencedCode && codes.includes(referencedCode)) {
+            const label = line.replace(/\(?\s*NDBG_\s*\d+\s*\)?/gi, "").trim();
+            if (label) labelsByCode.set(referencedCode, label);
+          } else unlabeledDescriptions.push(line.trim());
+        }
+      });
+      const note = noteLines.join(" ").trim();
+      const parsedSteps = [];
+      lines.slice(stepsStart + 1).forEach(line => {
+        if (/^\d+\s*\/\s*\d+$/.test(line) || /^(?:ffdg\.md|Back to error list|Last Update\s*:|Station\s*:|Error\s+NDBG_)/i.test(line)) return;
+        const match = line.match(/^\s*(\d+)\s*[.)]\s*(.+)$/);
+        if (match) parsedSteps.push({ number: Number(match[1]), text: match[2].trim() });
+        else if (parsedSteps.length && line.trim()) parsedSteps[parsedSteps.length - 1].text += ` ${line.trim()}`;
+      });
+      if (!parsedSteps.length) return [];
+      const fallbackLabel = (codes.length === 1 ? unlabeledDescriptions[0] : unlabeledDescriptions.join(" ")).trim();
+      return codes.map((code, index) => {
+        const label = labelsByCode.get(code) || (codes.length === 1 ? fallbackLabel : unlabeledDescriptions.length === codes.length ? unlabeledDescriptions[index] : "");
+        if (!label) return null;
+        const [family, familyLabel] = familyFor(label);
+        return {
+          code,
+          label: label.replace(/\s+/g, " ").trim(),
+          family,
+          familyLabel,
+          pdfImported: true,
+          sourcePdf: fileName,
+          steps: parsedSteps.map(step => ({
+            q: `Paso ${step.number} · ${step.text}`,
+            detail: note && step.number === 1 ? note : "",
+            fail: "No se pudo completar este paso. Registra la observación y escala según el criterio FA del FFDG."
+          }))
+        };
+      }).filter(Boolean);
+    }
+    function mergeProcedures(procedures) {
+      let updated = 0;
+      let added = 0;
+      procedures.forEach(procedure => {
+        procedure.label = correctedLabel(procedure.label);
+        let match = null;
+        let bestScore = 0;
+        catalog.forEach(item => {
+          if (item.code !== procedure.code) return;
+          const score = textSimilarity(item.label, procedure.label);
+          if (score > bestScore) { match = item; bestScore = score; }
+        });
+        if (match && bestScore >= 0.65) {
+          Object.assign(match, procedure, { uid: uidFor(match) });
+          updated += 1;
+        } else {
+          procedure.uid = uidFor(procedure);
+          catalog.push(procedure);
+          added += 1;
+        }
+      });
+      return { updated, added };
+    }
+    async function readBatProcedures(file) {
+      const pdfjsLib = await loadPdfjs();
+      const document = await pdfjsLib.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
+      const procedures = [];
+      try {
+        for (let pageNumber = 1; pageNumber <= document.numPages; pageNumber += 1) {
+          const page = await document.getPage(pageNumber);
+          const content = await page.getTextContent();
+          procedures.push(...parseBatPage(pageLines(content.items), file.name));
+          if (pageNumber % 15 === 0 || pageNumber === document.numPages) {
+            setStatus(`Leyendo PDF: página ${pageNumber} de ${document.numPages}…`);
+            await new Promise(resolve => requestAnimationFrame(resolve));
+          }
+        }
+      } finally {
+        await document.destroy();
+      }
+      return procedures;
+    }
+    function rebuildFailureSelect(selectedUid) {
+      const select = document.getElementById("failure");
+      if (!select) return;
+      select.replaceChildren();
+      const groups = new Map();
+      catalog.forEach(item => {
+        const label = item.familyLabel || item.family;
+        if (!groups.has(label)) {
+          const group = document.createElement("optgroup");
+          group.label = label;
+          groups.set(label, group);
+          select.appendChild(group);
+        }
+        const option = document.createElement("option");
+        option.value = uidFor(item);
+        option.textContent = `${item.code} | ${item.label}`;
+        groups.get(label).appendChild(option);
+      });
+      select.value = catalog.some(item => uidFor(item) === selectedUid) ? selectedUid : uidFor(catalog[0]);
+      select.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    async function importPdf(file) {
+      if (!file) return;
+      if (!/\.pdf$/i.test(file.name) && file.type !== "application/pdf") {
+        setStatus("Selecciona un archivo PDF.");
+        return;
+      }
+      if (file.size > 50 * 1024 * 1024) {
+        setStatus("El PDF supera el límite de 50 MB.");
+        return;
+      }
+      importButton.disabled = true;
+      fileInput.disabled = true;
+      try {
+        setStatus(`Analizando ${file.name}…`);
+        const procedures = await readBatProcedures(file);
+        if (!procedures.length) throw new Error("No encontré procedimientos con Station: BAT, Error Description(s) y FA Steps en este PDF.");
+        const previousUid = document.getElementById("failure")?.value;
+        const { updated, added } = mergeProcedures(procedures);
+        const savedAt = new Date().toISOString();
+        let persisted = true;
+        try {
+          localStorage.setItem(storageKey, JSON.stringify({ version: 1, failures: catalog, fileName: file.name, importedAt: savedAt }));
+        } catch (error) {
+          console.warn("No se pudo guardar el catálogo BAT localmente:", error);
+          persisted = false;
+        }
+        rebuildFailureSelect(previousUid);
+        window.FFDG.refreshBatBoard?.();
+        const navSummary = document.querySelector("#nav-bat .tile-tx small");
+        if (navSummary) navSummary.textContent = `Diagnóstico guiado paso a paso · ${catalog.length} códigos NDBG`;
+        const storageMessage = persisted ? "guardado en este navegador" : "activo solo en esta sesión; no se pudo guardar localmente";
+        setStatus(`PDF procesado: ${procedures.length} procedimientos BAT · ${updated} actualizados · ${added} nuevos · ${catalog.length - updated - added} conservados · ${storageMessage}.`);
+      } catch (error) {
+        console.error("No se pudo importar el FFDG BAT desde PDF:", error);
+        setStatus(`No se actualizó el FFDG BAT: ${error.message}`);
+      } finally {
+        importButton.disabled = false;
+        fileInput.disabled = false;
+        fileInput.value = "";
+      }
+    }
+    importButton.addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", () => importPdf(fileInput.files?.[0]));
+    let hasSavedCatalog = false;
+    try {
+      const savedCatalog = JSON.parse(localStorage.getItem(storageKey) || "null");
+      hasSavedCatalog = savedCatalog?.version === 1 && Array.isArray(savedCatalog.failures) && savedCatalog.failures.length > 0;
+    } catch (error) {
+      console.warn("No se pudo verificar el catálogo BAT guardado:", error);
+    }
+    if (!hasSavedCatalog && Array.isArray(window.FFDG.batPdfSeed) && window.FFDG.batPdfSeed.length) {
+      const currentUid = document.getElementById("failure")?.value;
+      const { updated, added } = mergeProcedures(window.FFDG.batPdfSeed);
+      try {
+        localStorage.setItem(storageKey, JSON.stringify({ version: 1, failures: catalog, fileName: "ffdg.pdf", importedAt: new Date().toISOString() }));
+      } catch (error) {
+        console.warn("No se pudo guardar el catálogo BAT inicial localmente:", error);
+      }
+      rebuildFailureSelect(currentUid);
+      window.FFDG.refreshBatBoard?.();
+      const navSummary = document.querySelector("#nav-bat .tile-tx small");
+      if (navSummary) navSummary.textContent = `Diagnóstico guiado paso a paso · ${catalog.length} códigos NDBG`;
+      setStatus(`PDF inicial aplicado: ${updated} fallas BAT actualizadas · ${added} nuevas · catálogo guardado en este navegador.`);
+    }
+  }
+</script>
 <script>/* BAT board view */
   (() => {
     "use strict";
@@ -3021,11 +3304,11 @@
     const familyOrder = ["FRU", "LEAK", "FAN", "LOGIC", "NOBOOT"];
     const familyLabels = { FRU: "FRU / EEPROM", LOGIC: "LOGIC", LEAK: "LEAKAGE", FAN: "FANS", NOBOOT: "NO BOOT" };
     const familyRank = family => { const index = familyOrder.indexOf(family); return index < 0 ? 99 : index; };
-    const familyCounts = catalog.reduce((counts, item) => {
-      counts[item.family] = (counts[item.family] || 0) + 1;
-      return counts;
-    }, {});
     function render() {
+      const familyCounts = catalog.reduce((counts, item) => {
+        counts[item.family] = (counts[item.family] || 0) + 1;
+        return counts;
+      }, {});
       const query = search.value.trim().toLowerCase();
       const matches = catalog.filter(item => `${item.code} ${item.label} ${item.familyLabel}`.toLowerCase().includes(query));
       const groups = matches.reduce((result, item) => {
@@ -3051,9 +3334,10 @@
         groups[family].forEach(item => {
           const card = document.createElement("button");
           card.type = "button";
-          card.className = `bd-item${item.code === selectedCode ? " selected" : ""}`;
+          card.dataset.uid = item.uid;
+          card.className = `bd-item${item.uid === selectedCode ? " selected" : ""}`;
           card.setAttribute("aria-label", `Seleccionar ${item.code}: ${item.label}`);
-          card.setAttribute("aria-pressed", String(item.code === selectedCode));
+          card.setAttribute("aria-pressed", String(item.uid === selectedCode));
           const code = document.createElement("b");
           code.textContent = item.code;
           const label = document.createElement("span");
@@ -3062,8 +3346,8 @@
           meta.textContent = item.familyLabel;
           card.append(code, label, meta);
           card.addEventListener("click", () => {
-            selectedCode = item.code;
-            select.value = item.code;
+            selectedCode = item.uid;
+            select.value = item.uid;
             select.dispatchEvent(new Event("change", { bubbles: true }));
             board.querySelectorAll(".bd-item").forEach(node => node.classList.toggle("selected", node === card));
             document.querySelector("#bat-layout > section")?.scrollIntoView({
@@ -3081,12 +3365,13 @@
     select.addEventListener("change", () => {
       selectedCode = select.value;
       board.querySelectorAll(".bd-item").forEach(node => {
-        const isSelected = node.querySelector("b")?.textContent === selectedCode;
+        const isSelected = node.dataset.uid === selectedCode;
         node.classList.toggle("selected", isSelected);
         node.setAttribute("aria-pressed", String(isSelected));
       });
     });
     render();
+    window.FFDG.refreshBatBoard = render;
   })();</script>
 <script>(() => {
   const dialog = document.getElementById("mtf-topology-modal");
@@ -3542,12 +3827,14 @@ main{padding-top:4px!important}
 #bat-failure-board.m3-card{padding:12px 16px!important;margin-bottom:0}
 #bat-failure-board .m3-card-header{margin-bottom:7px}
 #bat-failure-board .m3-card-title{font-size:15px}
-#bat-failure-board .bat-board-toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,640px) minmax(0,1fr);gap:8px;margin-bottom:4px}
+#bat-failure-board .bat-board-toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,900px) minmax(0,1fr);gap:8px;margin-bottom:4px}
 #bat-failure-board .bat-board-controls{grid-column:2;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-width:0;margin:0 auto}
 #bat-failure-board .bat-board-search{flex:1 1 280px;width:100%;max-width:520px;min-height:38px}
 #bat-failure-board .bat-theme-toggle{flex:0 0 auto;min-height:38px;padding:6px 12px;background:#111;border-color:#444;color:#fff;white-space:nowrap}
+#bat-failure-board .bat-pdf-import-btn{flex:0 0 auto;min-height:38px;padding:6px 12px;background:#76b900;border-color:#659c00;color:#101400;white-space:nowrap}
 #bat-failure-board .bat-board-hint{grid-column:3;align-self:center;font-size:11px}
-@media(max-width:700px){#bat-failure-board .bat-board-toolbar{grid-template-columns:minmax(0,1fr);gap:8px}#bat-failure-board .bat-board-controls{grid-column:1;width:min(100%,640px)}#bat-failure-board .bat-board-search{flex:1 1 0;min-width:0}#bat-failure-board .bat-board-hint{grid-column:1;text-align:center}}
+#bat-failure-board .bat-pdf-status{margin:4px 0 8px;text-align:center;font-size:12px;font-weight:700;color:var(--md-sys-color-on-surface-variant)}
+@media(max-width:700px){#bat-failure-board .bat-board-toolbar{grid-template-columns:minmax(0,1fr);gap:8px}#bat-failure-board .bat-board-controls{grid-column:1;flex-wrap:wrap;width:min(100%,640px)}#bat-failure-board .bat-board-search{flex:1 1 100%;min-width:0;margin:0 auto}#bat-failure-board .bat-board-hint{grid-column:1;text-align:center}}
 #mtf-layout .mtf-row-1{padding:4px 12px;gap:8px}
 #mtf-layout .mtf-row-1-search{min-height:38px}
 #mtf-layout .mtf-row-1-actions{gap:6px}

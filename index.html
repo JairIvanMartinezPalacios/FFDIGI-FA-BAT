@@ -841,14 +841,14 @@
   }
   .topology-preview figcaption { margin-top: 8px; color: var(--md-sys-color-on-surface-variant); font-size: 11px; line-height: 1.4; }
   .bat-failure-detail { grid-column: 1 / -1; }
-  .bat-failure-detail-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-  .bat-failure-detail-head h2 { margin:0; font-size:20px; }
-  .bat-failure-detail-meta { color:var(--md-sys-color-on-surface-variant); font-size:12px; margin-top:5px; }
-  .bat-reference-steps { margin:14px 0 0; padding-left:24px; display:grid; gap:10px; }
-  .bat-reference-steps li { padding:10px 12px; border:1px solid var(--md-sys-color-outline-variant); border-radius:12px; line-height:1.45; }
-  .bat-reference-step-detail { display:block; margin-top:5px; color:var(--md-sys-color-on-surface-variant); font-size:12px; white-space:pre-line; }
-  #bat-layout.bat-reference-mode > section { grid-column:1 / -1; }
-  #bat-layout.bat-reference-mode > aside { display:none; }
+  #bat-layout.bat-details-mode > section { grid-column:1 / -1; }
+  #bat-layout.bat-details-mode:not(.bat-no-boot-mode) > aside { display:none; }
+  .bat-detail-sequence { display:grid; gap:9px; margin:8px 0 0; padding:0; list-style:none; }
+  .bat-detail-sequence li { padding:9px 10px; border:1px solid var(--md-sys-color-outline-variant); border-radius:10px; font-size:12px; line-height:1.4; }
+  .bat-detail-sequence li strong { display:flex; gap:8px; align-items:flex-start; }
+  .bat-detail-sequence li strong span { flex:none; color:var(--md-sys-color-primary); }
+  .bat-detail-step-detail { display:block; margin:5px 0 0 24px; color:var(--md-sys-color-on-surface-variant); font-size:11px; white-space:pre-line; }
+  #bat-disposition-flow { margin-top:8px; max-height:290px; overflow:auto; border:1px solid var(--md-sys-color-outline-variant); border-radius:var(--md-shape-corner-s); padding:8px; background:var(--md-sys-color-surface-container-lowest); }
   .reference-images-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; padding:10px; }
   .reference-images-grid figure { margin:0; min-width:0; padding:7px; border:1px solid var(--md-sys-color-outline-variant); border-radius:10px; background:var(--md-sys-color-surface-container-low); }
   .reference-images-grid img { display:block; width:100%; height:140px; object-fit:contain; border-radius:7px; background:#fff; }
@@ -1394,7 +1394,7 @@
   </div>
 </div>
 <main><!-- MODO 1: BAT WORKFLOW -->
-  <div id="bat-layout" class="m3-layout bat-reference-mode">
+  <div id="bat-layout" class="m3-layout bat-details-mode">
     <div id="bat-failure-board" class="m3-card no-print">
       <div class="m3-card-header">
         <h2 class="m3-card-title">Catálogo BAT · Tablero de fallas</h2>
@@ -1416,13 +1416,44 @@
           </button>
           <input id="bat-pdf-file-input" type="file" accept="application/pdf,.pdf" hidden>
         </div>
-        <p class="bat-board-hint">Selecciona una falla para consultar su secuencia; No Boot abre la guía de diagnóstico.</p>
+        <p class="bat-board-hint">Selecciona cualquier falla BAT para abrir Failure Record, Troubleshooting Sequence y Disposition Flow.</p>
       </div>
       <p id="bat-pdf-status" class="bat-pdf-status" role="status" aria-live="polite" hidden></p>
       <div id="bat-board" aria-label="Tablero de fallas BAT"></div>
     </div>
     <section id="bat-detail-area" class="hidden">
-      <div id="bat-failure-detail" class="m3-card bat-failure-detail hidden" aria-live="polite"></div>
+      <div id="bat-failure-detail" class="mtf-row-3 bat-failure-detail hidden" aria-live="polite">
+        <div class="mtf-detail-horizontal-grid bat-detail-grid">
+          <div class="bento-block-1">
+            <header class="bento-block-heading">
+              <div class="bento-block-heading-copy"><h2 class="bento-block-title">Failure Record</h2><p class="bento-block-subtitle">Identificación de falla y datos técnicos</p></div>
+            </header>
+            <div style="display:flex;align-items:center;gap:6px"><span id="bat-detail-station" class="mtf-tag" style="background:var(--md-sys-color-primary);color:#fff">BAT</span><span id="bat-detail-family" class="mtf-tag"></span></div>
+            <h3 id="bat-detail-title" style="margin:0;font-size:14px;font-weight:800;line-height:1.35;color:var(--md-sys-color-on-surface)"></h3>
+            <div class="bento-meta-item"><span class="bento-meta-label">Estación</span><span id="bat-detail-station-value" class="bento-meta-val">BAT</span></div>
+            <div class="bento-meta-item"><span class="bento-meta-label">Error Code</span><span id="bat-detail-code" class="bento-meta-val"></span></div>
+            <div class="bento-meta-item"><span class="bento-meta-label">Tipo de falla</span><span id="bat-detail-component" class="bento-meta-val"></span></div>
+            <div class="bento-meta-item"><span class="bento-meta-label">Descripción</span><span id="bat-detail-description" class="bento-meta-val"></span></div>
+            <div class="bento-meta-item"><span class="bento-meta-label">Flowchart</span><span id="bat-detail-flowchart" class="bento-meta-val"></span></div>
+          </div>
+          <div class="bento-block-2">
+            <header class="bento-block-heading">
+              <div class="bento-block-heading-copy"><h2 class="bento-block-title">Troubleshooting Sequence</h2><p class="bento-block-subtitle">Pasos técnicos definidos para esta falla</p></div>
+            </header>
+            <div id="bat-detail-step-count" class="m3-step-kicker"></div>
+            <ol id="bat-detail-steps" class="bat-detail-sequence"></ol>
+          </div>
+          <div class="bento-block-3">
+            <header class="bento-block-heading">
+              <div class="bento-block-heading-copy"><h2 class="bento-block-title">Disposition Flow</h2><p class="bento-block-subtitle">Criterio de calidad, retest y ruta de decisión</p></div>
+            </header>
+            <div class="mtf-quality-heading"><span style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--md-sys-color-primary);letter-spacing:.06em">Criterio de Calidad &amp; Retest</span><span class="mtf-tag" style="background:#e1f5fe;color:#0288d1;font-weight:800;font-size:10px">FLOWCHART</span></div>
+            <div id="bat-detail-action" class="m3-action-callout" style="margin-top:6px"></div>
+            <div class="flowchart-modal-actions"><button id="bat-flowchart-open" class="flowchart-open-btn" type="button" aria-haspopup="dialog" aria-controls="mtf-flowchart-modal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5m11-5v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Ampliar diagrama</button></div>
+            <div id="bat-disposition-flow" role="img" aria-label="Diagrama de disposición de la falla BAT"></div>
+          </div>
+        </div>
+      </div>
       <div id="bat-node-form" class="m3-card no-print hidden">
         <div class="m3-card-header">
           <h2 class="m3-card-title">1. Identificación del Nodo</h2>
@@ -2156,19 +2187,96 @@
       const layout = $("bat-layout");
       const detail = $("bat-failure-detail");
       const isNoBoot = failure?.family === "NOBOOT";
-      layout.classList.toggle("bat-reference-mode", !isNoBoot);
+      layout.classList.toggle("bat-details-mode", Boolean(failure));
+      layout.classList.toggle("bat-no-boot-mode", isNoBoot);
       $("bat-detail-area").classList.toggle("hidden", !failure);
       $("bat-node-form").classList.toggle("hidden", !isNoBoot);
       $("step-card").classList.add("hidden");
       $("bat-history-card").classList.toggle("hidden", !isNoBoot);
       $("closing-card").classList.add("hidden");
-      detail.classList.toggle("hidden", !failure || isNoBoot);
-      if (!failure || isNoBoot) return;
-      const steps = Array.isArray(failure.steps) ? failure.steps : [];
-      const stepMarkup = steps.length
-        ? `<ol class="bat-reference-steps">${steps.map((step, index) => `<li><strong>${escapeHtml(step.q || `Paso ${index + 1}`)}</strong>${step.detail ? `<span class="bat-reference-step-detail">${escapeHtml(step.detail)}</span>` : ""}${step.fail && !step.fail.includes("No se pudo completar este paso") ? `<span class="bat-reference-step-detail"><b>Si no pasa:</b> ${escapeHtml(step.fail)}</span>` : ""}</li>`).join("")}</ol>`
-        : `<p class="bat-reference-step-detail">Este registro no incluye una secuencia de pasos en el PDF importado.</p>`;
-      detail.innerHTML = `<div class="bat-failure-detail-head"><div><h2>${escapeHtml(failure.code)} · ${escapeHtml(failure.label)}</h2><div class="bat-failure-detail-meta">${escapeHtml(failure.familyLabel || failure.family || "BAT")} · Procedimiento de referencia del FFDG</div></div><span class="mtf-tag">${steps.length} PASOS</span></div><h3 style="margin:18px 0 0;font-size:15px">Troubleshooting Sequence</h3>${stepMarkup}`;
+      detail.classList.toggle("hidden", !failure);
+      if (!failure) return;
+
+      const sourceSteps = isNoBoot ? FFDG.data.flows.NOBOOT : (Array.isArray(failure.steps) ? failure.steps : []);
+      const steps = sourceSteps.map((step, index) => {
+        const originalTitle = step.title || step.q || `Paso ${index + 1}`;
+        const candidateNumber = Number(step.sourceNumber || originalTitle.match(/^\s*(?:Paso\s*)?(\d+)[.:·)]?/i)?.[1] || index + 1);
+        const sourceNumber = Number.isFinite(candidateNumber) ? candidateNumber : index + 1;
+        const title = originalTitle.replace(/^\s*(?:Paso\s*)?\d+\s*[.:·)]\s*/i, "").trim() || `Paso ${index + 1}`;
+        return { sourceNumber, title, detail: step.detail || "", fail: step.fail || "" };
+      });
+
+      $("bat-detail-station").textContent = "BAT";
+      $("bat-detail-family").textContent = failure.familyLabel || failure.family || "BAT";
+      $("bat-detail-title").textContent = `${failure.code} · ${failure.label}`;
+      $("bat-detail-code").textContent = failure.code;
+      $("bat-detail-component").textContent = failure.familyLabel || failure.family || "BAT";
+      $("bat-detail-description").textContent = failure.description || failure.label;
+      $("bat-detail-flowchart").textContent = isNoBoot ? "No Boot · Guía establecida" : `FFDG BAT · ${steps.length} pasos`;
+      $("bat-detail-step-count").textContent = steps.length
+        ? `Secuencia de referencia · ${steps.length} pasos${isNoBoot ? " · guía BAT establecida" : " · FFDG PDF"}`
+        : "No hay pasos asociados a esta falla en el catálogo BAT.";
+
+      const stepList = $("bat-detail-steps");
+      stepList.replaceChildren();
+      steps.forEach((step, index) => {
+        const item = document.createElement("li");
+        const heading = document.createElement("strong");
+        const number = document.createElement("span");
+        number.textContent = `${step.sourceNumber || index + 1}.`;
+        const title = document.createElement("span");
+        title.textContent = step.title;
+        heading.append(number, title);
+        item.appendChild(heading);
+        if (step.detail) {
+          const description = document.createElement("span");
+          description.className = "bat-detail-step-detail";
+          description.textContent = step.detail;
+          item.appendChild(description);
+        }
+        if (step.fail && !step.fail.includes("No se pudo completar este paso")) {
+          const failureGuidance = document.createElement("span");
+          failureGuidance.className = "bat-detail-step-detail";
+          failureGuidance.textContent = `Si no pasa: ${step.fail}`;
+          item.appendChild(failureGuidance);
+        }
+        stepList.appendChild(item);
+      });
+      $("bat-detail-action").innerHTML = `<strong>Acción / Procedimiento:</strong><br>${steps.length
+        ? "Ejecuta los pasos en orden y realiza retest según el procedimiento. Pass: continuar pruebas. Fail: avanzar al siguiente paso; si persiste al finalizar, escalar a FA Nivel 2."
+        : "Sin secuencia documentada. Consulta el FFDG vigente antes de intervenir."}`;
+      renderBatFlowchart(steps);
+    }
+    function renderBatFlowchart(steps) {
+      const box = $("bat-disposition-flow");
+      if (!steps.length) {
+        box.innerHTML = `<div class="mtf-no-procedure">No se generó diagrama porque el catálogo no contiene pasos para esta falla.</div>`;
+        return;
+      }
+      const actions = steps.slice(1);
+      const lastY = actions.length ? 135 + (actions.length - 1) * 56 : 102;
+      const height = Math.max(310, lastY + 100);
+      const escapeSvg = value => escapeHtml(String(value || ""));
+      const truncate = (value, limit) => value.length > limit ? `${value.slice(0, limit - 1)}…` : value;
+      const pill = (x, y, width, label, extra = "") => `<g class="fc-g ${extra}"><rect class="fc-n" x="${x}" y="${y}" width="${width}" height="32" rx="16"/><text x="${x + width / 2}" y="${y + 20}" font-size="10.5" text-anchor="middle">${escapeSvg(label)}</text></g>`;
+      let svg = `<svg viewBox="0 0 760 ${height}" width="100%" role="img" aria-label="Diagrama BAT generado desde ${steps.length} pasos" style="display:block">
+        <defs><marker id="bat-fc-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="fc-ar" d="M0 1.5L8 5 0 8.5z"/></marker><marker id="bat-fc-arrow-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="fc-arr" d="M0 1.5L8 5 0 8.5z"/></marker></defs>
+        ${pill(285, 14, 190, `${steps[0].sourceNumber}. ${truncate(steps[0].title, 23)}`, "on")}
+        <path class="fc-l" d="M380 46V70" marker-end="url(#bat-fc-arrow)"/>
+        <g class="fc-g fc-dm"><polygon class="fc-n" points="380,72 440,100 380,128 320,100"/><text x="380" y="104" font-size="11" text-anchor="middle">Re-Test</text></g>
+        <path class="fc-l" d="M440 100H590V142" marker-end="url(#bat-fc-arrow)"/><text class="fc-p" x="500" y="92">Pass</text>
+        <g class="fc-g fc-dm"><polygon class="fc-n" points="590,144 650,174 590,204 530,174"/><text x="590" y="171" font-size="9.5" text-anchor="middle">Validar</text><text x="590" y="183" font-size="8.5" text-anchor="middle">criterio BAT</text></g>
+        <path class="fc-l" d="M650 174H700V30H480" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="655" y="166">Fail</text>
+        <path class="fc-l" d="M590 204V236" marker-end="url(#bat-fc-arrow)"/><text class="fc-p" x="600" y="226">Pass</text>
+        <g class="fc-ok">${pill(510, 240, 160, "Continuar pruebas")}</g>
+        ${actions.length ? `<path class="fc-l" d="M380 128V150H290" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="338" y="143">Fail</text><path class="fc-l" d="M40 ${lastY + 19}V100H315" marker-end="url(#bat-fc-arrow)"/>` : `<path class="fc-l fc-lr" d="M380 128V157" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="390" y="145">Fail</text><g class="fc-er">${pill(300, 160, 160, "Escalar a FA Nivel 2")}</g>`}`;
+      actions.forEach((step, index) => {
+        const y = 135 + index * 56;
+        svg += `<g class="fc-g"><rect class="fc-n" x="70" y="${y}" width="220" height="38" rx="10"/><text x="180" y="${y + 16}" font-size="9.5" text-anchor="middle">${escapeSvg(truncate(`${step.sourceNumber}. ${step.title}`, 31))}</text><text x="180" y="${y + 29}" font-size="8" text-anchor="middle">Acción y retest</text></g><path class="fc-l" d="M70 ${y + 19}H40"/>`;
+        if (index < actions.length - 1) svg += `<path class="fc-l" d="M180 ${y + 38}V${y + 52}" stroke-dasharray="3 3" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="192" y="${y + 49}" style="font-size:7.5px">Fail</text>`;
+        else svg += `<path class="fc-l fc-lr" d="M180 ${y + 38}V${y + 47}" stroke-dasharray="3 3" marker-end="url(#bat-fc-arrow-red)"/><g class="fc-er">${pill(100, y + 50, 160, "Escalar a FA Nivel 2")}</g>`;
+      });
+      box.innerHTML = `${svg}</svg>`;
     }
     function finish(recommendation, passed) {
       FFDG.state.diagFinishedAt = new Date().toISOString();
@@ -3388,6 +3496,11 @@
             select.value = item.uid;
             select.dispatchEvent(new Event("change", { bubbles: true }));
             board.querySelectorAll(".bd-item").forEach(node => node.classList.toggle("selected", node === card));
+            const detailPanel = document.getElementById("bat-detail-area");
+            if (detailPanel) requestAnimationFrame(() => detailPanel.scrollIntoView({
+              behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+              block: "start"
+            }));
           });
           list.appendChild(card);
         });
@@ -4333,19 +4446,20 @@ main{padding-top:4px!important}
   })();</script>
 <script>(() => {
     const dialog = document.getElementById("mtf-flowchart-modal");
-    const openButton = document.getElementById("mtf-flowchart-open");
+    const openButtons = [document.getElementById("mtf-flowchart-open"), document.getElementById("bat-flowchart-open")].filter(Boolean);
     const closeButton = document.getElementById("mtf-flowchart-close");
     const content = document.getElementById("mtf-flowchart-modal-content");
-    if (!dialog || !openButton || !closeButton || !content) return;
-    openButton.addEventListener("click", () => {
-      const sourceDiagram = document.querySelector("#mtf-flowchart-diagram svg");
+    if (!dialog || !openButtons.length || !closeButton || !content) return;
+    openButtons.forEach(openButton => openButton.addEventListener("click", () => {
+      const isBat = openButton.id === "bat-flowchart-open";
+      const sourceDiagram = document.querySelector(isBat ? "#bat-disposition-flow svg" : "#mtf-flowchart-diagram svg");
       if (!sourceDiagram) return;
       content.replaceChildren(sourceDiagram.cloneNode(true));
-      const faultTitle = document.getElementById("mtf-detail-title")?.textContent.trim();
+      const faultTitle = document.getElementById(isBat ? "bat-detail-title" : "mtf-detail-title")?.textContent.trim();
       document.getElementById("mtf-flowchart-modal-title").textContent = faultTitle ? `Diagrama · ${faultTitle}` : "Diagrama de flujo";
       dialog.showModal();
       closeButton.focus();
-    });
+    }));
     closeButton.addEventListener("click", () => dialog.close());
     dialog.addEventListener("click", event => {
       if (event.target === dialog) dialog.close();

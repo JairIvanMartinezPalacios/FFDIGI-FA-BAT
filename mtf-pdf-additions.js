@@ -1,11 +1,324 @@
 window.FFDG_MTF_PDF_ADDITIONS = [
   {
-    "id": "PDF-MTF-001",
+    "id": "PDF-MTF-CASE-0001",
+    "pdfSection": 1,
+    "station": "FLA",
+    "code": "0020023006_571",
+    "name": "Verify fw failed. , HGX_FW_BMC_0 - NOT FOUND, HGX_FW_BMC_0 - NOT FOUND,",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Check the interposer state.",
+        "detail": "1.1 Use the following command to display all HGXs and confirm that every installed HGX is detected.\nSee IMAGE_024 below.\n<IP> = BMC IP (arp -n | grep MAC)\ncurl -k -u \"admin:<BMC_PASSWORD>\" \\\n-H \"Content-Type: application/json\" \\\n-X GET \"https://<IP>/redfish/v1/UpdateService/FirmwareInventory\"\n1.2 Install a Golden Interposer.\nIf all HGXs are detected, replace the Interposer. See IMAGE_025 below."
+      },
+      {
+        "title": "Re-seat all HMC and BMC cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace BMC.",
+        "detail": ""
+      },
+      {
+        "title": "Replace HMC.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-001.png",
+    "flowchartImageWidth": 983,
+    "flowchartImageHeight": 1057,
+    "sourcePdfPage": 18
+  },
+  {
+    "id": "PDF-MTF-CASE-0002",
+    "pdfSection": 2,
+    "station": "FLA",
+    "code": "020023006_000564",
+    "name": "Mismatches found in log comparison: get_fpga_fw_version_regtable[47G>>>Output>>> 0x01 0x06 0x00",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat and inspect the BMC board, HMC board, and all associated cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the HMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-002.png",
+    "flowchartImageWidth": 978,
+    "flowchartImageHeight": 1129,
+    "sourcePdfPage": 20
+  },
+  {
+    "id": "PDF-MTF-CASE-0003",
+    "pdfSection": 2,
+    "station": "FLA",
+    "code": "020023006_000564",
+    "name": "Mismatches found in log comparison: get_hmc_erot_spdm_certificate_count[47G>>>Output>>> 5, get_cpu_erot_spdm_certificate_count[47G>>>Output>>> 5, get_cpu_erot_spdm_certificate_count[47G>>>Output>>> 5",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat and inspect the BMC board, HMC board, and all associated cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the HMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-002.png",
+    "flowchartImageWidth": 978,
+    "flowchartImageHeight": 1129,
+    "sourcePdfPage": 20
+  },
+  {
+    "id": "PDF-MTF-CASE-0004",
+    "pdfSection": 3,
+    "station": "FLA",
+    "code": "020023006_000564, 020023006_000571",
+    "name": "Verify fw failed. , FW_CPLD_0: 0x00 0x0b 0x01 0x04 != \"[[\"0x00 0x0b 0x01 0x0b\"]]\" - NOT UPDATED, FW_CPLD_1: 0x00 0x0b 0x01 0x04 != \"[[\"0x00 0x0b 0x01 0x0b\"]]\" - NOT UPDATED, FW_CPLD_2: 0x00 0x10 0x01 0x03 != \"[[\"0x00 0x10 0x01 0x09\"]]\" - NOT UPDATED, FW_CPLD_3: 0x00 0x10 0x01 0x03 != \" [[\"0x00 0x10 0x01 0x09\"]]\" - NOT UPDATED",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the \"run_cable_check\" script.\nConfirm whether the script fails due to a \"JTAG,\" \"HMC I2C,\" or \"BMC I2C\" issue."
+      },
+      {
+        "title": "Re-seat or replace the associated cables.",
+        "detail": "Use the cable debug guide to identify the relevant cables.\nRe-seat or replace the identified cables."
+      },
+      {
+        "title": "Reseat and inspect BF3, BF3 riser, and associated cables.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat IPEX board and associated cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace BF3.",
+        "detail": ""
+      },
+      {
+        "title": "Replace IPEX board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-003.png",
+    "flowchartImageWidth": 914,
+    "flowchartImageHeight": 1262,
+    "sourcePdfPage": 22
+  },
+  {
+    "id": "PDF-MTF-CASE-0005",
+    "pdfSection": 4,
+    "station": "FLA",
+    "code": "020023006_000571",
+    "name": "ERROR: EID 20 23 missing",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Update Bianca_1 FPGA.",
+        "detail": "Update firmware on Bianca_1 FPGA using I2C recovery method from the BMC."
+      },
+      {
+        "title": "Re-seat/replace B2B cable.",
+        "detail": "Re-seat/replace B2B cable (DC-SCI cable) between Bianca_0 and Bianca_1."
+      },
+      {
+        "title": "Replace Bianca_1.",
+        "detail": "Replace the Bianca_1 board."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-004.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 967,
+    "sourcePdfPage": 24,
+    "replaceId": "FLA-07"
+  },
+  {
+    "id": "PDF-MTF-CASE-0006",
+    "pdfSection": 5,
+    "station": "FLA",
+    "code": "020023006_001",
+    "name": "Background copy still in progress for devices: HGX_FW_CPU_0(2:0x28), HGX_FW_CPU_1(1:0x28)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Reseat in same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Retest up to two times.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-005.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 280,
+    "sourcePdfPage": 25,
+    "replaceId": "FLA-17"
+  },
+  {
+    "id": "PDF-MTF-CASE-0007",
+    "pdfSection": 5,
+    "station": "FLA",
+    "code": "020023006_001",
+    "name": "EC_FW build type verification failed for devices: HGX_FW_CPU_0(2:0x28)[CmdFailed],",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Reseat in same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Retest up to two times.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-005.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 280,
+    "sourcePdfPage": 25,
+    "replaceId": "FLA-18"
+  },
+  {
+    "id": "PDF-MTF-CASE-0008",
+    "pdfSection": 6,
+    "station": "FLA",
+    "code": "020023006_001",
+    "name": "EROT certificate provisioning failed for devices: HGX_FW_ERoT_BMC_0(1:0x52),",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Reseat in same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Retest up to two times.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-006.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 474,
+    "sourcePdfPage": 26,
+    "replaceId": "FLA-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0009",
+    "pdfSection": 7,
+    "station": "FLA",
+    "code": "020023006_001, 020023006_561",
+    "name": "ERROR: POST failed to complete; timeout",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the run_cable_check script."
+      },
+      {
+        "title": "Re-seat the Clink cable.",
+        "detail": "Ensure that the cable is fully seated. See the \"Cable debug guide\" sheet for its location."
+      },
+      {
+        "title": "Re-seat the B2B cable.",
+        "detail": "Ensure that the cable is fully seated. See the \"Cable debug guide\" sheet for its location."
+      },
+      {
+        "title": "Verify the BF3 power path.",
+        "detail": "Confirm that the BF3 powers on.\nRe-seat the BF3 riser and power cables.\nConfirm that the PDB-to-BF3 cable at J6 is fully seated.\nMeasure the voltage at the three positive terminals of J6.\nIf J6 is not powered, re-seat the PDB and its cables.\nIf J6 remains unpowered, replace the PDB."
+      },
+      {
+        "title": "After confirming BF3 power, inspect and re-seat the PDB sideband cable.",
+        "detail": "Ensure that the cable is fully seated.\nIf damage is found, such as bent pins, replace the damaged component."
+      },
+      {
+        "title": "Replace the BMC hardware.",
+        "detail": "If there is no console output, the POST-complete timeout may be caused by faulty BMC hardware."
+      },
+      {
+        "title": "Replace the Bianca board(s).",
+        "detail": "If the POST-complete timeout is caused by a cross_socket_check failure, it is usually due to a\nfuse mismatch between the two Bianca boards.\nCheck the PBR build numbers of both Bianca boards.\nReplace one board so that both boards have the same PBR build number."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-007.png",
+    "flowchartImageWidth": 897,
+    "flowchartImageHeight": 1260,
+    "sourcePdfPage": 28,
+    "replaceId": "FLA-04"
+  },
+  {
+    "id": "PDF-MTF-CASE-0010",
+    "pdfSection": 8,
     "station": "FLA",
     "code": "020023006_002",
     "name": "EROT access error for HGX_FW_ERoT_BMC_0(1:0x52). Retry.",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLA",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -23,15 +336,76 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-008.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 342,
+    "sourcePdfPage": 29
   },
   {
-    "id": "PDF-MTF-002",
+    "id": "PDF-MTF-CASE-0011",
+    "pdfSection": 9,
+    "station": "FLA",
+    "code": "020023006_005",
+    "name": "Boot log is stuck at Wait for CLINK complete",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Inspect and reseat C-Link and B2B cables and connectors.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the Bianca boards for physical damage.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-009.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 316,
+    "sourcePdfPage": 30,
+    "replaceId": "FLA-20"
+  },
+  {
+    "id": "PDF-MTF-CASE-0012",
+    "pdfSection": 10,
+    "station": "FLA",
+    "code": "020023006_007",
+    "name": "Key/RBP revocation verification failed for devices: HGX_FW_CPU_0-APkey(2:0x28)[NotRevoked], HGX_FW_CPU_1-APkey(1:0x28)[NotRevoked],",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Reseat in same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Retest up to two times.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-010.png",
+    "flowchartImageWidth": 845,
+    "flowchartImageHeight": 1257,
+    "sourcePdfPage": 32,
+    "replaceId": "FLA-03"
+  },
+  {
+    "id": "PDF-MTF-CASE-0013",
+    "pdfSection": 11,
     "station": "FLA",
     "code": "020023006_15962",
     "name": "Unable to write FRU via ipmitool cmd but was able to write via i2c. Please check FRU ID for PDB.",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLA",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
     "steps": [
       {
         "title": "Reseat the PDB sideband cable between PDB J15 and Bianca_0 JSB2.",
@@ -49,29 +423,301 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-011.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 321,
+    "sourcePdfPage": 33
   },
   {
-    "id": "PDF-MTF-003",
+    "id": "PDF-MTF-CASE-0014",
+    "pdfSection": 12,
+    "station": "FLA",
+    "code": "020023006_300",
+    "name": "Loop counter AC_CYCLE_COUNT_FLASH_AND_ACTIVATE_FW exceeded the limit of 2",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Confirm that the correct E1.s backplane version and BMC NVPN is under use.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat E1.S backplane MCIO cables.",
+        "detail": "Each E1.S backplane has two MCIO cables."
+      },
+      {
+        "title": "Re-seat E1.S backplane power cables.",
+        "detail": "Each E1.S backplane has a power cable that connects to the PDB."
+      },
+      {
+        "title": "Check Bianca for physical damage.",
+        "detail": "Inspect the bottom-left corner of Bianca for physical damage."
+      },
+      {
+        "title": "Offline flash IPEX and E1.s CPLDs using the Lattice dongle.",
+        "detail": ""
+      },
+      {
+        "title": "Confirm correct BMC FW is loaded. If incorrect, attempt re-installing BMC FW.",
+        "detail": ""
+      },
+      {
+        "title": "Replace BMC.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-012.png",
+    "flowchartImageWidth": 987,
+    "flowchartImageHeight": 1139,
+    "sourcePdfPage": 35,
+    "replaceId": "FLA-05"
+  },
+  {
+    "id": "PDF-MTF-CASE-0015",
+    "pdfSection": 13,
     "station": "FLA",
     "code": "020023006_465746_564",
-    "name": "Mismatches found in log comparison: get_hmc_fw_version_file[47G>>>Output>>> gb200nvl-25.06-2-0- gfaf5e314.1749687191.3925676, get_hmc_fw_build_type[47G>>>Output>>> dev-platform Mismatches found in log comparison: get_hmc_fw_version_file[47G>>>Output>>> gb200nvl-25.06-2-0- gfaf5e314.1749687290.2405307, get_hmc_fw_build_type[47G>>>Output>>> prod-platform",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLA",
+    "name": "Mismatches found in log comparison: get_hmc_fw_version_file[47G>>>Output>>> gb200nvl-25.06-2-0- gfaf5e314.1749687191.3925676, get_hmc_fw_build_type[47G>>>Output>>> dev-platform",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
     "steps": [
       {
         "title": "Check the BMC and HMC build.",
-        "detail": "If a device reports prod-platform, it must be replaced.\nRetrieve the BMC IP address:\narp -n | grep BMC_MAC\nReplace BMC_IP in the following script with the BMC IP address, then run the script.\n/home/nvguest/sean/MFG_Diag/GB200/mgx_mp/618-24975-0000-MFG-\n50526.1/depot_modules/nv_tools/scripts/nvdebug_14 \\\n-i BMC_IP \\\n-u 'admin' \\\n-p '<BMC_PASSWORD>' \\\n-v \\\n-o /home/nvguest/sean/nvdebug_logs \\\n-C /home/nvguest/sean/MFG_Diag/GB200/mgx_mp/618-24975-0000-MFG-\n50526.1/depot_modules/nv_tools/assets/nvdebug/gb200_nvdebug_config.ya\nml \\\n-S R24\nLocate the ZIP file created under /home/nvguest/sean/nvdebug_logs.\nOpen the following log within the ZIP file:"
+        "detail": "If a device reports prod-platform, it must be replaced.\nRetrieve the BMC IP address:\narp -n | grep BMC_MAC\nReplace BMC_IP in the following script with the BMC IP address, then run the script.\n/home/nvguest/sean/MFG_Diag/GB200/mgx_mp/618-24975-0000-MFG-\n50526.1/depot_modules/nv_tools/scripts/nvdebug_14 \\\n-i BMC_IP \\\n-u 'admin' \\\n-p '<BMC_PASSWORD>' \\\n-v \\\n-o /home/nvguest/sean/nvdebug_logs \\\n-C /home/nvguest/sean/MFG_Diag/GB200/mgx_mp/618-24975-0000-MFG-\n50526.1/depot_modules/nv_tools/assets/nvdebug/gb200_nvdebug_config.ya\nml \\\n-S R24\nLocate the ZIP file created under /home/nvguest/sean/nvdebug_logs.\nOpen the following log within the ZIP file:\nDUT.zip/DUT/redfish/Redfish_R24_hgx_system_fw_attributes_dump/obmcdum\np/console.log\nLocate run_firmware_check_structure to identify whether the build check applies to the BMC\nor HMC.\nLocate get_hmc_fw_build_type to identify the device build.\nDevice    Bad Build           Good Build\nBMC       prod-platform       dev-platform\nHMC       prod-platform       dev-platform"
+      },
+      {
+        "title": "Replace the BMC or HMC device that reports prod-platform with a device that has the expected build.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-013.png",
+    "flowchartImageWidth": 1083,
+    "flowchartImageHeight": 680,
+    "sourcePdfPage": 37
   },
   {
-    "id": "PDF-MTF-004",
-    "station": "AST, FTS, IOT, NVL, RIN, FCT",
-    "code": "033026006_009-001-1-000000000140, 054018006_XXX-000-1-000000000140, 055004006_015-000-1-000000000140, 028001006_000-000-1-000000000272",
-    "name": "Nvlink Status on Tray x GPUy Nvlink x STATUS: INVALID. FOM Values = [x, x]. Rack Slot 1, INVALID BDF 00xx:0x:00.0 passed to GetLinkPhysLoc(). NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3. Found 5e-06, exceeded threshold 1e-07. NvLink bus error. Found 5e-06, exceeded threshold 1e-07. User aborted the script. Found X, exceeded threshold 1e-06, X connector X, Column X, pins C/D, G/H. Found 5e-07, exceeded threshold 1e-25, 4x19 connector 2, Column 13. Nvlink signal integrity issue on... EXPECTED 4 CBC, ONLY DETECTED 3",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · AST, FTS, IOT, NVL, RIN, FCT",
+    "id": "PDF-MTF-CASE-0016",
+    "pdfSection": 13,
+    "station": "FLA",
+    "code": "020023006_465746_564",
+    "name": "Mismatches found in log comparison: get_hmc_fw_version_file[47G>>>Output>>> gb200nvl-25.06-2-0- gfaf5e314.1749687290.2405307, get_hmc_fw_build_type[47G>>>Output>>> prod-platform",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Check the BMC and HMC build.",
+        "detail": "If a device reports prod-platform, it must be replaced.\nRetrieve the BMC IP address:\narp -n | grep BMC_MAC\nReplace BMC_IP in the following script with the BMC IP address, then run the script.\n/home/nvguest/sean/MFG_Diag/GB200/mgx_mp/618-24975-0000-MFG-\n50526.1/depot_modules/nv_tools/scripts/nvdebug_14 \\\n-i BMC_IP \\\n-u 'admin' \\\n-p '<BMC_PASSWORD>' \\\n-v \\\n-o /home/nvguest/sean/nvdebug_logs \\\n-C /home/nvguest/sean/MFG_Diag/GB200/mgx_mp/618-24975-0000-MFG-\n50526.1/depot_modules/nv_tools/assets/nvdebug/gb200_nvdebug_config.ya\nml \\\n-S R24\nLocate the ZIP file created under /home/nvguest/sean/nvdebug_logs.\nOpen the following log within the ZIP file:\nDUT.zip/DUT/redfish/Redfish_R24_hgx_system_fw_attributes_dump/obmcdum\np/console.log\nLocate run_firmware_check_structure to identify whether the build check applies to the BMC\nor HMC.\nLocate get_hmc_fw_build_type to identify the device build.\nDevice    Bad Build           Good Build\nBMC       prod-platform       dev-platform\nHMC       prod-platform       dev-platform"
+      },
+      {
+        "title": "Replace the BMC or HMC device that reports prod-platform with a device that has the expected build.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-013.png",
+    "flowchartImageWidth": 1083,
+    "flowchartImageHeight": 680,
+    "sourcePdfPage": 37
+  },
+  {
+    "id": "PDF-MTF-CASE-0017",
+    "pdfSection": 14,
+    "station": "FLA",
+    "code": "020023006_508",
+    "name": "System failed to power on.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the run_cable_check script."
+      },
+      {
+        "title": "Reseat Clink and B2B cable.",
+        "detail": "See the \"Cable debug guide\" sheet for the cable location."
+      },
+      {
+        "title": "Reseat J15 PDB to Bianca Cable.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat PDB Board and cables.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat BMC Hardware and cables.",
+        "detail": ""
+      },
+      {
+        "title": "Re-flash SBIOS.",
+        "detail": "A POST complete issue can be caused by a corrupted SBIOS image that prevents the system from\nbooting."
+      },
+      {
+        "title": "Replace the BMC hardware.",
+        "detail": "A POST complete timeout with no console output could be caused by faulty BMC hardware.\nReplace the BMC hardware."
+      },
+      {
+        "title": "Replace the Bianca board(s).",
+        "detail": "If the POST complete timeout is caused by a cross_socket_check failure, it is usually due to a fuse\nmismatch between the two Bianca boards.\nCheck the PBR build numbers of both Bianca boards.\nReplace one board so that both boards have the same PBR build number."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-014.png",
+    "flowchartImageWidth": 963,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 39,
+    "replaceId": "FLA-08"
+  },
+  {
+    "id": "PDF-MTF-CASE-0018",
+    "pdfSection": 15,
+    "station": "FLA",
+    "code": "020023014_000590",
+    "name": "Max retries of 6, reached. Error during HOST_STATE using clean_slate tool.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-flash FPGA firmware.",
+        "detail": "Re-flash the FPGA firmware on the primary and secondary Bianca boards."
+      },
+      {
+        "title": "Check for 12V short.",
+        "detail": "Check for 12V_main short to ground.\nIf found, perform Step 3b.\nIf not found, continue to Step 4.\nStep 3b: Identify and replace relevant components."
+      },
+      {
+        "title": "Inspect/re-seat/replace PDB sideband cable.",
+        "detail": "Inspect/re-seat/replace PDB sideband cable (PDB J15 - Bianca_0 JSB2)."
+      },
+      {
+        "title": "Use Golden PDB to confirm run power can be turned on.",
+        "detail": "If run power turns on, perform Step 5b.\nIf run power remains off, proceed to Step 6.\nStep 5b: Replace PDB."
+      },
+      {
+        "title": "Replace Bianca board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-015.png",
+    "flowchartImageWidth": 761,
+    "flowchartImageHeight": 1266,
+    "sourcePdfPage": 41,
+    "replaceId": "FLA-11"
+  },
+  {
+    "id": "PDF-MTF-CASE-0019",
+    "pdfSection": 16,
+    "station": "FLA",
+    "code": "020023014_na",
+    "name": "RESET_BMC_DEFAULTS(BMC_READY(timeout))",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat HMC.",
+        "detail": ""
+      },
+      {
+        "title": "Replace HMC.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-016.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 444,
+    "sourcePdfPage": 42,
+    "replaceId": "FLA-12"
+  },
+  {
+    "id": "PDF-MTF-CASE-0020",
+    "pdfSection": 17,
+    "station": "FLA",
+    "code": "020023036_6d69786378",
+    "name": "900-9X86E-00SX-SPA is from DK, 900-9X86E-00CX-SP0 is from PK",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Replace CX8 with the correct part number 900-9X86E-00CX-SP0.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-017.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 348,
+    "sourcePdfPage": 43,
+    "replaceId": "FLA-14"
+  },
+  {
+    "id": "PDF-MTF-CASE-0021",
+    "pdfSection": 18,
+    "station": "FLA",
+    "code": "020039006_000613",
+    "name": "FRU field Board Serial mismatch; read: XXXXXXXXXXXXX, expected: YYYYYYYYYYYYY",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Re-program Cx7 FRUID.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-018.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 343,
+    "sourcePdfPage": 44
+  },
+  {
+    "id": "PDF-MTF-CASE-0022",
+    "pdfSection": 19,
+    "station": "AST",
+    "code": "023001006_000-000-1-000000000140",
+    "name": "Nvlink Status on Tray x GPUy Nvlink x STATUS: INVALID. FOM Values = [x, x]. Rack Slot 1, INVALID BDF 00xx:0x:00.0 passed to GetLinkPhysLoc().",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
     "steps": [
       {
         "title": "Using a camera, visually inspect the tray NVLink RAF connectors for damage or contamination.",
@@ -97,15 +743,363 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
+    "flowchartImageWidth": 781,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 46,
+    "replaceId": "AST-04"
   },
   {
-    "id": "PDF-MTF-005",
-    "station": "AST, RIN, FCT, FTS",
-    "code": "0550110037_1, 054018006_048-000-0-000000000086",
-    "name": "GPU MODS exceeded the timeout and will be terminated Tegra MODS exceeded the timeout and will be terminated MODS exited with status: SIGBUS - Bus error (bad memory access) Script failed to execute Failed MODS 43 CpuStress test. The 1 run 198.164 secs. Error: unexpected device interrupts Bandwidth out of range ERROR: could not ping device XXX.XX.X.XXX Not available SSH Operation cmd sftp failed or unable to establish SSH connection to XXX.XX.X.XXX",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · AST, RIN, FCT, FTS",
+    "id": "PDF-MTF-CASE-0023",
+    "pdfSection": 19,
+    "station": "NVL",
+    "code": "098011006_009-001-1-000000000140",
+    "name": "NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · NVL",
+    "steps": [
+      {
+        "title": "Using a camera, visually inspect the tray NVLink RAF connectors for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink RAF connector inspection:",
+        "detail": "If no issues are found, move the tray to a different MTF slot.\nIf an issue is found, replace the suspect Bianca(s)."
+      },
+      {
+        "title": "Using a camera, visually inspect the NVLink loopback CBC in the MTF slot for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink loopback CBC inspection:",
+        "detail": "If an issue is found, remove the MTF slot from usage until the CBC can be replaced.\nIf no issue is found, continue using the MTF slot."
+      },
+      {
+        "title": "If the retest in the different MTF slot fails or damage is found, replace the suspect Bianca(s).",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
+    "flowchartImageWidth": 781,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 46
+  },
+  {
+    "id": "PDF-MTF-CASE-0024",
+    "pdfSection": 19,
+    "station": "NVL",
+    "code": "098011006_009-001-1-020000254140",
+    "name": "Found 5e-06, exceeded threshold 1e-07.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · NVL",
+    "steps": [
+      {
+        "title": "Using a camera, visually inspect the tray NVLink RAF connectors for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink RAF connector inspection:",
+        "detail": "If no issues are found, move the tray to a different MTF slot.\nIf an issue is found, replace the suspect Bianca(s)."
+      },
+      {
+        "title": "Using a camera, visually inspect the NVLink loopback CBC in the MTF slot for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink loopback CBC inspection:",
+        "detail": "If an issue is found, remove the MTF slot from usage until the CBC can be replaced.\nIf no issue is found, continue using the MTF slot."
+      },
+      {
+        "title": "If the retest in the different MTF slot fails or damage is found, replace the suspect Bianca(s).",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
+    "flowchartImageWidth": 781,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 46
+  },
+  {
+    "id": "PDF-MTF-CASE-0025",
+    "pdfSection": 19,
+    "station": "IOT",
+    "code": "033026006_009-001-1-000000000140",
+    "name": "NvLink bus error.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "Using a camera, visually inspect the tray NVLink RAF connectors for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink RAF connector inspection:",
+        "detail": "If no issues are found, move the tray to a different MTF slot.\nIf an issue is found, replace the suspect Bianca(s)."
+      },
+      {
+        "title": "Using a camera, visually inspect the NVLink loopback CBC in the MTF slot for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink loopback CBC inspection:",
+        "detail": "If an issue is found, remove the MTF slot from usage until the CBC can be replaced.\nIf no issue is found, continue using the MTF slot."
+      },
+      {
+        "title": "If the retest in the different MTF slot fails or damage is found, replace the suspect Bianca(s).",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
+    "flowchartImageWidth": 781,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 46
+  },
+  {
+    "id": "PDF-MTF-CASE-0026",
+    "pdfSection": 19,
+    "station": "FTS",
+    "code": "054018006_015-000-1-020000043016",
+    "name": "Found 5e-06, exceeded threshold 1e-07. User aborted the script.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Using a camera, visually inspect the tray NVLink RAF connectors for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink RAF connector inspection:",
+        "detail": "If no issues are found, move the tray to a different MTF slot.\nIf an issue is found, replace the suspect Bianca(s)."
+      },
+      {
+        "title": "Using a camera, visually inspect the NVLink loopback CBC in the MTF slot for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink loopback CBC inspection:",
+        "detail": "If an issue is found, remove the MTF slot from usage until the CBC can be replaced.\nIf no issue is found, continue using the MTF slot."
+      },
+      {
+        "title": "If the retest in the different MTF slot fails or damage is found, replace the suspect Bianca(s).",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
+    "flowchartImageWidth": 781,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 46
+  },
+  {
+    "id": "PDF-MTF-CASE-0150",
+    "pdfSection": 67,
+    "station": "FTS",
+    "code": "054018006_XXX-000-1-000000000140, 054018006_015-000-1-000000000140",
+    "name": "Found X, exceeded threshold 1e-06, X connector X, Column X, pins C/D, G/H",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Visually inspect the tray NVLink RAF connector(s).",
+        "detail": "Using a camera, visually inspect the tray NVLink RAF connector(s) for damage and/or contamination.\nIf an issue is found, proceed to Step 3.\nIf no issue is found, move the tray to a different MTF slot.\nIf the retest passes, continue to the next station.\nIf the retest fails, proceed to Step 3."
+      },
+      {
+        "title": "Visually inspect the NVLink loopback CBC in the MTF slot.",
+        "detail": "Using a camera, visually inspect the NVLink loopback CBC in the MTF slot for damage and/or\ncontamination.\nIf an issue is found on the slot CBC, remove the MTF slot from usage until the CBC can be replaced.\nIf no issue is found, no action is needed and the MTF slot can remain in use."
+      },
+      {
+        "title": "Replace the suspect Bianca(s).",
+        "detail": "Replace the suspect Bianca(s) if:\nAn issue is found on the NVLink RAF connector(s).\nThe retest fails in a different MTF slot.\nDamage is found.\nSend the replaced Bianca(s) to Repair."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-067.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1152,
+    "sourcePdfPage": 128,
+    "replaceId": "FTS-10"
+  },
+  {
+    "id": "PDF-MTF-CASE-0028",
+    "pdfSection": 19,
+    "station": "RIN",
+    "code": "055004006_015-000-1-000000000140",
+    "name": "Found 5e-07, exceeded threshold 1e-25, 4x19 connector 2, Column 13.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Using a camera, visually inspect the tray NVLink RAF connectors for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink RAF connector inspection:",
+        "detail": "If no issues are found, move the tray to a different MTF slot.\nIf an issue is found, replace the suspect Bianca(s)."
+      },
+      {
+        "title": "Using a camera, visually inspect the NVLink loopback CBC in the MTF slot for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink loopback CBC inspection:",
+        "detail": "If an issue is found, remove the MTF slot from usage until the CBC can be replaced.\nIf no issue is found, continue using the MTF slot."
+      },
+      {
+        "title": "If the retest in the different MTF slot fails or damage is found, replace the suspect Bianca(s).",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
+    "flowchartImageWidth": 781,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 46
+  },
+  {
+    "id": "PDF-MTF-CASE-0029",
+    "pdfSection": 19,
+    "station": "FCT",
+    "code": "028001006_000-000-1-000000000272",
+    "name": "Nvlink signal integrity issue on...",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Using a camera, visually inspect the tray NVLink RAF connectors for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink RAF connector inspection:",
+        "detail": "If no issues are found, move the tray to a different MTF slot.\nIf an issue is found, replace the suspect Bianca(s)."
+      },
+      {
+        "title": "Using a camera, visually inspect the NVLink loopback CBC in the MTF slot for damage or contamination.",
+        "detail": ""
+      },
+      {
+        "title": "Based on the NVLink loopback CBC inspection:",
+        "detail": "If an issue is found, remove the MTF slot from usage until the CBC can be replaced.\nIf no issue is found, continue using the MTF slot."
+      },
+      {
+        "title": "If the retest in the different MTF slot fails or damage is found, replace the suspect Bianca(s).",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
+    "flowchartImageWidth": 781,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 46
+  },
+  {
+    "id": "PDF-MTF-CASE-0074",
+    "pdfSection": 28,
+    "station": "AST",
+    "code": "023002036_135870",
+    "name": "EXPECTED 4 CBC, ONLY DETECTED 3",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Move tray to a known good MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "If still fail then visually inspect suspect NVLink connector for damage.",
+        "detail": ""
+      },
+      {
+        "title": "If no obvious issue found with NVLink connector then replace suspect Bianca.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-028.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 268,
+    "sourcePdfPage": 61,
+    "replaceId": "AST-08"
+  },
+  {
+    "id": "PDF-MTF-CASE-0031",
+    "pdfSection": 20,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "GPUNum: found 3 expected 4",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Identify the suspect Bianca from the log review.",
+        "detail": "Refer to the mapping shown in the PCIe topology sheet."
+      },
+      {
+        "title": "Remove the coldplate and CX8 module.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the Mirror Mez connectors on the CX8 and Bianca for damage or anomalies.",
+        "detail": ""
+      },
+      {
+        "title": "If damage is found on the connector(s), replace the CX8 and/or Bianca.",
+        "detail": ""
+      },
+      {
+        "title": "If no obvious damage is found on the connectors, inspect the entire CX8 and Bianca for damage or",
+        "detail": "anomalies."
+      },
+      {
+        "title": "Reassemble the tray and resume the flow.",
+        "detail": "At the BAT repair station, use lspci to verify that all GPUs are reported."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-020.png",
+    "flowchartImageWidth": 923,
+    "flowchartImageHeight": 1257,
+    "sourcePdfPage": 48,
+    "replaceId": "AST-09"
+  },
+  {
+    "id": "PDF-MTF-CASE-0032",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "GPU MODS exceeded the timeout and will be terminated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
     "steps": [
       {
         "title": "Reseat in the same MTF slot.",
@@ -115,15 +1109,832 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
   },
   {
-    "id": "PDF-MTF-006",
+    "id": "PDF-MTF-CASE-0033",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "GPU MODS exceeded the timeout and will be terminated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50,
+    "replaceId": "RIN-01"
+  },
+  {
+    "id": "PDF-MTF-CASE-0034",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "GPU MODS exceeded the timeout and will be terminated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0035",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "GPU MODS exceeded the timeout and will be terminated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0036",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "Tegra MODS exceeded the timeout and will be terminated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0037",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "Tegra MODS exceeded the timeout and will be terminated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50,
+    "replaceId": "RIN-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0038",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "Tegra MODS exceeded the timeout and will be terminated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0039",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "Tegra MODS exceeded the timeout and will be terminated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0040",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "MODS exited with status: SIGBUS - Bus error (bad memory access)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0041",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "MODS exited with status: SIGBUS - Bus error (bad memory access)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50,
+    "replaceId": "RIN-03"
+  },
+  {
+    "id": "PDF-MTF-CASE-0042",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "MODS exited with status: SIGBUS - Bus error (bad memory access)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0043",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "MODS exited with status: SIGBUS - Bus error (bad memory access)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0044",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "Script failed to execute",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0045",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "Script failed to execute",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50,
+    "replaceId": "RIN-04"
+  },
+  {
+    "id": "PDF-MTF-CASE-0046",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "Script failed to execute",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0047",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "Script failed to execute",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0048",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "Failed MODS 43 CpuStress test. The 1 run 198.164 secs. Error: unexpected device interrupts",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0049",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "Failed MODS 43 CpuStress test. The 1 run 198.164 secs. Error: unexpected device interrupts",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50,
+    "replaceId": "RIN-05"
+  },
+  {
+    "id": "PDF-MTF-CASE-0050",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "Failed MODS 43 CpuStress test. The 1 run 198.164 secs. Error: unexpected device interrupts",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0051",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "Failed MODS 43 CpuStress test. The 1 run 198.164 secs. Error: unexpected device interrupts",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0052",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "Bandwidth out of range",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0053",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "Bandwidth out of range",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50,
+    "replaceId": "RIN-06"
+  },
+  {
+    "id": "PDF-MTF-CASE-0054",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "Bandwidth out of range",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0055",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "Bandwidth out of range",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0056",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "ERROR: could not ping device XXX.XX.X.XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0057",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "ERROR: could not ping device XXX.XX.X.XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50,
+    "replaceId": "RIN-07"
+  },
+  {
+    "id": "PDF-MTF-CASE-0058",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "ERROR: could not ping device XXX.XX.X.XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0059",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "ERROR: could not ping device XXX.XX.X.XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0060",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "Not available",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0061",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "Not available",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0062",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "Not available",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0063",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "Not available",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0064",
+    "pdfSection": 21,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000086",
+    "name": "SSH Operation cmd sftp failed or unable to establish SSH connection to XXX.XX.X.XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0065",
+    "pdfSection": 21,
+    "station": "RIN",
+    "code": "055004006_077-076-0-000000000002, 055004006_077-075-0-000000000002, 055004006_077-000-1-000000000001, 055004006_000-000-1-020000000021, 055004006_015-000-1-020000043097, 055004006_077-075-3-000000000014, 055016006_559, 0550110037_1",
+    "name": "SSH Operation cmd sftp failed or unable to establish SSH connection to XXX.XX.X.XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0066",
+    "pdfSection": 21,
+    "station": "FCT",
+    "code": "XXXXXX036_na",
+    "name": "SSH Operation cmd sftp failed or unable to establish SSH connection to XXX.XX.X.XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0067",
+    "pdfSection": 21,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000086",
+    "name": "SSH Operation cmd sftp failed or unable to establish SSH connection to XXX.XX.X.XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
+    "sourcePdfPage": 50
+  },
+  {
+    "id": "PDF-MTF-CASE-0068",
+    "pdfSection": 22,
     "station": "AST",
     "code": "023001006_048-000-0-000000000106",
     "name": "FRU_688-24975-0012-000_Board_Mfg 'FRU_688-24975-0012-000_Board_Mfg': not found. expected '=/.+'",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · AST",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -137,15 +1948,147 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-022.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
+    "sourcePdfPage": 51
   },
   {
-    "id": "PDF-MTF-007",
+    "id": "PDF-MTF-CASE-0069",
+    "pdfSection": 23,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000110",
+    "name": "GPU_00xx_06_00_0_PCISpeed GPU Speed_Mismatch 00xx:06:00.0 0009_06_00_0 found: '2.5GT/s' expected: '64GT/s'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Remove the CX8 board and inspect the connector pins for damage, dust, or debris.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the Bianca and CX8 boards.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the CX8 board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the Bianca board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-023.png",
+    "flowchartImageWidth": 909,
+    "flowchartImageHeight": 1254,
+    "sourcePdfPage": 53
+  },
+  {
+    "id": "PDF-MTF-CASE-0070",
+    "pdfSection": 24,
+    "station": "AST",
+    "code": "023001006_048-000-0-000000000110",
+    "name": "GPU Width_Mismatch 00xx:06:00.0 00xx_06_00_0 found: 'x8' expected: 'x16'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Identify the suspect Bianca from the error description.",
+        "detail": "Refer to the mapping shown in the PCIe topology sheet."
+      },
+      {
+        "title": "Visually inspect the suspect Bianca for damage on the row of AC coupling capacitors between J115 and",
+        "detail": "mounting screw MEC47, and between J52 and J54.\nRefer to IMAGE_015 and IMAGE_016."
+      },
+      {
+        "title": "If damage is found, replace the suspect Bianca.",
+        "detail": ""
+      },
+      {
+        "title": "If no damage is found, remove the coldplate and CX8 module from the suspect Bianca.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the rows of AC coupling capacitors near J115.",
+        "detail": "Refer to IMAGE_017 and IMAGE_018.\nIf damage is found, replace the suspect Bianca."
+      },
+      {
+        "title": "If no obvious damage is found, inspect the CX8 module and Bianca Mirror Mezz connectors for damage or",
+        "detail": "other anomalies (EX: dust)."
+      },
+      {
+        "title": "Reseat the CX8 module, reassemble the tray, and run BAT.",
+        "detail": ""
+      },
+      {
+        "title": "Retest one time.",
+        "detail": "If no part was changed, start the retest at AST.\nIf a part was changed, start the retest at FLA.\nIf the retest passes, continue to the next station."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null,
+    "replaceId": "AST-07"
+  },
+  {
+    "id": "PDF-MTF-CASE-0071",
+    "pdfSection": 25,
+    "station": "AST",
+    "code": "023001006_051-000-0-000000000050",
+    "name": "Out of range in BMC returned data on Getting X Bianca AINx ADC reading. Retrieved value = xx. Normalized value = xx. Expected range = [0.5, 0.55], I2C I2C_Failure - Getting_X_Bianca_AINx_ADC_reading Check failed.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Identify the suspect Bianca from the error description.",
+        "detail": ""
+      },
+      {
+        "title": "Visually inspect the leak sensors for damage and check for short circuits using a Digital Multi-Meter (DMM).",
+        "detail": ""
+      },
+      {
+        "title": "If damage or a short circuit is found on one or more leak sensors, replace the affected leak sensor (e.g.,",
+        "detail": "coldplate)."
+      },
+      {
+        "title": "If no damage or short circuit is found on any leak sensors, replace the suspect Bianca.",
+        "detail": "After completing the applicable repair in Step 3 or Step 4, reassemble the system and run BAT."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-025.png",
+    "flowchartImageWidth": 790,
+    "flowchartImageHeight": 1257,
+    "sourcePdfPage": 57,
+    "replaceId": "AST-06"
+  },
+  {
+    "id": "PDF-MTF-CASE-0072",
+    "pdfSection": 26,
     "station": "AST",
     "code": "023001036_626633720A",
     "name": "Please check: BF3(R)",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · AST",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -159,15 +2102,147 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-026.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 368,
+    "sourcePdfPage": 58
   },
   {
-    "id": "PDF-MTF-008",
-    "station": "FCT, FTS, RIN",
-    "code": "028001006_000-000-3-000000000014, 028001006_005-000-1-000000000194, 028001006_005-000-1-000000000316, 054018006_015-000-1-000000000194, 054018006_015-000-1-000000000316, 055004006_000-000-1-000000000194",
-    "name": "Physical memory failed. Found memory error type \"SBE\" in \"FB\"., Found memory error type \"MISC\" in \"FB\". Found memory error type \"CORR\" in \"FB\". GPUXXXXX Found memory error type \"MISC\" in \"FB\"., Found memory error type \"SBE\" in \"FB\". GPUXXXXX Found memory error type \"CORR\" in \"FB\". GPUXXXXX Found memory error type \"SBE\" in \"FB\"., Found memory error type \"MISC\" in \"FB\".",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FCT, FTS, RIN",
+    "id": "PDF-MTF-CASE-0073",
+    "pdfSection": 27,
+    "station": "AST",
+    "code": "023001036_637837xxx",
+    "name": "Please check: CX7-P1(x) CX7-P2(x)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Confirm the Chassis serial number and identify which CX7 module has issue (one or both).",
+        "detail": ""
+      },
+      {
+        "title": "Log in system BMC and read out the actual CX7 MAC addresses stored in FRU EEPROM (e.g. ipmitool fru",
+        "detail": "print)."
+      },
+      {
+        "title": "Compare MAC addresses stored in SFC datafile to actual MAC addresses read from FRU EEPROM.",
+        "detail": ""
+      },
+      {
+        "title": "Make appropriate correction in SFC to match the actual MAC addresses read from FRU EEPROM.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-027.png",
+    "flowchartImageWidth": 806,
+    "flowchartImageHeight": 1257,
+    "sourcePdfPage": 60,
+    "replaceId": "AST-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0075",
+    "pdfSection": 29,
+    "station": "AST",
+    "code": "023002036_13892839",
+    "name": "MST ADDED X BUT DIAG EXPECT Y, PORT MISSING CONNECTION",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Check the applicable OSFP cable connection based on the error description.",
+        "detail": "If the error description does not include Bad/unsupported EEPROM, check that the OSFP Loopout\ncables are fully inserted. A green LED indicates that the cable has a good attachment.\nIf the error description includes Bad/unsupported EEPROM, inspect the internal OSFP sideband\ncable for bent pins, poor attachment, or cable damage."
+      },
+      {
+        "title": "Remove and inspect the OSFP UltraPass cables connected to the CX8 module(s).",
+        "detail": "Check for damaged pins on the cable side.\nCheck for debris on the landing-pad side.\nIf damage is found, replace the damaged parts.\nIf no damage is found, reattach the cables using the proper tools."
+      },
+      {
+        "title": "Execute the BAT script.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Bad/unsupported\nEEPROM?\nNo                     Yes\nCheck OSFP           Check internal OSFP\nloopout cables          sideband cable\nInspect OSFP UltraPass cables\nReplace damaged parts if found\nReattach if no damage\nExecute BAT script\nPass                                Fail\nContinue to Next Station        Move to Secondary-Level FA"
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null,
+    "replaceId": "AST-01"
+  },
+  {
+    "id": "PDF-MTF-CASE-0076",
+    "pdfSection": 30,
+    "station": "AST",
+    "code": "023002036_13892849",
+    "name": "MST ADDED EXPECTED 10 CBL. PLEASE CHECK ERROR LIST FOR LINK SPEED mt4131_pciconfX- mlx5_X-N/A; mt4131_pciconfX-mlx5_X-N/A; PLEASE CHECK ERROR LIST mt4131_pciconfX-mlx5_X- Negotiation failure; mt4131_pciconfX-mlx5_X-Negotiation failure;",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Move to the repair area.",
+        "detail": ""
+      },
+      {
+        "title": "Remove and inspect the OSFP Ultrapass cables connected to the CX8 module(s).",
+        "detail": "Check for damaged pins on the cable side.\nCheck for debris on the landing-pad side.\nIf damage is found, replace the damaged parts.\nIf no damage is found, reassemble and reattach the cables using the proper tools."
+      },
+      {
+        "title": "Execute BAT.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-030.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 288,
+    "sourcePdfPage": 64
+  },
+  {
+    "id": "PDF-MTF-CASE-0077",
+    "pdfSection": 31,
+    "station": "FCT",
+    "code": "028001006_000-000-0-000000000009",
+    "name": "Core Error Msg: /dev/tpm0 does not exist",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "AC cycle."
+      },
+      {
+        "title": "Re-seat/replace TPM.",
+        "detail": "Re-seat/replace TPM."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-031.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 553,
+    "sourcePdfPage": 65,
+    "replaceId": "FCT-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0078",
+    "pdfSection": 32,
+    "station": "FCT",
+    "code": "028001006_000-000-3-000000000014",
+    "name": "Physical memory failed.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
     "steps": [
       {
         "title": "Replace bianca.",
@@ -177,15 +2252,220 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
   },
   {
-    "id": "PDF-MTF-009",
+    "id": "PDF-MTF-CASE-0079",
+    "pdfSection": 32,
+    "station": "FCT",
+    "code": "028001006_005-000-1-000000000194",
+    "name": "Found memory error type \"SBE\" in \"FB\"., Found memory error type \"MISC\" in \"FB\".",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Replace bianca.",
+        "detail": "Impacted bianca should be sent back to L6."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0080",
+    "pdfSection": 32,
+    "station": "FCT",
+    "code": "028001006_005-000-1-000000000316",
+    "name": "Found memory error type \"CORR\" in \"FB\".",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Replace bianca.",
+        "detail": "Impacted bianca should be sent back to L6."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0081",
+    "pdfSection": 32,
+    "station": "FTS",
+    "code": "054018006_015-000-1-000000000194",
+    "name": "GPUXXXXX Found memory error type \"MISC\" in \"FB\"., Found memory error type \"SBE\" in \"FB\".",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Replace bianca.",
+        "detail": "Impacted bianca should be sent back to L6."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0082",
+    "pdfSection": 32,
+    "station": "FTS",
+    "code": "054018006_015-000-1-000000000316",
+    "name": "GPUXXXXX Found memory error type \"CORR\" in \"FB\".",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Replace bianca.",
+        "detail": "Impacted bianca should be sent back to L6."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0083",
+    "pdfSection": 32,
+    "station": "RIN",
+    "code": "055004006_000-000-1-000000000194",
+    "name": "GPUXXXXX Found memory error type \"SBE\" in \"FB\"., Found memory error type \"MISC\" in \"FB\".",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "Replace bianca.",
+        "detail": "Impacted bianca should be sent back to L6."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0084",
+    "pdfSection": 33,
+    "station": "FCT",
+    "code": "028001006_019-000-0-000000000037, 028001006_019-000-0-000000000012",
+    "name": "Failed to set FAN_X speeds",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat or replace fan cable connections.",
+        "detail": "Check that the fan connections match the applicable 1U or 2U configuration table.\nInspect the connectors for bent or damaged pins.\nRe-seat or replace the affected fan cables."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Configuration table:"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-033.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 501,
+    "sourcePdfPage": 68
+  },
+  {
+    "id": "PDF-MTF-CASE-0085",
+    "pdfSection": 33,
+    "station": "AST",
+    "code": "023001006_019-000-0-000000000089, 023001006_019-000-0-000000000012",
+    "name": "Failed to set FAN_X speeds",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat or replace fan cable connections.",
+        "detail": "Check that the fan connections match the applicable 1U or 2U configuration table.\nInspect the connectors for bent or damaged pins.\nRe-seat or replace the affected fan cables."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Configuration table:"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-033.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 501,
+    "sourcePdfPage": 68
+  },
+  {
+    "id": "PDF-MTF-CASE-0086",
+    "pdfSection": 34,
+    "station": "FCT",
+    "code": "028001006_029-054-0-000000000011",
+    "name": "0002:01:00.0 0002:01:00.0 - Invalid Link Width: expected ['x16'] found x8",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat the primary/left ConnectX board, connected OSFP board, and all associated cables.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the left Bianca board, associated thermal pad, and sensor cable. Replace the affected thermal pad",
+        "detail": "or sensor cable as needed."
+      },
+      {
+        "title": "Replace the left Bianca board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-034.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 318,
+    "sourcePdfPage": 69
+  },
+  {
+    "id": "PDF-MTF-CASE-0087",
+    "pdfSection": 35,
     "station": "FCT",
     "code": "028001006_048-000-0-000000000086",
     "name": "HGX_FW_ERoT_FPGA_version 'HGX_FW_ERoT_FPGA_version': not found. expected '01.04.0031.0000_n04'",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FCT",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
     "steps": [
       {
         "title": "AC cycle.",
@@ -207,15 +2487,44 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-035.png",
+    "flowchartImageWidth": 978,
+    "flowchartImageHeight": 1093,
+    "sourcePdfPage": 71
   },
   {
-    "id": "PDF-MTF-010",
-    "station": "FCT, FTS",
-    "code": "028001006_048-000-0-000000000086, 054001006_048-000-0-000000000086",
+    "id": "PDF-MTF-CASE-0088",
+    "pdfSection": 36,
+    "station": "FCT",
+    "code": "028001006_048-000-0-000000000086",
+    "name": "OS_Version': found '56532a6' expected '7a06e3c'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Update the OS version on the M.2 to the expected version specified in the error description.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-036.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 357,
+    "sourcePdfPage": 72,
+    "replaceId": "FCT-11"
+  },
+  {
+    "id": "PDF-MTF-CASE-0089",
+    "pdfSection": 37,
+    "station": "FCT",
+    "code": "028001006_048-000-0-000000000086",
     "name": "BMC_FW_version': found 'GB200Nvl-25.05-3' expected 'GB200Nvl-25.06-2'",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FCT, FTS",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
     "steps": [
       {
         "title": "Verify BMC module FW.",
@@ -229,15 +2538,47 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-037.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 325,
+    "sourcePdfPage": 73
   },
   {
-    "id": "PDF-MTF-011",
-    "station": "FCT, FTS",
-    "code": "028001006_051-000-0-000000000050",
-    "name": "I2C I2C_Failure - Getting_xxx_Bianca_AINy_ADC_reading Check failed. na. Fail Message (MODS.log/tas.txt): Primary/Secondary Bianca AIN0 ADC reading Out of range. Note: AIN0 ADC indicates the cold plate leak sensor, while AIN1 ADC indicates the quick disconnect leak sensor.",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FCT, FTS",
+    "id": "PDF-MTF-CASE-0090",
+    "pdfSection": 37,
+    "station": "FTS",
+    "code": "054001006_048-000-0-000000000086",
+    "name": "BMC_FW_version': found 'GB200Nvl-25.05-3' expected 'GB200Nvl-25.06-2'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Verify BMC module FW.",
+        "detail": ""
+      },
+      {
+        "title": "Replace BMC.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-037.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 325,
+    "sourcePdfPage": 73
+  },
+  {
+    "id": "PDF-MTF-CASE-0091",
+    "pdfSection": 38,
+    "station": "FCT",
+    "code": "028001006_051-000-0-000000000050, 028144006_na",
+    "name": "I2C I2C_Failure - Getting_xxx_Bianca_AINy_ADC_reading Check failed.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
     "steps": [
       {
         "title": "AC cycle.",
@@ -251,15 +2592,101 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-038.png",
+    "flowchartImageWidth": 934,
+    "flowchartImageHeight": 1256,
+    "sourcePdfPage": 76
   },
   {
-    "id": "PDF-MTF-012",
+    "id": "PDF-MTF-CASE-0092",
+    "pdfSection": 38,
+    "station": "FTS",
+    "code": "054001006_051-000-0-000000000050",
+    "name": "I2C I2C_Failure - Getting_xxx_Bianca_AINy_ADC_reading Check failed.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Inspect the cables, connectors, and leak sensors.",
+        "detail": "Check that the cables to the CP (Cold Plate) leak sensor and QD (Quick Disconnect) leak sensor are\nconnected.\nCheck whether J18 (CP leak sensor connector) or J125 (QD leak sensor connector) has been lifted\ndue to mishandling. If either connector has been lifted, replace the Bianca board.\nCheck the CP and QD leak sensors for surface damage, including scratches or tears. If a leak sensor\nis damaged, replace it.\nDepending on the issue, use a Digital Multi-Meter to check the following connections:\nCP leak sensor: connector J18 to U1031 pin 1.\nQD leak sensor: connector J125 to U1031 pin 2."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-038.png",
+    "flowchartImageWidth": 934,
+    "flowchartImageHeight": 1256,
+    "sourcePdfPage": 76
+  },
+  {
+    "id": "PDF-MTF-CASE-0093",
+    "pdfSection": 38,
+    "station": "FCT",
+    "code": "028001006_051-000-0-000000000050, 028144006_na",
+    "name": "na. Fail Message (MODS.log/tas.txt): Primary/Secondary Bianca AIN0 ADC reading Out of range. Note: AIN0 ADC indicates the cold plate leak sensor, while AIN1 ADC indicates the quick disconnect leak sensor.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Inspect the cables, connectors, and leak sensors.",
+        "detail": "Check that the cables to the CP (Cold Plate) leak sensor and QD (Quick Disconnect) leak sensor are\nconnected.\nCheck whether J18 (CP leak sensor connector) or J125 (QD leak sensor connector) has been lifted\ndue to mishandling. If either connector has been lifted, replace the Bianca board.\nCheck the CP and QD leak sensors for surface damage, including scratches or tears. If a leak sensor\nis damaged, replace it.\nDepending on the issue, use a Digital Multi-Meter to check the following connections:\nCP leak sensor: connector J18 to U1031 pin 1.\nQD leak sensor: connector J125 to U1031 pin 2."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-038.png",
+    "flowchartImageWidth": 934,
+    "flowchartImageHeight": 1256,
+    "sourcePdfPage": 76
+  },
+  {
+    "id": "PDF-MTF-CASE-0094",
+    "pdfSection": 38,
+    "station": "FTS",
+    "code": "054001006_051-000-0-000000000050",
+    "name": "na. Fail Message (MODS.log/tas.txt): Primary/Secondary Bianca AIN0 ADC reading Out of range. Note: AIN0 ADC indicates the cold plate leak sensor, while AIN1 ADC indicates the quick disconnect leak sensor.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Inspect the cables, connectors, and leak sensors.",
+        "detail": "Check that the cables to the CP (Cold Plate) leak sensor and QD (Quick Disconnect) leak sensor are\nconnected.\nCheck whether J18 (CP leak sensor connector) or J125 (QD leak sensor connector) has been lifted\ndue to mishandling. If either connector has been lifted, replace the Bianca board.\nCheck the CP and QD leak sensors for surface damage, including scratches or tears. If a leak sensor\nis damaged, replace it.\nDepending on the issue, use a Digital Multi-Meter to check the following connections:\nCP leak sensor: connector J18 to U1031 pin 1.\nQD leak sensor: connector J125 to U1031 pin 2."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-038.png",
+    "flowchartImageWidth": 934,
+    "flowchartImageHeight": 1256,
+    "sourcePdfPage": 76
+  },
+  {
+    "id": "PDF-MTF-CASE-0095",
+    "pdfSection": 39,
     "station": "FLB",
     "code": "028001006_078-000-0-000000000070",
     "name": "xxxx:xx:xx.x Validation failed for device /dev/mst/mtxxxx_pciconf1 (BDF xxxx:xx:xx.x), Port 8: Width mismatch: expected xxX, got xxX Port Mapping GB200 with CX7, mlx port mapping (0000 and 2000 models) Left side of tray Right side of tray CX7 mlx5_0, mlx5_1 mlx5_4, mlx5_5 BF3 mlx5_2, mlx5_3 mlx5_6, mlx5_7 GB200 with CX8, mlx port mapping (3000 and 3100 models) Left side of tray Right side of tray CX8 mlx5_0, mlx5_1 mlx5_2, mlx5_3 BF3 mlx5_4, mlx5_5 GB300 with CX8, mlx port mapping (3000 model) Left side of tray Right side of tray CX8 mlx5_0, mlx5_1, mlx5_2, mlx5_3 mlx5_4, mlx5_5, mlx5_6, mlx5_7 BF3 mlx5_8, mlx5_9",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLB",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
     "steps": [
       {
         "title": "Use the mlx5 port numbers in the applicable table to identify the failed device type and side of the tray.",
@@ -268,16 +2695,65 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       {
         "title": "Complete the applicable repair action:",
         "detail": "CX7 or CX8: Reseat the front-panel OSFP board and cables and both UltraPass cables. Inspect the\nOSFP board, UltraPass cables, and connectors for damage or bent pins.\nBF3: Reseat the front-panel QSFP cable. BF3 does not use UltraPass cable connections. If the failure\nremains, replace the affected BF3."
+      },
+      {
+        "title": "Reseat the associated Bianca board and its connections.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-039.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 911,
+    "sourcePdfPage": 78
   },
   {
-    "id": "PDF-MTF-013",
+    "id": "PDF-MTF-CASE-0096",
+    "pdfSection": 40,
     "station": "FCT",
-    "code": "028163006_000-000-0-000000000003, 028163006_000-000-0-000000000002",
-    "name": "/dev/nvme1n1 (Generic): 19.1 Gbps (34.4% of max) - FAIL Timeout",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FCT",
+    "code": "028001036_135870",
+    "name": "EXPECTED 4 CBC, ONLY DETECTED 3",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Re-seat the tray.",
+        "detail": ""
+      },
+      {
+        "title": "Move the tray to a different MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the white component at the top between the NVLinks for damage.",
+        "detail": "See IMAGE_033 below for an example of physical damage."
+      },
+      {
+        "title": "Validate the CBC FRUs.",
+        "detail": "Run ipmitool -C 17 -I lanplus -H <BMC_IP> -U <BMC_USER> -P <BMC_PASSWORD>\nfru print.\nConfirm the following CBC-to-Bianca mapping:\nCBC 0 and CBC 1 — Left Bianca.\nCBC 2 and CBC 3 — Right Bianca."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Reference Image\nIMAGE_033"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-040.png",
+    "flowchartImageWidth": 979,
+    "flowchartImageHeight": 1052,
+    "sourcePdfPage": 80,
+    "replaceId": "FCT-13"
+  },
+  {
+    "id": "PDF-MTF-CASE-0097",
+    "pdfSection": 41,
+    "station": "FCT",
+    "code": "028163006_000-000-0-000000000003",
+    "name": "/dev/nvme1n1 (Generic): 19.1 Gbps (34.4% of max) - FAIL",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
     "steps": [
       {
         "title": "Reseat in the same MTF slot.",
@@ -287,15 +2763,43 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-041.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 342,
+    "sourcePdfPage": 81
   },
   {
-    "id": "PDF-MTF-014",
-    "station": "FCT, FTS, FLB",
-    "code": "054003006_1, 058018037_6266626966",
+    "id": "PDF-MTF-CASE-0098",
+    "pdfSection": 41,
+    "station": "FCT",
+    "code": "028163006_000-000-0-000000000002",
+    "name": "Timeout",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-041.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 342,
+    "sourcePdfPage": 81
+  },
+  {
+    "id": "PDF-MTF-CASE-0099",
+    "pdfSection": 42,
+    "station": "FCT",
+    "code": "028163006_na",
     "name": "SSH Operation XXXXX sftp failed",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FCT, FTS, FLB",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
     "steps": [
       {
         "title": "Check the Host RJ45 cable.",
@@ -309,15 +2813,107 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-042.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 283,
+    "sourcePdfPage": 82,
+    "replaceId": "FCT-01"
   },
   {
-    "id": "PDF-MTF-015",
+    "id": "PDF-MTF-CASE-0100",
+    "pdfSection": 42,
+    "station": "FTS",
+    "code": "054003006_1",
+    "name": "SSH Operation XXXXX sftp failed",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Check the Host RJ45 cable.",
+        "detail": "Ensure that the cable is securely connected."
+      },
+      {
+        "title": "Retest FCT in the same MTF slot up to three times.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-042.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 283,
+    "sourcePdfPage": 82
+  },
+  {
+    "id": "PDF-MTF-CASE-0101",
+    "pdfSection": 42,
+    "station": "FLB",
+    "code": "058018037_6266626966",
+    "name": "SSH Operation XXXXX sftp failed",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Check the Host RJ45 cable.",
+        "detail": "Ensure that the cable is securely connected."
+      },
+      {
+        "title": "Retest FCT in the same MTF slot up to three times.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-042.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 283,
+    "sourcePdfPage": 82
+  },
+  {
+    "id": "PDF-MTF-CASE-0102",
+    "pdfSection": 43,
+    "station": "AST",
+    "code": "02XXXXXXX_048-000-0-000000000106",
+    "name": "FRU_xxx_Board_Part_Number': not found. expected yyy",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Identify the reported boards with an issue from the error description.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat the cable assemblies for the suspect boards.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-043.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 333,
+    "sourcePdfPage": 83,
+    "replaceId": "AST-05"
+  },
+  {
+    "id": "PDF-MTF-CASE-0103",
+    "pdfSection": 44,
     "station": "IOT",
-    "code": "033019037_1, 033027006_017-000-0-000000000001",
-    "name": "033019037_1: Not available 033027006_017-000-0-000000000001: BMC_IOBoard0CX80Temp Sensor value calculation exception: Exception('Could not find sensor with key: BMC_IOBoard0CX80Temp')",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · IOT",
+    "code": "033019037_1",
+    "name": "033019037_1: Not available",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
     "steps": [
       {
         "title": "Re-seat the system in the same MTF slot.",
@@ -327,15 +2923,43 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-044.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 385,
+    "sourcePdfPage": 84
   },
   {
-    "id": "PDF-MTF-016",
-    "station": "IOT, FTS",
+    "id": "PDF-MTF-CASE-0104",
+    "pdfSection": 44,
+    "station": "IOT",
+    "code": "033027006_017-000-0-000000000001",
+    "name": "033027006_017-000-0-000000000001: BMC_IOBoard0CX80Temp Sensor value calculation exception: Exception('Could not find sensor with key: BMC_IOBoard0CX80Temp')",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "Re-seat the system in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-044.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 385,
+    "sourcePdfPage": 84
+  },
+  {
+    "id": "PDF-MTF-CASE-0105",
+    "pdfSection": 45,
+    "station": "IOT",
     "code": "033026006_009-001-1-000000000140",
-    "name": "NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3 Found 5e-06, exceeded threshold 1e-07 user aborted the script",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · IOT, FTS",
+    "name": "NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
     "steps": [
       {
         "title": "AC cycle.",
@@ -357,15 +2981,291 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
+    "flowchartImageWidth": 835,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 86
   },
   {
-    "id": "PDF-MTF-017",
+    "id": "PDF-MTF-CASE-0106",
+    "pdfSection": 45,
+    "station": "FTS",
+    "code": "054018006_015-000-1-020000043016",
+    "name": "NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect for damage.",
+        "detail": "Remove the compute tray from the MTF.\nCheck for visible damage on the compute tray and backplane."
+      },
+      {
+        "title": "Change MTF location.",
+        "detail": "Move the compute tray to a different MTF location.\nDetermine whether the failure moves with the compute tray or remains in the original MTF location.\nIf the failure doesn't follow the compute tray:\nReplace the loopback cable causing the failure in the original MTF location."
+      },
+      {
+        "title": "Replace the Bianca board causing the failure.",
+        "detail": "If the failure moves with the compute tray and the retest fails two times, identify whether the failure\noriginates from the primary or secondary Bianca board.\nReplace the Bianca board causing the failure.\nPlace the failed Bianca board in the bonepile for replacement of the NVLink connector(s)\ncorresponding to the failed link."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
+    "flowchartImageWidth": 835,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 86
+  },
+  {
+    "id": "PDF-MTF-CASE-0107",
+    "pdfSection": 45,
+    "station": "IOT",
+    "code": "033026006_009-001-1-000000000140",
+    "name": "Found 5e-06, exceeded threshold 1e-07",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect for damage.",
+        "detail": "Remove the compute tray from the MTF.\nCheck for visible damage on the compute tray and backplane."
+      },
+      {
+        "title": "Change MTF location.",
+        "detail": "Move the compute tray to a different MTF location.\nDetermine whether the failure moves with the compute tray or remains in the original MTF location.\nIf the failure doesn't follow the compute tray:\nReplace the loopback cable causing the failure in the original MTF location."
+      },
+      {
+        "title": "Replace the Bianca board causing the failure.",
+        "detail": "If the failure moves with the compute tray and the retest fails two times, identify whether the failure\noriginates from the primary or secondary Bianca board.\nReplace the Bianca board causing the failure.\nPlace the failed Bianca board in the bonepile for replacement of the NVLink connector(s)\ncorresponding to the failed link."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
+    "flowchartImageWidth": 835,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 86
+  },
+  {
+    "id": "PDF-MTF-CASE-0108",
+    "pdfSection": 45,
+    "station": "FTS",
+    "code": "054018006_015-000-1-020000043016",
+    "name": "Found 5e-06, exceeded threshold 1e-07",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect for damage.",
+        "detail": "Remove the compute tray from the MTF.\nCheck for visible damage on the compute tray and backplane."
+      },
+      {
+        "title": "Change MTF location.",
+        "detail": "Move the compute tray to a different MTF location.\nDetermine whether the failure moves with the compute tray or remains in the original MTF location.\nIf the failure doesn't follow the compute tray:\nReplace the loopback cable causing the failure in the original MTF location."
+      },
+      {
+        "title": "Replace the Bianca board causing the failure.",
+        "detail": "If the failure moves with the compute tray and the retest fails two times, identify whether the failure\noriginates from the primary or secondary Bianca board.\nReplace the Bianca board causing the failure.\nPlace the failed Bianca board in the bonepile for replacement of the NVLink connector(s)\ncorresponding to the failed link."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
+    "flowchartImageWidth": 835,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 86
+  },
+  {
+    "id": "PDF-MTF-CASE-0109",
+    "pdfSection": 45,
+    "station": "IOT",
+    "code": "033026006_009-001-1-000000000140",
+    "name": "user aborted the script",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect for damage.",
+        "detail": "Remove the compute tray from the MTF.\nCheck for visible damage on the compute tray and backplane."
+      },
+      {
+        "title": "Change MTF location.",
+        "detail": "Move the compute tray to a different MTF location.\nDetermine whether the failure moves with the compute tray or remains in the original MTF location.\nIf the failure doesn't follow the compute tray:\nReplace the loopback cable causing the failure in the original MTF location."
+      },
+      {
+        "title": "Replace the Bianca board causing the failure.",
+        "detail": "If the failure moves with the compute tray and the retest fails two times, identify whether the failure\noriginates from the primary or secondary Bianca board.\nReplace the Bianca board causing the failure.\nPlace the failed Bianca board in the bonepile for replacement of the NVLink connector(s)\ncorresponding to the failed link."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
+    "flowchartImageWidth": 835,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 86
+  },
+  {
+    "id": "PDF-MTF-CASE-0110",
+    "pdfSection": 45,
+    "station": "FTS",
+    "code": "054018006_015-000-1-020000043016",
+    "name": "user aborted the script",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect for damage.",
+        "detail": "Remove the compute tray from the MTF.\nCheck for visible damage on the compute tray and backplane."
+      },
+      {
+        "title": "Change MTF location.",
+        "detail": "Move the compute tray to a different MTF location.\nDetermine whether the failure moves with the compute tray or remains in the original MTF location.\nIf the failure doesn't follow the compute tray:\nReplace the loopback cable causing the failure in the original MTF location."
+      },
+      {
+        "title": "Replace the Bianca board causing the failure.",
+        "detail": "If the failure moves with the compute tray and the retest fails two times, identify whether the failure\noriginates from the primary or secondary Bianca board.\nReplace the Bianca board causing the failure.\nPlace the failed Bianca board in the bonepile for replacement of the NVLink connector(s)\ncorresponding to the failed link."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
+    "flowchartImageWidth": 835,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 86,
+    "replaceId": "FTS-09"
+  },
+  {
+    "id": "PDF-MTF-CASE-0111",
+    "pdfSection": 46,
+    "station": "IOT",
+    "code": "033027006_000-000-2-000000000152",
+    "name": "DPU network diag failed with exit code 5",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat the OSFP loopback cable.",
+        "detail": "Check the log file: Onediag_IB_CABLES/lbStressCables/output.txt.\nIf BF3 devices mlx5_2 and mlx5_3 indicate State: Down, this refers to the left-side BlueField\n(Primary).\nIf BF3 devices mlx5_6 and mlx5_7 indicate State: Down, this refers to the right-side BlueField\n(Secondary).\nRe-seat the OSFP loopback cable to ensure it is fully seated."
+      },
+      {
+        "title": "Verify the operational status of both BF3 devices.",
+        "detail": "If either BF3 is physically unpowered:\nVerify that power is reaching the BF3 through its power cable.\nIf power is present, re-seat the power cable.\nIf power is not present, verify the connection to the PDB.\nIf the issue persists, install a Golden power cable to determine whether the original cable or\nPDB is causing the failure.\nRe-seat the riser cable connected to the affected BF3.\nIf the issue persists, install a Golden riser cable to determine whether the original riser cable is\ncausing the failure."
+      },
+      {
+        "title": "Verify the INTERNAL_CPU_MODEL and INTERNAL_CPU_OFFLOAD_ENGINE settings on both BF3 devices.",
+        "detail": "Access the host through its NIC IP address using approved credentials: ssh nvidia@<NIC_IP>.\nVerify that both BF3 devices are detected: sudo mst status -v.\nConfirm that the following devices are present:\n/dev/mst/mt41692_pciconf0 — Left BF3.\n/dev/mst/mt41692_pciconf1 — Right BF3.\nSee IMAGE_30 below for an example.\nApply the required configuration to the left BF3: sudo mlxconfig -d\n/dev/mst/mt41692_pciconf0 -y set INTERNAL_CPU_MODEL=1\nINTERNAL_CPU_OFFLOAD_ENGINE=0.\nApply the required configuration to the right BF3: sudo mlxconfig -d\n/dev/mst/mt41692_pciconf1 -y set INTERNAL_CPU_MODEL=1\nINTERNAL_CPU_OFFLOAD_ENGINE=0.\nSee IMAGE_31 below for an example.\nReboot the host."
+      },
+      {
+        "title": "Update Ubuntu on both BF3 devices.",
+        "detail": "Follow the applicable platform update procedure."
+      },
+      {
+        "title": "Verify rshim0 and rshim1.",
+        "detail": "From the host, run cd /dev, followed by ls | grep rshim.\nConfirm that the following devices are present:\nrshim0 — Left BF3.\nrshim1 — Right BF3.\nSee IMAGE_32 below for an example.\nIf either RShim device is missing:\nInstall a Golden BF3 in the affected position.\nCheck for rshim0 and rshim1 again."
+      },
+      {
+        "title": "Replace BlueField3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-046.png",
+    "flowchartImageWidth": 944,
+    "flowchartImageHeight": 1259,
+    "sourcePdfPage": 90,
+    "replaceId": "IOT-01"
+  },
+  {
+    "id": "PDF-MTF-CASE-0112",
+    "pdfSection": 46,
+    "station": "IOT",
+    "code": "033027006_000-000-2-000000000152",
+    "name": "DPU network diag failed with exit code 1",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat the OSFP loopback cable.",
+        "detail": "Check the log file: Onediag_IB_CABLES/lbStressCables/output.txt.\nIf BF3 devices mlx5_2 and mlx5_3 indicate State: Down, this refers to the left-side BlueField\n(Primary).\nIf BF3 devices mlx5_6 and mlx5_7 indicate State: Down, this refers to the right-side BlueField\n(Secondary).\nRe-seat the OSFP loopback cable to ensure it is fully seated."
+      },
+      {
+        "title": "Verify the operational status of both BF3 devices.",
+        "detail": "If either BF3 is physically unpowered:\nVerify that power is reaching the BF3 through its power cable.\nIf power is present, re-seat the power cable.\nIf power is not present, verify the connection to the PDB.\nIf the issue persists, install a Golden power cable to determine whether the original cable or\nPDB is causing the failure.\nRe-seat the riser cable connected to the affected BF3.\nIf the issue persists, install a Golden riser cable to determine whether the original riser cable is\ncausing the failure."
+      },
+      {
+        "title": "Verify the INTERNAL_CPU_MODEL and INTERNAL_CPU_OFFLOAD_ENGINE settings on both BF3 devices.",
+        "detail": "Access the host through its NIC IP address using approved credentials: ssh nvidia@<NIC_IP>.\nVerify that both BF3 devices are detected: sudo mst status -v.\nConfirm that the following devices are present:\n/dev/mst/mt41692_pciconf0 — Left BF3.\n/dev/mst/mt41692_pciconf1 — Right BF3.\nSee IMAGE_30 below for an example.\nApply the required configuration to the left BF3: sudo mlxconfig -d\n/dev/mst/mt41692_pciconf0 -y set INTERNAL_CPU_MODEL=1\nINTERNAL_CPU_OFFLOAD_ENGINE=0.\nApply the required configuration to the right BF3: sudo mlxconfig -d\n/dev/mst/mt41692_pciconf1 -y set INTERNAL_CPU_MODEL=1\nINTERNAL_CPU_OFFLOAD_ENGINE=0.\nSee IMAGE_31 below for an example.\nReboot the host."
+      },
+      {
+        "title": "Update Ubuntu on both BF3 devices.",
+        "detail": "Follow the applicable platform update procedure."
+      },
+      {
+        "title": "Verify rshim0 and rshim1.",
+        "detail": "From the host, run cd /dev, followed by ls | grep rshim.\nConfirm that the following devices are present:\nrshim0 — Left BF3.\nrshim1 — Right BF3.\nSee IMAGE_32 below for an example.\nIf either RShim device is missing:\nInstall a Golden BF3 in the affected position.\nCheck for rshim0 and rshim1 again."
+      },
+      {
+        "title": "Replace BlueField3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-046.png",
+    "flowchartImageWidth": 944,
+    "flowchartImageHeight": 1259,
+    "sourcePdfPage": 90
+  },
+  {
+    "id": "PDF-MTF-CASE-0113",
+    "pdfSection": 47,
     "station": "IOT",
     "code": "033027006_017-000-0-000000000001",
     "name": "AMBER error: mlx5_X failed BER criteria: Effective_BER = XXXX",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · IOT",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
     "steps": [
       {
         "title": "Move the tray to a different MTF slot.",
@@ -383,15 +3283,104 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": "Reference Tables\nGB200 with Cx7, mlx port mapping (0000 and 2000 models)\nComponent          Left side of tray   Right side of tray\nCx7                mlx5_0, mlx5_1      mlx5_4, mlx5_5\nBF3                mlx5_2, mlx5_3      mlx5_6, mlx5_7\nGB200 with Cx8, mlx port mapping (3000 and 3100 models)\nComponent          Left side of tray   Right side of tray\nCx8                mlx5_0, mlx5_1      mlx5_2, mlx5_3\nBF3                                    mlx5_4, mlx5_5\nGB300 with Cx8, mlx port mapping (3000 model)\nComponent          Left side of tray                        Right side of tray\nCx8                mlx5_0, mlx5_1, mlx5_2, mlx5_3           mlx5_4, mlx5_5, mlx5_6, mlx5_7\nBF3                                                         mlx5_8, mlx5_9"
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-047.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 938,
+    "sourcePdfPage": 92
   },
   {
-    "id": "PDF-MTF-018",
+    "id": "PDF-MTF-CASE-0114",
+    "pdfSection": 48,
+    "station": "IOT",
+    "code": "033027006_017-000-0-000000000007",
+    "name": "server at mlx5_0 (0000:03:00.0) failed with exit code 1",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat the CX7 I/O board end of the OSFP sideband cable.",
+        "detail": "For failures indicating devices mlx5_0 or mlx5_1, this refers to the OSFP sideband cable on the\nprimary side.\nFor failures indicating devices mlx5_4 or mlx5_5, this refers to the OSFP sideband cable on the\nsecondary side.\nInspect and re-seat the CX7 I/O board end of the OSFP sideband cable."
+      },
+      {
+        "title": "Re-seat the OSFP board end of the sideband cable.",
+        "detail": "Remove the BlueField3.\nInspect and re-seat the OSFP board end of the sideband cable."
+      },
+      {
+        "title": "Replace the OSFP sideband cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the OSFP module.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-048.png",
+    "flowchartImageWidth": 917,
+    "flowchartImageHeight": 1260,
+    "sourcePdfPage": 94,
+    "replaceId": "IOT-03"
+  },
+  {
+    "id": "PDF-MTF-CASE-0115",
+    "pdfSection": 49,
+    "station": "IOT",
+    "code": "033027006_017-008-0-000000000003",
+    "name": "Bandwidth below threshold",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the run_cable_check script."
+      },
+      {
+        "title": "Re-seat the OSFP loopback cable.",
+        "detail": "Re-seat the OSFP loopback cable to ensure that it is fully seated."
+      },
+      {
+        "title": "Inspect the AC capacitors for damage.",
+        "detail": "For failures indicating CX7 locations mlx5_0 or mlx5_1, inspect the left-hand CX7 I/O board on the\nprimary Bianca.\nFor failures indicating CX7 locations mlx5_4 or mlx5_5, inspect the right-hand CX7 I/O board on the\nsecondary Bianca.\nCheck for damaged AC capacitors around the CX7 mirror mezz connector.\nUse the following images to identify the inspection locations and an example of a damaged capacitor:\nIf damage is found, replace the affected Bianca board."
+      },
+      {
+        "title": "Re-seat the Ultrapass connector.",
+        "detail": "Re-seat the Ultrapass connector on the failed Bianca board."
+      },
+      {
+        "title": "Replace the OSFP module and Ultrapass cable assembly.",
+        "detail": "Replace the OSFP module and Ultrapass cable assembly."
+      },
+      {
+        "title": "Replace the CX7 module.",
+        "detail": "Replace the CX7 module on the failed Bianca board."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-049.png",
+    "flowchartImageWidth": 812,
+    "flowchartImageHeight": 1264,
+    "sourcePdfPage": 97,
+    "replaceId": "IOT-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0116",
+    "pdfSection": 50,
     "station": "PRET",
     "code": "03893d162e461ab7",
     "name": "Display string as an output. [TC] PCI - Check PCIe Device Name By MST (GB NVL) (Compute Tray - BlueField DPU (Right))",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · PRET",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -405,15 +3394,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-050.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 355,
+    "sourcePdfPage": 98
   },
   {
-    "id": "PDF-MTF-019",
+    "id": "PDF-MTF-CASE-0117",
+    "pdfSection": 51,
     "station": "FLB",
-    "code": "7cba26cea4d171b1",
-    "name": "Look for \"Compute Tray BlueField3 Left BMC IP Address\" IP.... Look for 'Compute Tray BlueField3 Right BMC IP Address' IP....",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLB",
+    "code": "03bda29a8cdd761a",
+    "name": "Look for \"Compute Tray BlueField3 Left BMC IP Address\" IP....",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
     "steps": [
       {
         "title": "AC cycle.",
@@ -443,15 +3437,119 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-051.png",
+    "flowchartImageWidth": 877,
+    "flowchartImageHeight": 1261,
+    "sourcePdfPage": 101,
+    "replaceId": "FLB-06"
   },
   {
-    "id": "PDF-MTF-020",
-    "station": "FTS, IOT",
-    "code": "033027006_017-000-0-000000000009",
-    "name": "Device 'mlx5_x' is not in valid HW state (Bad/unsupported EEPROM) Device 'mlx5_x' is not in valid HW state (Bad signal integrity) Device 'mlx5_x' is not in valid HW state (Negotiation failure) Device 'mlx5_x' is not in valid HW state (Cable is unplugged)",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS, IOT",
+    "id": "PDF-MTF-CASE-0118",
+    "pdfSection": 51,
+    "station": "FLB",
+    "code": "7cba26cea4d171b1",
+    "name": "Look for 'Compute Tray BlueField3 Right BMC IP Address' IP....",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the BAT script."
+      },
+      {
+        "title": "Reset the BF3 settings.",
+        "detail": "Access the BMC host and run:\nsudo mst start\nsudo mlxconfig -d /dev/mst/mt41692_pciconf0 -y s INTERNAL_CPU_MODEL=1\nINTERNAL_CPU_OFFLOAD_ENGINE=0\nsudo mst restart\nRun diagnostics starting at FLA.\nSee IMAGE_028 in the Reference Images section below."
+      },
+      {
+        "title": "Check the BF3 power-cable and network-cable connections.",
+        "detail": "Check the BF3 network cable at the front of the tray.\nRemove the tray top cover.\nCheck the power-cable connection to the riser card.\nCheck the power-cable connection to the BF3.\nConfirm that both power cables are connected. See IMAGE_029 in the Reference Images section\nbelow."
+      },
+      {
+        "title": "Re-seat the PCIe riser cable.",
+        "detail": "Confirm that the PCIe riser cable is fully seated and that there are no loose connections."
+      },
+      {
+        "title": "Check the BF3 MAC address.",
+        "detail": "Confirm that the physical MAC address matches the SFC MAC address.\nReplace BF3 if MAC does not match"
+      },
+      {
+        "title": "Replace the BF3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-051.png",
+    "flowchartImageWidth": 877,
+    "flowchartImageHeight": 1261,
+    "sourcePdfPage": 101
+  },
+  {
+    "id": "PDF-MTF-CASE-0119",
+    "pdfSection": 52,
+    "station": "FTS",
+    "code": "054001006_000-000-0-000000000083",
+    "name": "Tegra CPU telemetry TJMax is Over Threshold 99000",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Remove, reapply TIM, bake using liquid heating method.",
+        "detail": "Re-apply TIM according to the TIM locations shown in the assembly guide.\nBake using the liquid heating method."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-052.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 368,
+    "sourcePdfPage": 102,
+    "replaceId": "FTS-04"
+  },
+  {
+    "id": "PDF-MTF-CASE-0120",
+    "pdfSection": 52,
+    "station": "FCT",
+    "code": "028001006_000-000-0-000000000083",
+    "name": "Tegra CPU telemetry TJMax is Over Threshold 99000",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Remove, reapply TIM, bake using liquid heating method.",
+        "detail": "Re-apply TIM according to the TIM locations shown in the assembly guide.\nBake using the liquid heating method."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-052.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 368,
+    "sourcePdfPage": 102
+  },
+  {
+    "id": "PDF-MTF-CASE-0121",
+    "pdfSection": 53,
+    "station": "FTS",
+    "code": "054001006_017-000-0-000000000009, 054001006_017-000-0-000000000001",
+    "name": "Device 'mlx5_x' is not in valid HW state (Bad/unsupported EEPROM)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC cycle.",
@@ -481,15 +3579,397 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1178,
+    "sourcePdfPage": 104
   },
   {
-    "id": "PDF-MTF-021",
+    "id": "PDF-MTF-CASE-0122",
+    "pdfSection": 53,
+    "station": "IOT",
+    "code": "033027006_017-000-0-000000000009",
+    "name": "Device 'mlx5_x' is not in valid HW state (Bad/unsupported EEPROM)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat the OSFP loopback cable and both ends of the OSFP sideband cable.",
+        "detail": "Ensure that the OSFP loopback cable is fully seated.\nFor mlx5_0 or mlx5_1, service the primary-side CX7 I/O board and OSFP board.\nFor mlx5_4 or mlx5_5, service the secondary-side CX7 I/O board and OSFP board.\nRemove BlueField3 to access the OSFP board connection."
+      },
+      {
+        "title": "Re-seat the UltraPass connectors and cable assembly.",
+        "detail": "Inspect the connectors and ensure they are fully seated.\nConfirm that the stiffener bracket is tightened to the required torque specification."
+      },
+      {
+        "title": "Replace the OSFP sideband cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the UltraPass cable assembly.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the OSFP module.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1178,
+    "sourcePdfPage": 104
+  },
+  {
+    "id": "PDF-MTF-CASE-0123",
+    "pdfSection": 53,
+    "station": "FTS",
+    "code": "054001006_017-000-0-000000000009, 054001006_017-000-0-000000000001",
+    "name": "Device 'mlx5_x' is not in valid HW state (Bad signal integrity)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat the OSFP loopback cable and both ends of the OSFP sideband cable.",
+        "detail": "Ensure that the OSFP loopback cable is fully seated.\nFor mlx5_0 or mlx5_1, service the primary-side CX7 I/O board and OSFP board.\nFor mlx5_4 or mlx5_5, service the secondary-side CX7 I/O board and OSFP board.\nRemove BlueField3 to access the OSFP board connection."
+      },
+      {
+        "title": "Re-seat the UltraPass connectors and cable assembly.",
+        "detail": "Inspect the connectors and ensure they are fully seated.\nConfirm that the stiffener bracket is tightened to the required torque specification."
+      },
+      {
+        "title": "Replace the OSFP sideband cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the UltraPass cable assembly.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the OSFP module.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1178,
+    "sourcePdfPage": 104
+  },
+  {
+    "id": "PDF-MTF-CASE-0124",
+    "pdfSection": 53,
+    "station": "IOT",
+    "code": "033027006_017-000-0-000000000009",
+    "name": "Device 'mlx5_x' is not in valid HW state (Bad signal integrity)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat the OSFP loopback cable and both ends of the OSFP sideband cable.",
+        "detail": "Ensure that the OSFP loopback cable is fully seated.\nFor mlx5_0 or mlx5_1, service the primary-side CX7 I/O board and OSFP board.\nFor mlx5_4 or mlx5_5, service the secondary-side CX7 I/O board and OSFP board.\nRemove BlueField3 to access the OSFP board connection."
+      },
+      {
+        "title": "Re-seat the UltraPass connectors and cable assembly.",
+        "detail": "Inspect the connectors and ensure they are fully seated.\nConfirm that the stiffener bracket is tightened to the required torque specification."
+      },
+      {
+        "title": "Replace the OSFP sideband cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the UltraPass cable assembly.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the OSFP module.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1178,
+    "sourcePdfPage": 104
+  },
+  {
+    "id": "PDF-MTF-CASE-0125",
+    "pdfSection": 53,
+    "station": "FTS",
+    "code": "054001006_017-000-0-000000000009, 054001006_017-000-0-000000000001",
+    "name": "Device 'mlx5_x' is not in valid HW state (Negotiation failure)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat the OSFP loopback cable and both ends of the OSFP sideband cable.",
+        "detail": "Ensure that the OSFP loopback cable is fully seated.\nFor mlx5_0 or mlx5_1, service the primary-side CX7 I/O board and OSFP board.\nFor mlx5_4 or mlx5_5, service the secondary-side CX7 I/O board and OSFP board.\nRemove BlueField3 to access the OSFP board connection."
+      },
+      {
+        "title": "Re-seat the UltraPass connectors and cable assembly.",
+        "detail": "Inspect the connectors and ensure they are fully seated.\nConfirm that the stiffener bracket is tightened to the required torque specification."
+      },
+      {
+        "title": "Replace the OSFP sideband cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the UltraPass cable assembly.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the OSFP module.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1178,
+    "sourcePdfPage": 104
+  },
+  {
+    "id": "PDF-MTF-CASE-0126",
+    "pdfSection": 53,
+    "station": "IOT",
+    "code": "033027006_017-000-0-000000000009",
+    "name": "Device 'mlx5_x' is not in valid HW state (Negotiation failure)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat the OSFP loopback cable and both ends of the OSFP sideband cable.",
+        "detail": "Ensure that the OSFP loopback cable is fully seated.\nFor mlx5_0 or mlx5_1, service the primary-side CX7 I/O board and OSFP board.\nFor mlx5_4 or mlx5_5, service the secondary-side CX7 I/O board and OSFP board.\nRemove BlueField3 to access the OSFP board connection."
+      },
+      {
+        "title": "Re-seat the UltraPass connectors and cable assembly.",
+        "detail": "Inspect the connectors and ensure they are fully seated.\nConfirm that the stiffener bracket is tightened to the required torque specification."
+      },
+      {
+        "title": "Replace the OSFP sideband cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the UltraPass cable assembly.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the OSFP module.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1178,
+    "sourcePdfPage": 104
+  },
+  {
+    "id": "PDF-MTF-CASE-0127",
+    "pdfSection": 53,
+    "station": "FTS",
+    "code": "054001006_017-000-0-000000000009, 054001006_017-000-0-000000000001",
+    "name": "Device 'mlx5_x' is not in valid HW state (Cable is unplugged)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat the OSFP loopback cable and both ends of the OSFP sideband cable.",
+        "detail": "Ensure that the OSFP loopback cable is fully seated.\nFor mlx5_0 or mlx5_1, service the primary-side CX7 I/O board and OSFP board.\nFor mlx5_4 or mlx5_5, service the secondary-side CX7 I/O board and OSFP board.\nRemove BlueField3 to access the OSFP board connection."
+      },
+      {
+        "title": "Re-seat the UltraPass connectors and cable assembly.",
+        "detail": "Inspect the connectors and ensure they are fully seated.\nConfirm that the stiffener bracket is tightened to the required torque specification."
+      },
+      {
+        "title": "Replace the OSFP sideband cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the UltraPass cable assembly.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the OSFP module.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1178,
+    "sourcePdfPage": 104
+  },
+  {
+    "id": "PDF-MTF-CASE-0128",
+    "pdfSection": 53,
+    "station": "IOT",
+    "code": "033027006_017-000-0-000000000009",
+    "name": "Device 'mlx5_x' is not in valid HW state (Cable is unplugged)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and re-seat the OSFP loopback cable and both ends of the OSFP sideband cable.",
+        "detail": "Ensure that the OSFP loopback cable is fully seated.\nFor mlx5_0 or mlx5_1, service the primary-side CX7 I/O board and OSFP board.\nFor mlx5_4 or mlx5_5, service the secondary-side CX7 I/O board and OSFP board.\nRemove BlueField3 to access the OSFP board connection."
+      },
+      {
+        "title": "Re-seat the UltraPass connectors and cable assembly.",
+        "detail": "Inspect the connectors and ensure they are fully seated.\nConfirm that the stiffener bracket is tightened to the required torque specification."
+      },
+      {
+        "title": "Replace the OSFP sideband cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the UltraPass cable assembly.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the OSFP module.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
+    "flowchartImageWidth": 984,
+    "flowchartImageHeight": 1178,
+    "sourcePdfPage": 104
+  },
+  {
+    "id": "PDF-MTF-CASE-0129",
+    "pdfSection": 54,
+    "station": "FTS",
+    "code": "054001006_051-000-0-000000000050",
+    "name": "I2C I2C_Failure - Read_SSD_SMART_status/temp_registers Check failed",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat the M.2 and M.2 riser.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the M.2 riser.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the M.2.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-054.png",
+    "flowchartImageWidth": 978,
+    "flowchartImageHeight": 1072,
+    "sourcePdfPage": 106,
+    "replaceId": "RIN-14"
+  },
+  {
+    "id": "PDF-MTF-CASE-0130",
+    "pdfSection": 55,
+    "station": "FTS",
+    "code": "054001006_051-000-0-000000000050",
+    "name": "I2C I2C_Failure - Read_SSDx_y_SMART_status/temp_registers Check failed / I2C I2C_Failure - Read_HDD_BP_0_(S8B)_MUX_ports_enabled Check failed",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Confirm that the correct E1.S backplane is in use.",
+        "detail": "See IMAGE_034 below."
+      },
+      {
+        "title": "Check the cables connected to the E1.S backplanes.",
+        "detail": "SSD0_y: primary side.\nSSD1_y: secondary side.\nHDD_BP_0: primary side.\nHDD_BP_1: secondary side."
+      },
+      {
+        "title": "Replace the E1.S backplane.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the failing device.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Reference Image\nIMAGE_034"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-055.png",
+    "flowchartImageWidth": 894,
+    "flowchartImageHeight": 1260,
+    "sourcePdfPage": 108,
+    "replaceId": "RIN-15"
+  },
+  {
+    "id": "PDF-MTF-CASE-0131",
+    "pdfSection": 56,
     "station": "FTS",
     "code": "054001006_4",
     "name": "CX7_PORT - Command '['sudo mlxconfig -d 0010:03:00.0 -y set LINK_TYPE_P1=2']' returned non-zero exit status 3. Comment: CX7 board, PCIe port",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC cycle.",
@@ -511,15 +3991,123 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
   },
   {
-    "id": "PDF-MTF-022",
+    "id": "PDF-MTF-CASE-0132",
+    "pdfSection": 57,
+    "station": "FTS",
+    "code": "054001036_135719",
+    "name": "FTS - CX8_PORT Failed.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat OSFP loopback cable.",
+        "detail": "Re-seat the OSFP loopback cable to ensure it is fully seated."
+      },
+      {
+        "title": "Re-seat Ultrapass connector.",
+        "detail": "Refer to the reference table below to determine the affected CX8.\nRe-seat the associated Ultrapass SMT connector.\nEnsure the stiffener bracket is tightened to the correct torque specification."
+      },
+      {
+        "title": "Replace OSFP module and Ultrapass cable assembly.",
+        "detail": "Replace the OSFP module and Ultrapass cable assembly."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Reference table\nGB200 with Cx8, mlx port mapping (3000 and 3100 models)\nComponent          Left side of tray   Right side of tray\nCx8                mlx5_0, mlx5_1      mlx5_2, mlx5_3\nBF3                —                   mlx5_4, mlx5_5\nGB300 with Cx8, mlx port mapping (3000 model)\nComponent          Left side of tray                        Right side of tray\nCx8                mlx5_0, mlx5_1, mlx5_2, mlx5_3           mlx5_4, mlx5_5, mlx5_6, mlx5_7\nBF3                —                                        mlx5_8, mlx5_9"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-057.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 981,
+    "sourcePdfPage": 111,
+    "replaceId": "FTS-01"
+  },
+  {
+    "id": "PDF-MTF-CASE-0133",
+    "pdfSection": 57,
+    "station": "FLB",
+    "code": "058012036_70636965010",
+    "name": "FTS - CX8_PORT Failed.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat OSFP loopback cable.",
+        "detail": "Re-seat the OSFP loopback cable to ensure it is fully seated."
+      },
+      {
+        "title": "Re-seat Ultrapass connector.",
+        "detail": "Refer to the reference table below to determine the affected CX8.\nRe-seat the associated Ultrapass SMT connector.\nEnsure the stiffener bracket is tightened to the correct torque specification."
+      },
+      {
+        "title": "Replace OSFP module and Ultrapass cable assembly.",
+        "detail": "Replace the OSFP module and Ultrapass cable assembly."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Reference table\nGB200 with Cx8, mlx port mapping (3000 and 3100 models)\nComponent          Left side of tray   Right side of tray\nCx8                mlx5_0, mlx5_1      mlx5_2, mlx5_3\nBF3                —                   mlx5_4, mlx5_5\nGB300 with Cx8, mlx port mapping (3000 model)\nComponent          Left side of tray                        Right side of tray\nCx8                mlx5_0, mlx5_1, mlx5_2, mlx5_3           mlx5_4, mlx5_5, mlx5_6, mlx5_7\nBF3                —                                        mlx5_8, mlx5_9"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-057.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 981,
+    "sourcePdfPage": 111
+  },
+  {
+    "id": "PDF-MTF-CASE-0134",
+    "pdfSection": 58,
+    "station": "FTS",
+    "code": "054001037_na",
+    "name": "mlx5_2,mlx5_3 State is not active",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Re-seat OSFP loopback cable.",
+        "detail": "For failures indicating BF3 devices mlx5_2 or mlx5_3:\nThis refers to the left-hand BlueField3 (primary).\nFor failures indicating BF3 devices mlx5_6 or mlx5_7:\nThis refers to the right-hand BlueField3 (secondary).\nRe-seat the OSFP loopback cable to ensure it is fully seated."
+      },
+      {
+        "title": "Replace BlueField3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-058.png",
+    "flowchartImageWidth": 868,
+    "flowchartImageHeight": 1257,
+    "sourcePdfPage": 113,
+    "replaceId": "FTS-08"
+  },
+  {
+    "id": "PDF-MTF-CASE-0135",
+    "pdfSection": 59,
     "station": "FTS",
     "code": "054003006_1",
     "name": "system powered off",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC cycle.",
@@ -541,15 +4129,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Second-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-059.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 985,
+    "sourcePdfPage": 115
   },
   {
-    "id": "PDF-MTF-023",
-    "station": "FTS, AST, PRET, FLB",
-    "code": "054003006_2, NDBG_031, 023002006_na, 058018036_6266336666, 058018006_558",
-    "name": "Not available, stored as na (054003006_2) Cable roto (NDBG_031) na (023002006_na) Unable to detect NVLink 2 Check the power status is on. ( Power status is not on. Check the device. ) [TC] System - Power On Compute Tray Host by ipmitool in Remote Server (GB NVL) Unable to detect HMC Could not extract TPM firmware version from dmidecode output",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS, AST, PRET, FLB",
+    "id": "PDF-MTF-CASE-0136",
+    "pdfSection": 60,
+    "station": "FTS",
+    "code": "054003006_2",
+    "name": "Not available, stored as na (054003006_2)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -559,15 +4152,112 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
+    "sourcePdfPage": 116
   },
   {
-    "id": "PDF-MTF-024",
+    "id": "PDF-MTF-CASE-0137",
+    "pdfSection": 60,
+    "station": "AST",
+    "code": "023002006_na",
+    "name": "na (023002006_na)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
+    "sourcePdfPage": 116
+  },
+  {
+    "id": "PDF-MTF-CASE-0138",
+    "pdfSection": 60,
+    "station": "PRET",
+    "code": "824e1033efef2fd5",
+    "name": "Unable to detect NVLink 2",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
+    "sourcePdfPage": 116
+  },
+  {
+    "id": "PDF-MTF-CASE-0139",
+    "pdfSection": 60,
+    "station": "FLB",
+    "code": "058018036_6266336666",
+    "name": "Unable to detect HMC",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
+    "sourcePdfPage": 116
+  },
+  {
+    "id": "PDF-MTF-CASE-0140",
+    "pdfSection": 60,
+    "station": "FLB",
+    "code": "058018006_558",
+    "name": "Could not extract TPM firmware version from dmidecode output",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
+    "sourcePdfPage": 116
+  },
+  {
+    "id": "PDF-MTF-CASE-0141",
+    "pdfSection": 61,
     "station": "FCT",
-    "code": "054018006_000-000-1-000000000317, 055004006_000-000-1-000000000194",
+    "code": "N/A",
     "name": "GPU2_00XX:06:00.0 Found memory error type \"UNCORR\" in \"FB\". Found memory error type \"MISC\" in \"FB\". Found memory error type \"SBE\" in \"FB\" Found memory error type \"DBE\" in \"FB\"",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FCT",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
     "steps": [
       {
         "title": "AC cycle.",
@@ -585,15 +4275,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-061.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 975,
+    "sourcePdfPage": 118
   },
   {
-    "id": "PDF-MTF-025",
+    "id": "PDF-MTF-CASE-0142",
+    "pdfSection": 62,
     "station": "FTS",
-    "code": "054018006_000-000-1-020000610139, 054018006_015-000-1-020000610139, 098011006_009-001-1-020000610139",
+    "code": "054018006_000-000-1-020000610139, 054018006_015-000-1-020000610139",
     "name": "Acceptable temperature limits exceeded or the thermal sensor is broken or miscalibrated",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "Perform a visual inspection to check for damage to the coldplate sensors.",
@@ -615,15 +4310,138 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-062.png",
+    "flowchartImageWidth": 766,
+    "flowchartImageHeight": 1259,
+    "sourcePdfPage": 120
   },
   {
-    "id": "PDF-MTF-026",
+    "id": "PDF-MTF-CASE-0143",
+    "pdfSection": 63,
     "station": "FTS",
-    "code": "054018006_015-000-1-0-000-00-624-139, 054018006_015-000-1-020000610139",
-    "name": "GPUX_XXX:XX:XX.X Acceptable temperature limits exceeded or the thermal sensor is broken or miscalibrated GPUX_XXXX:XX:XX.X Temperature above specified limit",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS",
+    "code": "054018006_015-000-0-000000000006",
+    "name": "mlx5_X ERROR - mlx5_X exceeds failure spec. Limit_Fail: 100 Value: XXX.0 MLX Mapping Model Primary/Left Bianca Secondary/Right Bianca 2000/0000 mlx5_0, mlx5_1 mlx5_4, mlx5_5 3000/3100 mlx5_0, mlx5_1 mlx5_2, mlx5_3 3000 GB300 mlx5_0, mlx5_1, mlx5_2, mlx5_3 mlx5_4, mlx5_5, mlx5_6, mlx5_7",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Identify the affected Bianca and validate the temperature-sensor reading.",
+        "detail": "Read the mlx5_X number in the error description and use the MLX mapping table above to determine\nwhether the failure is on the Primary/Left Bianca or Secondary/Right Bianca.\nRun the following command, replacing X with the affected device's RDMA number:\nsudo mget_temp -d mlx5_X"
+      },
+      {
+        "title": "Inspect the coldplate assembly on the affected component.",
+        "detail": "Check the coldplate alignment and flatness.\nInspect for physical damage.\nConfirm that the screws are installed and properly secured."
+      },
+      {
+        "title": "Reapply the TIM pad on the affected Bianca.",
+        "detail": "Remove the four wedge screws from the affected component if they are installed.\nEnsure the system goes through the TIM BAKE station properly."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-063.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 272,
+    "sourcePdfPage": 121
+  },
+  {
+    "id": "PDF-MTF-CASE-0144",
+    "pdfSection": 64,
+    "station": "FTS",
+    "code": "054018006_015-000-0-000000000006",
+    "name": "GPUX_00XX:XX:00.0 ERROR - MLE_GPU_AVG_00XX:XX:00.0 exceeds failure spec. Limit_Fail: XX.00 Value: XX.00",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Use the TAS.txt log to identify which GPU is exceeding the temperature limit.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the QD alignment and confirm that the QD pins are not stuck and that liquid coolant is flowing",
+        "detail": "properly."
+      },
+      {
+        "title": "Based on the QD inspection:",
+        "detail": "If no QD issues are found, run FTS again in the same MTF slot.\nIf a QD issue is found, move the system to the repair area for Secondary-Level FA."
+      },
+      {
+        "title": "If FTS fails again, move the system to the repair area and check the pre-test instrumental image(s) of the",
+        "detail": "TIM attachment."
+      },
+      {
+        "title": "On the suspected Bianca, inspect the coldplate assembly for alignment, flatness, damage, and proper screw",
+        "detail": "attachment."
+      },
+      {
+        "title": "If no coldplate issues are found, remove the coldplate attached to the corresponding GPU identified in the",
+        "detail": "TAS.txt log and inspect the TIM."
+      },
+      {
+        "title": "Based on the TIM inspection:",
+        "detail": "If no TIM issues are found, move to Secondary-Level FA.\nIf a TIM issue is found, redo the TIM, return the system to the L10 test flow, and run FTS again.\nEnsure the system goes through the TIM BAKE station properly."
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-064.png",
+    "flowchartImageWidth": 747,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 123
+  },
+  {
+    "id": "PDF-MTF-CASE-0145",
+    "pdfSection": 64,
+    "station": "FTS",
+    "code": "054018006_015-000-0-000000000006",
+    "name": "TEGRA_Thermal Zone Skt0 TJMax [mC] ERROR - TEGRA_Thermal Zone Skt0 TJMax [mC] exceeds failure spec. Limit_Fail: xxxxxx Value: xxxxxxx",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Use the TAS.txt log to identify which GPU is exceeding the temperature limit.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the QD alignment and confirm that the QD pins are not stuck and that liquid coolant is flowing",
+        "detail": "properly."
+      },
+      {
+        "title": "Based on the QD inspection:",
+        "detail": "If no QD issues are found, run FTS again in the same MTF slot.\nIf a QD issue is found, move the system to the repair area for Secondary-Level FA."
+      },
+      {
+        "title": "If FTS fails again, move the system to the repair area and check the pre-test instrumental image(s) of the",
+        "detail": "TIM attachment."
+      },
+      {
+        "title": "On the suspected Bianca, inspect the coldplate assembly for alignment, flatness, damage, and proper screw",
+        "detail": "attachment."
+      },
+      {
+        "title": "If no coldplate issues are found, remove the coldplate attached to the corresponding GPU identified in the",
+        "detail": "TAS.txt log and inspect the TIM."
+      },
+      {
+        "title": "Based on the TIM inspection:",
+        "detail": "If no TIM issues are found, move to Secondary-Level FA.\nIf a TIM issue is found, redo the TIM, return the system to the L10 test flow, and run FTS again.\nEnsure the system goes through the TIM BAKE station properly."
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-064.png",
+    "flowchartImageWidth": 747,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 123,
+    "replaceId": "FTS-12"
+  },
+  {
+    "id": "PDF-MTF-CASE-0146",
+    "pdfSection": 65,
+    "station": "FTS",
+    "code": "054018006_015-000-1-0-000-00-624-139, 054018006_015-000-1-0-000-00-281-139, 054018006_015-000-1-020000610139, 054018006_015-000-1-0-000-00-523-281",
+    "name": "GPUX_XXX:XX:XX.X Acceptable temperature limits exceeded or the thermal sensor is broken or miscalibrated",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -653,15 +4471,63 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-065.png",
+    "flowchartImageWidth": 985,
+    "flowchartImageHeight": 1054,
+    "sourcePdfPage": 125
   },
   {
-    "id": "PDF-MTF-027",
+    "id": "PDF-MTF-CASE-0147",
+    "pdfSection": 65,
+    "station": "FTS",
+    "code": "054018006_015-000-1-0-000-00-624-139, 054018006_015-000-1-0-000-00-281-139, 054018006_015-000-1-020000610139, 054018006_015-000-1-0-000-00-523-281",
+    "name": "GPUX_XXXX:XX:XX.X Temperature above specified limit",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the cold plate associated with the failing GPU.",
+        "detail": "Check the cold plate for damage to the sensor pads.\nUse TAS.txt log to verify which GPU is exceeding the temperature limits"
+      },
+      {
+        "title": "Inspect both leak-sensor cables.",
+        "detail": "Check the continuity of the leak-sensor wires at J125 and J18."
+      },
+      {
+        "title": "Inspect the thermal pads/TIM beneath the cold plate for damage, contamination, misalignment, excessive",
+        "detail": "reuse, or inadequate contact."
+      },
+      {
+        "title": "Replace the affected thermal pads/TIM and reinstall the cold plate.",
+        "detail": "Ensure the system goes through the TIM BAKE station properly."
+      },
+      {
+        "title": "Replace the affected cold-plate assembly.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-065.png",
+    "flowchartImageWidth": 985,
+    "flowchartImageHeight": 1054,
+    "sourcePdfPage": 125
+  },
+  {
+    "id": "PDF-MTF-CASE-0148",
+    "pdfSection": 66,
     "station": "FTS",
     "code": "054018006_015-000-1-000000000097",
-    "name": "NETIR_LINK_EVT Fatal XC0 i0 Link 17 (0x000625c6 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000) NETIR_LINK_EVT Fatal XC0 i0 Link 16 (0x000605c6 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000)",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS",
+    "name": "NETIR_LINK_EVT Fatal XC0 i0 Link 17 (0x000625c6 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "Reseat the NVLink loopback cable.",
@@ -675,15 +4541,75 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-066.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 363,
+    "sourcePdfPage": 126
   },
   {
-    "id": "PDF-MTF-028",
-    "station": "FTS, FCT",
-    "code": "054018006_048-000-0-000000000106, 028001006_048-000-0-000000000106",
+    "id": "PDF-MTF-CASE-0149",
+    "pdfSection": 66,
+    "station": "FTS",
+    "code": "054018006_015-000-1-000000000097",
+    "name": "NETIR_LINK_EVT Fatal XC0 i0 Link 16 (0x000605c6 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "Reseat the NVLink loopback cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the NVLink loopback cable.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-066.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 363,
+    "sourcePdfPage": 126
+  },
+  {
+    "id": "PDF-MTF-CASE-0151",
+    "pdfSection": 68,
+    "station": "FTS",
+    "code": "054018006_015-000-1-020000523281",
+    "name": "FTS - Temperature above specified limit",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Remove and reapply TIM, then bake using the liquid heating method.",
+        "detail": "Reapply TIM according to the TIM locations shown in the assembly guide.\nBake using the liquid heating method."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-068.png",
+    "flowchartImageWidth": 981,
+    "flowchartImageHeight": 1160,
+    "sourcePdfPage": 130,
+    "replaceId": "FTS-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0152",
+    "pdfSection": 69,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000106",
     "name": "FRU_BF3_FRU_LIST_1_FRU_Device_Description 'FRU_BF3_FRU_LIST_1_FRU_Device_Description': not found. expected '=/BlueField-3 DPU/'",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS, FCT",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -709,15 +4635,59 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-069.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1062,
+    "sourcePdfPage": 132
   },
   {
-    "id": "PDF-MTF-029",
-    "station": "FTS, FCT",
-    "code": "054018006_048-000-0-000000000107, 028001006_048-000-0-000000000107, 023001006_048-000-0-000000000107",
-    "name": "SSD_xxxx_xx_xx_x_FW_Version 'SSD_xxxx_xx_xx_x_FW_Version': found 'F3MU010' expected '=/GDC6602Q|LDDJ3U2Q|F3MU011/' SSD_xxxx_xx_xx_x_FW_Version 'SSD_xxxx_xx_xx_x_FW_Version': found 'GDC7402Q' expected '=/GDC7502Q|E2MU200/' SSD_00xx_xx_xx_x_FW_Version 'SSD_00xx_xx_00_0_FW_Version': found 'F3MU010' expected '=/LEDJ0U22|LDDJ3U2Q|F3MU011/'",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS, FCT",
+    "id": "PDF-MTF-CASE-0153",
+    "pdfSection": 69,
+    "station": "FCT",
+    "code": "028001006_048-000-0-000000000106",
+    "name": "FRU_BF3_FRU_LIST_1_FRU_Device_Description 'FRU_BF3_FRU_LIST_1_FRU_Device_Description': not found. expected '=/BlueField-3 DPU/'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reflash the failed BF3, then AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the failed BF3.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the failed BF3 riser cable.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the failed BF3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-069.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1062,
+    "sourcePdfPage": 132
+  },
+  {
+    "id": "PDF-MTF-CASE-0154",
+    "pdfSection": 70,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000107",
+    "name": "SSD_xxxx_xx_xx_x_FW_Version 'SSD_xxxx_xx_xx_x_FW_Version': found 'F3MU010' expected '=/GDC6602Q|LDDJ3U2Q|F3MU011/'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC cycle.",
@@ -735,15 +4705,113 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-070.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
+    "sourcePdfPage": 133
   },
   {
-    "id": "PDF-MTF-030",
+    "id": "PDF-MTF-CASE-0155",
+    "pdfSection": 70,
+    "station": "FCT",
+    "code": "028001006_048-000-0-000000000107",
+    "name": "SSD_xxxx_xx_xx_x_FW_Version 'SSD_xxxx_xx_xx_x_FW_Version': found 'GDC7402Q' expected '=/GDC7502Q|E2MU200/'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Install the expected/required version.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the failed SSD.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-070.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
+    "sourcePdfPage": 133
+  },
+  {
+    "id": "PDF-MTF-CASE-0156",
+    "pdfSection": 70,
+    "station": "FTS",
+    "code": "023001006_048-000-0-000000000107",
+    "name": "SSD_00xx_xx_xx_x_FW_Version 'SSD_00xx_xx_00_0_FW_Version': found 'F3MU010' expected '=/LEDJ0U22|LDDJ3U2Q|F3MU011/'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Install the expected/required version.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the failed SSD.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-070.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
+    "sourcePdfPage": 133
+  },
+  {
+    "id": "PDF-MTF-CASE-0157",
+    "pdfSection": 70,
+    "station": "FCT",
+    "code": "023001006_048-000-0-000000000107",
+    "name": "SSD_00xx_xx_xx_x_FW_Version 'SSD_00xx_xx_00_0_FW_Version': found 'F3MU010' expected '=/LEDJ0U22|LDDJ3U2Q|F3MU011/'",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Install the expected/required version.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the failed SSD.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-070.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
+    "sourcePdfPage": 133
+  },
+  {
+    "id": "PDF-MTF-CASE-0158",
+    "pdfSection": 71,
     "station": "FTS",
     "code": "054018006_048-000-0-000000000086",
     "name": "NUMA_NODE0_CPU 'NUMA_NODE0_CPU': found '0-xx' expected '0-xx'",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC cycle.",
@@ -757,15 +4825,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-071.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 381,
+    "sourcePdfPage": 135
   },
   {
-    "id": "PDF-MTF-031",
-    "station": "FTS, FCT",
-    "code": "054018006_051-000-0-000000000050, 028001006_051-000-0-000000000050",
-    "name": "Dump BF3_1 BMC virtual registers I2C I2C_Failure - Dump_BF3_1_BMC_virtual_registers Check failed Dump BF3_0 BMC virtual registers I2C I2C_Failure - Dump_BF3_0_BMC_virtual_registers Check failed",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS, FCT",
+    "id": "PDF-MTF-CASE-0159",
+    "pdfSection": 72,
+    "station": "FTS",
+    "code": "054018006_051-000-0-000000000050",
+    "name": "Dump BF3_1 BMC virtual registers I2C I2C_Failure - Dump_BF3_1_BMC_virtual_registers Check failed",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -787,15 +4860,55 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-072.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 341,
+    "sourcePdfPage": 136
   },
   {
-    "id": "PDF-MTF-032",
-    "station": "FTS, FCT",
-    "code": "054018006_051-000-0-000000000050, 028001006_051-000-0-000000000050",
+    "id": "PDF-MTF-CASE-0160",
+    "pdfSection": 72,
+    "station": "FCT",
+    "code": "028001006_051-000-0-000000000050",
+    "name": "Dump BF3_0 BMC virtual registers I2C I2C_Failure - Dump_BF3_0_BMC_virtual_registers Check failed",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reassemble the failed BF bay.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the associated IPEX boards.",
+        "detail": ""
+      },
+      {
+        "title": "Swap the Bianca boards.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-072.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 341,
+    "sourcePdfPage": 136
+  },
+  {
+    "id": "PDF-MTF-CASE-0161",
+    "pdfSection": 73,
+    "station": "FTS",
+    "code": "054018006_051-000-0-000000000050",
     "name": "Read IPEX_1 (S8B) CPLD FW version I2C I2C_Failure - Read_IPEX_1_(S8B)_CPLD_FW_version Check failed",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS, FCT",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -825,15 +4938,63 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-073.png",
+    "flowchartImageWidth": 983,
+    "flowchartImageHeight": 1187,
+    "sourcePdfPage": 138
   },
   {
-    "id": "PDF-MTF-033",
+    "id": "PDF-MTF-CASE-0162",
+    "pdfSection": 73,
+    "station": "FCT",
+    "code": "028001006_051-000-0-000000000050",
+    "name": "Read IPEX_1 (S8B) CPLD FW version I2C I2C_Failure - Read_IPEX_1_(S8B)_CPLD_FW_version Check failed",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat all IPEX connections.",
+        "detail": ""
+      },
+      {
+        "title": "Replace IPEX cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace IPEX board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace connected OSFP board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace connected Bianca board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-073.png",
+    "flowchartImageWidth": 983,
+    "flowchartImageHeight": 1187,
+    "sourcePdfPage": 138
+  },
+  {
+    "id": "PDF-MTF-CASE-0163",
+    "pdfSection": 74,
     "station": "FTS",
     "code": "054018006_051-000-0-000000000050",
     "name": "Read HDD BP_0 (S8B) CPLD FW version I2C I2C_Failure - Read_HDD_BP_0_(S8B)_CPLD_FW_version Check failed",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -867,15 +5028,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-074.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 831,
+    "sourcePdfPage": 140
   },
   {
-    "id": "PDF-MTF-034",
-    "station": "FCT, FTS",
-    "code": "028001006_051-000-0-000000000050, 054018006_051-000-0-000000000050",
-    "name": "I2C I2C_Failure - Getting_xxx_Bianca_AINy_ADC_reading Check failed. Out of range in BMC returned data on Getting Primary Bianca AIN0 ADC reading. Retrieved value = ['0x90', '0x00']. Normalized value = 0.0. Expected range = [0.5, 0.55], I2C I2C_Failure - Getting_Primary_Bianca_AIN0_ADC_reading Check failed. Getting Primary Bianca AIN0 ADC reading Out of range in BMC returned data on Getting Primary Bianca AIN0 ADC reading. Retrieved value = 0.0. Normalized value = 0.0. Expected range = [0.5, 0.55], I2C I2C_Failure - Getting_Primary_Bianca_AIN0_ADC_reading Check failed. Getting Primary Bianca AIN0 ADC reading I2C I2C_Failure - Getting_Primary_Bianca_AIN0_ADC_reading Check failed. Fail Message (MODS.log/tas.txt): Primary/Secondary Bianca AIN0 ADC reading Out of range. Note: AIN0 ADC indicates the cold plate leak sensor, while AIN1 ADC indicates the quick disconnect leak sensor.",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FCT, FTS",
+    "id": "PDF-MTF-CASE-0165",
+    "pdfSection": 75,
+    "station": "FCT",
+    "code": "028144006_na",
+    "name": "Out of range in BMC returned data on Getting Primary Bianca AIN0 ADC reading. Retrieved value = ['0x90', '0x00']. Normalized value = 0.0. Expected range = [0.5, 0.55], I2C I2C_Failure - Getting_Primary_Bianca_AIN0_ADC_reading Check failed.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
     "steps": [
       {
         "title": "AC cycle.",
@@ -891,17 +5057,84 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       },
       {
         "title": "Inspect the cold plate identified by the error code.",
-        "detail": "Check the leak sensor for physical damage.\nConfirm that the leak sensor is not touching the cold plate. See IMAGE_035 below."
+        "detail": "Check the leak sensor for physical damage.\nConfirm that the leak sensor is not touching the cold plate. See IMAGE_035 below.\nMove to second-level FA if failure persists."
       }
-    ]
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
   },
   {
-    "id": "PDF-MTF-035",
+    "id": "PDF-MTF-CASE-0166",
+    "pdfSection": 75,
     "station": "FTS",
-    "code": "054018006_015-000-1-000000000097",
-    "name": "NETIR Fatal XC0 i0 Link -1 (0x000fe406 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000) Not Available (\"Cannot find Onediag Final Result. Check log for details.\")",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FTS",
+    "code": "054001006_051-000-0-000000000050",
+    "name": "Getting Primary Bianca AIN0 ADC reading Out of range in BMC returned data on Getting Primary Bianca AIN0 ADC reading. Retrieved value = 0.0. Normalized value = 0.0. Expected range = [0.5, 0.55], I2C I2C_Failure - Getting_Primary_Bianca_AIN0_ADC_reading Check failed.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Retest FTS/FCT."
+      },
+      {
+        "title": "Review the generated error description.",
+        "detail": "If the error is I2C I2C_Failure - Getting_xxx_Bianca_AINy_ADC_reading Check\nfailed, proceed to Step 3.\nIf the error description includes measurement values, proceed to Step 4 and complete its substeps."
+      },
+      {
+        "title": "Re-seat the BMC and HMC, along with their cables.",
+        "detail": "Replace the BMC if the failure persists.\nMove to second-level FA if failure persists."
+      },
+      {
+        "title": "Inspect the cold plate identified by the error code.",
+        "detail": "Check the leak sensor for physical damage.\nConfirm that the leak sensor is not touching the cold plate. See IMAGE_035 below.\nMove to second-level FA if failure persists."
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0167",
+    "pdfSection": 75,
+    "station": "FTS",
+    "code": "054018006_051-000-0-000000000050",
+    "name": "Getting Primary Bianca AIN0 ADC reading I2C I2C_Failure - Getting_Primary_Bianca_AIN0_ADC_reading Check failed. Fail Message (MODS.log/tas.txt): Primary/Secondary Bianca AIN0 ADC reading Out of range. Note: AIN0 ADC indicates the cold plate leak sensor, while AIN1 ADC indicates the quick disconnect leak sensor.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Retest FTS/FCT."
+      },
+      {
+        "title": "Review the generated error description.",
+        "detail": "If the error is I2C I2C_Failure - Getting_xxx_Bianca_AINy_ADC_reading Check\nfailed, proceed to Step 3.\nIf the error description includes measurement values, proceed to Step 4 and complete its substeps."
+      },
+      {
+        "title": "Re-seat the BMC and HMC, along with their cables.",
+        "detail": "Replace the BMC if the failure persists.\nMove to second-level FA if failure persists."
+      },
+      {
+        "title": "Inspect the cold plate identified by the error code.",
+        "detail": "Check the leak sensor for physical damage.\nConfirm that the leak sensor is not touching the cold plate. See IMAGE_035 below.\nMove to second-level FA if failure persists."
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0168",
+    "pdfSection": 76,
+    "station": "FTS",
+    "code": "054018006_430",
+    "name": "NETIR Fatal XC0 i0 Link -1 (0x000fe406 0x00000000 0x00000000 0x00000000 0x00000000 0x00000000)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -911,15 +5144,43 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-076.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 409,
+    "sourcePdfPage": 143
   },
   {
-    "id": "PDF-MTF-036",
+    "id": "PDF-MTF-CASE-0169",
+    "pdfSection": 76,
+    "station": "FTS",
+    "code": "054018006_015-000-1-000000000097",
+    "name": "Not Available (\"Cannot find Onediag Final Result. Check log for details.\")",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-076.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 409,
+    "sourcePdfPage": 143
+  },
+  {
+    "id": "PDF-MTF-CASE-0170",
+    "pdfSection": 77,
     "station": "RIN",
     "code": "055004006_015-000-0-000000000009",
     "name": "An Exception occurred in thermal ssd test. See ssd_exception.log",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · RIN",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -937,15 +5198,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-077.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 344,
+    "sourcePdfPage": 144
   },
   {
-    "id": "PDF-MTF-037",
+    "id": "PDF-MTF-CASE-0171",
+    "pdfSection": 78,
     "station": "RIN",
     "code": "055010006_2",
     "name": "na",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · RIN",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -959,15 +5225,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-078.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 357,
+    "sourcePdfPage": 145
   },
   {
-    "id": "PDF-MTF-038",
+    "id": "PDF-MTF-CASE-0172",
+    "pdfSection": 79,
     "station": "FLB",
     "code": "058011037_4",
     "name": "Command sudo bash /tmp/mft_tool/mft*deb/install.sh --oem fails.",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLB",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -985,15 +5256,1335 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-079.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 364,
+    "sourcePdfPage": 146
   },
   {
-    "id": "PDF-MTF-039",
+    "id": "PDF-MTF-CASE-0173",
+    "pdfSection": 80,
+    "station": "FLB",
+    "code": "058012036_70636965010, 058012036_7a13",
+    "name": "Please check the failed device: XXX",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Determine the failing device.",
+        "detail": "Review the error description for one of the following messages:\nPlease check the failed device: \"M.2\".\nPlease check the failed device: \"BF3\".\nPlease check the failed device: \"CX8\".\nPlease check the failed device: \"GPU\".\nPlease check the failed device: \"OSFP\"."
+      },
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Follow the applicable FA flow based on the identified device.",
+        "detail": "M.2 FA Flow"
+      },
+      {
+        "title": "Reseat the M.2 Riser and M.2.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the Riser.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the M.2.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the right Bianca.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "BF3 FA Flow"
+      },
+      {
+        "title": "Reseat all BF3 cables.",
+        "detail": "Inspect the plugs and sockets when the cables are removed."
+      },
+      {
+        "title": "Replace BF3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "CX8 or GPU FA Flow\nGPU problems are treated as CX8 problems due to the PCIe topology."
+      },
+      {
+        "title": "Reseat CX8 based on the PCIe address.",
+        "detail": "If the failed device is a GPU, reseat the CX8 on that GPU's side.\nInspect both sides of the mezz connector when removed."
+      },
+      {
+        "title": "Replace CX8.",
+        "detail": ""
+      },
+      {
+        "title": "Replace Bianca.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "OSFP FA Flow"
+      },
+      {
+        "title": "Re-seat the UltraPass cables and OSFP.",
+        "detail": "Inspect the plugs and sockets when the cables and OSFP are removed."
+      },
+      {
+        "title": "Replace the OSFP.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null,
+    "replaceId": "FLB-13"
+  },
+  {
+    "id": "PDF-MTF-CASE-0174",
+    "pdfSection": 81,
+    "station": "FLC",
+    "code": "073027037_4, 073011036_4",
+    "name": "PLEASE CHECK DEVICE 0016:07:00.0: Incorrect Speed/Width",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLC",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0175",
+    "pdfSection": 81,
+    "station": "FCT",
+    "code": "028001006_029-054-0-000000000011, 028001006_016-000-0-000000000003",
+    "name": "PLEASE CHECK DEVICE 0016:07:00.0: Incorrect Speed/Width",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0176",
+    "pdfSection": 81,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "PLEASE CHECK DEVICE 0016:07:00.0: Incorrect Speed/Width",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151,
+    "replaceId": "FLB-08"
+  },
+  {
+    "id": "PDF-MTF-CASE-0177",
+    "pdfSection": 81,
+    "station": "FLC",
+    "code": "073027037_4, 073011036_4",
+    "name": "Command sudo /tmp/ssd_flash.sh 8 /tmp fails.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLC",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151,
+    "replaceId": "FLC-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0178",
+    "pdfSection": 81,
+    "station": "FCT",
+    "code": "028001006_029-054-0-000000000011, 028001006_016-000-0-000000000003",
+    "name": "Command sudo /tmp/ssd_flash.sh 8 /tmp fails.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0179",
+    "pdfSection": 81,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "Command sudo /tmp/ssd_flash.sh 8 /tmp fails.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0180",
+    "pdfSection": 81,
+    "station": "FLC",
+    "code": "073027037_4, 073011036_4",
+    "name": "0006:09:00.0 - Invalid Link Width: expected ['x4'] found x2",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLC",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0181",
+    "pdfSection": 81,
+    "station": "FCT",
+    "code": "028001006_029-054-0-000000000011, 028001006_016-000-0-000000000003",
+    "name": "0006:09:00.0 - Invalid Link Width: expected ['x4'] found x2",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0182",
+    "pdfSection": 81,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "0006:09:00.0 - Invalid Link Width: expected ['x4'] found x2",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0183",
+    "pdfSection": 81,
+    "station": "FLC",
+    "code": "073027037_4, 073011036_4",
+    "name": "0006:07:00.0 failed: Failed NVME drive = 0006:07:00.0, percentage decrease = 92%",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLC",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0184",
+    "pdfSection": 81,
+    "station": "FCT",
+    "code": "028001006_029-054-0-000000000011, 028001006_016-000-0-000000000003",
+    "name": "0006:07:00.0 failed: Failed NVME drive = 0006:07:00.0, percentage decrease = 92%",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151,
+    "replaceId": "FCT-10"
+  },
+  {
+    "id": "PDF-MTF-CASE-0185",
+    "pdfSection": 81,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "0006:07:00.0 failed: Failed NVME drive = 0006:07:00.0, percentage decrease = 92%",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0186",
+    "pdfSection": 81,
+    "station": "FLC",
+    "code": "073027037_4, 073011036_4",
+    "name": "No device found matching the expected drive count of 8",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLC",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151,
+    "replaceId": "FLC-01"
+  },
+  {
+    "id": "PDF-MTF-CASE-0187",
+    "pdfSection": 81,
+    "station": "FCT",
+    "code": "028001006_029-054-0-000000000011, 028001006_016-000-0-000000000003",
+    "name": "No device found matching the expected drive count of 8",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0188",
+    "pdfSection": 81,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "No device found matching the expected drive count of 8",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0189",
+    "pdfSection": 81,
+    "station": "FLC",
+    "code": "073027037_4, 073011036_4",
+    "name": "PLEASE CHECK DEVICE 00XX:XX:00.0 MISSING;",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLC",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0190",
+    "pdfSection": 81,
+    "station": "FCT",
+    "code": "028001006_029-054-0-000000000011, 028001006_016-000-0-000000000003",
+    "name": "PLEASE CHECK DEVICE 00XX:XX:00.0 MISSING;",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FCT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0191",
+    "pdfSection": 81,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "PLEASE CHECK DEVICE 00XX:XX:00.0 MISSING;",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run run_cable_check script."
+      },
+      {
+        "title": "Re-seat SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nUse the M.2 validation commands, below, to detect online SSDs and understand their health.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap SSD location.",
+        "detail": "Swap the failing SSD location with a passing SSD location on the same E1.s board.\nIf the failure moves with the SSD, continue to step 4.\nIf the failure stays in the same slot, continue to step 5.\nIf it passes in the new location, continue to step 5."
+      },
+      {
+        "title": "Replace SSD.",
+        "detail": "If the SSD fails in the new location, replace the SSD."
+      },
+      {
+        "title": "Re-seat/replace the MCIO cables.",
+        "detail": "Re-seat/replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Re-seat/replace the IPEX cables (B&W CABLE).",
+        "detail": "Re-seat/replace the IPEX cables associated with the failing SSD."
+      },
+      {
+        "title": "Replace IPEX/E1.s board.",
+        "detail": "Replace the E1.s/IPEX boards associated with the failing SSD."
+      },
+      {
+        "title": "Replace Bluefield-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "M.2 SSD Validation Commands\nDisplay detected SSDs and their folder locations\nsudo nvme list\nCheck SSD status (temperature, health, and endurance)\nsudo nvme smart-log /dev/nvme0n1"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "flowchartImageWidth": 782,
+    "flowchartImageHeight": 1265,
+    "sourcePdfPage": 151
+  },
+  {
+    "id": "PDF-MTF-CASE-0192",
+    "pdfSection": 82,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "PLEASE CHECK DEVICE 0006:07:00.0: Incorrect Width- Received: 1- Expected: 4;",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Clean and reseat the left IPEX cables and board/riser.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the SSD at BDF 0006:07:00.0.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the left IPEX white cable.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the BMC board for physical damage or seating issues; replace it as needed.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-082.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
+    "sourcePdfPage": 152
+  },
+  {
+    "id": "PDF-MTF-CASE-0193",
+    "pdfSection": 82,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "PLEASE CHECK DEVICE 0006:07:00.0: Incorrect Width- Received: 2- Expected: 4;",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Clean and reseat the left IPEX cables and board/riser.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the SSD at BDF 0006:07:00.0.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the left IPEX white cable.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the BMC board for physical damage or seating issues; replace it as needed.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-082.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
+    "sourcePdfPage": 152
+  },
+  {
+    "id": "PDF-MTF-CASE-0194",
+    "pdfSection": 82,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "PLEASE CHECK DEVICE 0006:07:00.0 MISSING; 0006:09:00.0 MISSING; 0006:07:00.0: Incorrect Speed-",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Clean and reseat the left IPEX cables and board/riser.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the SSD at BDF 0006:07:00.0.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the left IPEX white cable.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the BMC board for physical damage or seating issues; replace it as needed.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-082.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
+    "sourcePdfPage": 152
+  },
+  {
+    "id": "PDF-MTF-CASE-0195",
+    "pdfSection": 82,
+    "station": "FLB",
+    "code": "058012036_7a13",
+    "name": "Received: - Expected: ; 0006:09:00.0: Incorrect Speed- Received: - Expected: ;",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Clean and reseat the left IPEX cables and board/riser.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the SSD at BDF 0006:07:00.0.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the left IPEX white cable.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect the BMC board for physical damage or seating issues; replace it as needed.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-082.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
+    "sourcePdfPage": 152
+  },
+  {
+    "id": "PDF-MTF-CASE-0196",
+    "pdfSection": 83,
+    "station": "FLB",
+    "code": "058018006_4",
+    "name": "FLB: Command sudo ./os_update.sh fails.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the run_cable_check script."
+      },
+      {
+        "title": "Re-seat the SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap the SSD location.",
+        "detail": "Swap the failing SSD with a passing SSD on the same E1.S board.\nIf the SSD passes in the new location, proceed to Step 5."
+      },
+      {
+        "title": "Replace the SSD.",
+        "detail": "If the SSD fails in the new location, replace it."
+      },
+      {
+        "title": "Re-seat or replace the MCIO cables.",
+        "detail": "Re-seat or replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Replace the E1.S board.",
+        "detail": "Replace the E1.S board associated with the failing SSD."
+      },
+      {
+        "title": "Replace the BlueField-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-083.png",
+    "flowchartImageWidth": 778,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 154,
+    "replaceId": "FLB-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0197",
+    "pdfSection": 83,
+    "station": "FLB",
+    "code": "058018036_na",
+    "name": "FCT: Number of drives is incorrect. Found 0 drives; expected 4.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the run_cable_check script."
+      },
+      {
+        "title": "Re-seat the SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap the SSD location.",
+        "detail": "Swap the failing SSD with a passing SSD on the same E1.S board.\nIf the SSD passes in the new location, proceed to Step 5."
+      },
+      {
+        "title": "Replace the SSD.",
+        "detail": "If the SSD fails in the new location, replace it."
+      },
+      {
+        "title": "Re-seat or replace the MCIO cables.",
+        "detail": "Re-seat or replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Replace the E1.S board.",
+        "detail": "Replace the E1.S board associated with the failing SSD."
+      },
+      {
+        "title": "Replace the BlueField-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-083.png",
+    "flowchartImageWidth": 778,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 154
+  },
+  {
+    "id": "PDF-MTF-CASE-0198",
+    "pdfSection": 83,
+    "station": "FTS",
+    "code": "054018006_048-000-0-000000000107",
+    "name": "FCT: SSD_0012_07_00_0_Locator was not found; expected =/nvmedn1/.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the run_cable_check script."
+      },
+      {
+        "title": "Re-seat the SSD.",
+        "detail": "Use the cable debug guide to identify the relevant SSD.\nRe-seat the SSD."
+      },
+      {
+        "title": "Swap the SSD location.",
+        "detail": "Swap the failing SSD with a passing SSD on the same E1.S board.\nIf the SSD passes in the new location, proceed to Step 5."
+      },
+      {
+        "title": "Replace the SSD.",
+        "detail": "If the SSD fails in the new location, replace it."
+      },
+      {
+        "title": "Re-seat or replace the MCIO cables.",
+        "detail": "Re-seat or replace the MCIO cable associated with the failing SSD."
+      },
+      {
+        "title": "Replace the E1.S board.",
+        "detail": "Replace the E1.S board associated with the failing SSD."
+      },
+      {
+        "title": "Replace the BlueField-3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-083.png",
+    "flowchartImageWidth": 778,
+    "flowchartImageHeight": 1263,
+    "sourcePdfPage": 154
+  },
+  {
+    "id": "PDF-MTF-CASE-0199",
+    "pdfSection": 84,
+    "station": "FLB",
+    "code": "058018014_4",
+    "name": "Command tar zxyfp os_update_07_21_2025_R580_67.tgz fails.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Reseat in the same MTF slot.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-084.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 351,
+    "sourcePdfPage": 155
+  },
+  {
+    "id": "PDF-MTF-CASE-0200",
+    "pdfSection": 85,
     "station": "FLB",
     "code": "058018036_62666266",
     "name": "BF3 Update Failed.",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLB",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -1015,15 +6606,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-085.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 335,
+    "sourcePdfPage": 156
   },
   {
-    "id": "PDF-MTF-040",
+    "id": "PDF-MTF-CASE-0201",
+    "pdfSection": 86,
     "station": "FLB",
     "code": "058018036_6E6F626633",
     "name": "na",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLB",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -1033,15 +6629,359 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-086.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 409,
+    "sourcePdfPage": 157
   },
   {
-    "id": "PDF-MTF-041",
+    "id": "PDF-MTF-CASE-0202",
+    "pdfSection": 87,
+    "station": "FLB",
+    "code": "058034036_13892839",
+    "name": "MST ADDED x BUT DIAG EXPECT x, PORT MISSING CONNECTION mlxx_x. PLEASE CHECK ERROR LIST FOR LINK SPEED mtxxx_pciconfx-mlxx_x-N/A; mtxxx_pciconfx-mlxx_x",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Use the mlx5 port numbers in the port-mapping tables above to identify the affected device and side of the",
+        "detail": "tray.\nFor example, if the error description contains mlx5_0 and mlx5_1, the affected ports are on the left\nside of the tray."
+      },
+      {
+        "title": "Perform the applicable repair actions based on the affected device and whether EEPROM appears in the error",
+        "detail": "description:\nCX7 or CX8:\nIf EEPROM is not listed:\nRe-seat the OSFP cable at the OSFP front panel.\nRe-seat both UltraPass cables.\nInspect the UltraPass cables for damage or bent pins.\nInspect the UltraPass connectors for contamination or foreign particles.\nIf the failure persists, replace the affected CX7 or CX8 module.\nIf EEPROM is listed:\nInspect and re-seat the sideband cable.\nInspect both ends of the sideband cable for damage or bent pins, including the\nconnections at the CX7/CX8 module and OSFP.\nBF3:\nIf EEPROM is not listed:\nRe-seat the QSFP cable at the QSFP front panel.\nNote: BF3 does not use UltraPass cables.\nIf the failure persists, replace the affected BF3.\nIf EEPROM is listed:\nInspect and re-seat the BF3 sideband cable.\nInspect the sideband cable and connector pins for damage or bent pins."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Ultrapass Bent Cable (Example):"
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0203",
+    "pdfSection": 87,
+    "station": "FLB",
+    "code": "058034036_13892849",
+    "name": "MST ADDED EXPECTED x CBL. PLEASE CHECK ERROR LIST FOR LINK SPEED mtxxx_pciconf Port Mapping GB200 with Cx7, mlx port mapping (0000 and 2000 models) Left side of tray Right side of tray Cx7 mlx5_0, mlx5_1 mlx5_4, mlx5_5 BF3 mlx5_2, mlx5_3 mlx5_6, mlx5_7 GB200 with Cx8, mlx port mapping (3000 and 3100 models) Left side of tray Right side of tray Cx8 mlx5_0, mlx5_1 mlx5_2, mlx5_3 BF3 mlx5_4, mlx5_5 GB300 with Cx8, mlx port mapping (3000 model) Left side of tray Right side of tray Cx8 mlx5_0, mlx5_1, mlx5_2, mlx5_3 mlx5_4, mlx5_5, mlx5_6, mlx5_7 BF3 mlx5_8, mlx5_9",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Use the mlx5 port numbers in the port-mapping tables above to identify the affected device and side of the",
+        "detail": "tray.\nFor example, if the error description contains mlx5_0 and mlx5_1, the affected ports are on the left\nside of the tray."
+      },
+      {
+        "title": "Perform the applicable repair actions based on the affected device and whether EEPROM appears in the error",
+        "detail": "description:\nCX7 or CX8:\nIf EEPROM is not listed:\nRe-seat the OSFP cable at the OSFP front panel.\nRe-seat both UltraPass cables.\nInspect the UltraPass cables for damage or bent pins.\nInspect the UltraPass connectors for contamination or foreign particles.\nIf the failure persists, replace the affected CX7 or CX8 module.\nIf EEPROM is listed:\nInspect and re-seat the sideband cable.\nInspect both ends of the sideband cable for damage or bent pins, including the\nconnections at the CX7/CX8 module and OSFP.\nBF3:\nIf EEPROM is not listed:\nRe-seat the QSFP cable at the QSFP front panel.\nNote: BF3 does not use UltraPass cables.\nIf the failure persists, replace the affected BF3.\nIf EEPROM is listed:\nInspect and re-seat the BF3 sideband cable.\nInspect the sideband cable and connector pins for damage or bent pins."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Ultrapass Bent Cable (Example):"
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0204",
+    "pdfSection": 88,
+    "station": "FLB",
+    "code": "058034036_13892839",
+    "name": "MST ADDED x BUT DIAG EXPECT x, check external mlx5_x. PLEASE CHECK mlx5_x-Negotiation failure; mlx5_x-Bad/unsupported EEPROM; Port-Mapping Reference GB200 with Cx7, mlx port mapping (0000 and 2000 models) Device Left side of tray Right side of tray Cx7 mlx5_0, mlx5_1 mlx5_4, mlx5_5 BF3 mlx5_2, mlx5_3 mlx5_6, mlx5_7 GB200 with Cx8, mlx port mapping (3000 and 3100 models) Device Left side of tray Right side of tray Cx8 mlx5_0, mlx5_1 mlx5_2, mlx5_3 BF3 — mlx5_4, mlx5_5 GB300 with Cx8, mlx port mapping (3000 model) Device Left side of tray Right side of tray Cx8 mlx5_0, mlx5_1, mlx5_2, mlx5_3 mlx5_4, mlx5_5, mlx5_6, mlx5_7 BF3 — mlx5_8, mlx5_9",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Follow the mlx5 numbers in the port-mapping tables above to determine which side the ports are on.",
+        "detail": "For example, if the error-code description contains mlx5_0 and mlx5_1, the ports are on the left side\nof the tray."
+      },
+      {
+        "title": "Perform the applicable repair actions:",
+        "detail": "For Cx7 or Cx8:\nInspect and re-seat the sideband cable.\nCheck for damaged or bent pins.\nFor BF3:\nInspect and re-seat the BF3 sideband cable.\nCheck for damaged or bent pins."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0205",
+    "pdfSection": 89,
+    "station": "FLB",
+    "code": "058034036_6378377232",
+    "name": "ERROR: Please check: CX8-P1(L) CX8-P2(L)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Open the datafile and validate the affected CX-card MAC and GUID values.",
+        "detail": "Note: See the CX-Card MAC and GUID Validation Reference below for instructions on identifying the\nCX-card location and checking its internal values.\nIf the error lists only P1(L) and P2(L):\nCheck the two applicable CX-card entries for the Left/Primary side.\nIf the error lists P1(L), P2(L), P1(R), and P2(R):\nCheck all four applicable CX-card entries for the Left/Primary and Right/Secondary sides.\nIf the error lists only P1(R) and P2(R):\nCheck the two applicable CX-card entries for the Right/Secondary side."
+      },
+      {
+        "title": "Determine the failure case and perform the applicable correction.",
+        "detail": "CX cards are physically swapped:\nThe identifiers belonging to one CX card appear at the physical location assigned to the other\nCX card.\nUse the applicable mlx5 port-mapping table to confirm the physical location of each CX card.\nMove the affected CX cards to their correct physical locations.\nMAC1/MAC2 and GUID1/GUID2 are inverted:\nThe CX card is in the correct physical location, but its Port 1 and Port 2 MAC or GUID values\nare reversed in SFC or the datafile.\nAsk IT to perform a logical swap or correct the applicable MAC1, MAC2, GUID1, and GUID2\nvalues.\nDo not physically swap the CX card for this case.\nSupplier-label issue:\nThe internal CX-card values match the SFC/datafile values, but the physical label is incorrect.\nRequest correction of the label through the applicable supplier or quality process.\nDo not change SFC or physically swap the CX card for this case."
+      },
+      {
+        "title": "Move to Secondary-Level FA if the applicable correction does not resolve the failure.",
+        "detail": "CX-Card MAC and GUID Validation Reference"
+      },
+      {
+        "title": "Access the host and run:",
+        "detail": "sudo mst start\nsudo mst status -v\nUse the output and the applicable mlx5 port-mapping table to identify each RDMA device and its physical\nCX-card location."
+      },
+      {
+        "title": "Display the internal RDMA GUID values for the applicable device:",
+        "detail": "sudo /opt/mellanox/iproute2/sbin/rdma dev show mlx5_?\nReplace ? with the RDMA device number obtained from sudo mst status -v."
+      },
+      {
+        "title": "Review the displayed node_guid and sys_image_guid values and compare them with the expected CX-",
+        "detail": "card GUID values in the datafile."
+      },
+      {
+        "title": "Compare the applicable GUID1, GUID2, MAC1, and MAC2 datafile values with the corresponding SFC record",
+        "detail": "and physical CX-card label.\nImportant: The rdma dev show command displays RDMA GUID values, not Ethernet MAC addresses.\nUse it to validate GUID identity and placement. Validate the MAC fields against the SFC/datafile records\nand the physical CX-card label."
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0206",
+    "pdfSection": 89,
+    "station": "FLB",
+    "code": "058034036_6378377232",
+    "name": "ERROR: Please check: CX8-P1(L) CX8-P2(L) CX8-P1(R) CX8-P2(R)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Open the datafile and validate the affected CX-card MAC and GUID values.",
+        "detail": "Note: See the CX-Card MAC and GUID Validation Reference below for instructions on identifying the\nCX-card location and checking its internal values.\nIf the error lists only P1(L) and P2(L):\nCheck the two applicable CX-card entries for the Left/Primary side.\nIf the error lists P1(L), P2(L), P1(R), and P2(R):\nCheck all four applicable CX-card entries for the Left/Primary and Right/Secondary sides.\nIf the error lists only P1(R) and P2(R):\nCheck the two applicable CX-card entries for the Right/Secondary side."
+      },
+      {
+        "title": "Determine the failure case and perform the applicable correction.",
+        "detail": "CX cards are physically swapped:\nThe identifiers belonging to one CX card appear at the physical location assigned to the other\nCX card.\nUse the applicable mlx5 port-mapping table to confirm the physical location of each CX card.\nMove the affected CX cards to their correct physical locations.\nMAC1/MAC2 and GUID1/GUID2 are inverted:\nThe CX card is in the correct physical location, but its Port 1 and Port 2 MAC or GUID values\nare reversed in SFC or the datafile.\nAsk IT to perform a logical swap or correct the applicable MAC1, MAC2, GUID1, and GUID2\nvalues.\nDo not physically swap the CX card for this case.\nSupplier-label issue:\nThe internal CX-card values match the SFC/datafile values, but the physical label is incorrect.\nRequest correction of the label through the applicable supplier or quality process.\nDo not change SFC or physically swap the CX card for this case."
+      },
+      {
+        "title": "Move to Secondary-Level FA if the applicable correction does not resolve the failure.",
+        "detail": "CX-Card MAC and GUID Validation Reference"
+      },
+      {
+        "title": "Access the host and run:",
+        "detail": "sudo mst start\nsudo mst status -v\nUse the output and the applicable mlx5 port-mapping table to identify each RDMA device and its physical\nCX-card location."
+      },
+      {
+        "title": "Display the internal RDMA GUID values for the applicable device:",
+        "detail": "sudo /opt/mellanox/iproute2/sbin/rdma dev show mlx5_?\nReplace ? with the RDMA device number obtained from sudo mst status -v."
+      },
+      {
+        "title": "Review the displayed node_guid and sys_image_guid values and compare them with the expected CX-",
+        "detail": "card GUID values in the datafile."
+      },
+      {
+        "title": "Compare the applicable GUID1, GUID2, MAC1, and MAC2 datafile values with the corresponding SFC record",
+        "detail": "and physical CX-card label.\nImportant: The rdma dev show command displays RDMA GUID values, not Ethernet MAC addresses.\nUse it to validate GUID identity and placement. Validate the MAC fields against the SFC/datafile records\nand the physical CX-card label."
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0207",
+    "pdfSection": 89,
+    "station": "FLB",
+    "code": "058034036_6378377232",
+    "name": "ERROR: Please check: CX8-P1(R) CX8-P2(R)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Open the datafile and validate the affected CX-card MAC and GUID values.",
+        "detail": "Note: See the CX-Card MAC and GUID Validation Reference below for instructions on identifying the\nCX-card location and checking its internal values.\nIf the error lists only P1(L) and P2(L):\nCheck the two applicable CX-card entries for the Left/Primary side.\nIf the error lists P1(L), P2(L), P1(R), and P2(R):\nCheck all four applicable CX-card entries for the Left/Primary and Right/Secondary sides.\nIf the error lists only P1(R) and P2(R):\nCheck the two applicable CX-card entries for the Right/Secondary side."
+      },
+      {
+        "title": "Determine the failure case and perform the applicable correction.",
+        "detail": "CX cards are physically swapped:\nThe identifiers belonging to one CX card appear at the physical location assigned to the other\nCX card.\nUse the applicable mlx5 port-mapping table to confirm the physical location of each CX card.\nMove the affected CX cards to their correct physical locations.\nMAC1/MAC2 and GUID1/GUID2 are inverted:\nThe CX card is in the correct physical location, but its Port 1 and Port 2 MAC or GUID values\nare reversed in SFC or the datafile.\nAsk IT to perform a logical swap or correct the applicable MAC1, MAC2, GUID1, and GUID2\nvalues.\nDo not physically swap the CX card for this case.\nSupplier-label issue:\nThe internal CX-card values match the SFC/datafile values, but the physical label is incorrect.\nRequest correction of the label through the applicable supplier or quality process.\nDo not change SFC or physically swap the CX card for this case."
+      },
+      {
+        "title": "Move to Secondary-Level FA if the applicable correction does not resolve the failure.",
+        "detail": "CX-Card MAC and GUID Validation Reference"
+      },
+      {
+        "title": "Access the host and run:",
+        "detail": "sudo mst start\nsudo mst status -v\nUse the output and the applicable mlx5 port-mapping table to identify each RDMA device and its physical\nCX-card location."
+      },
+      {
+        "title": "Display the internal RDMA GUID values for the applicable device:",
+        "detail": "sudo /opt/mellanox/iproute2/sbin/rdma dev show mlx5_?\nReplace ? with the RDMA device number obtained from sudo mst status -v."
+      },
+      {
+        "title": "Review the displayed node_guid and sys_image_guid values and compare them with the expected CX-",
+        "detail": "card GUID values in the datafile."
+      },
+      {
+        "title": "Compare the applicable GUID1, GUID2, MAC1, and MAC2 datafile values with the corresponding SFC record",
+        "detail": "and physical CX-card label.\nImportant: The rdma dev show command displays RDMA GUID values, not Ethernet MAC addresses.\nUse it to validate GUID identity and placement. Validate the MAC fields against the SFC/datafile records\nand the physical CX-card label."
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0208",
+    "pdfSection": 89,
+    "station": "FLB",
+    "code": "058034036_6378377232",
+    "name": "Please check: CX7-P1(L) CX7-P2(L) CX7-P1(R) CX7-P2(R)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Open the datafile and validate the affected CX-card MAC and GUID values.",
+        "detail": "Note: See the CX-Card MAC and GUID Validation Reference below for instructions on identifying the\nCX-card location and checking its internal values.\nIf the error lists only P1(L) and P2(L):\nCheck the two applicable CX-card entries for the Left/Primary side.\nIf the error lists P1(L), P2(L), P1(R), and P2(R):\nCheck all four applicable CX-card entries for the Left/Primary and Right/Secondary sides.\nIf the error lists only P1(R) and P2(R):\nCheck the two applicable CX-card entries for the Right/Secondary side."
+      },
+      {
+        "title": "Determine the failure case and perform the applicable correction.",
+        "detail": "CX cards are physically swapped:\nThe identifiers belonging to one CX card appear at the physical location assigned to the other\nCX card.\nUse the applicable mlx5 port-mapping table to confirm the physical location of each CX card.\nMove the affected CX cards to their correct physical locations.\nMAC1/MAC2 and GUID1/GUID2 are inverted:\nThe CX card is in the correct physical location, but its Port 1 and Port 2 MAC or GUID values\nare reversed in SFC or the datafile.\nAsk IT to perform a logical swap or correct the applicable MAC1, MAC2, GUID1, and GUID2\nvalues.\nDo not physically swap the CX card for this case.\nSupplier-label issue:\nThe internal CX-card values match the SFC/datafile values, but the physical label is incorrect.\nRequest correction of the label through the applicable supplier or quality process.\nDo not change SFC or physically swap the CX card for this case."
+      },
+      {
+        "title": "Move to Secondary-Level FA if the applicable correction does not resolve the failure.",
+        "detail": "CX-Card MAC and GUID Validation Reference"
+      },
+      {
+        "title": "Access the host and run:",
+        "detail": "sudo mst start\nsudo mst status -v\nUse the output and the applicable mlx5 port-mapping table to identify each RDMA device and its physical\nCX-card location."
+      },
+      {
+        "title": "Display the internal RDMA GUID values for the applicable device:",
+        "detail": "sudo /opt/mellanox/iproute2/sbin/rdma dev show mlx5_?\nReplace ? with the RDMA device number obtained from sudo mst status -v."
+      },
+      {
+        "title": "Review the displayed node_guid and sys_image_guid values and compare them with the expected CX-",
+        "detail": "card GUID values in the datafile."
+      },
+      {
+        "title": "Compare the applicable GUID1, GUID2, MAC1, and MAC2 datafile values with the corresponding SFC record",
+        "detail": "and physical CX-card label.\nImportant: The rdma dev show command displays RDMA GUID values, not Ethernet MAC addresses.\nUse it to validate GUID identity and placement. Validate the MAC fields against the SFC/datafile records\nand the physical CX-card label."
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0209",
+    "pdfSection": 89,
+    "station": "FLB",
+    "code": "058034036_6378377232",
+    "name": "Please check: CX7-P1(L) CX7-P2(L)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Open the datafile and validate the affected CX-card MAC and GUID values.",
+        "detail": "Note: See the CX-Card MAC and GUID Validation Reference below for instructions on identifying the\nCX-card location and checking its internal values.\nIf the error lists only P1(L) and P2(L):\nCheck the two applicable CX-card entries for the Left/Primary side.\nIf the error lists P1(L), P2(L), P1(R), and P2(R):\nCheck all four applicable CX-card entries for the Left/Primary and Right/Secondary sides.\nIf the error lists only P1(R) and P2(R):\nCheck the two applicable CX-card entries for the Right/Secondary side."
+      },
+      {
+        "title": "Determine the failure case and perform the applicable correction.",
+        "detail": "CX cards are physically swapped:\nThe identifiers belonging to one CX card appear at the physical location assigned to the other\nCX card.\nUse the applicable mlx5 port-mapping table to confirm the physical location of each CX card.\nMove the affected CX cards to their correct physical locations.\nMAC1/MAC2 and GUID1/GUID2 are inverted:\nThe CX card is in the correct physical location, but its Port 1 and Port 2 MAC or GUID values\nare reversed in SFC or the datafile.\nAsk IT to perform a logical swap or correct the applicable MAC1, MAC2, GUID1, and GUID2\nvalues.\nDo not physically swap the CX card for this case.\nSupplier-label issue:\nThe internal CX-card values match the SFC/datafile values, but the physical label is incorrect.\nRequest correction of the label through the applicable supplier or quality process.\nDo not change SFC or physically swap the CX card for this case."
+      },
+      {
+        "title": "Move to Secondary-Level FA if the applicable correction does not resolve the failure.",
+        "detail": "CX-Card MAC and GUID Validation Reference"
+      },
+      {
+        "title": "Access the host and run:",
+        "detail": "sudo mst start\nsudo mst status -v\nUse the output and the applicable mlx5 port-mapping table to identify each RDMA device and its physical\nCX-card location."
+      },
+      {
+        "title": "Display the internal RDMA GUID values for the applicable device:",
+        "detail": "sudo /opt/mellanox/iproute2/sbin/rdma dev show mlx5_?\nReplace ? with the RDMA device number obtained from sudo mst status -v."
+      },
+      {
+        "title": "Review the displayed node_guid and sys_image_guid values and compare them with the expected CX-",
+        "detail": "card GUID values in the datafile."
+      },
+      {
+        "title": "Compare the applicable GUID1, GUID2, MAC1, and MAC2 datafile values with the corresponding SFC record",
+        "detail": "and physical CX-card label.\nImportant: The rdma dev show command displays RDMA GUID values, not Ethernet MAC addresses.\nUse it to validate GUID identity and placement. Validate the MAC fields against the SFC/datafile records\nand the physical CX-card label."
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0210",
+    "pdfSection": 89,
+    "station": "FLB",
+    "code": "058034036_6378377232",
+    "name": "Please check: CX7-P1(R) CX7-P2(R) Port Mapping GB200 with Cx7 mlx port mapping (0000 and 2000 models) Device Left side of tray Right side of tray Cx7 mlx5_0, mlx5_1 mlx5_4, mlx5_5 BF3 mlx5_2, mlx5_3 mlx5_6, mlx5_7 GB200 with Cx8 mlx port mapping (3000 and 3100 models) Device Left side of tray Right side of tray Cx8 mlx5_0, mlx5_1 mlx5_2, mlx5_3 BF3 — mlx5_4, mlx5_5 GB300 with Cx8 mlx port mapping (3000 model) Device Left side of tray Right side of tray Cx8 mlx5_0, mlx5_1, mlx5_2, mlx5_3 mlx5_4, mlx5_5, mlx5_6, mlx5_7 BF3 — mlx5_8, mlx5_9",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "Open the datafile and validate the affected CX-card MAC and GUID values.",
+        "detail": "Note: See the CX-Card MAC and GUID Validation Reference below for instructions on identifying the\nCX-card location and checking its internal values.\nIf the error lists only P1(L) and P2(L):\nCheck the two applicable CX-card entries for the Left/Primary side.\nIf the error lists P1(L), P2(L), P1(R), and P2(R):\nCheck all four applicable CX-card entries for the Left/Primary and Right/Secondary sides.\nIf the error lists only P1(R) and P2(R):\nCheck the two applicable CX-card entries for the Right/Secondary side."
+      },
+      {
+        "title": "Determine the failure case and perform the applicable correction.",
+        "detail": "CX cards are physically swapped:\nThe identifiers belonging to one CX card appear at the physical location assigned to the other\nCX card.\nUse the applicable mlx5 port-mapping table to confirm the physical location of each CX card.\nMove the affected CX cards to their correct physical locations.\nMAC1/MAC2 and GUID1/GUID2 are inverted:\nThe CX card is in the correct physical location, but its Port 1 and Port 2 MAC or GUID values\nare reversed in SFC or the datafile.\nAsk IT to perform a logical swap or correct the applicable MAC1, MAC2, GUID1, and GUID2\nvalues.\nDo not physically swap the CX card for this case.\nSupplier-label issue:\nThe internal CX-card values match the SFC/datafile values, but the physical label is incorrect.\nRequest correction of the label through the applicable supplier or quality process.\nDo not change SFC or physically swap the CX card for this case."
+      },
+      {
+        "title": "Move to Secondary-Level FA if the applicable correction does not resolve the failure.",
+        "detail": "CX-Card MAC and GUID Validation Reference"
+      },
+      {
+        "title": "Access the host and run:",
+        "detail": "sudo mst start\nsudo mst status -v\nUse the output and the applicable mlx5 port-mapping table to identify each RDMA device and its physical\nCX-card location."
+      },
+      {
+        "title": "Display the internal RDMA GUID values for the applicable device:",
+        "detail": "sudo /opt/mellanox/iproute2/sbin/rdma dev show mlx5_?\nReplace ? with the RDMA device number obtained from sudo mst status -v."
+      },
+      {
+        "title": "Review the displayed node_guid and sys_image_guid values and compare them with the expected CX-",
+        "detail": "card GUID values in the datafile."
+      },
+      {
+        "title": "Compare the applicable GUID1, GUID2, MAC1, and MAC2 datafile values with the corresponding SFC record",
+        "detail": "and physical CX-card label.\nImportant: The rdma dev show command displays RDMA GUID values, not Ethernet MAC addresses.\nUse it to validate GUID identity and placement. Validate the MAC fields against the SFC/datafile records\nand the physical CX-card label."
+      }
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
+  },
+  {
+    "id": "PDF-MTF-CASE-0211",
+    "pdfSection": 90,
     "station": "FLB",
     "code": "058072006_000-000-0-000000000001, 058072036_000-000-0-000000000001",
     "name": "Not able to get BMC IP address",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLB",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -1055,15 +6995,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-090.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 362,
+    "sourcePdfPage": 165
   },
   {
-    "id": "PDF-MTF-042",
+    "id": "PDF-MTF-CASE-0212",
+    "pdfSection": 91,
     "station": "FLB",
     "code": "058072037_74706626164",
     "name": "TPM DISABLED",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLB",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
     "steps": [
       {
         "title": "Reseat the TPM.",
@@ -1073,15 +7018,48 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-091.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 395,
+    "sourcePdfPage": 166
   },
   {
-    "id": "PDF-MTF-043",
-    "station": "NVL, FTS, IOT",
-    "code": "098011006_009-001-1-000000000140, 054018006_000-000-1-000000000140, 033026006_009-001-1-000000000140",
-    "name": "NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3 / Found 5e-06, exceeded threshold 1e-07 Found Xe-06, exceeded threshold 1e-0X, 4x19 connector 3, Column 11, Found 3e-06, exceeded threshold 1e-07, 4x19 connector 3, Column 11 NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3 /Found 5e-06, exceeded threshold 1e-07",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · NVL, FTS, IOT",
+    "id": "PDF-MTF-CASE-0213",
+    "pdfSection": 92,
+    "station": "FLB",
+    "code": "058074006_000574",
+    "name": "ERROR: BIOS booted to UEFI shell",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the M.2 SSD.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-092.png",
+    "flowchartImageWidth": 919,
+    "flowchartImageHeight": 1253,
+    "sourcePdfPage": 168,
+    "replaceId": "FLB-09"
+  },
+  {
+    "id": "PDF-MTF-CASE-0214",
+    "pdfSection": 93,
+    "station": "NVL",
+    "code": "098011006_009-001-1-000000000140",
+    "name": "NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3 / Found 5e-06, exceeded threshold 1e-07",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · NVL",
     "steps": [
       {
         "title": "AC cycle.",
@@ -1099,15 +7077,106 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-093.png",
+    "flowchartImageWidth": 879,
+    "flowchartImageHeight": 1262,
+    "sourcePdfPage": 170
   },
   {
-    "id": "PDF-MTF-044",
+    "id": "PDF-MTF-CASE-0215",
+    "pdfSection": 93,
+    "station": "FTS",
+    "code": "054018006_000-000-1-000000000140",
+    "name": "Found Xe-06, exceeded threshold 1e-0X, 4x19 connector 3, Column 11, Found 3e-06, exceeded threshold 1e-07, 4x19 connector 3, Column 11",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FTS",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect for damage.",
+        "detail": "Remove the compute tray from the MTF.\nCheck for visible damage on the compute tray and backplane."
+      },
+      {
+        "title": "Change the MTF location.",
+        "detail": "Move the compute tray to a different MTF location.\nIf the failure stays in the original MTF location:\nReplace the loopback cable causing the failure in the original MTF location.\nIf the failure moves with the compute tray and the retest has failed twice:\nIdentify whether the failure originated from the primary or secondary Bianca board.\nReplace the failing Bianca board.\nPlace the failed Bianca board in the bonepile to replace the NVLink connector(s) corresponding\nto the failed link."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-093.png",
+    "flowchartImageWidth": 879,
+    "flowchartImageHeight": 1262,
+    "sourcePdfPage": 170
+  },
+  {
+    "id": "PDF-MTF-CASE-0216",
+    "pdfSection": 93,
+    "station": "IOT",
+    "code": "033026006_009-001-1-000000000140",
+    "name": "NVLink_CC 0019:01:00.0 - Fail to enter HS Mode on NvLink 3 /Found 5e-06, exceeded threshold 1e-07",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · IOT",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect for damage.",
+        "detail": "Remove the compute tray from the MTF.\nCheck for visible damage on the compute tray and backplane."
+      },
+      {
+        "title": "Change the MTF location.",
+        "detail": "Move the compute tray to a different MTF location.\nIf the failure stays in the original MTF location:\nReplace the loopback cable causing the failure in the original MTF location.\nIf the failure moves with the compute tray and the retest has failed twice:\nIdentify whether the failure originated from the primary or secondary Bianca board.\nReplace the failing Bianca board.\nPlace the failed Bianca board in the bonepile to replace the NVLink connector(s) corresponding\nto the failed link."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-093.png",
+    "flowchartImageWidth": 879,
+    "flowchartImageHeight": 1262,
+    "sourcePdfPage": 170
+  },
+  {
+    "id": "PDF-MTF-CASE-0217",
+    "pdfSection": 94,
+    "station": "NVL",
+    "code": "098011006_4",
+    "name": "Command sudo ./onediagmfg.r8.252 --force_product=titania_gb -- run_spec=spec_titania_gb_nvlinkloopback.json -- log=/home/nvidia/oberon/Onediag_NVLINK --run_on_error fails.",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · NVL",
+    "steps": [
+      {
+        "title": "Copy the Onediag package to the DUT.",
+        "detail": "This failure occurs because the onediagmfg executable was not found.\nEnsure that the Onediag package is copied to the DUT.\nRun the test from the directory containing the onediagmfg executable."
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-094.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
+    "sourcePdfPage": 171,
+    "replaceId": "NVL-03"
+  },
+  {
+    "id": "PDF-MTF-CASE-0218",
+    "pdfSection": 95,
     "station": "FLA",
-    "code": "2ac92b0162253c7b, 5cc2d0183ca4ff66",
+    "code": "42d090c6936c2e2c, 2ac92b0162253c7b, 5cc2d0183ca4ff66",
     "name": "Check 'BlueField-3 DPU SuperNIC (Right) - Board PN' is valid. ( Item invalid. Check SFC. ) [TC] ENV - Assign Crabber Variable From Assembly Data (GB NVL) (BlueField-3 DPU SuperNIC (Right) - Board PN)",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLA",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -1137,15 +7206,21 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": "Reference Image"
       }
-    ]
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null,
+    "replaceId": "FLA-16"
   },
   {
-    "id": "PDF-MTF-045",
+    "id": "PDF-MTF-CASE-0219",
+    "pdfSection": 96,
     "station": "FLA",
     "code": "2c8bd1a67df0283c",
-    "name": "Check \"Compute Tray - BMC Board - BMC 1GbE Port IP Address\" IP connection. ( Connection is not stable. Check the cable & LED. ) [TC] ENV - Generate IP Address File From MAC Address File (GB NVL) (...) Look for \"Compute Tray BMC\" IP. ( Failed to find IP. Check the cable & LED. Might need to AC cycle. ) [TC] ENV - Generate IP Address File From MAC Address File (GB NVL) (Compute Tray BMC)",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLA",
+    "name": "Check \"Compute Tray - BMC Board - BMC 1GbE Port IP Address\" IP connection. ( Connection is not stable. Check the cable & LED. ) [TC] ENV - Generate IP Address File From MAC Address File (GB NVL) (...)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
     "steps": [
       {
         "title": "Move the system to a second MTF location.",
@@ -1167,15 +7242,56 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-096.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1007,
+    "sourcePdfPage": 174
   },
   {
-    "id": "PDF-MTF-046",
+    "id": "PDF-MTF-CASE-0220",
+    "pdfSection": 96,
+    "station": "FLA",
+    "code": "89e8226d16ea2023",
+    "name": "Look for \"Compute Tray BMC\" IP. ( Failed to find IP. Check the cable & LED. Might need to AC cycle. ) [TC] ENV - Generate IP Address File From MAC Address File (GB NVL) (Compute Tray BMC)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLA",
+    "steps": [
+      {
+        "title": "Move the system to a second MTF location.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and reseat the BMC, BMC interposer, and associated cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC interposer.",
+        "detail": ""
+      },
+      {
+        "title": "Replace BMC.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-096.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1007,
+    "sourcePdfPage": 174,
+    "replaceId": "FLA-21"
+  },
+  {
+    "id": "PDF-MTF-CASE-0221",
+    "pdfSection": 97,
     "station": "PRET",
     "code": "34f20087519ddbd5",
     "name": "Write 'Compute Tray - OSFP Board (Left)' FRU EEPROM. ( Write Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (Compute Tray - OSFP Board (Left))",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · PRET",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
     "steps": [
       {
         "title": "Reseat the left OSFP board and its associated connections.",
@@ -1193,15 +7309,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-097.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 340,
+    "sourcePdfPage": 175
   },
   {
-    "id": "PDF-MTF-047",
+    "id": "PDF-MTF-CASE-0222",
+    "pdfSection": 98,
     "station": "PRET",
     "code": "3ed6b39676100db0",
     "name": "Show 'Compute Tray - BlueField DPU (Right)' mst status. ( Show status failed. Check the device connection. ) [TC] PCI - Check PCIe Device Name By MST (GB NVL) (Compute Tray - BlueField DPU (Right))",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · PRET",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -1219,15 +7340,20 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-098.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 321,
+    "sourcePdfPage": 176
   },
   {
-    "id": "PDF-MTF-048",
+    "id": "PDF-MTF-CASE-0223",
+    "pdfSection": 99,
     "station": "PRET",
-    "code": "5012438336df8300, 430bd9419a574429",
-    "name": "Write 'Compute Tray - IPEX Bridge Board (Left)' FRU EEPROM. ( Write Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (Compute Tray - IPEX Bridge B... Write 'Compute Tray - IPEX Bridge Board (Right)' FRU EEPROM. ( Write Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (Compute Tray - IPEX Bridge ...",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · PRET",
+    "code": "5012438336df8300",
+    "name": "Write 'Compute Tray - IPEX Bridge Board (Left)' FRU EEPROM. ( Write Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (Compute Tray - IPEX Bridge B...",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -1257,15 +7383,63 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-099.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 753,
+    "sourcePdfPage": 178
   },
   {
-    "id": "PDF-MTF-049",
-    "station": "FLB, RIN",
-    "code": "3a7ca475c97765c9",
-    "name": "\"Look for \"Compute Tray BlueField3 Right BMC IP Address\" IP. ( Failed to find IP. Check the cable & LED. Might need to AC cycle. ) [TC] ENV - Generate IP Address File From MAC Address File (GB NVL)...\" \"Check \"Compute Tray BlueField3 Right BMC IP Address\" IP connection. ( Connection is not stable. Check the cable & LED. ) [TC] ENV - Generate IP Address File From MAC Address File (GB NVL) (Compute...\"",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · FLB, RIN",
+    "id": "PDF-MTF-CASE-0224",
+    "pdfSection": 99,
+    "station": "PRET",
+    "code": "430bd9419a574429",
+    "name": "Write 'Compute Tray - IPEX Bridge Board (Right)' FRU EEPROM. ( Write Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (Compute Tray - IPEX Bridge ...",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and reseat the associated IPEX cables. Replace any cable that is physically damaged.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the associated riser, black-and-white cables, and IPEX cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the associated BlueField-3 DPU.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the associated Bianca board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-099.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 753,
+    "sourcePdfPage": 178
+  },
+  {
+    "id": "PDF-MTF-CASE-0225",
+    "pdfSection": 100,
+    "station": "FLB",
+    "code": "53920a9f67be8a37",
+    "name": "\"Look for \"Compute Tray BlueField3 Right BMC IP Address\" IP. ( Failed to find IP. Check the cable & LED. Might need to AC cycle. ) [TC] ENV - Generate IP Address File From MAC Address File (GB NVL)...\"",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
     "steps": [
       {
         "title": "AC cycle.",
@@ -1291,15 +7465,60 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-100.png",
+    "flowchartImageWidth": 983,
+    "flowchartImageHeight": 1032,
+    "sourcePdfPage": 180,
+    "replaceId": "FLB-07"
   },
   {
-    "id": "PDF-MTF-050",
+    "id": "PDF-MTF-CASE-0226",
+    "pdfSection": 100,
+    "station": "RIN",
+    "code": "3a7ca475c97765c9",
+    "name": "\"Check \"Compute Tray BlueField3 Right BMC IP Address\" IP connection. ( Connection is not stable. Check the cable & LED. ) [TC] ENV - Generate IP Address File From MAC Address File (GB NVL) (Compute...\"",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · RIN",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": "Run the BAT script."
+      },
+      {
+        "title": "Reset the BF3 settings.",
+        "detail": "Access the BMC host.\nRun sudo mst start.\nRun sudo mlxconfig -d /dev/mst/mt41692_pciconf0 -y set INTERNAL_CPU_MODEL=1\nINTERNAL_CPU_OFFLOAD_ENGINE=0.\nRun sudo mst restart.\nRun diagnostics starting at FLA."
+      },
+      {
+        "title": "Re-seat the BF3, BF3 riser, and all associated cables.",
+        "detail": ""
+      },
+      {
+        "title": "Check the BF3 MAC address.",
+        "detail": "Confirm that the physical MAC address matches the SFC MAC address.\nIf the addresses do not match, replace the BF3."
+      },
+      {
+        "title": "Replace BF3.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-100.png",
+    "flowchartImageWidth": 983,
+    "flowchartImageHeight": 1032,
+    "sourcePdfPage": 180
+  },
+  {
+    "id": "PDF-MTF-CASE-0227",
+    "pdfSection": 101,
     "station": "PRET",
     "code": "7423ca5c6b563199",
-    "name": "'Compute Tray Host' boot to UEFI Interactive Shell. ( Host is not boot properly. Check the OS in SSD. ) [TC] System - Device Login To Host Using SOL (GB NVL) 'Compute Tray Host' host is not boot properly. ( Check the device. ) [TC] System - Device Login To Host Using SOL (GB NVL)",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · PRET",
+    "name": "'Compute Tray Host' boot to UEFI Interactive Shell. ( Host is not boot properly. Check the OS in SSD. ) [TC] System - Device Login To Host Using SOL (GB NVL)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
     "steps": [
       {
         "title": "AC cycle.",
@@ -1317,15 +7536,100 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-101.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 369,
+    "sourcePdfPage": 181
   },
   {
-    "id": "PDF-MTF-051",
+    "id": "PDF-MTF-CASE-0228",
+    "pdfSection": 101,
+    "station": "PRET",
+    "code": "b150391cf6ce26f7",
+    "name": "'Compute Tray Host' host is not boot properly. ( Check the device. ) [TC] System - Device Login To Host Using SOL (GB NVL)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reflash the M.2.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and Replace the M.2 card and bracket.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-101.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 369,
+    "sourcePdfPage": 181,
+    "replaceId": "PRET-08"
+  },
+  {
+    "id": "PDF-MTF-CASE-0229",
+    "pdfSection": 102,
+    "station": "PRET",
+    "code": "7550e43b44f71638",
+    "name": "Check '1Gb NIC' PCIe device name. ( PCIe device name incorrect. Check the device. ) [TC] PCI - Check PCIe Device Name (1Gb NIC)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "Reseat all 1G NIC connections.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the BMC, HMC, BMC interposer, and all cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC interposer.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the 1G NIC board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the HMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Referenced Validation Steps"
+      },
+      {
+        "title": "Validate NIC interface network detection.",
+        "detail": "Access the host and run:\nifconfig\nConfirm that the enP5p9s0 interface appears and is operational. See IMAGE_027 below.\nIMAGE_027\nProperly configured unit showing the enP5p9s0 interface operational:"
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-102.png",
+    "flowchartImageWidth": 983,
+    "flowchartImageHeight": 1235,
+    "sourcePdfPage": 184,
+    "replaceId": "PRET-04"
+  },
+  {
+    "id": "PDF-MTF-CASE-0230",
+    "pdfSection": 103,
     "station": "PRET",
     "code": "8b403354da1a0397",
-    "name": "Write 'Compute Tray - OSFP Board (Right)' FRU EEPROM. ( Write Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (Compute Tray - OSFP Board (Right)) Ping 'OSFP Board (Right)' FRU EEPROM. ( Ping Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (OSFP) (OSFP Board (Right))",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · PRET",
+    "name": "Write 'Compute Tray - OSFP Board (Right)' FRU EEPROM. ( Write Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (Compute Tray - OSFP Board (Right))",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
     "steps": [
       {
         "title": "Reseat the right OSFP board and its associated connections.",
@@ -1343,15 +7647,52 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-103.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 324,
+    "sourcePdfPage": 185
   },
   {
-    "id": "PDF-MTF-052",
-    "station": "PRET, FLB",
+    "id": "PDF-MTF-CASE-0231",
+    "pdfSection": 103,
+    "station": "PRET",
+    "code": "4668c6cc19c5fdb8",
+    "name": "Ping 'OSFP Board (Right)' FRU EEPROM. ( Ping Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (OSFP) (OSFP Board (Right))",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "Reseat the right OSFP board and its associated connections.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the right OSFP board sideband cable (J1).",
+        "detail": ""
+      },
+      {
+        "title": "Replace the right OSFP board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-103.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 324,
+    "sourcePdfPage": 185,
+    "replaceId": "PRET-02"
+  },
+  {
+    "id": "PDF-MTF-CASE-0232",
+    "pdfSection": 104,
+    "station": "PRET",
     "code": "9270ffbcafb562c6",
     "name": "Look for \"Compute Tray - BlueField DPU (Left) - BMC 1GbE Port IP Address\" IP. ( Failed to find IP. Check the cable & LED. Might need to AC cycle. ) [TC] ENV - Generate IP Address File From MAC Address File (...)",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · PRET, FLB",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
     "steps": [
       {
         "title": "AC Cycle.",
@@ -1373,15 +7714,78 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-104.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 373,
+    "sourcePdfPage": 186
   },
   {
-    "id": "PDF-MTF-053",
+    "id": "PDF-MTF-CASE-0233",
+    "pdfSection": 104,
+    "station": "FLB",
+    "code": "9270ffbcafb562c6",
+    "name": "Look for \"Compute Tray - BlueField DPU (Left) - BMC 1GbE Port IP Address\" IP. ( Failed to find IP. Check the cable & LED. Might need to AC cycle. ) [TC] ENV - Generate IP Address File From MAC Address File (...)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · FLB",
+    "steps": [
+      {
+        "title": "AC Cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat the left riser, BlueField-3 DPU, and all associated cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the left riser cables.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the left BlueField-3 DPU.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-104.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 373,
+    "sourcePdfPage": 186
+  },
+  {
+    "id": "PDF-MTF-CASE-0234",
+    "pdfSection": 105,
+    "station": "AST",
+    "code": "b085ddfaab4bb0d8",
+    "name": "Power on the host. ( Failed to power on host. Check the device. ) [TC] System - Power On Compute Tray Host by ipmitool in Remote Server (GB NVL)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · AST",
+    "steps": [
+      {
+        "title": "Inspect and reseat the host RJ45 cable connection, then wait 5 minutes.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-105.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 319,
+    "sourcePdfPage": 187
+  },
+  {
+    "id": "PDF-MTF-CASE-0235",
+    "pdfSection": 106,
     "station": "PRET",
     "code": "bf0c1f22dc7352b0",
     "name": "Check 'Compute Tray - 1Gb NIC' PCIe device name. ( PCIe device name incorrect. Check the device. ) [TC] PCI - Check PCIe Device Name (Compute Tray - 1Gb NIC)",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · PRET",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
     "steps": [
       {
         "title": "Reseat the 1Gb NIC, BMC, HMC, and their associated cables.",
@@ -1395,15 +7799,272 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-106.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 326,
+    "sourcePdfPage": 188
   },
   {
-    "id": "PDF-MTF-054",
+    "id": "PDF-MTF-CASE-0236",
+    "pdfSection": 107,
+    "station": "PRET",
+    "code": "e6e12e0a934277c3",
+    "name": "Wrong OS version in M.2 [TC] Test - Check Compute Tray OS Version",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "Format the selected NVMe storage devices containing unwanted OS installations.",
+        "detail": "List all detected NVMe devices:\nsudo nvme list\nIdentify the M.2 containing the intended OS by its device name, model, serial number, and\nmountpoint:\nlsblk -o NAME,PATH,MODEL,SERIAL,SIZE,FSTYPE,PARTUUID,MOUNTPOINTS\nConfirm the intended OS M.2 before proceeding. Do not format the intended OS M.2.\nFormat each selected non-boot NVMe device containing an unwanted OS, one device at a time:\nsudo nvme format /dev/nvme1n1\nReplace /dev/nvme1n1 with the verified device being formatted.\nWarning: This command permanently deletes all data on the specified device. Confirm the device\nname, model, and serial number before running the command.\nIf the OS freezes during formatting, recover the host and repeat the device-identification and\nformatting procedure.\nContinue until the intended boot M.2 is the only device containing an OS. The formatted devices may\nremain visible in nvme list."
+      },
+      {
+        "title": "Check the compute-tray boot order.",
+        "detail": "Display the detailed UEFI boot entries and boot order:\nsudo efibootmgr -v\nConfirm that the boot entry associated with the intended OS M.2 is first in BootOrder.\nIf the expected entry is not first, correct the boot order using the verified boot-entry IDs:\nsudo efibootmgr -o <M2_BOOT_ENTRY>,<OTHER_VERIFIED_BOOT_ENTRIES>\nRun sudo efibootmgr -v again to confirm that the intended OS M.2 is the first boot device."
+      },
+      {
+        "title": "Reflash the M.2.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the M.2.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-107.png",
+    "flowchartImageWidth": 977,
+    "flowchartImageHeight": 1108,
+    "sourcePdfPage": 191,
+    "replaceId": "PRET-01"
+  },
+  {
+    "id": "PDF-MTF-CASE-0237",
+    "pdfSection": 107,
+    "station": "PRET",
+    "code": "d965483c51256f30",
+    "name": "Show 'Compute Tray' OS. ( Show failed. ) [TC] System - Check Compute Tray OS Version (GB NVL)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "Format the selected NVMe storage devices containing unwanted OS installations.",
+        "detail": "List all detected NVMe devices:\nsudo nvme list\nIdentify the M.2 containing the intended OS by its device name, model, serial number, and\nmountpoint:\nlsblk -o NAME,PATH,MODEL,SERIAL,SIZE,FSTYPE,PARTUUID,MOUNTPOINTS\nConfirm the intended OS M.2 before proceeding. Do not format the intended OS M.2.\nFormat each selected non-boot NVMe device containing an unwanted OS, one device at a time:\nsudo nvme format /dev/nvme1n1\nReplace /dev/nvme1n1 with the verified device being formatted.\nWarning: This command permanently deletes all data on the specified device. Confirm the device\nname, model, and serial number before running the command.\nIf the OS freezes during formatting, recover the host and repeat the device-identification and\nformatting procedure.\nContinue until the intended boot M.2 is the only device containing an OS. The formatted devices may\nremain visible in nvme list."
+      },
+      {
+        "title": "Check the compute-tray boot order.",
+        "detail": "Display the detailed UEFI boot entries and boot order:\nsudo efibootmgr -v\nConfirm that the boot entry associated with the intended OS M.2 is first in BootOrder.\nIf the expected entry is not first, correct the boot order using the verified boot-entry IDs:\nsudo efibootmgr -o <M2_BOOT_ENTRY>,<OTHER_VERIFIED_BOOT_ENTRIES>\nRun sudo efibootmgr -v again to confirm that the intended OS M.2 is the first boot device."
+      },
+      {
+        "title": "Reflash the M.2.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the M.2.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": ""
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-107.png",
+    "flowchartImageWidth": 977,
+    "flowchartImageHeight": 1108,
+    "sourcePdfPage": 191,
+    "replaceId": "PRET-03"
+  },
+  {
+    "id": "PDF-MTF-CASE-0238",
+    "pdfSection": 108,
+    "station": "PRET",
+    "code": "f472cd1d4ec26ef6",
+    "name": "Write '1Gb NIC' FRU EEPROM. ( Write Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (1Gb NIC)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat J117 and all 1Gb NIC/BMC connections.",
+        "detail": ""
+      },
+      {
+        "title": "Ensure the 1G NIC firmware is up to date.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the 1Gb NIC cable at J117.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the 1Gb NIC board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and reseat the left Bianca board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Referenced Validation Steps"
+      },
+      {
+        "title": "Validate NIC interface network detection.",
+        "detail": "Access the host and run:\nifconfig\nConfirm that the enP5p9s0 interface appears."
+      },
+      {
+        "title": "Validate NIC I2C detection.",
+        "detail": "Access the host and run:\npython3 /nfs/gb300/common/nvidia_script/ipmitool-i2c.py \\\n--ipmi_ip BMC_IP \\\n--ipmi_user admin \\\n--ipmi_password BMC_PASSWORD \\\n--i2c_bus 54 \\\n--i2c_add 0x51 \\\n--read 255\nReplace BMC_IP and BMC_PASSWORD with the applicable BMC credentials."
+      },
+      {
+        "title": "Validate NIC FRU detection.",
+        "detail": "Access the host and run:\nipmitool -C 17 -I lanplus \\\n-H BMC_IP \\\n-U admin \\\n-P BMC_PASSWORD \\\nraw 0x30 0x81 0x08 0x36 0x0 0x0\nReplace BMC_IP and BMC_PASSWORD with the applicable BMC credentials."
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-108.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1058,
+    "sourcePdfPage": 194,
+    "replaceId": "PRET-06"
+  },
+  {
+    "id": "PDF-MTF-CASE-0239",
+    "pdfSection": 108,
+    "station": "PRET",
+    "code": "a5fc0084fe3d581c",
+    "name": "Show '1Gb NIC' FRU EEPROM. ( Show Failed. Check I2C cable connection. ) [TC] FRU - Write FRU To PCBa by ipmitool raw script (GB NVL) (1Gb NIC)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat J117 and all 1Gb NIC/BMC connections.",
+        "detail": ""
+      },
+      {
+        "title": "Ensure the 1G NIC firmware is up to date.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the 1Gb NIC cable at J117.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the 1Gb NIC board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and reseat the left Bianca board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Referenced Validation Steps"
+      },
+      {
+        "title": "Validate NIC interface network detection.",
+        "detail": "Access the host and run:\nifconfig\nConfirm that the enP5p9s0 interface appears."
+      },
+      {
+        "title": "Validate NIC I2C detection.",
+        "detail": "Access the host and run:\npython3 /nfs/gb300/common/nvidia_script/ipmitool-i2c.py \\\n--ipmi_ip BMC_IP \\\n--ipmi_user admin \\\n--ipmi_password BMC_PASSWORD \\\n--i2c_bus 54 \\\n--i2c_add 0x51 \\\n--read 255\nReplace BMC_IP and BMC_PASSWORD with the applicable BMC credentials."
+      },
+      {
+        "title": "Validate NIC FRU detection.",
+        "detail": "Access the host and run:\nipmitool -C 17 -I lanplus \\\n-H BMC_IP \\\n-U admin \\\n-P BMC_PASSWORD \\\nraw 0x30 0x81 0x08 0x36 0x0 0x0\nReplace BMC_IP and BMC_PASSWORD with the applicable BMC credentials."
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-108.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1058,
+    "sourcePdfPage": 194,
+    "replaceId": "PRET-05"
+  },
+  {
+    "id": "PDF-MTF-CASE-0240",
+    "pdfSection": 108,
+    "station": "PRET",
+    "code": "1d96bbe0afaf363b",
+    "name": "Check '1Gb NIC' ethernet link. ( No link detected. Check the ethernet cable connection. ) [TC] Ethernet - Check Device Link Status (ethtool) (1Gb NIC)",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · PRET",
+    "steps": [
+      {
+        "title": "AC cycle.",
+        "detail": ""
+      },
+      {
+        "title": "Reseat J117 and all 1Gb NIC/BMC connections.",
+        "detail": ""
+      },
+      {
+        "title": "Ensure the 1G NIC firmware is up to date.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the 1Gb NIC cable at J117.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the 1Gb NIC board.",
+        "detail": ""
+      },
+      {
+        "title": "Replace the BMC board.",
+        "detail": ""
+      },
+      {
+        "title": "Inspect and reseat the left Bianca board.",
+        "detail": ""
+      },
+      {
+        "title": "Move to Secondary-Level FA.",
+        "detail": "Referenced Validation Steps"
+      },
+      {
+        "title": "Validate NIC interface network detection.",
+        "detail": "Access the host and run:\nifconfig\nConfirm that the enP5p9s0 interface appears."
+      },
+      {
+        "title": "Validate NIC I2C detection.",
+        "detail": "Access the host and run:\npython3 /nfs/gb300/common/nvidia_script/ipmitool-i2c.py \\\n--ipmi_ip BMC_IP \\\n--ipmi_user admin \\\n--ipmi_password BMC_PASSWORD \\\n--i2c_bus 54 \\\n--i2c_add 0x51 \\\n--read 255\nReplace BMC_IP and BMC_PASSWORD with the applicable BMC credentials."
+      },
+      {
+        "title": "Validate NIC FRU detection.",
+        "detail": "Access the host and run:\nipmitool -C 17 -I lanplus \\\n-H BMC_IP \\\n-U admin \\\n-P BMC_PASSWORD \\\nraw 0x30 0x81 0x08 0x36 0x0 0x0\nReplace BMC_IP and BMC_PASSWORD with the applicable BMC credentials."
+      }
+    ],
+    "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-108.png",
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1058,
+    "sourcePdfPage": 194,
+    "replaceId": "PRET-07"
+  },
+  {
+    "id": "PDF-MTF-CASE-0241",
+    "pdfSection": 128,
     "station": "OBA",
     "code": "NVCD_033",
     "name": "Sunken buttons",
-    "components": "Procedimiento FFDG PDF",
-    "flowchart": "FFDG PDF · OBA",
+    "components": "FFDG PDF",
+    "flowchart": "FDI · OBA",
     "steps": [
       {
         "title": "Reseat and secure the sunken central-bay buttons.",
@@ -1417,6 +8078,10 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "title": "Move to Secondary-Level FA.",
         "detail": ""
       }
-    ]
+    ],
+    "flowchartImage": "",
+    "flowchartImageWidth": 0,
+    "flowchartImageHeight": 0,
+    "sourcePdfPage": null
   }
 ];

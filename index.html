@@ -2419,7 +2419,7 @@
         return str.length > n ? str.substring(0, n - 2) + ".." : str;
       }
       let svg = `
-    <svg viewBox="0 0 760 ${svg_h}" width="100%" height="auto" style="display:block; font-family: Roboto, -apple-system, BlinkMacSystemFont, sans-serif;">
+    <svg viewBox="0 0 760 ${svg_h}" width="100%" style="display:block; font-family: Roboto, -apple-system, BlinkMacSystemFont, sans-serif;">
       <defs>
         <marker id="fc-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
           <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#00a4e4"/>
@@ -3972,19 +3972,17 @@ main{max-width:none!important;width:100%;min-width:0;padding:10px clamp(12px,2vw
 #bat-failure-detail .bat-detail-controls>.m3-btn,#bat-failure-detail .bat-detail-controls>.flowchart-open-btn{flex:0 0 auto;min-width:0;max-width:100%;min-height:36px;padding:6px 8px;font-size:10px;white-space:nowrap}
 @media(max-width:1080px){#bat-failure-detail{height:auto;min-height:0;overflow:visible}#bat-failure-detail .bat-detail-grid{height:auto}#bat-failure-detail .bat-detail-grid>.bento-block-1,#bat-failure-detail .bat-detail-grid>.bento-block-2,#bat-failure-detail .bat-detail-grid>.bento-block-3{height:auto;min-height:0;overflow:visible}#bat-failure-detail #bat-detail-steps,#bat-failure-detail #bat-disposition-flow{overflow:visible;max-height:none}#bat-failure-detail #bat-disposition-flow{display:block}#bat-failure-detail #bat-disposition-flow svg{height:auto;max-height:none}#bat-failure-detail .bat-detail-controls{flex-wrap:wrap;margin-top:8px}}
 #bat-failure-board .bat-board-toolbar{margin-bottom:4px}
-#bat-board{grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-flow:row;grid-auto-columns:auto;overflow-x:hidden;touch-action:pan-y;gap:10px}
+#bat-board{grid-auto-flow:row;grid-auto-columns:auto;overflow-x:visible;touch-action:pan-y;gap:10px}
 #bat-board .bd-col{min-width:0;max-width:100%;min-height:0;max-height:none}
 #bat-board .bd-h{padding:6px 8px;font-size:15px}
 #bat-board .bd-h small{right:8px;padding:2px 8px;font-size:10px}
 #bat-board .bd-l{box-sizing:border-box;max-height:226px;overflow-y:auto;overscroll-behavior:contain;padding:8px 10px;gap:7px}
-#bat-board .bd-item{height:64px;min-height:64px;padding:2px 8px;gap:1px;overflow:hidden}
-#bat-board .bd-item span{-webkit-line-clamp:2}
+#bat-board .bd-item{padding:6px 8px;gap:4px}
 .bat-board-toolbar{min-width:0;flex-wrap:wrap}
 .bat-board-search{min-width:0}
 button,.m3-btn,.m3-seg-btn{touch-action:manipulation}
 html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
-@media(max-width:1080px){#bat-board{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:700px){main{padding:8px 12px 24px!important}.m3-segmented-nav-wrap{padding:12px 12px 4px!important}.m3-card{padding:16px 14px!important}.m3-segmented-nav{grid-template-columns:minmax(0,1fr)!important}.bat-board-toolbar{align-items:stretch;flex-direction:column;gap:8px}.bat-board-search{width:100%;max-width:none;flex-basis:100%}.bat-board-hint{text-align:left}.m3-layout#bat-layout{grid-template-columns:minmax(0,1fr)}#bat-board{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#bat-board .bd-l{max-height:226px}.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:minmax(0,1fr)}.mtf-split .bento-block-3{grid-column:auto}.m3-input,.m3-select,.m3-textarea,input,textarea,select{font-size:16px!important}.btn-row{flex-wrap:wrap}.btn-row .m3-btn{min-height:44px}}
+@media(max-width:700px){main{padding:8px 12px 24px!important}.m3-segmented-nav-wrap{padding:12px 12px 4px!important}.m3-card{padding:16px 14px!important}.m3-segmented-nav{grid-template-columns:minmax(0,1fr)!important}.bat-board-toolbar{align-items:stretch;flex-direction:column;gap:8px}.bat-board-search{width:100%;max-width:none;flex-basis:100%}.bat-board-hint{text-align:left}.m3-layout#bat-layout{grid-template-columns:minmax(0,1fr)}.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:minmax(0,1fr)}.mtf-split .bento-block-3{grid-column:auto}.m3-input,.m3-select,.m3-textarea,input,textarea,select{font-size:16px!important}.btn-row{flex-wrap:wrap}.btn-row .m3-btn{min-height:44px}}
 @media(prefers-reduced-motion:reduce){#bat-board{scroll-behavior:auto;scroll-snap-type:none}}`;
 
     document.head.appendChild(vs);
@@ -4032,7 +4030,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 @media(max-width:640px){.mtf-row-1{display:flex;flex-direction:column;align-items:stretch;width:100%;max-width:100%}.mtf-row-1-search{width:100%;max-width:100%;flex:0 0 42px;margin:0}#mtf-layout .mtf-row-1-search input{text-align:left}.mtf-row-1-actions{width:100%;flex-wrap:wrap;justify-content:center}.mtf-row-1-actions .theme-switch-btn,.mtf-row-1-actions>label{width:min(100%,190px)}}
 #mtf-board{display:none;min-width:0}
 .v-board .mtf-cards-scroll-grid{display:none!important}
-.v-board #mtf-board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-flow:row;grid-auto-columns:auto;gap:10px;overflow-x:hidden;padding:4px 2px 10px;align-items:start;touch-action:pan-y}
+.v-board #mtf-board{display:grid;grid-auto-flow:row;grid-auto-columns:auto;gap:10px;overflow-x:visible;padding:4px 2px 10px;align-items:start;touch-action:pan-y}
 #mtf-layout.v-board{gap:0}
 #mtf-layout.v-board .mtf-row-2{padding:6px 10px 0;border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0}
 #mtf-layout.v-board .mtf-row-3{padding:0 10px 8px;border-top:0;border-top-left-radius:0;border-top-right-radius:0}
@@ -4041,9 +4039,7 @@ html{-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 #mtf-board .bd-h{padding:6px 8px;font-size:15px}
 #mtf-board .bd-h small{right:8px;padding:2px 8px;font-size:10px}
 #mtf-board .bd-l{box-sizing:border-box;max-height:226px;overflow-y:auto;overscroll-behavior:contain;padding:8px 10px}
-#mtf-board .bd-item{height:64px;min-height:64px;padding:2px 8px;gap:1px;overflow:hidden}
-@media(max-width:1080px){.v-board #mtf-board{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:700px){.v-board #mtf-board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#mtf-board .bd-item{padding:6px 8px;gap:4px}
 .m3-segmented-nav-wrap{padding:6px 0 2px!important}
 .m3-segmented-nav{gap:10px!important}
 .m3-seg-btn{min-height:64px!important;padding:10px 16px!important}
@@ -4083,13 +4079,12 @@ main{padding-top:4px!important}
 .bd-item:focus-visible{outline:3px solid var(--md-sys-color-primary)}
 .bd-item.selected{background:var(--md-sys-color-primary-container);border-color:var(--md-sys-color-primary);border-left-color:var(--st);box-shadow:0 0 0 2px var(--md-sys-color-primary)}
 .bd-item b{font:800 11px ui-monospace,Consolas,monospace;color:var(--st)}
-#bat-board .bd-item span,#mtf-board .bd-item span{font-size:12.5px;font-weight:700;line-height:1.3;color:var(--md-sys-color-on-surface);text-align:center!important;width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-#bat-board .bd-item span,#mtf-board .bd-item span{font-size:11.5px;line-height:1.2}
+#bat-board .bd-item span,#mtf-board .bd-item span{font-size:11.5px;font-weight:700;line-height:1.25;color:var(--md-sys-color-on-surface);text-align:center!important;width:100%;display:block;white-space:normal;overflow-wrap:anywhere}
 #bat-board .bd-item b,#mtf-board .bd-item b{font-size:10.5px;line-height:1.1}
 #bat-board .bd-h,#mtf-board .bd-h{position:relative;justify-content:center;text-align:center}
 #bat-board .bd-h small,#mtf-board .bd-h small{position:absolute;right:12px}
 .mtf-item-title,#mtf-detail-title{width:100%;text-align:center!important}
-.bd-item small{font:10.5px ui-monospace,Consolas,monospace;color:var(--md-sys-color-on-surface-variant);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bd-item small{font:10.5px ui-monospace,Consolas,monospace;color:var(--md-sys-color-on-surface-variant);white-space:normal;overflow:visible;overflow-wrap:anywhere;text-overflow:clip}
 #bat-board .bd-item small,#mtf-board .bd-item small{font-size:9.5px;line-height:1.1}
 @media print{#mtf-board{display:none!important}}`;
     const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
@@ -4506,6 +4501,78 @@ main{padding-top:4px!important}
     .tile-ic { left: 12px; width: 34px; height: 34px; }
     .tile-ic svg { width: 20px !important; height: 20px !important; }
     .tile-tx { padding: 0 40px; }
+  }
+
+  /* Responsividad compartida para los tableros BAT y MTF. */
+  #bat-board,
+  .v-board #mtf-board {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    min-width: 0;
+    width: 100%;
+  }
+
+  #bat-board .bd-col,
+  #mtf-board .bd-col { min-width: 0; max-width: 100%; }
+
+  #bat-board .bd-l,
+  #mtf-board .bd-l {
+    max-height: min(52dvh, 460px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  #bat-board .bd-item,
+  #mtf-board .bd-item {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-width: 100%;
+    flex-shrink: 0;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    align-content: start;
+  }
+
+  #bat-board .bd-item b,
+  #mtf-board .bd-item b,
+  #bat-board .bd-item span,
+  #mtf-board .bd-item span,
+  #bat-board .bd-item small,
+  #mtf-board .bd-item small {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    text-overflow: clip;
+  }
+
+  #bat-board .bd-item span,
+  #mtf-board .bd-item span {
+    display: block;
+    text-align: left !important;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: initial;
+  }
+
+  #bat-board .bd-item small,
+  #mtf-board .bd-item small { line-height: 1.25; }
+
+  @media (max-width: 1199px) {
+    #bat-board,
+    .v-board #mtf-board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 600px) {
+    #bat-board,
+    .v-board #mtf-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    #bat-board .bd-l,
+    #mtf-board .bd-l { max-height: min(52dvh, 420px); padding: 8px 7px; }
+    #bat-board .bd-item,
+    #mtf-board .bd-item { padding: 7px 6px; }
   }
 </style>
 <script>(() => {

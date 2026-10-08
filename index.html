@@ -2316,12 +2316,13 @@
       const escapeSvg = value => escapeHtml(String(value || ""));
       const truncate = (value, limit) => value.length > limit ? `${value.slice(0, limit - 1)}…` : value;
       const rowCenter = index => 220 + index * 58;
-      const firstCenter = rowCenter(0);
+      const firstCenter = !hasActions && terminalEscalation ? rowCenter(0) + 112 : rowCenter(0);
       const lastCenter = hasActions ? rowCenter(actionSteps.length - 1) : firstCenter;
       const validationY = hasActions ? rowCenter(Math.floor((actionSteps.length - 1) / 2)) : firstCenter;
       const failBusBottom = lastCenter + 48;
       const escalationY = failBusBottom + 54;
-      const height = escalationY + 48;
+      const terminalCenter = terminalEscalation ? (hasActions ? lastCenter + 112 : firstCenter) : null;
+      const height = Math.max(escalationY + 48, terminalCenter === null ? 0 : terminalCenter + 48);
       const pill = (x, y, width, label, className) =>
         `<g class="fc-g ${className}"><rect class="fc-n" x="${x}" y="${y}" width="${width}" height="36" rx="18"/><text x="${x + width / 2}" y="${y + 22}" font-size="10.5" text-anchor="middle">${escapeSvg(label)}</text></g>`;
       const junction = (x, y, color = "var(--md-sys-color-primary)") => `<circle cx="${x}" cy="${y}" r="5" fill="${color}" stroke="var(--md-sys-color-surface)" stroke-width="2"/>`;
@@ -2335,7 +2336,7 @@
         <path class="fc-l" d="M330 118H120V${firstCenter}H172" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="282" y="108">Fail</text>
         ${hasActions ? `<path class="fc-l" d="M740 ${validationY}V118H772" marker-end="url(#bat-fc-arrow)"/>` : ""}`;
       displayedSteps.forEach((step, index) => {
-        const center = rowCenter(index);
+        const center = step.isEscalation ? terminalCenter : rowCenter(index);
         const label = truncate(`Paso ${index + 1} de ${steps.length}: ${step.title || "Paso de diagnóstico"}`, 48);
         svg += step.isEscalation
           ? `${pill(180, center - 18, 280, step.title, "fc-er")}`
@@ -2357,14 +2358,12 @@
           svg += `${junction(120, center, "var(--md-sys-color-error)")}<path class="fc-l fc-lr" d="M120 ${center}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="8" y="${center - 7}">Paso ${index} fail → paso ${index + 1}</text>`;
         }
         if (terminalEscalation) {
-          const terminalY = rowCenter(steps.length - 1);
-          svg += `<path class="fc-l fc-lr" d="M120 ${failBusBottom}V${terminalY}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="8" y="${terminalY - 25}">Paso ${actionSteps.length} fail → escalar</text>`;
+          svg += `<path class="fc-l fc-lr" d="M120 ${failBusBottom}V${terminalCenter}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="8" y="${terminalCenter - 25}">Paso ${actionSteps.length} fail → escalar</text>`;
         } else {
           svg += `<path class="fc-l fc-lr" d="M120 ${failBusBottom}V${escalationY}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="8" y="${escalationY - 8}">Paso ${steps.length} fail → escalar</text>${pill(180, escalationY, 180, "Move to Secondary Level FA", "fc-er")}`;
         }
       } else if (hasActions && terminalEscalation) {
-        const terminalY = rowCenter(steps.length - 1);
-        svg += `<path class="fc-l fc-lr" d="M630 ${validationY + 35}V${terminalY}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="640" y="${validationY + 52}">Fail</text>`;
+        svg += `<path class="fc-l fc-lr" d="M630 ${validationY + 35}V${terminalCenter}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="640" y="${validationY + 52}">Fail</text>`;
       } else if (hasActions) {
         svg += `<path class="fc-l fc-lr" d="M630 ${validationY + 35}V${escalationY}" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="640" y="${validationY + 52}">Fail</text>${pill(540, escalationY, 180, "Move to Secondary Level FA", "fc-er")}`;
       } else if (!terminalEscalation) {

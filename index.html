@@ -465,13 +465,11 @@
   .mtf-notification-cases { display: grid; gap: 8px; margin: 14px 0; }
   .mtf-notification-case { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; padding: 10px 12px; border: 1px solid #e0e5d9; border-radius: 10px; background: #f6f8f3; }
   .mtf-notification-guidance { padding: 12px 14px; border-left: 4px solid #76b900; border-radius: 8px; background: #eff7df; }
-  .bat-board-header { gap: 12px; flex-wrap: wrap; }
-  .bat-board-header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-left: auto; }
-  .bat-notifications-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 12px; border: 1px solid #76b900; border-radius: 999px; background: linear-gradient(115deg,#1b3600,#2d6b00 55%,#5a9a00); color: #fff; font-family: inherit; font-size: 11px; font-weight: 800; line-height: 1.2; cursor: pointer; white-space: nowrap; box-shadow: 0 6px 18px rgba(45,107,0,.35); }
+  .bat-notifications-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 38px; padding: 6px 11px; border: 1px solid #76b900; border-radius: 999px; background: linear-gradient(115deg,#1b3600,#2d6b00 55%,#5a9a00); color: #fff; font-family: inherit; font-size: 11px; font-weight: 800; line-height: 1.2; cursor: pointer; white-space: nowrap; box-shadow: 0 6px 18px rgba(45,107,0,.35); }
   .bat-notifications-button:hover { background: linear-gradient(115deg,#244700,#397d00 55%,#68aa00); border-color: #76b900; }
   .bat-notifications-button:focus-visible { outline: 3px solid #a8e34b; outline-offset: 3px; }
   .bat-notifications-button .mtf-notification-count { background: #111; }
-  @media(max-width:600px) { .bat-board-header-actions { flex-wrap: wrap; gap: 7px; } .bat-notifications-button { padding: 7px 10px; } }
+  @media(max-width:600px) { .bat-notifications-button { padding: 6px 9px; font-size: 10px; } }
 
   .mtf-cards-scroll-grid {
     display: flex;
@@ -1409,16 +1407,9 @@
 <main><!-- MODO 1: BAT WORKFLOW -->
   <div id="bat-layout" class="m3-layout bat-details-mode">
     <div id="bat-failure-board" class="m3-card no-print">
-      <div class="m3-card-header bat-board-header">
+      <div class="m3-card-header">
         <h2 class="m3-card-title">Catálogo BAT · Tablero de fallas</h2>
-        <div class="bat-board-header-actions">
-          <span id="bat-board-count" class="mtf-tag">0 CASOS</span>
-          <button type="button" class="bat-notifications-button" id="bat-notifications-open"
-            aria-haspopup="dialog" aria-controls="mtf-customer-notifications" aria-label="Customer notifications, 1 aviso de NVIDIA"
-            onclick="document.getElementById('mtf-customer-notifications').showModal()">
-            Customer notifications <span class="mtf-notification-count" aria-hidden="true">1</span>
-          </button>
-        </div>
+        <span id="bat-board-count" class="mtf-tag">0 CASOS</span>
       </div>
       <div class="bat-board-toolbar">
         <div class="bat-board-controls">
@@ -1433,6 +1424,11 @@
           <button id="bat-pdf-import-btn" class="theme-switch-btn bat-pdf-import-btn" type="button" aria-label="Actualizar catálogo BAT desde PDF">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 20h14v-2H5v2zM11 16h2V8h4l-5-5-5 5h4v8z"></path></svg>
             <span>Actualizar PDF BAT</span>
+          </button>
+          <button type="button" class="bat-notifications-button" id="bat-notifications-open"
+            aria-haspopup="dialog" aria-controls="mtf-customer-notifications" aria-label="Customer notifications, 1 aviso de NVIDIA"
+            onclick="document.getElementById('mtf-customer-notifications').showModal()">
+            Customer notifications <span class="mtf-notification-count" aria-hidden="true">1</span>
           </button>
           <input id="bat-pdf-file-input" type="file" accept="application/pdf,.pdf" hidden>
         </div>

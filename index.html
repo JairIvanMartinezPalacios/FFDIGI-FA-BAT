@@ -4531,6 +4531,56 @@ main{padding-top:4px!important}
 
   #mtf-board .bd-l { max-height: min(64dvh, 580px); }
 
+  /* Mantener las tres tarjetas de diagnóstico del mismo ancho en BAT y MTF. */
+  .mtf-detail-horizontal-grid,
+  .mtf-split .mtf-detail-horizontal-grid,
+  #bat-failure-detail .bat-detail-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
+  .mtf-detail-horizontal-grid > .bento-block-1,
+  .mtf-detail-horizontal-grid > .bento-block-2,
+  .mtf-detail-horizontal-grid > .bento-block-3 {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (min-width: 1081px) {
+    #mtf-layout .mtf-row-3:has(> #mtf-detail:not(.hidden)) {
+      height: calc(100vh - 24px);
+      max-height: calc(100vh - 24px);
+      box-sizing: border-box;
+    }
+
+    #mtf-layout .mtf-row-3:has(> #mtf-detail:not(.hidden)) > #mtf-detail,
+    #mtf-layout .mtf-row-3:has(> #mtf-detail:not(.hidden)) .mtf-detail-horizontal-grid {
+      height: calc(100vh - 50px);
+      min-height: 0;
+    }
+  }
+
+  @media (max-width: 1240px) {
+    .mtf-detail-horizontal-grid,
+    .mtf-split .mtf-detail-horizontal-grid,
+    #bat-failure-detail .bat-detail-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mtf-detail-horizontal-grid > .bento-block-3 { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 1080px) {
+    .mtf-detail-horizontal-grid,
+    .mtf-split .mtf-detail-horizontal-grid,
+    #bat-failure-detail .bat-detail-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .mtf-detail-horizontal-grid > .bento-block-3 { grid-column: auto; }
+  }
+
   #bat-board .bd-item,
   #mtf-board .bd-item {
     box-sizing: border-box;

@@ -1999,17 +1999,6 @@
       <section class="cc-panel">
         <div class="cc-panel-title"><div><span class="flowchart-modal-kicker">EXPLORADOR</span><h3>Componentes con fallas documentadas</h3></div></div>
         <p class="cc-muted">Selecciona un componente para filtrar el catálogo. Los conteos proceden de la guía, no de telemetría.</p>
-        <div class="cc-visual-tabs" role="tablist" aria-label="Vistas de hardware GB200">
-          <button type="button" class="active" role="tab" aria-selected="true" data-visual="rack">Rack GB200</button>
-          <button type="button" role="tab" aria-selected="false" data-visual="servers">Servidores</button>
-        </div>
-        <figure class="cc-visual-stage">
-          <button id="cc-visual-open" type="button" aria-label="Ampliar imagen del rack GB200">
-            <img id="cc-visual-image" src="./assets/product-reference/gb200-rack-illustrative.webp" alt="Ilustración de referencia de un rack de cómputo GB200">
-            <span aria-hidden="true">Ampliar ⤢</span>
-          </button>
-          <figcaption id="cc-visual-caption"><strong>Rack de cómputo GB200</strong><span>Vista ilustrativa del conjunto de rack. No es una fotografía oficial ni muestra el estado de una unidad conectada.</span></figcaption>
-        </figure>
         <div id="cc-components" class="cc-component-list"></div>
         <details class="cc-topology">
           <summary>Consultar esquema de topología GB300</summary>
@@ -2032,14 +2021,6 @@
       </section>
     </div>
   </div>
-</dialog>
-<dialog id="cc-visual-modal" class="cc-visual-modal" aria-labelledby="cc-visual-modal-title">
-  <div class="flowchart-modal-head">
-    <div><span class="flowchart-modal-kicker">REFERENCIA VISUAL · GB200</span><h2 id="cc-visual-modal-title">Rack GB200</h2></div>
-    <button id="cc-visual-close" class="flowchart-modal-close" type="button" aria-label="Cerrar imagen">×</button>
-  </div>
-  <img id="cc-visual-modal-image" src="./assets/product-reference/gb200-rack-illustrative.webp" alt="Ilustración ampliada de un rack GB200">
-  <p>Imagen ilustrativa para explorar la sección. Consulta el esquema técnico del FFDG para identificar componentes y conexiones.</p>
 </dialog>
 <script>window.FFDG = window.FFDG || {};
   // 1. DATA REPOSITORY
@@ -4847,23 +4828,6 @@ main{padding-top:4px!important}
   .cc-panel-title,.cc-records-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
   .cc-panel-title h3 { margin: 3px 0 0; font-size: 16px; }
   .cc-muted { margin: 8px 0 12px; font-size: 11px; line-height: 1.45; color: var(--md-sys-color-on-surface-variant); }
-  .cc-visual-tabs { display: flex; gap: 6px; margin: 12px 0 8px; }
-  .cc-visual-tabs button { border: 1px solid var(--md-sys-color-outline-variant); border-radius: 999px; padding: 7px 12px; background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface-variant); font: inherit; font-size: 11px; font-weight: 750; cursor: pointer; }
-  .cc-visual-tabs button.active { color: #fff; background: #285800; border-color: #76b900; box-shadow: 0 3px 10px #28580033; }
-  .cc-visual-stage { margin: 0 0 13px; overflow: hidden; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 14px; background: #11150f; }
-  .cc-visual-stage > button { position: relative; display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
-  .cc-visual-stage > button img { display: block; width: 100%; height: clamp(150px, 22vw, 235px); object-fit: contain; object-position: center; background: #11150f; transition: transform .35s ease; }
-  .cc-visual-stage > button:hover img { transform: scale(1.025); }
-  .cc-visual-stage > button span { position: absolute; right: 9px; bottom: 9px; padding: 6px 9px; border: 1px solid #ffffff55; border-radius: 999px; background: #10140dcc; color: white; font-size: 10px; font-weight: 700; }
-  .cc-visual-stage figcaption { display: grid; gap: 3px; padding: 9px 11px 10px; color: var(--md-sys-color-on-surface); background: var(--md-sys-color-surface); }
-  .cc-visual-stage figcaption strong { font-size: 12px; }
-  .cc-visual-stage figcaption span { color: var(--md-sys-color-on-surface-variant); font-size: 10px; line-height: 1.4; }
-  .cc-visual-modal { width: min(1050px, calc(100vw - 24px)); max-width: none; max-height: 94dvh; padding: 0 18px 16px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 18px; background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); }
-  .cc-visual-modal::backdrop { background: #050805c7; backdrop-filter: blur(4px); }
-  .cc-visual-modal .flowchart-modal-head { position: sticky; top: 0; z-index: 1; padding: 14px 0 10px; background: var(--md-sys-color-surface); }
-  .cc-visual-modal .flowchart-modal-head h2 { margin: 3px 0 0; font-size: 18px; }
-  .cc-visual-modal > img { display: block; width: 100%; max-height: 76dvh; object-fit: contain; border-radius: 10px; background: #10130f; }
-  .cc-visual-modal > p { margin: 8px 0 0; color: var(--md-sys-color-on-surface-variant); font-size: 11px; }
   .cc-component-list { display: flex; flex-wrap: wrap; gap: 7px; }
   .cc-component-chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 999px; padding: 7px 10px; background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); font-family: inherit; font-size: 11px; font-weight: 600; cursor: pointer; }
   .cc-component-chip:hover { border-color: var(--nvidia-green); background: color-mix(in srgb,var(--nvidia-green) 12%,var(--md-sys-color-surface)); }
@@ -4890,7 +4854,7 @@ main{padding-top:4px!important}
   .cc-record time { grid-column: 1 / -1; }
   .cc-empty { padding: 12px; text-align: center; color: var(--md-sys-color-on-surface-variant); font-size: 11px; }
   @media(max-width:850px) { .control-center-grid { grid-template-columns: minmax(0,1fr); } }
-  @media(max-width:700px) { .m3-segmented-nav { grid-template-columns: minmax(0,1fr)!important; } .control-center-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); } .control-center-head { padding: 16px; } .control-center-body { padding: 12px; } .control-center-metrics article { padding: 11px; } .control-center-dialog { max-height: 96dvh; border-radius: 16px; } .cc-panel { padding: 12px; } .cc-visual-stage > button img { height: 180px; } .cc-visual-modal { padding: 0 10px 12px; } }
+  @media(max-width:700px) { .m3-segmented-nav { grid-template-columns: minmax(0,1fr)!important; } .control-center-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); } .control-center-head { padding: 16px; } .control-center-body { padding: 12px; } .control-center-metrics article { padding: 11px; } .control-center-dialog { max-height: 96dvh; border-radius: 16px; } .cc-panel { padding: 12px; } }
 </style>
 <script>(() => {
     const brand = document.querySelector(".app-brand");
@@ -5023,24 +4987,6 @@ main{padding-top:4px!important}
       $("cc-components").appendChild(button);
     });
   }
-  const visualSources = {
-    rack: { src: "./assets/product-reference/gb200-rack-illustrative.webp", title: "Rack de cómputo GB200", alt: "Ilustración de referencia de un rack de cómputo GB200", caption: "Vista ilustrativa del conjunto de rack. No es una fotografía oficial ni muestra el estado de una unidad conectada." },
-    servers: { src: "./assets/product-reference/gb200-server-illustrative.webp", title: "Servidores de cómputo GB200", alt: "Ilustración de referencia de servidores de cómputo GB200", caption: "Representación visual de bandejas de servidor para orientar la navegación del panel." }
-  };
-  Object.values(visualSources).forEach(visual => { const preload = new Image(); preload.src = visual.src; });
-  function setVisual(mode) {
-    const visual = visualSources[mode] || visualSources.rack;
-    const image = $("cc-visual-image");
-    image.src = visual.src;
-    image.alt = visual.alt;
-    $("cc-visual-caption").innerHTML = `<strong>${esc(visual.title)}</strong><span>${esc(visual.caption)}</span>`;
-    $("cc-visual-open").setAttribute("aria-label", `Ampliar imagen: ${visual.title}`);
-    document.querySelectorAll(".cc-visual-tabs [role=tab]").forEach(tab => {
-      const active = tab.dataset.visual === mode;
-      tab.classList.toggle("active", active);
-      tab.setAttribute("aria-selected", String(active));
-    });
-  }
   function syncSelectedFailure() {
     const item = currentFailure();
     $("cc-selected-fault").textContent = item
@@ -5059,21 +5005,6 @@ main{padding-top:4px!important}
   open.addEventListener("click", openCenter);
   close.addEventListener("click", () => dialog.close());
   dialog.addEventListener("click", event => { if (event.target === dialog) dialog.close(); });
-  document.querySelector(".cc-visual-tabs").addEventListener("click", event => {
-    const tab = event.target.closest("[data-visual]");
-    if (tab) setVisual(tab.dataset.visual);
-  });
-  const visualDialog = $("cc-visual-modal");
-  $("cc-visual-open").addEventListener("click", () => {
-    const visual = visualSources[$(".cc-visual-tabs [aria-selected=true]")?.dataset.visual] || visualSources.rack;
-    $("cc-visual-modal-title").textContent = visual.title;
-    $("cc-visual-modal-image").src = visual.src;
-    $("cc-visual-modal-image").alt = visual.alt;
-    visualDialog.showModal();
-    $("cc-visual-close").focus();
-  });
-  $("cc-visual-close").addEventListener("click", () => visualDialog.close());
-  visualDialog.addEventListener("click", event => { if (event.target === visualDialog) visualDialog.close(); });
   ["nav-bat", "nav-mtf"].forEach(id => $(id)?.addEventListener("click", () => setTimeout(syncSelectedFailure, 0)));
   document.addEventListener("click", event => {
     if (!dialog.open || !event.target.closest("#mtf-fault-list, #bat-board")) return;
@@ -5137,7 +5068,6 @@ main{padding-top:4px!important}
   });
   updateMetrics();
   renderComponents();
-  setVisual("rack");
 })();</script>
 <script>(() => {
     const dialog = document.getElementById("mtf-flowchart-modal");

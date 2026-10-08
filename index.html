@@ -2297,7 +2297,7 @@
       const actions = steps.slice(1);
       const actionTop = 155;
       const lastY = actions.length ? actionTop + (actions.length - 1) * 56 : 102;
-      const height = Math.max(320, lastY + 105);
+      const height = Math.max(350, lastY + 105);
       const escapeSvg = value => escapeHtml(String(value || ""));
       const truncate = (value, limit) => value.length > limit ? `${value.slice(0, limit - 1)}…` : value;
       const pill = (x, y, width, label, extra = "") => `<g class="fc-g ${extra}"><rect class="fc-n" x="${x}" y="${y}" width="${width}" height="32" rx="16"/><text x="${x + width / 2}" y="${y + 20}" font-size="10.5" text-anchor="middle">${escapeSvg(label)}</text></g>`;
@@ -2306,13 +2306,13 @@
         <defs><marker id="bat-fc-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="fc-ar" d="M0 1.5L8 5 0 8.5z"/></marker><marker id="bat-fc-arrow-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="fc-arr" d="M0 1.5L8 5 0 8.5z"/></marker></defs>
         ${pill(285, 14, 190, `${steps[0].sourceNumber}. ${truncate(steps[0].title, 23)}`, firstClass)}
         <path class="fc-l" d="M380 46V70" marker-end="url(#bat-fc-arrow)"/>
-        <g class="fc-g fc-dm"><polygon class="fc-n" points="380,72 440,100 380,128 320,100"/><text x="380" y="96" font-size="9.5" text-anchor="middle">¿Retest</text><text x="380" y="108" font-size="9.5" text-anchor="middle">pasa?</text></g>
-        <path class="fc-l" d="M440 100H590V142" marker-end="url(#bat-fc-arrow)"/><text class="fc-p" x="493" y="92">Sí</text>
-        <g class="fc-g fc-dm"><polygon class="fc-n" points="590,144 650,174 590,204 530,174"/><text x="590" y="170" font-size="8.5" text-anchor="middle">¿Realizar prueba BAT y</text><text x="590" y="182" font-size="8.5" text-anchor="middle">validar comandos FA?</text></g>
-        <path class="fc-l" d="M650 174H700V30H480" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="657" y="166">No</text>
-        <path class="fc-l" d="M590 204V236" marker-end="url(#bat-fc-arrow)"/><text class="fc-p" x="600" y="226">Sí</text>
+        <g class="fc-g fc-dm"><polygon class="fc-n" points="380,72 440,100 380,128 320,100"/><text x="380" y="104" font-size="12" text-anchor="middle">RETEST</text></g>
+        <path class="fc-l" d="M440 100H590V138" marker-end="url(#bat-fc-arrow)"/><text class="fc-p" x="493" y="92">Sí</text>
+        <g class="fc-g fc-dm"><polygon class="fc-n" points="590,140 664,174 590,208 516,174"/><text x="590" y="170" font-size="9.5" text-anchor="middle">Validación de comandos FA</text><text x="590" y="183" font-size="9.5" text-anchor="middle">y script de BAT</text></g>
+        <path class="fc-l fc-lr" d="M516 174H500V301H510" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="476" y="245">Fail</text><g class="fc-er">${pill(510, 285, 160, "Escalar a FA Nivel 2")}</g>
+        <path class="fc-l" d="M590 208V236" marker-end="url(#bat-fc-arrow)"/><text class="fc-p" x="600" y="226">Pass</text>
         <g class="fc-ok">${pill(510, 240, 160, "Continuar pruebas")}</g>
-        ${actions.length ? `<path class="fc-l" d="M320 100H300V${actionTop + 19}H290" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="306" y="92">No</text><path class="fc-l" d="M530 174H500V${actionTop + 23}H290" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="505" y="166">No</text><path class="fc-l" d="M40 ${lastY + 19}V100H315" marker-end="url(#bat-fc-arrow)"/>` : `<path class="fc-l fc-lr" d="M320 100H270V174H260" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="280" y="92">No</text><path class="fc-l fc-lr" d="M530 174H260" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="510" y="166">No</text><g class="fc-er">${pill(100, 158, 160, "Escalar a FA Nivel 2")}</g>`}`;
+        ${actions.length ? `<path class="fc-l" d="M320 100H300V${actionTop + 19}H290" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="306" y="92">No</text><path class="fc-l" d="M40 ${lastY + 19}V100H315" marker-end="url(#bat-fc-arrow)"/>` : `<path class="fc-l fc-lr" d="M320 100H270V174H260" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="280" y="92">No</text><g class="fc-er">${pill(100, 158, 160, "Escalar a FA Nivel 2")}</g>`}`;
       actions.forEach((step, index) => {
         const y = actionTop + index * 56;
         const progressClass = activeIndex === index + 1 ? "on" : activeIndex > index + 1 ? "done" : "";

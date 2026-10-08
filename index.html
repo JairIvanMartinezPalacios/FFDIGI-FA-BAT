@@ -1397,6 +1397,9 @@
       </svg>
       MTF L10 Failure
     </button>
+    <button id="control-center-open" class="m3-seg-btn control-center-open" type="button" aria-haspopup="dialog" aria-controls="ffdg-control-center">
+      Centro de control
+    </button>
   </div>
 </div>
 <main><!-- MODO 1: BAT WORKFLOW -->
@@ -1975,6 +1978,49 @@
     <img src="./gb300-board-topology.png" alt="Esquema completo del sistema GB300 con las dos placas, GPU, CPU, UPHY, ventiladores, PDB, NIC, NVMe, OSFP y BlueField-3." width="1466" height="1350" decoding="async">
     <figcaption>Versión ampliada 2× del esquema original. Se conservaron los rótulos y las relaciones del diagrama fuente.</figcaption>
   </figure>
+</dialog>
+<dialog id="ffdg-control-center" class="control-center-dialog" aria-labelledby="control-center-title">
+  <div class="control-center-head">
+    <div>
+      <span class="flowchart-modal-kicker">NVIDIA RACKS · FFDG</span>
+      <h2 id="control-center-title">Centro de control</h2>
+      <p>Resumen del catálogo y registro local de diagnósticos.</p>
+    </div>
+    <button id="control-center-close" class="flowchart-modal-close" type="button" aria-label="Cerrar centro de control">×</button>
+  </div>
+  <div class="control-center-body">
+    <div class="control-center-metrics" aria-live="polite">
+      <article><span>Fallas en catálogo</span><strong id="cc-catalog-count">—</strong><small>BAT + MTF</small></article>
+      <article><span>Con procedimiento</span><strong id="cc-procedure-count">—</strong><small>Basado en pasos cargados</small></article>
+      <article><span>Casos registrados</span><strong id="cc-case-count">0</strong><small>Guardados en este navegador</small></article>
+      <article><span>Fallas recurrentes</span><strong id="cc-repeat-count">0</strong><small>Dos o más registros del mismo código</small></article>
+    </div>
+    <div class="control-center-grid">
+      <section class="cc-panel">
+        <div class="cc-panel-title"><div><span class="flowchart-modal-kicker">EXPLORADOR</span><h3>Componentes con fallas documentadas</h3></div></div>
+        <p class="cc-muted">Selecciona un componente para filtrar el catálogo. Los conteos proceden de la guía, no de telemetría.</p>
+        <div id="cc-components" class="cc-component-list"></div>
+        <details class="cc-topology">
+          <summary>Consultar esquema de topología GB300</summary>
+          <figure><img src="./gb300-board-topology.png" alt="Esquema de referencia del sistema GB300 y sus componentes" loading="lazy"><figcaption>Diagrama de referencia documental. No muestra estado en vivo del equipo.</figcaption></figure>
+        </details>
+      </section>
+      <section class="cc-panel cc-case-panel">
+        <div class="cc-panel-title"><div><span class="flowchart-modal-kicker">TRAZABILIDAD</span><h3>Registrar el caso seleccionado</h3></div><button id="cc-export" class="m3-btn m3-btn-outlined" type="button">Exportar CSV</button></div>
+        <p id="cc-selected-fault" class="cc-selected-fault">Selecciona primero una falla en BAT o MTF.</p>
+        <div class="cc-case-form">
+          <label>Serial de unidad<input id="cc-serial" autocomplete="off" placeholder="S/N del servidor"></label>
+          <label>Rack / posición<input id="cc-rack" autocomplete="off" placeholder="Ej. Rack 04 · U12"></label>
+          <label>Técnico<input id="cc-technician" autocomplete="name" placeholder="Nombre o ID"></label>
+          <label>Resultado<select id="cc-outcome"><option value="En proceso">En proceso</option><option value="Pass">Pass</option><option value="Fail">Fail</option></select></label>
+          <label class="cc-notes">Notas<input id="cc-notes" placeholder="Acción aplicada, observación o causa confirmada"></label>
+        </div>
+        <div class="cc-save-row"><span id="cc-status" role="status">No conectado a una base compartida.</span><button id="cc-save" class="m3-btn m3-btn-filled" type="button">Guardar caso</button></div>
+        <div class="cc-records-head"><h4>Actividad reciente</h4><span>Últimos 8 registros</span></div>
+        <div id="cc-records" class="cc-records" aria-live="polite"></div>
+      </section>
+    </div>
+  </div>
 </dialog>
 <script>window.FFDG = window.FFDG || {};
   // 1. DATA REPOSITORY
@@ -2828,7 +2874,7 @@
         $("excel-file-input").value = "";
       }
     }
-    return { initTheme, toggleTheme, setMode, filterStation, showStep, renderHistory, finish, renderEvidence, renderMtfList, renderMtfDetail, renderBatSelection, advanceBatDetail, retreatBatDetail, loadExcelFile, restoreCatalog, updateStationFilterCounts, getActiveSteps };
+    return { initTheme, toggleTheme, setMode, filterStation, showStep, renderHistory, finish, renderEvidence, renderMtfList, renderMtfDetail, renderBatSelection, advanceBatDetail, retreatBatDetail, loadExcelFile, restoreCatalog, updateStationFilterCounts, getActiveSteps, getBatDetailSteps };
   })();
   // 3. PRINT ENGINE
   window.FFDG.reports = (() => {
@@ -3528,7 +3574,12 @@
         return counts;
       }, {});
       const query = search.value.trim().toLowerCase();
-      const matches = catalog.filter(item => `${item.code} ${item.label} ${item.familyLabel}`.toLowerCase().includes(query));
+      const matches = catalog.filter(item => {
+        const noBootSteps = item.family === "NOBOOT" ? (window.FFDG.data.flows.NOBOOT || []).flatMap(step => [step.q, step.detail, step.fail]) : [];
+        const stepText = (item.steps || []).flatMap(step => [step.title, step.q, step.detail, step.fail]);
+        const searchable = [item.code, item.label, item.family, item.familyLabel, item.description, item.component, ...stepText, ...noBootSteps].join(" ").toLowerCase();
+        return searchable.includes(query);
+      });
       const groups = matches.reduce((result, item) => {
         (result[item.family] ||= []).push(item);
         return result;
@@ -4758,6 +4809,53 @@ main{padding-top:4px!important}
     .v-board #mtf-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   }
 </style>
+<style>
+  .control-center-open { min-width: 150px; background: #10140d !important; color: #fff !important; border: 1px solid #76b900 !important; }
+  .m3-segmented-nav { grid-template-columns: minmax(0,1fr) minmax(0,1fr) auto !important; }
+  .control-center-open:hover { background: #243817 !important; }
+  .control-center-dialog { width: min(1120px, calc(100vw - 28px)); max-width: none; max-height: min(92dvh, 920px); padding: 0; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 22px; color: var(--md-sys-color-on-surface); background: var(--md-sys-color-surface); box-shadow: 0 24px 80px #0006; }
+  .control-center-dialog::backdrop { background: #050805b8; backdrop-filter: blur(5px); }
+  .control-center-head { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; padding: 20px 24px 16px; background: var(--md-sys-color-surface); border-bottom: 1px solid var(--md-sys-color-outline-variant); }
+  .control-center-head h2 { margin: 4px 0; font-size: clamp(22px, 3vw, 30px); }
+  .control-center-head p { margin: 0; color: var(--md-sys-color-on-surface-variant); font-size: 13px; }
+  .control-center-body { padding: 18px 24px 24px; overflow: auto; }
+  .control-center-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+  .control-center-metrics article { display: grid; gap: 3px; padding: 14px 16px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 15px; background: var(--md-sys-color-surface-container-low); }
+  .control-center-metrics article span,.control-center-metrics article small { color: var(--md-sys-color-on-surface-variant); font-size: 11px; }
+  .control-center-metrics article strong { color: var(--nvidia-green); font-size: 27px; line-height: 1.05; }
+  .control-center-grid { display: grid; grid-template-columns: minmax(0,.88fr) minmax(0,1.12fr); gap: 14px; align-items: start; }
+  .cc-panel { min-width: 0; padding: 16px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 18px; background: var(--md-sys-color-surface-container-low); }
+  .cc-panel-title,.cc-records-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .cc-panel-title h3 { margin: 3px 0 0; font-size: 16px; }
+  .cc-muted { margin: 8px 0 12px; font-size: 11px; line-height: 1.45; color: var(--md-sys-color-on-surface-variant); }
+  .cc-component-list { display: flex; flex-wrap: wrap; gap: 7px; }
+  .cc-component-chip { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 999px; padding: 7px 10px; background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); font-family: inherit; font-size: 11px; font-weight: 600; cursor: pointer; }
+  .cc-component-chip:hover { border-color: var(--nvidia-green); background: color-mix(in srgb,var(--nvidia-green) 12%,var(--md-sys-color-surface)); }
+  .cc-component-chip b { color: var(--nvidia-green); }
+  .cc-topology { margin-top: 14px; border-top: 1px solid var(--md-sys-color-outline-variant); padding-top: 10px; }
+  .cc-topology summary { cursor: pointer; font-size: 12px; font-weight: 750; }
+  .cc-topology figure { margin: 10px 0 0; }
+  .cc-topology img { display: block; width: 100%; max-height: 260px; object-fit: contain; background: #fff; border-radius: 10px; }
+  .cc-topology figcaption { margin-top: 6px; font-size: 10px; color: var(--md-sys-color-on-surface-variant); }
+  .cc-selected-fault { margin: 12px 0; padding: 9px 11px; border-left: 3px solid var(--nvidia-green); border-radius: 5px; background: var(--md-sys-color-surface); font-size: 12px; font-weight: 750; line-height: 1.4; }
+  .cc-case-form { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+  .cc-case-form label { display: grid; gap: 4px; font-size: 10px; font-weight: 750; color: var(--md-sys-color-on-surface-variant); }
+  .cc-case-form input,.cc-case-form select { width: 100%; min-width: 0; height: 36px; padding: 0 9px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 9px; background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); font-family: inherit; font-size: 12px; }
+  .cc-case-form .cc-notes { grid-column: 1 / -1; }
+  .cc-save-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; }
+  .cc-save-row #cc-status { color: var(--md-sys-color-on-surface-variant); font-size: 10px; }
+  .cc-records-head { margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--md-sys-color-outline-variant); }
+  .cc-records-head h4 { margin: 0; font-size: 12px; }
+  .cc-records-head span { font-size: 10px; color: var(--md-sys-color-on-surface-variant); }
+  .cc-records { display: grid; gap: 6px; max-height: 190px; margin-top: 8px; overflow: auto; }
+  .cc-record { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 3px 10px; padding: 8px 10px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 10px; background: var(--md-sys-color-surface); }
+  .cc-record strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; }
+  .cc-record span,.cc-record time { font-size: 10px; color: var(--md-sys-color-on-surface-variant); }
+  .cc-record time { grid-column: 1 / -1; }
+  .cc-empty { padding: 12px; text-align: center; color: var(--md-sys-color-on-surface-variant); font-size: 11px; }
+  @media(max-width:850px) { .control-center-grid { grid-template-columns: minmax(0,1fr); } }
+  @media(max-width:700px) { .m3-segmented-nav { grid-template-columns: minmax(0,1fr)!important; } .control-center-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); } .control-center-head { padding: 16px; } .control-center-body { padding: 12px; } .control-center-metrics article { padding: 11px; } .control-center-dialog { max-height: 96dvh; border-radius: 16px; } .cc-panel { padding: 12px; } }
+</style>
 <script>(() => {
     const brand = document.querySelector(".app-brand");
     if (!brand || brand.dataset.refreshed === "true") return;
@@ -4793,6 +4891,184 @@ main{padding-top:4px!important}
     document.title = "FFDG · GB200 / GB300";
     document.querySelectorAll(".header-actions .fault-emblem").forEach(emblem => emblem.parentElement.remove());
   })();</script>
+<script>(() => {
+  "use strict";
+  const dialog = document.getElementById("ffdg-control-center");
+  const open = document.getElementById("control-center-open");
+  const close = document.getElementById("control-center-close");
+  const FFDG = window.FFDG;
+  if (!dialog || !open || !close || !FFDG?.data || !FFDG?.state) return;
+  const STORAGE_KEY = "ffdg-case-log-v1";
+  const $ = id => document.getElementById(id);
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+  const csvSafe = value => {
+    const text = String(value ?? "");
+    const safe = /^[\s]*[=+@-]/.test(text) ? `'${text}` : text;
+    return `"${safe.replace(/"/g, '""')}"`;
+  };
+  const loadRecords = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      return Array.isArray(saved) ? saved.filter(item => item && typeof item === "object") : [];
+    } catch (error) {
+      return [];
+    }
+  };
+  let records = loadRecords();
+  const currentFailure = () => {
+    if (FFDG.state.mode === "bat") {
+      const item = FFDG.state.batDetailFailure;
+      if (!item) return null;
+      const steps = FFDG.ui.getBatDetailSteps?.(item) || item.steps || [];
+      return { mode: "BAT", id: item.code, code: item.code, station: "BAT", name: item.label, component: item.familyLabel || item.family, steps };
+    }
+    const item = FFDG.state.mtfSelected;
+    if (!item) return null;
+    return { mode: "MTF", id: item.id, code: item.code, station: item.station, name: item.name, component: item.components, steps: FFDG.ui.getActiveSteps?.(item) || item.steps || [] };
+  };
+  const statusFor = result => result === "Pass" ? "pass" : result === "Fail" ? "fail" : "progress";
+  function renderRecords() {
+    const box = $("cc-records");
+    box.replaceChildren();
+    const recent = [...records].sort((a, b) => (b.createdAt || "").localeCompare(a.createdAt || "")).slice(0, 8);
+    if (!recent.length) {
+      box.innerHTML = '<div class="cc-empty">Todavía no hay casos guardados. Selecciona una falla y registra el primer diagnóstico.</div>';
+      return;
+    }
+    recent.forEach(record => {
+      const row = document.createElement("article");
+      row.className = "cc-record";
+      const date = record.createdAt ? new Date(record.createdAt).toLocaleString("es-MX", { dateStyle: "short", timeStyle: "short" }) : "Fecha sin dato";
+      row.innerHTML = `<strong title="${esc(record.failure)}">${esc(record.code)} · ${esc(record.failure)}</strong><span class="cc-status-${statusFor(record.outcome)}">${esc(record.outcome || "En proceso")}</span><span>${esc(record.serial)}${record.rack ? ` · ${esc(record.rack)}` : ""} · ${esc(record.mode)}</span><time>${esc(date)}</time>`;
+      box.appendChild(row);
+    });
+  }
+  function updateMetrics() {
+    const bat = FFDG.data.failureCatalog || [];
+    const mtf = FFDG.data.mtfFaults || [];
+    const batProcedureCount = bat.filter(item => (item.steps?.length || 0) > 0 || item.family === "NOBOOT").length;
+    const mtfProcedureCount = mtf.filter(item => item.variants?.length ? item.variants.some(variant => variant.steps?.length) : item.steps?.length).length;
+    const total = bat.length + mtf.length;
+    const covered = batProcedureCount + mtfProcedureCount;
+    $("cc-catalog-count").textContent = total.toLocaleString("es-MX");
+    $("cc-procedure-count").textContent = total ? `${Math.round(covered / total * 100)}%` : "0%";
+    $("cc-case-count").textContent = records.length.toLocaleString("es-MX");
+    const repeatedCodes = new Set();
+    const frequency = new Map();
+    records.forEach(item => frequency.set(item.code, (frequency.get(item.code) || 0) + 1));
+    frequency.forEach((count, code) => { if (count > 1) repeatedCodes.add(code); });
+    $("cc-repeat-count").textContent = repeatedCodes.size.toLocaleString("es-MX");
+    $("cc-repeat-count").title = repeatedCodes.size ? [...repeatedCodes].join(", ") : "Aún no hay códigos repetidos en esta bitácora";
+    renderRecords();
+  }
+  function renderComponents() {
+    const batCounts = new Map();
+    const mtfCounts = new Map();
+    (FFDG.data.failureCatalog || []).forEach(item => {
+      const label = item.familyLabel || item.family || "BAT";
+      batCounts.set(label, (batCounts.get(label) || 0) + 1);
+    });
+    (FFDG.data.mtfFaults || []).forEach(item => {
+      const pieces = String(item.components || "").split(/[,;]+/).map(value => value.trim()).filter(value => value && !/^(retest|hardware\s*\/\s*subsystem|ret-test|n\/a)$/i.test(value));
+      [...new Set(pieces)].forEach(label => mtfCounts.set(label, (mtfCounts.get(label) || 0) + 1));
+    });
+    const entries = [
+      ...[...batCounts].map(([label, count]) => ({ mode: "bat", label, count })),
+      ...[...mtfCounts].map(([label, count]) => ({ mode: "mtf", label, count }))
+    ].sort((a, b) => b.count - a.count || a.label.localeCompare(b.label)).slice(0, 16);
+    $("cc-components").replaceChildren();
+    entries.forEach(item => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "cc-component-chip";
+      button.dataset.mode = item.mode;
+      button.dataset.query = item.label;
+      button.innerHTML = `${esc(item.mode.toUpperCase())} · ${esc(item.label)} <b>${item.count}</b>`;
+      $("cc-components").appendChild(button);
+    });
+  }
+  function syncSelectedFailure() {
+    const item = currentFailure();
+    $("cc-selected-fault").textContent = item
+      ? `${item.mode} · ${item.station} · ${item.id} · ${item.code} · ${item.name}`
+      : "Selecciona primero una falla en BAT o MTF.";
+    $("cc-save").disabled = !item;
+  }
+  function openCenter() {
+    updateMetrics();
+    renderComponents();
+    syncSelectedFailure();
+    $("cc-status").textContent = "Almacenamiento local: los registros no se sincronizan con otros usuarios.";
+    dialog.showModal();
+    close.focus();
+  }
+  open.addEventListener("click", openCenter);
+  close.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", event => { if (event.target === dialog) dialog.close(); });
+  ["nav-bat", "nav-mtf"].forEach(id => $(id)?.addEventListener("click", () => setTimeout(syncSelectedFailure, 0)));
+  document.addEventListener("click", event => {
+    if (!dialog.open || !event.target.closest("#mtf-fault-list, #bat-board")) return;
+    setTimeout(syncSelectedFailure, 0);
+  });
+  $("cc-components").addEventListener("click", event => {
+    const button = event.target.closest("button[data-mode]");
+    if (!button) return;
+    const isBat = button.dataset.mode === "bat";
+    FFDG.ui.setMode(isBat ? "bat" : "mtf");
+    if (isBat) {
+      const search = $("bat-board-search");
+      search.value = button.dataset.query;
+      search.dispatchEvent(new Event("input", { bubbles: true }));
+      $("bat-failure-board").scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      document.querySelector('.view-tg button[data-v="board"]')?.click();
+      const search = $("mtf-search");
+      search.value = button.dataset.query;
+      search.dispatchEvent(new Event("input", { bubbles: true }));
+      $("mtf-layout").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    dialog.close();
+  });
+  $("cc-save").addEventListener("click", () => {
+    const item = currentFailure();
+    if (!item) { $("cc-status").textContent = "Selecciona una falla antes de guardar."; return; }
+    const serial = $("cc-serial").value.trim();
+    if (!serial) { $("cc-status").textContent = "Captura el serial de la unidad para guardar su trazabilidad."; $("cc-serial").focus(); return; }
+    const stepIndex = item.mode === "BAT" ? (FFDG.state.batDetailIndex || 0) : (FFDG.state.mtfIndex || 0);
+    const entry = {
+      createdAt: new Date().toISOString(), mode: item.mode, id: item.id, code: item.code, station: item.station,
+      failure: item.name, component: item.component, serial, rack: $("cc-rack").value.trim(), technician: $("cc-technician").value.trim(),
+      outcome: $("cc-outcome").value, notes: $("cc-notes").value.trim(), stepProgress: item.steps.length ? `Paso ${Math.min(stepIndex + 1, item.steps.length)} de ${item.steps.length}` : "Sin pasos cargados"
+    };
+    records.unshift(entry);
+    records = records.slice(0, 1000);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      $("cc-status").textContent = "Caso guardado en este navegador.";
+      $("cc-notes").value = "";
+      $("cc-serial").value = "";
+      $("cc-rack").value = "";
+      updateMetrics();
+    } catch (error) {
+      records.shift();
+      $("cc-status").textContent = "No se pudo guardar; el almacenamiento local está lleno o bloqueado.";
+    }
+  });
+  $("cc-export").addEventListener("click", () => {
+    if (!records.length) { $("cc-status").textContent = "No hay casos para exportar todavía."; return; }
+    const columns = ["Fecha", "Modo", "Estación", "ID", "Código", "Falla", "Componente", "Serial", "Rack / posición", "Técnico", "Resultado", "Paso", "Notas"];
+    const rows = records.map(record => [record.createdAt, record.mode, record.station, record.id, record.code, record.failure, record.component, record.serial, record.rack, record.technician, record.outcome, record.stepProgress, record.notes]);
+    const csv = [columns, ...rows].map(row => row.map(csvSafe).join(",")).join("\r\n");
+    const url = URL.createObjectURL(new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `FFDG-bitacora-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  });
+  updateMetrics();
+  renderComponents();
+})();</script>
 <script>(() => {
     const dialog = document.getElementById("mtf-flowchart-modal");
     const openButtons = [document.getElementById("mtf-flowchart-open"), document.getElementById("bat-flowchart-open")].filter(Boolean);

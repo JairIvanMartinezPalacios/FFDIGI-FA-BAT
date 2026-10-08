@@ -2296,39 +2296,23 @@
       }
       const escapeSvg = value => escapeHtml(String(value || ""));
       const truncate = (value, limit) => value.length > limit ? `${value.slice(0, limit - 1)}…` : value;
-      const rowCenter = index => 218 + index * 94;
-      const lastCenter = rowCenter(steps.length - 1);
-      const escalationY = lastCenter + 72;
-      const height = escalationY + 58;
-      const firstClass = activeIndex === 0 ? "on" : activeIndex > 0 ? "done" : "";
+      const activeStep = steps[Math.min(activeIndex, steps.length - 1)];
+      const stepLabel = truncate(String(activeStep.sourceNumber || activeIndex + 1) + ". " + String(activeStep.title || "Paso de diagnóstico"), 38);
+      const firstClass = activeIndex === 0 ? "on" : "done";
       const pill = (x, y, width, label, className) =>
-        `<g class="fc-g ${className}"><rect class="fc-n" x="${x}" y="${y}" width="${width}" height="34" rx="17"/><text x="${x + width / 2}" y="${y + 21}" font-size="10.5" text-anchor="middle">${escapeSvg(label)}</text></g>`;
-      let svg = `<svg viewBox="0 0 760 ${height}" width="100%" role="img" aria-label="Diagrama BAT: script de estación, decisión tras AC cycle, pasos correctivos y validación BAT" style="display:block">
-        <defs><marker id="bat-fc-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="fc-ar" d="M0 1.5L8 5 0 8.5z"/></marker><marker id="bat-fc-arrow-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="fc-arr" d="M0 1.5L8 5 0 8.5z"/></marker></defs>
+        `<g class="fc-g ${className}"><rect class="fc-n" x="${x}" y="${y}" width="${width}" height="36" rx="18"/><text x="${x + width / 2}" y="${y + 22}" font-size="10.5" text-anchor="middle">${escapeSvg(label)}</text></g>`;
+      let svg = `<svg viewBox="0 0 860 300" width="100%" role="img" aria-label="Diagrama BAT: ejecutar el script, validar el AC cycle, realizar el paso actual y volver a ejecutar el script" style="display:block">
+        <defs><marker id="bat-fc-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="fc-ar" d="M0 1.5L8 5 0 8.5z"/></marker></defs>
         ${pill(275, 18, 210, "Run the BAT station script", firstClass)}
-        <path class="fc-l" d="M380 52V82" marker-end="url(#bat-fc-arrow)"/>
+        <path class="fc-l" d="M380 54V82" marker-end="url(#bat-fc-arrow)"/>
         <g class="fc-g fc-dm"><polygon class="fc-n" points="380,84 465,118 380,152 295,118"/><text x="380" y="114" font-size="10.5" text-anchor="middle">Passes after an</text><text x="380" y="128" font-size="10.5" text-anchor="middle">AC cycle?</text></g>
         <path class="fc-l" d="M465 118H550" marker-end="url(#bat-fc-arrow)"/><text class="fc-p" x="492" y="108">Pass</text>
-        ${pill(550, 101, 195, "Continuar pruebas en L10", "fc-ok")}
-        <path class="fc-l" d="M295 118H14V${rowCenter(0)}H35" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="256" y="108">Fail</text>`;
-      steps.forEach((step, index) => {
-        const center = rowCenter(index);
-        const cardY = center - 20;
-        const decisionClass = activeIndex === index ? "on" : activeIndex > index ? "done" : "";
-        const label = truncate(String(step.sourceNumber || index + 1) + ". " + String(step.title || "Paso de diagnóstico"), 34);
-        svg += `<g class="fc-g ${decisionClass}"><rect class="fc-n" x="35" y="${cardY}" width="225" height="40" rx="10"/><text x="147.5" y="${center - 3}" font-size="9.5" text-anchor="middle">${escapeSvg(label)}</text><text x="147.5" y="${center + 12}" font-size="8" text-anchor="middle">Ejecutar paso / validación</text></g>
-          <path class="fc-l" d="M260 ${center}H334" marker-end="url(#bat-fc-arrow)"/>
-          <g class="fc-g fc-dm ${decisionClass}"><polygon class="fc-n" points="400,${center - 34} 466,${center} 400,${center + 34} 334,${center}"/><text x="400" y="${center - 3}" font-size="9.5" text-anchor="middle">¿Pasa la unidad</text><text x="400" y="${center + 10}" font-size="9.5" text-anchor="middle">en BAT?</text></g>
-          <path class="fc-l" d="M466 ${center}H530" marker-end="url(#bat-fc-arrow)"/><text class="fc-p" x="482" y="${center - 9}">Pass</text>`;
-        if (index < steps.length - 1) {
-          const nextCenter = rowCenter(index + 1);
-          svg += `<path class="fc-l" d="M400 ${center + 34}V${center + 49}H14V${nextCenter}H35" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="18" y="${center + 46}">Fail</text>`;
-        } else {
-          svg += `<path class="fc-l fc-lr" d="M400 ${center + 34}V${center + 55}H125V${escalationY}" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="412" y="${center + 52}">Fail</text>${pill(35, escalationY, 180, "Escalar a FA Nivel 2", "fc-er")}`;
-        }
-      });
-      svg += `<path class="fc-l" d="M530 ${rowCenter(steps.length - 1)}V118H550" marker-end="url(#bat-fc-arrow)"/>`;
-      box.innerHTML = svg + "</svg>";
+        ${pill(550, 100, 195, "Continuar pruebas en L10", "fc-ok")}
+        <path class="fc-l" d="M295 118H14V218H35" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="255" y="108">Fail</text>
+        <g class="fc-g on"><rect class="fc-n" x="35" y="194" width="225" height="48" rx="10"/><text x="147.5" y="214" font-size="9.5" text-anchor="middle">${escapeSvg(stepLabel)}</text><text x="147.5" y="230" font-size="8" text-anchor="middle">Paso correctivo actual</text></g>
+        <path class="fc-l" d="M260 218H835V36H485" marker-end="url(#bat-fc-arrow)"/>
+      </svg>`;
+      box.innerHTML = svg;
     }
     function finish(recommendation, passed) {
       FFDG.state.diagFinishedAt = new Date().toISOString();

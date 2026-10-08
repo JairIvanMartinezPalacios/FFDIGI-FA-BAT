@@ -3535,7 +3535,7 @@
       }, {});
       board.replaceChildren();
       document.getElementById("bat-board-count").textContent = `${matches.length} CASOS`;
-      Object.keys(groups).sort((a, b) => familyCounts[b] - familyCounts[a] || familyRank(a) - familyRank(b)).forEach(family => {
+      Object.keys(groups).sort((a, b) => familyRank(a) - familyRank(b) || familyCounts[b] - familyCounts[a]).forEach(family => {
         const column = document.createElement("section");
         column.className = "bd-col";
         column.dataset.st = family;
@@ -4651,6 +4651,94 @@ main{padding-top:4px!important}
     #mtf-board .bd-l { max-height: min(64dvh, 580px); padding: 8px 7px; }
     #bat-board .bd-item,
     #mtf-board .bd-item { padding: 7px 6px; }
+  }
+
+  /* Cinco columnas en los tableros; BAT mantiene sus cinco familias en una fila. */
+  #bat-board,
+  .v-board #mtf-board {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-auto-flow: row;
+    align-items: start;
+  }
+
+  #bat-layout.m3-layout { row-gap: 0; }
+
+  #bat-board .bd-l {
+    flex: 1 1 auto;
+    height: 0;
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+    padding: 8px;
+    gap: 7px;
+  }
+
+  #bat-board .bd-col {
+    height: 392px;
+    min-height: 0;
+    max-height: 392px;
+    box-sizing: border-box;
+  }
+
+  #bat-board .bd-h { flex: 0 0 36px; box-sizing: border-box; }
+
+  #bat-board .bd-item,
+  .v-board #mtf-board .bd-item {
+    flex: 0 0 108px;
+    width: 100%;
+    height: 108px;
+    min-height: 108px;
+    max-height: 108px;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 4px;
+    padding: 7px 8px;
+    overflow: hidden;
+  }
+
+  #bat-board .bd-item span,
+  .v-board #mtf-board .bd-item span {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  #bat-board .bd-item small,
+  .v-board #mtf-board .bd-item small {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .v-board #mtf-board .bd-col {
+    height: 392px;
+    min-height: 0;
+    max-height: 392px;
+    box-sizing: border-box;
+  }
+
+  .v-board #mtf-board .bd-h { flex: 0 0 36px; box-sizing: border-box; }
+
+  .v-board #mtf-board .bd-l {
+    flex: 1 1 auto;
+    height: 0;
+    min-height: 0;
+    max-height: none;
+    box-sizing: border-box;
+    overflow-y: auto;
+    padding: 8px;
+    gap: 7px;
+  }
+
+  @media (max-width: 1199px) {
+    #bat-board,
+    .v-board #mtf-board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 600px) {
+    #bat-board,
+    .v-board #mtf-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   }
 </style>
 <script>(() => {

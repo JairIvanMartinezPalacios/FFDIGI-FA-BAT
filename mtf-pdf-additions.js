@@ -1,4 +1,360 @@
 window.FFDG_MTF_PDF_REVERT_IDS = ["AST-01", "AST-02", "AST-04", "AST-05", "AST-06", "AST-07", "AST-08", "AST-09", "FCT-01", "FCT-02", "FCT-10", "FCT-11", "FCT-13", "FLA-02", "FLA-03", "FLA-04", "FLA-05", "FLA-07", "FLA-08", "FLA-11", "FLA-12", "FLA-14", "FLA-16", "FLA-17", "FLA-18", "FLA-20", "FLA-21", "FLB-02", "FLB-06", "FLB-07", "FLB-08", "FLB-09", "FLB-13", "FLC-01", "FLC-02", "FTS-01", "FTS-02", "FTS-04", "FTS-08", "FTS-09", "FTS-10", "FTS-12", "IOT-01", "IOT-02", "IOT-03", "NVL-03", "PRET-01", "PRET-02", "PRET-03", "PRET-04", "PRET-05", "PRET-06", "PRET-07", "PRET-08", "RIN-01", "RIN-02", "RIN-03", "RIN-04", "RIN-05", "RIN-06", "RIN-07", "RIN-14", "RIN-15"];
+window.FFDG_MTF_PDF_EXISTING_FLOWCHARTS = {
+  "FLA-07": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-004.png",
+    "width": 1036,
+    "height": 967,
+    "sourcePage": 24
+  },
+  "FLA-17": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-005.png",
+    "width": 1036,
+    "height": 280,
+    "sourcePage": 25
+  },
+  "FLA-18": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-005.png",
+    "width": 1036,
+    "height": 280,
+    "sourcePage": 25
+  },
+  "FLA-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-006.png",
+    "width": 1036,
+    "height": 474,
+    "sourcePage": 26
+  },
+  "FLA-04": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-007.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 28
+  },
+  "FLA-20": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-009.png",
+    "width": 1036,
+    "height": 316,
+    "sourcePage": 30
+  },
+  "FLA-03": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-010.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 32
+  },
+  "FLA-05": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-012.png",
+    "width": 1036,
+    "height": 1184,
+    "sourcePage": 35
+  },
+  "FLA-08": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-014.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 39
+  },
+  "FLA-11": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-015.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 41
+  },
+  "FLA-12": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-016.png",
+    "width": 1036,
+    "height": 444,
+    "sourcePage": 42
+  },
+  "FLA-14": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-017.png",
+    "width": 1036,
+    "height": 348,
+    "sourcePage": 43
+  },
+  "AST-04": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-019.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 46
+  },
+  "FTS-10": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-067.png",
+    "width": 1036,
+    "height": 1200,
+    "sourcePage": 128
+  },
+  "AST-08": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-028.png",
+    "width": 1036,
+    "height": 268,
+    "sourcePage": 61
+  },
+  "AST-09": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-020.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 48
+  },
+  "RIN-01": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "width": 1036,
+    "height": 422,
+    "sourcePage": 50
+  },
+  "RIN-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "width": 1036,
+    "height": 422,
+    "sourcePage": 50
+  },
+  "RIN-03": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "width": 1036,
+    "height": 422,
+    "sourcePage": 50
+  },
+  "RIN-04": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "width": 1036,
+    "height": 422,
+    "sourcePage": 50
+  },
+  "RIN-05": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "width": 1036,
+    "height": 422,
+    "sourcePage": 50
+  },
+  "RIN-06": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "width": 1036,
+    "height": 422,
+    "sourcePage": 50
+  },
+  "RIN-07": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
+    "width": 1036,
+    "height": 422,
+    "sourcePage": 50
+  },
+  "AST-06": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-025.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 57
+  },
+  "AST-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-027.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 60
+  },
+  "FCT-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-031.png",
+    "width": 1036,
+    "height": 553,
+    "sourcePage": 65
+  },
+  "FCT-11": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-036.png",
+    "width": 1036,
+    "height": 357,
+    "sourcePage": 72
+  },
+  "FCT-13": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-040.png",
+    "width": 1036,
+    "height": 1105,
+    "sourcePage": 80
+  },
+  "FCT-01": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-042.png",
+    "width": 1036,
+    "height": 283,
+    "sourcePage": 82
+  },
+  "AST-05": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-043.png",
+    "width": 1036,
+    "height": 333,
+    "sourcePage": 83
+  },
+  "FTS-09": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-045.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 86
+  },
+  "IOT-01": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-046.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 90
+  },
+  "IOT-03": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-048.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 94
+  },
+  "IOT-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-049.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 97
+  },
+  "FLB-06": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-051.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 101
+  },
+  "FTS-04": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-052.png",
+    "width": 1036,
+    "height": 368,
+    "sourcePage": 102
+  },
+  "RIN-14": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-054.png",
+    "width": 1036,
+    "height": 1126,
+    "sourcePage": 106
+  },
+  "RIN-15": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-055.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 108
+  },
+  "FTS-01": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-057.png",
+    "width": 1036,
+    "height": 981,
+    "sourcePage": 111
+  },
+  "FTS-08": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-058.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 113
+  },
+  "FTS-12": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-064.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 123
+  },
+  "FTS-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-068.png",
+    "width": 1036,
+    "height": 1210,
+    "sourcePage": 130
+  },
+  "FLB-08": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 151
+  },
+  "FLC-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 151
+  },
+  "FCT-10": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 151
+  },
+  "FLC-01": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-081.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 151
+  },
+  "FLB-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-083.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 154
+  },
+  "FLB-09": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-092.png",
+    "width": 1036,
+    "height": 1307,
+    "sourcePage": 168
+  },
+  "NVL-03": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-094.png",
+    "width": 1036,
+    "height": 345,
+    "sourcePage": 171
+  },
+  "FLA-21": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-096.png",
+    "width": 1036,
+    "height": 1007,
+    "sourcePage": 174
+  },
+  "FLB-07": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-100.png",
+    "width": 1036,
+    "height": 1082,
+    "sourcePage": 180
+  },
+  "PRET-08": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-101.png",
+    "width": 1036,
+    "height": 369,
+    "sourcePage": 181
+  },
+  "PRET-04": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-102.png",
+    "width": 1036,
+    "height": 1284,
+    "sourcePage": 184
+  },
+  "PRET-02": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-103.png",
+    "width": 1036,
+    "height": 324,
+    "sourcePage": 185
+  },
+  "PRET-01": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-107.png",
+    "width": 1036,
+    "height": 1163,
+    "sourcePage": 191
+  },
+  "PRET-03": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-107.png",
+    "width": 1036,
+    "height": 1163,
+    "sourcePage": 191
+  },
+  "PRET-06": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-108.png",
+    "width": 1036,
+    "height": 1058,
+    "sourcePage": 194
+  },
+  "PRET-05": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-108.png",
+    "width": 1036,
+    "height": 1058,
+    "sourcePage": 194
+  },
+  "PRET-07": {
+    "src": "./assets/mtf-flowcharts/mtf-flow-108.png",
+    "width": 1036,
+    "height": 1058,
+    "sourcePage": 194
+  }
+};
 window.FFDG_MTF_PDF_ADDITIONS = [
   {
     "id": "PDF-MTF-CASE-0001",
@@ -27,8 +383,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-001.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1105,
     "sourcePdfPage": 18,
     "referenceImages": [
       {
@@ -72,8 +428,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-002.png",
-    "flowchartImageWidth": 998,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1182,
     "sourcePdfPage": 20,
     "referenceImages": [],
     "pdfNewCase": true
@@ -109,8 +465,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-002.png",
-    "flowchartImageWidth": 998,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1182,
     "sourcePdfPage": 20,
     "referenceImages": [],
     "pdfNewCase": true
@@ -154,8 +510,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-003.png",
-    "flowchartImageWidth": 934,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 22,
     "referenceImages": [],
     "pdfNewCase": true
@@ -187,8 +543,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-008.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 941,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 342,
     "sourcePdfPage": 29,
     "referenceImages": [],
     "pdfNewCase": true
@@ -220,8 +576,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-011.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 941,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 321,
     "sourcePdfPage": 33,
     "referenceImages": [],
     "pdfNewCase": true
@@ -249,8 +605,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-013.png",
-    "flowchartImageWidth": 1103,
-    "flowchartImageHeight": 962,
+    "flowchartImageWidth": 1083,
+    "flowchartImageHeight": 680,
     "sourcePdfPage": 37,
     "referenceImages": [],
     "pdfNewCase": true
@@ -278,8 +634,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-013.png",
-    "flowchartImageWidth": 1103,
-    "flowchartImageHeight": 962,
+    "flowchartImageWidth": 1083,
+    "flowchartImageHeight": 680,
     "sourcePdfPage": 37,
     "referenceImages": [],
     "pdfNewCase": true
@@ -303,8 +659,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-018.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1006,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 343,
     "sourcePdfPage": 44,
     "referenceImages": [],
     "pdfNewCase": true
@@ -344,8 +700,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
-    "flowchartImageWidth": 801,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 46,
     "referenceImages": [],
     "pdfNewCase": true
@@ -385,8 +741,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
-    "flowchartImageWidth": 801,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 46,
     "referenceImages": [],
     "pdfNewCase": true
@@ -426,8 +782,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
-    "flowchartImageWidth": 801,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 46,
     "referenceImages": [],
     "pdfNewCase": true
@@ -467,8 +823,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
-    "flowchartImageWidth": 801,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 46,
     "referenceImages": [],
     "pdfNewCase": true
@@ -508,8 +864,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
-    "flowchartImageWidth": 801,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 46,
     "referenceImages": [],
     "pdfNewCase": true
@@ -549,8 +905,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-019.png",
-    "flowchartImageWidth": 801,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 46,
     "referenceImages": [],
     "pdfNewCase": true
@@ -574,8 +930,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -599,8 +955,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -624,8 +980,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -649,8 +1005,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -674,8 +1030,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -699,8 +1055,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -724,8 +1080,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -749,8 +1105,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -774,8 +1130,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -799,8 +1155,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -824,8 +1180,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -849,8 +1205,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -874,8 +1230,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -899,8 +1255,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -924,8 +1280,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -949,8 +1305,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -974,8 +1330,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -999,8 +1355,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1024,8 +1380,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1049,8 +1405,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1074,8 +1430,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1099,8 +1455,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1124,8 +1480,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1149,8 +1505,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1174,8 +1530,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1199,8 +1555,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1224,8 +1580,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1249,8 +1605,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1274,8 +1630,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-021.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 422,
     "sourcePdfPage": 50,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1303,8 +1659,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-022.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 974,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
     "sourcePdfPage": 51,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1344,8 +1700,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-023.png",
-    "flowchartImageWidth": 929,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 53,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1373,8 +1729,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-026.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 974,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 368,
     "sourcePdfPage": 58,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1406,8 +1762,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-030.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 746,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 288,
     "sourcePdfPage": 64,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1585,8 +1941,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-033.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 501,
     "sourcePdfPage": 68,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1614,8 +1970,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-033.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 501,
     "sourcePdfPage": 68,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1647,8 +2003,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-034.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 909,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 318,
     "sourcePdfPage": 69,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1684,8 +2040,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-035.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1147,
     "sourcePdfPage": 71,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1713,8 +2069,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-037.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 925,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 325,
     "sourcePdfPage": 73,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1742,8 +2098,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-037.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 925,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 325,
     "sourcePdfPage": 73,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1771,8 +2127,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-038.png",
-    "flowchartImageWidth": 954,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 76,
     "referenceImages": [
       {
@@ -1808,8 +2164,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-038.png",
-    "flowchartImageWidth": 954,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 76,
     "referenceImages": [
       {
@@ -1845,8 +2201,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-038.png",
-    "flowchartImageWidth": 954,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 76,
     "referenceImages": [
       {
@@ -1882,8 +2238,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-038.png",
-    "flowchartImageWidth": 954,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 76,
     "referenceImages": [
       {
@@ -1923,8 +2279,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-039.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1427,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 911,
     "sourcePdfPage": 78,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1948,8 +2304,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-041.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 925,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 342,
     "sourcePdfPage": 81,
     "referenceImages": [],
     "pdfNewCase": true
@@ -1973,8 +2329,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-041.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 925,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 342,
     "sourcePdfPage": 81,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2002,8 +2358,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-042.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 892,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 283,
     "sourcePdfPage": 82,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2031,8 +2387,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-042.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 892,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 283,
     "sourcePdfPage": 82,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2056,8 +2412,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-044.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 892,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 385,
     "sourcePdfPage": 84,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2081,8 +2437,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-044.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 892,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 385,
     "sourcePdfPage": 84,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2118,8 +2474,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
-    "flowchartImageWidth": 855,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 86,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2155,8 +2511,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
-    "flowchartImageWidth": 855,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 86,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2192,8 +2548,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
-    "flowchartImageWidth": 855,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 86,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2229,8 +2585,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
-    "flowchartImageWidth": 855,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 86,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2266,8 +2622,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-045.png",
-    "flowchartImageWidth": 855,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 86,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2315,8 +2671,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-046.png",
-    "flowchartImageWidth": 964,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 90,
     "referenceImages": [
       {
@@ -2363,8 +2719,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-047.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 938,
     "sourcePdfPage": 92,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2392,8 +2748,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-050.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 941,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 355,
     "sourcePdfPage": 98,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2437,8 +2793,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-051.png",
-    "flowchartImageWidth": 897,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 101,
     "referenceImages": [
       {
@@ -2474,8 +2830,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-052.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 860,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 368,
     "sourcePdfPage": 102,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2519,8 +2875,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
-    "flowchartImageWidth": 1004,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1227,
     "sourcePdfPage": 104,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2564,8 +2920,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
-    "flowchartImageWidth": 1004,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1227,
     "sourcePdfPage": 104,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2609,8 +2965,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
-    "flowchartImageWidth": 1004,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1227,
     "sourcePdfPage": 104,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2654,8 +3010,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
-    "flowchartImageWidth": 1004,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1227,
     "sourcePdfPage": 104,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2699,8 +3055,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
-    "flowchartImageWidth": 1004,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1227,
     "sourcePdfPage": 104,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2744,8 +3100,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
-    "flowchartImageWidth": 1004,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1227,
     "sourcePdfPage": 104,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2789,8 +3145,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
-    "flowchartImageWidth": 1004,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1227,
     "sourcePdfPage": 104,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2834,8 +3190,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-053.png",
-    "flowchartImageWidth": 1004,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1227,
     "sourcePdfPage": 104,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2908,8 +3264,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-057.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 981,
     "sourcePdfPage": 111,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2945,8 +3301,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-059.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 985,
     "sourcePdfPage": 115,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2970,8 +3326,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
     "sourcePdfPage": 116,
     "referenceImages": [],
     "pdfNewCase": true
@@ -2995,8 +3351,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
     "sourcePdfPage": 116,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3020,8 +3376,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
     "sourcePdfPage": 116,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3045,8 +3401,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
     "sourcePdfPage": 116,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3070,8 +3426,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-060.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 320,
     "sourcePdfPage": 116,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3103,8 +3459,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-061.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 975,
     "sourcePdfPage": 118,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3140,8 +3496,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-062.png",
-    "flowchartImageWidth": 786,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 120,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3173,8 +3529,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-063.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 366,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 272,
     "sourcePdfPage": 121,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3218,8 +3574,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-064.png",
-    "flowchartImageWidth": 767,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 123,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3263,8 +3619,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-065.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1101,
     "sourcePdfPage": 125,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3308,8 +3664,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-065.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1101,
     "sourcePdfPage": 125,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3337,8 +3693,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-066.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 876,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 363,
     "sourcePdfPage": 126,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3366,8 +3722,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-066.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 876,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 363,
     "sourcePdfPage": 126,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3407,8 +3763,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-069.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1062,
     "sourcePdfPage": 132,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3448,8 +3804,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-069.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1062,
     "sourcePdfPage": 132,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3481,8 +3837,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-070.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
     "sourcePdfPage": 133,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3514,8 +3870,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-070.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
     "sourcePdfPage": 133,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3547,8 +3903,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-070.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
     "sourcePdfPage": 133,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3580,8 +3936,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-070.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 680,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 337,
     "sourcePdfPage": 133,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3609,8 +3965,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-071.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 381,
     "sourcePdfPage": 135,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3646,8 +4002,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-072.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 827,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 341,
     "sourcePdfPage": 136,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3683,8 +4039,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-072.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 827,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 341,
     "sourcePdfPage": 136,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3728,8 +4084,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-073.png",
-    "flowchartImageWidth": 1003,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1236,
     "sourcePdfPage": 138,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3773,8 +4129,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-073.png",
-    "flowchartImageWidth": 1003,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1236,
     "sourcePdfPage": 138,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3822,8 +4178,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-074.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 831,
     "sourcePdfPage": 140,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3970,8 +4326,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-076.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 925,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 409,
     "sourcePdfPage": 143,
     "referenceImages": [],
     "pdfNewCase": true
@@ -3995,8 +4351,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-076.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 925,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 409,
     "sourcePdfPage": 143,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4028,8 +4384,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-077.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 941,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 344,
     "sourcePdfPage": 144,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4057,8 +4413,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-078.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 974,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 357,
     "sourcePdfPage": 145,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4090,8 +4446,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-079.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 941,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 364,
     "sourcePdfPage": 146,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4143,8 +4499,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4196,8 +4552,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4249,8 +4605,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4302,8 +4658,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4355,8 +4711,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4408,8 +4764,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4461,8 +4817,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4514,8 +4870,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4567,8 +4923,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4620,8 +4976,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4673,8 +5029,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4726,8 +5082,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4779,8 +5135,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4832,8 +5188,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-081.png",
-    "flowchartImageWidth": 802,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 151,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4869,8 +5225,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-082.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 811,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
     "sourcePdfPage": 152,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4906,8 +5262,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-082.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 811,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
     "sourcePdfPage": 152,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4943,8 +5299,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-082.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 811,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
     "sourcePdfPage": 152,
     "referenceImages": [],
     "pdfNewCase": true
@@ -4980,8 +5336,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-082.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 811,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 345,
     "sourcePdfPage": 152,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5029,8 +5385,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-083.png",
-    "flowchartImageWidth": 798,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 154,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5078,8 +5434,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-083.png",
-    "flowchartImageWidth": 798,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 154,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5103,8 +5459,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-084.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1006,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 351,
     "sourcePdfPage": 155,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5140,8 +5496,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-085.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 823,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 335,
     "sourcePdfPage": 156,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5165,8 +5521,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-086.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1006,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 409,
     "sourcePdfPage": 157,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5559,8 +5915,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-090.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 925,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 362,
     "sourcePdfPage": 165,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5584,8 +5940,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-091.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1006,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 395,
     "sourcePdfPage": 166,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5617,8 +5973,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-093.png",
-    "flowchartImageWidth": 899,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 170,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5650,8 +6006,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-093.png",
-    "flowchartImageWidth": 899,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 170,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5683,8 +6039,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-093.png",
-    "flowchartImageWidth": 899,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1307,
     "sourcePdfPage": 170,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5720,8 +6076,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-096.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1007,
     "sourcePdfPage": 174,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5753,8 +6109,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-097.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 909,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 340,
     "sourcePdfPage": 175,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5786,8 +6142,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-098.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 735,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 321,
     "sourcePdfPage": 176,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5831,8 +6187,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-099.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 753,
     "sourcePdfPage": 178,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5876,8 +6232,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-099.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 753,
     "sourcePdfPage": 178,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5917,8 +6273,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-100.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 1513,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 1082,
     "sourcePdfPage": 180,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5950,8 +6306,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-101.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 843,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 369,
     "sourcePdfPage": 181,
     "referenceImages": [],
     "pdfNewCase": true
@@ -5983,8 +6339,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-103.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 843,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 324,
     "sourcePdfPage": 185,
     "referenceImages": [],
     "pdfNewCase": true
@@ -6020,8 +6376,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-104.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 843,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 373,
     "sourcePdfPage": 186,
     "referenceImages": [],
     "pdfNewCase": true
@@ -6057,8 +6413,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-104.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 843,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 373,
     "sourcePdfPage": 186,
     "referenceImages": [],
     "pdfNewCase": true
@@ -6082,8 +6438,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-105.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 974,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 319,
     "sourcePdfPage": 187,
     "referenceImages": [],
     "pdfNewCase": true
@@ -6111,8 +6467,8 @@ window.FFDG_MTF_PDF_ADDITIONS = [
       }
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-106.png",
-    "flowchartImageWidth": 1056,
-    "flowchartImageHeight": 941,
+    "flowchartImageWidth": 1036,
+    "flowchartImageHeight": 326,
     "sourcePdfPage": 188,
     "referenceImages": [],
     "pdfNewCase": true

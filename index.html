@@ -465,6 +465,13 @@
   .mtf-notification-cases { display: grid; gap: 8px; margin: 14px 0; }
   .mtf-notification-case { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; padding: 10px 12px; border: 1px solid #e0e5d9; border-radius: 10px; background: #f6f8f3; }
   .mtf-notification-guidance { padding: 12px 14px; border-left: 4px solid #76b900; border-radius: 8px; background: #eff7df; }
+  .bat-board-header { gap: 12px; flex-wrap: wrap; }
+  .bat-board-header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-left: auto; }
+  .bat-notifications-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px 12px; border: 1px solid #76b900; border-radius: 999px; background: linear-gradient(115deg,#1b3600,#2d6b00 55%,#5a9a00); color: #fff; font-family: inherit; font-size: 11px; font-weight: 800; line-height: 1.2; cursor: pointer; white-space: nowrap; box-shadow: 0 6px 18px rgba(45,107,0,.35); }
+  .bat-notifications-button:hover { background: linear-gradient(115deg,#244700,#397d00 55%,#68aa00); border-color: #76b900; }
+  .bat-notifications-button:focus-visible { outline: 3px solid #a8e34b; outline-offset: 3px; }
+  .bat-notifications-button .mtf-notification-count { background: #111; }
+  @media(max-width:600px) { .bat-board-header-actions { flex-wrap: wrap; gap: 7px; } .bat-notifications-button { padding: 7px 10px; } }
 
   .mtf-cards-scroll-grid {
     display: flex;
@@ -1402,9 +1409,16 @@
 <main><!-- MODO 1: BAT WORKFLOW -->
   <div id="bat-layout" class="m3-layout bat-details-mode">
     <div id="bat-failure-board" class="m3-card no-print">
-      <div class="m3-card-header">
+      <div class="m3-card-header bat-board-header">
         <h2 class="m3-card-title">Catálogo BAT · Tablero de fallas</h2>
-        <span id="bat-board-count" class="mtf-tag">0 CASOS</span>
+        <div class="bat-board-header-actions">
+          <span id="bat-board-count" class="mtf-tag">0 CASOS</span>
+          <button type="button" class="bat-notifications-button" id="bat-notifications-open"
+            aria-haspopup="dialog" aria-controls="mtf-customer-notifications" aria-label="Customer notifications, 1 aviso de NVIDIA"
+            onclick="document.getElementById('mtf-customer-notifications').showModal()">
+            Customer notifications <span class="mtf-notification-count" aria-hidden="true">1</span>
+          </button>
+        </div>
       </div>
       <div class="bat-board-toolbar">
         <div class="bat-board-controls">
@@ -1722,24 +1736,6 @@
         Customer notifications <span class="mtf-notification-count" aria-hidden="true">1</span>
       </button>
     </div>
-    <dialog id="mtf-customer-notifications" class="mtf-customer-notifications-dialog" aria-labelledby="mtf-notification-title">
-      <div class="mtf-notification-head">
-        <span class="mtf-notification-brand" aria-hidden="true">NVIDIA</span>
-        <h2 id="mtf-notification-title">Customer notifications</h2>
-        <button type="button" class="mtf-notification-close" aria-label="Cerrar aviso" onclick="this.closest('dialog').close()">×</button>
-      </div>
-      <div class="mtf-notification-content">
-        <div class="mtf-notification-kicker">Aviso NVIDIA · 1</div>
-        <h3>BF3 FRU Device Description: AC Cycle confirmado</h3>
-        <p><strong>Error 054018006_048-000-0-000000000106:</strong> FRU Device Description de BF3 no encontrado; se esperaba <code>/BlueField-3 DPU/</code>.</p>
-        <div class="mtf-notification-cases" aria-label="Casos reportados">
-          <div class="mtf-notification-case"><strong>SN 1932926000090</strong><span>FTS_26 · 21/07/2026</span></div>
-          <div class="mtf-notification-case"><strong>SN 1932926000134</strong><span>FCT_18 · 22/07/2026</span></div>
-        </div>
-        <p>TE realizó Debug y AC Cycle en ambos casos y escaló la recurrencia. NVIDIA confirmó que <strong>AC Cycle es el troubleshooting correcto</strong> y mencionó una posible relación con el problema previo de I2C.</p>
-        <div class="mtf-notification-guidance"><strong>Guía:</strong> las unidades con este mismo modo de falla son candidatas para AC Cycle, según la indicación de NVIDIA.</div>
-      </div>
-    </dialog>
     <div class="mtf-row-2">
       <div id="mtf-fault-list" class="mtf-cards-scroll-grid"></div>
     </div>
@@ -1856,6 +1852,24 @@
       </div>
     </div>
   </div>
+  <dialog id="mtf-customer-notifications" class="mtf-customer-notifications-dialog" aria-labelledby="mtf-notification-title">
+    <div class="mtf-notification-head">
+      <span class="mtf-notification-brand" aria-hidden="true">NVIDIA</span>
+      <h2 id="mtf-notification-title">Customer notifications</h2>
+      <button type="button" class="mtf-notification-close" aria-label="Cerrar aviso" onclick="this.closest('dialog').close()">×</button>
+    </div>
+    <div class="mtf-notification-content">
+      <div class="mtf-notification-kicker">Aviso NVIDIA · 1</div>
+      <h3>BF3 FRU Device Description: AC Cycle confirmado</h3>
+      <p><strong>Error 054018006_048-000-0-000000000106:</strong> FRU Device Description de BF3 no encontrado; se esperaba <code>/BlueField-3 DPU/</code>.</p>
+      <div class="mtf-notification-cases" aria-label="Casos reportados">
+        <div class="mtf-notification-case"><strong>SN 1932926000090</strong><span>FTS_26 · 21/07/2026</span></div>
+        <div class="mtf-notification-case"><strong>SN 1932926000134</strong><span>FCT_18 · 22/07/2026</span></div>
+      </div>
+      <p>TE realizó Debug y AC Cycle en ambos casos y escaló la recurrencia. NVIDIA confirmó que <strong>AC Cycle es el troubleshooting correcto</strong> y mencionó una posible relación con el problema previo de I2C.</p>
+      <div class="mtf-notification-guidance"><strong>Guía:</strong> las unidades con este mismo modo de falla son candidatas para AC Cycle, según la indicación de NVIDIA.</div>
+    </div>
+  </dialog>
   <!-- REPORTES PARA PDF CON LOGO NVIDIA -->
   <div id="bat-print-report" class="report-only">
     <div class="print-head">

@@ -4712,9 +4712,9 @@ main{padding-top:4px!important}
   }
 
   .v-board #mtf-board .bd-col {
-    height: 392px;
+    height: 238px;
     min-height: 0;
-    max-height: 392px;
+    max-height: 238px;
     box-sizing: border-box;
   }
 
@@ -4730,6 +4730,16 @@ main{padding-top:4px!important}
     padding: 8px;
     gap: 7px;
   }
+
+  .v-board #mtf-board .bd-item {
+    flex: 0 0 88px;
+    height: 88px;
+    min-height: 88px;
+    max-height: 88px;
+  }
+
+  .v-board #mtf-board .bd-item span { -webkit-line-clamp: 2; }
+  .v-board #mtf-board .bd-item small { -webkit-line-clamp: 1; }
 
   @media (max-width: 1199px) {
     #bat-board,

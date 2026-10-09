@@ -2414,7 +2414,7 @@ window.FFDG_MTF_PDF_ADDITIONS = [
     ],
     "flowchartImage": "./assets/mtf-flowcharts/mtf-flow-039.png",
     "flowchartImageWidth": 1036,
-    "flowchartImageHeight": 911,
+    "flowchartImageHeight": 966,
     "sourcePdfPage": 78,
     "referenceImages": [],
     "pdfNewCase": true

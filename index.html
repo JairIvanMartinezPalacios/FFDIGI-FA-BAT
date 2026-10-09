@@ -1741,7 +1741,7 @@
         Customer notifications <span class="mtf-notification-count" aria-hidden="true">1</span>
       </button>
       <div id="mtf-selection-summary" class="mtf-selection-summary hidden" aria-live="polite">
-        <button id="mtf-selection-toggle" class="catalog-selection-toggle" type="button" aria-controls="mtf-row-2" aria-expanded="false">
+        <button id="mtf-selection-toggle" class="catalog-selection-toggle" type="button" aria-label="Cambiar falla" aria-controls="mtf-row-2" aria-expanded="false">
           <span id="mtf-selection-text" class="catalog-selection-text"></span>
           <span class="catalog-selection-action">Cambiar falla ▾</span>
         </button>
@@ -2447,7 +2447,7 @@
           f.activeVariant = 0;
           renderMtfList();
           renderMtfDetail();
-          setMtfCatalogCollapsed(true, f);
+          setMtfCatalogCollapsed(!$('mtf-layout').classList.contains("mtf-split"), f);
           $("mtf-detail-title").focus({ preventScroll: true });
           scrollMtfDetailIntoView();
         });
@@ -5037,9 +5037,9 @@ main{padding-top:4px!important}
         #bat-detail-area:not(.hidden), #mtf-detail:not(.hidden) { opacity: 0; transform: translateY(8px); }
       }
     }
-    #mtf-selection-toggle { display: flex; flex-direction: column; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; width: 100%; min-width: 0; box-sizing: border-box; border: 1px solid #76b900; border-radius: 12px; background: #1c2616; color: #fff; text-align: center; }
-    #mtf-selection-toggle .catalog-selection-text { flex: 0 1 auto; color: #fff; text-align: center; white-space: normal; }
-    #mtf-selection-toggle .catalog-selection-action { flex: 0 0 auto; padding: 6px 12px; border-radius: 999px; background: #a3d84c; color: #132000; font-weight: 800; }
+    #mtf-selection-toggle { display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; min-width: 0; min-height: 44px; box-sizing: border-box; border: 1px solid #76b900; border-radius: 12px; background: #111; color: #fff; text-align: center; }
+    #mtf-selection-toggle .catalog-selection-text { display: none !important; }
+    #mtf-selection-toggle .catalog-selection-action { flex: 0 0 auto; padding: 0; background: transparent; color: #fff; font-weight: 800; }
     #mtf-selection-toggle:hover { background: #28381d; }
     body { font-size: 14px; line-height: 1.45; }
     main { padding: 8px 16px 32px !important; }
@@ -5136,14 +5136,23 @@ main{padding-top:4px!important}
     #mtf-layout .mtf-detail-controls-right > button { min-height: 44px; }
     #mtf-layout .mtf-detail-controls-right > #mtf-flowchart-open { justify-content: center; }
   }
-  @media screen and (min-width: 1200px) {
-    #mtf-layout.mtf-selection-collapsed .mtf-row-2-header {
-      width: min(100%, 960px);
-      margin-inline: auto;
+  .v-board #mtf-board { row-gap: 8px; }
+  .v-board #mtf-board .bd-col { height: 338px; min-height: 338px; max-height: 338px; }
+  #mtf-layout.mtf-selection-collapsed .mtf-row-2-header { width: min(calc(100% - 24px), 1240px); margin-inline: auto; box-sizing: border-box; }
+  @media screen and (max-width: 600px) {
+    .v-board #mtf-board .bd-col { height: 324px; min-height: 324px; max-height: 324px; }
+    #mtf-layout.mtf-selection-collapsed .mtf-row-2-header { width: calc(100% - 12px); }
+  }
+  @media screen and (min-width: 1241px) {
+    #mtf-layout:not(.mtf-split) .mtf-detail-horizontal-grid,
+    #bat-failure-detail .bat-detail-grid { min-height: max(560px, calc(100dvh - 320px)); }
+  }
+  @media screen and (min-width: 1081px) {
+    #mtf-layout.mtf-split .mtf-cards-scroll-grid {
+      height: clamp(360px, calc(100dvh - 280px), 760px);
+      min-height: 0;
+      max-height: none;
       box-sizing: border-box;
     }
   }
-  .v-board #mtf-board { row-gap: 8px; }
-  .v-board #mtf-board .bd-col { height: 316px; min-height: 316px; max-height: 316px; }
-  #mtf-layout.mtf-selection-collapsed .mtf-selection-summary:not(.hidden) { max-width: 940px; margin-inline: auto; }
 </style>

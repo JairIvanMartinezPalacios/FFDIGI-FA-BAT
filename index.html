@@ -1418,6 +1418,10 @@
           <h2 class="m3-card-title">Catálogo BAT · Tablero de fallas</h2>
           <span id="bat-board-count" class="mtf-tag">0 CASOS</span>
         </div>
+        <div id="bat-selection-summary" class="bat-selection-summary hidden" aria-live="polite">
+          <span id="bat-selection-text" class="catalog-selection-text"></span>
+          <button id="bat-selection-toggle" class="catalog-selection-toggle" type="button" aria-controls="bat-board" aria-expanded="false">Cambiar falla</button>
+        </div>
         <div class="bat-board-controls">
           <div class="mtf-row-1-search bat-board-search">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
@@ -1450,7 +1454,7 @@
               <div class="bento-block-heading-copy"><h2 class="bento-block-title">Failure Record</h2><p class="bento-block-subtitle">Identificación de falla y datos técnicos</p></div>
             </header>
             <div style="display:flex;align-items:center;gap:6px"><span id="bat-detail-station" class="mtf-tag" style="background:var(--md-sys-color-primary);color:#fff">BAT</span><span id="bat-detail-family" class="mtf-tag"></span></div>
-            <h3 id="bat-detail-title" style="margin:0;font-size:14px;font-weight:800;line-height:1.35;color:var(--md-sys-color-on-surface)"></h3>
+            <h3 id="bat-detail-title" tabindex="-1" style="margin:0;font-size:14px;font-weight:800;line-height:1.35;color:var(--md-sys-color-on-surface)"></h3>
             <div class="bento-meta-item"><span class="bento-meta-label">Estación</span><span id="bat-detail-station-value" class="bento-meta-val">BAT</span></div>
             <div class="bento-meta-item"><span class="bento-meta-label">Error Code</span><span id="bat-detail-code" class="bento-meta-val"></span></div>
             <div class="bento-meta-item"><span class="bento-meta-label">Tipo de falla</span><span id="bat-detail-component" class="bento-meta-val"></span></div>
@@ -1469,8 +1473,8 @@
             <header class="bento-block-heading">
               <div class="bento-block-heading-copy"><h2 class="bento-block-title">Disposition Flow</h2><p class="bento-block-subtitle">Criterio de calidad, retest y ruta de decisión</p></div>
             </header>
-            <div class="mtf-quality-heading"><span style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--md-sys-color-primary);letter-spacing:.06em">Criterio de Calidad &amp; Retest</span><span class="mtf-tag" style="background:#e1f5fe;color:#0288d1;font-weight:800;font-size:10px">FLOWCHART</span></div>
-            <div id="bat-disposition-flow" role="img" aria-label="Diagrama de disposición de la falla BAT"></div>
+            <div class="mtf-quality-heading"><span style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--md-sys-color-primary);letter-spacing:.06em">Secuencia FA · pasos del PDF</span><span class="mtf-tag" style="background:#e1f5fe;color:#0288d1;font-weight:800;font-size:10px">FLOWCHART</span></div>
+            <div id="bat-disposition-flow" aria-live="polite"></div>
             <div class="bat-detail-controls no-print">
               <button id="bat-detail-prev" class="m3-btn m3-btn-tonal" type="button">← Anterior</button>
               <button id="bat-detail-next" class="m3-btn m3-btn-filled" type="button">Paso siguiente →</button>
@@ -1736,8 +1740,14 @@
         onclick="document.getElementById('mtf-customer-notifications').showModal()">
         Customer notifications <span class="mtf-notification-count" aria-hidden="true">1</span>
       </button>
+      <div id="mtf-selection-summary" class="mtf-selection-summary hidden" aria-live="polite">
+        <button id="mtf-selection-toggle" class="catalog-selection-toggle" type="button" aria-controls="mtf-row-2" aria-expanded="false">
+          <span id="mtf-selection-text" class="catalog-selection-text"></span>
+          <span class="catalog-selection-action">Cambiar falla ▾</span>
+        </button>
+      </div>
     </div>
-    <div class="mtf-row-2">
+    <div class="mtf-row-2" id="mtf-row-2">
       <div id="mtf-fault-list" class="mtf-cards-scroll-grid"></div>
     </div>
     <!-- FILA 3: PANEL DETALLE HORIZONTAL EN 3 BLOQUES (METADATA | INSTRUCCIONES & COMANDOS | DISPOSICIÓN) -->
@@ -1764,7 +1774,7 @@
                 style="background:var(--md-sys-color-primary); color:#fff;"></span>
               <span id="mtf-badge-flow" class="mtf-tag"></span>
             </div>
-            <h3 id="mtf-detail-title"
+            <h3 id="mtf-detail-title" tabindex="-1"
               style="margin:0; font-size:14px; font-weight:800; line-height:1.35; color:var(--md-sys-color-on-surface);">
             </h3>
             <div class="bento-meta-item">
@@ -1840,14 +1850,12 @@
               <div id="mtf-action-text" class="m3-action-callout" style="margin-top:6px;"></div>
               <div id="mtf-outcome" class="callout-box callout-pass hidden"></div>
             </div>
+            <div class="btn-row no-print mtf-detail-controls mtf-detail-controls-right">
+              <button id="mtf-prev" class="m3-btn m3-btn-tonal" type="button">← Anterior</button>
+              <button id="mtf-next" class="m3-btn m3-btn-filled" type="button">Paso Siguiente →</button>
+              <button id="mtf-flowchart-open" class="flowchart-open-btn" type="button" aria-haspopup="dialog" aria-controls="mtf-flowchart-modal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5m11-5v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Ampliar diagrama</button>
+            </div>
           </div>
-        </div>
-        <div class="btn-row no-print mtf-detail-controls" style="margin-top:8px;">
-          <button id="mtf-prev" class="m3-btn m3-btn-tonal" type="button">← Anterior</button>
-          <button id="mtf-next" class="m3-btn m3-btn-filled" type="button">Paso Siguiente →</button>
-          <button id="mtf-flowchart-open" class="flowchart-open-btn" type="button" aria-haspopup="dialog" aria-controls="mtf-flowchart-modal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5m11-5v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Ampliar diagrama</button>
-          <button id="mtf-back-to-faults" class="m3-btn m3-btn-tonal" type="button">Volver a fallas</button>
-          <button id="mtf-pdf-btn" class="m3-btn m3-btn-outlined" type="button" style="margin-left:auto;">Imprimir Guía</button>
         </div>
       </div>
     </div>
@@ -2039,7 +2047,7 @@
       const ids = new Set(retained.map(item => item.id));
       return [...retained, ...mtfPdfAdditions.filter(item => !ids.has(item.id))];
     };
-    const mtfFaults = mergeMtfPdfAdditions(mtfRaw).map(c => ({
+    const mtfFaults = mergeMtfPdfAdditions(mtfRaw).filter(c => c.station !== "OBA").map(c => ({
       id: c.id,
       station: c.station,
       code: c.code,
@@ -2257,6 +2265,19 @@
       const escalationIndex = steps.findIndex(step => step.isEscalation);
       return escalationIndex < 0 ? steps : steps.slice(0, escalationIndex + 1);
     }
+    function setBatCatalogCollapsed(collapsed, failure = FFDG.state.batDetailFailure) {
+      const shouldCollapse = Boolean(collapsed && failure);
+      const boardPanel = $("bat-failure-board");
+      const summary = $("bat-selection-summary");
+      const toggle = $("bat-selection-toggle");
+      if (!boardPanel || !summary || !toggle) return;
+      boardPanel.classList.toggle("catalog-selection-collapsed", shouldCollapse);
+      summary.classList.toggle("hidden", !shouldCollapse);
+      $("bat-selection-text").textContent = shouldCollapse
+        ? `${failure.familyLabel || failure.family || "BAT"} · ${failure.code} · ${failure.label}`
+        : "";
+      toggle.setAttribute("aria-expanded", String(!shouldCollapse));
+    }
     function renderBatSelection(failure, keepProgress = false) {
       const layout = $("bat-layout");
       const detail = $("bat-failure-detail");
@@ -2273,6 +2294,7 @@
         $("step-card").classList.add("hidden");
         $("bat-history-card").classList.toggle("hidden", !isNoBoot);
         $("closing-card").classList.add("hidden");
+        setBatCatalogCollapsed(Boolean(failure), failure);
       }
       detail.classList.toggle("hidden", !failure);
       if (!failure) return;
@@ -2284,6 +2306,7 @@
       $("bat-detail-station").textContent = "BAT";
       $("bat-detail-family").textContent = failure.familyLabel || failure.family || "BAT";
       $("bat-detail-title").textContent = `${failure.code} · ${failure.label}`;
+      if (!keepProgress) $("bat-detail-title").focus({ preventScroll: true });
       $("bat-detail-code").textContent = failure.code;
       $("bat-detail-component").textContent = failure.familyLabel || failure.family || "BAT";
       $("bat-detail-description").textContent = failure.description || failure.label;
@@ -2323,7 +2346,10 @@
       nextButton.disabled = !steps.length || activeIndex >= steps.length - 1;
       nextButton.textContent = !steps.length ? "Sin pasos" : activeIndex >= steps.length - 1 ? "Fin de la secuencia" : "Paso siguiente →";
       $("bat-detail-prev").disabled = !steps.length || activeIndex === 0;
-      renderBatFlowchart(steps, activeIndex);
+      renderStepSequenceSvg(
+        $("bat-disposition-flow"), steps, activeIndex,
+        "Secuencia BAT derivada de los pasos FA del PDF; sin decisiones añadidas."
+      );
     }
     function advanceBatDetail() {
       const failure = FFDG.state.batDetailFailure;
@@ -2338,74 +2364,6 @@
       if (!failure || FFDG.state.batDetailIndex <= 0) return;
       FFDG.state.batDetailIndex -= 1;
       renderBatSelection(failure, true);
-    }
-    function renderBatFlowchart(steps, activeIndex = 0) {
-      const box = $("bat-disposition-flow");
-      if (!steps.length) {
-        box.innerHTML = `<div class="mtf-no-procedure">No se generó diagrama porque el catálogo no contiene pasos para esta falla.</div>`;
-        return;
-      }
-      const terminalEscalation = steps.find(step => step.isEscalation);
-      const actionSteps = terminalEscalation ? steps.slice(0, steps.indexOf(terminalEscalation)) : steps;
-      const hasActions = actionSteps.length > 0;
-      const displayedSteps = steps;
-      const escapeSvg = value => escapeHtml(String(value || ""));
-      const truncate = (value, limit) => value.length > limit ? `${value.slice(0, limit - 1)}…` : value;
-      const rowCenter = index => 220 + index * 58;
-      const firstCenter = !hasActions && terminalEscalation ? rowCenter(0) + 112 : rowCenter(0);
-      const lastCenter = hasActions ? rowCenter(actionSteps.length - 1) : firstCenter;
-      const validationY = hasActions ? rowCenter(Math.floor((actionSteps.length - 1) / 2)) : firstCenter;
-      const failBusBottom = lastCenter + 48;
-      const escalationY = failBusBottom + 54;
-      const terminalCenter = terminalEscalation ? (hasActions ? lastCenter + 112 : firstCenter) : null;
-      const height = Math.max(escalationY + 48, terminalCenter === null ? 0 : terminalCenter + 48);
-      const pill = (x, y, width, label, className) =>
-        `<g class="fc-g ${className}"><rect class="fc-n" x="${x}" y="${y}" width="${width}" height="36" rx="18"/><text x="${x + width / 2}" y="${y + 22}" font-size="10.5" text-anchor="middle">${escapeSvg(label)}</text></g>`;
-      const junction = (x, y, color = "var(--md-sys-color-primary)") => `<circle cx="${x}" cy="${y}" r="5" fill="${color}" stroke="var(--md-sys-color-surface)" stroke-width="2"/>`;
-      let svg = `<svg viewBox="0 0 1000 ${height}" width="100%" role="img" aria-label="Diagrama BAT con todos los pasos conectados a un BAT station validation compartido; Pass continúa MTF y Fail avanza al siguiente paso o escala al final" style="display:block">
-        <defs><marker id="bat-fc-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="fc-ar" d="M0 1.2L9 5 0 8.8z"/></marker><marker id="bat-fc-arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="fc-arr" d="M0 1.2L9 5 0 8.8z"/></marker></defs>
-        ${pill(310, 18, 210, "Run the BAT station script", "on")}
-        <path class="fc-l" d="M415 54V82" marker-end="url(#bat-fc-arrow)"/>
-        <g class="fc-g fc-dm"><polygon class="fc-n" points="415,84 500,118 415,152 330,118"/><text x="415" y="114" font-size="10.5" text-anchor="middle">Passes after an</text><text x="415" y="128" font-size="10.5" text-anchor="middle">AC cycle</text></g>
-        <path class="fc-l" d="M500 118H740"/><text class="fc-p" x="568" y="108">Pass</text>
-        ${pill(780, 100, 200, "Proceed with MTF testing", "fc-ok")}
-        <path class="fc-l" d="M330 118H120V${firstCenter}H172" marker-end="url(#bat-fc-arrow)"/><text class="fc-f" x="282" y="108">Fail</text>
-        ${hasActions ? `<path class="fc-l" d="M740 ${validationY}V118H772" marker-end="url(#bat-fc-arrow)"/>` : ""}`;
-      displayedSteps.forEach((step, index) => {
-        const center = step.isEscalation ? terminalCenter : rowCenter(index);
-        const label = truncate(`Paso ${index + 1} de ${steps.length}: ${step.title || "Paso de diagnóstico"}`, 48);
-        svg += step.isEscalation
-          ? `${pill(180, center - 18, 280, step.title, "fc-er")}`
-          : `<g class="fc-g"><rect class="fc-n" x="180" y="${center - 19}" width="280" height="38" rx="10"/><text x="320" y="${center + 4}" font-size="9.5" text-anchor="middle">${escapeSvg(label)}</text></g>
-            <path class="fc-l" d="M460 ${center}H520"/>
-            ${junction(520, center)}`;
-      });
-      if (actionSteps.length > 1) svg += `<path class="fc-l" d="M520 ${firstCenter}V${lastCenter}"/>`;
-      if (hasActions) svg += `<path class="fc-l" d="M520 ${validationY}H552" marker-end="url(#bat-fc-arrow)"/>
-        <g class="fc-g fc-dm"><polygon class="fc-n" points="630,${validationY - 35} 700,${validationY} 630,${validationY + 35} 560,${validationY}"/><text x="630" y="${validationY - 3}" font-size="9.5" text-anchor="middle">BAT station</text><text x="630" y="${validationY + 11}" font-size="9.5" text-anchor="middle">validation</text></g>
-        <text class="fc-p" x="706" y="${validationY - 8}">Pass</text>
-        <path class="fc-l" d="M700 ${validationY}H740"/>
-        ${junction(740, 118)}${junction(740, validationY)}`;
-      if (hasActions && actionSteps.length > 1) {
-        svg += `<path class="fc-l fc-lr" d="M630 ${validationY + 35}V${failBusBottom}H120"/><text class="fc-f" x="640" y="${validationY + 52}">Fail</text>${junction(120, failBusBottom, "var(--md-sys-color-error)")}
-          <path class="fc-l fc-lr" d="M120 ${failBusBottom}V${rowCenter(1)}"/>`;
-        for (let index = 1; index < actionSteps.length; index++) {
-          const center = rowCenter(index);
-          svg += `${junction(120, center, "var(--md-sys-color-error)")}<path class="fc-l fc-lr" d="M120 ${center}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="8" y="${center - 7}">Paso ${index} fail → paso ${index + 1}</text>`;
-        }
-        if (terminalEscalation) {
-          svg += `<path class="fc-l fc-lr" d="M120 ${failBusBottom}V${terminalCenter}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="8" y="${terminalCenter - 25}">Paso ${actionSteps.length} fail → escalar</text>`;
-        } else {
-          svg += `<path class="fc-l fc-lr" d="M120 ${failBusBottom}V${escalationY}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="8" y="${escalationY - 8}">Paso ${steps.length} fail → escalar</text>${pill(180, escalationY, 180, "Move to Secondary Level FA", "fc-er")}`;
-        }
-      } else if (hasActions && terminalEscalation) {
-        svg += `<path class="fc-l fc-lr" d="M630 ${validationY + 35}V${terminalCenter}H172" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="640" y="${validationY + 52}">Fail</text>`;
-      } else if (hasActions) {
-        svg += `<path class="fc-l fc-lr" d="M630 ${validationY + 35}V${escalationY}" marker-end="url(#bat-fc-arrow-red)"/><text class="fc-f" x="640" y="${validationY + 52}">Fail</text>${pill(540, escalationY, 180, "Move to Secondary Level FA", "fc-er")}`;
-      } else if (!terminalEscalation) {
-        svg += `${pill(180, escalationY, 220, "Move to Secondary Level FA", "fc-er")}`;
-      }
-      box.innerHTML = svg + "</svg>";
     }
     function finish(recommendation, passed) {
       FFDG.state.diagFinishedAt = new Date().toISOString();
@@ -2438,6 +2396,26 @@
     function stationTokens(f) {
       return f.stations || String(f.station || "").split(/[\/,;]+/).map(s => s.trim()).filter(Boolean);
     }
+    function setMtfCatalogCollapsed(collapsed, failure = FFDG.state.mtfSelected, moveFocus = false) {
+      const shouldCollapse = Boolean(collapsed && failure);
+      const layout = $("mtf-layout");
+      const summary = $("mtf-selection-summary");
+      const toggle = $("mtf-selection-toggle");
+      if (!layout || !summary || !toggle) return;
+      layout.classList.toggle("mtf-selection-collapsed", shouldCollapse);
+      summary.classList.toggle("hidden", !shouldCollapse);
+      $("mtf-selection-text").textContent = shouldCollapse
+        ? `${failure.station} · ${failure.id} · ${failure.name}`
+        : "";
+      toggle.setAttribute("aria-expanded", String(!shouldCollapse));
+      if (moveFocus && shouldCollapse) toggle.focus({ preventScroll: true });
+      if (moveFocus && !shouldCollapse) requestAnimationFrame(() => {
+        const selected = layout.classList.contains("v-board")
+          ? layout.querySelector("#mtf-board .bd-item.selected")
+          : layout.querySelector("#mtf-fault-list .mtf-item-card.selected");
+        selected?.focus({ preventScroll: true });
+      });
+    }
     function renderMtfList() {
       const q = $("mtf-search").value.toLowerCase().trim();
       const matches = FFDG.data.mtfFaults.filter(f => {
@@ -2451,6 +2429,9 @@
         const card = document.createElement("div");
         const selected = FFDG.state.mtfSelected && (f.recordKey ? FFDG.state.mtfSelected.recordKey === f.recordKey : FFDG.state.mtfSelected === f);
         card.className = `mtf-item-card ${selected ? "selected" : ""}`;
+        card.setAttribute("role", "button");
+        card.tabIndex = 0;
+        card.setAttribute("aria-pressed", String(Boolean(selected)));
         card.innerHTML = `
         <div class="mtf-item-top">
           <span class="mtf-tag">${escapeHtml(f.station)}</span>
@@ -2466,7 +2447,15 @@
           f.activeVariant = 0;
           renderMtfList();
           renderMtfDetail();
+          setMtfCatalogCollapsed(true, f);
+          $("mtf-detail-title").focus({ preventScroll: true });
           scrollMtfDetailIntoView();
+        });
+        card.addEventListener("keydown", event => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            card.click();
+          }
         });
         container.appendChild(card);
       });
@@ -2478,6 +2467,60 @@
           : f.steps?.length).length;
         navSummary.textContent = `${FFDG.data.mtfFaults.length} fallas · ${withProcedure} con procedimiento`;
       }
+    }
+    function renderStepSequenceSvg(container, steps, activeIndex = 0, note = "") {
+      if (!container) return;
+      if (!steps.length) {
+        container.innerHTML = `<div class="mtf-no-procedure">No hay pasos fuente suficientes para representar esta falla.</div>`;
+        return;
+      }
+      const wrap = (value, limit) => {
+        const words = String(value || "").replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
+        const lines = [];
+        let line = "";
+        words.forEach(word => {
+          const next = line ? `${line} ${word}` : word;
+          if (next.length > limit && line) { lines.push(line); line = word; }
+          else line = next;
+        });
+        if (line) lines.push(line);
+        return lines.length ? lines : [""];
+      };
+      const text = value => escapeHtml(String(value || ""));
+      const attr = value => text(value).replace(/"/g, "&quot;");
+      const x = 24, width = 672, center = x + width / 2;
+      const prepared = steps.map((step, index) => {
+        const title = step.title || step.q || `Paso ${index + 1}`;
+        const detail = step.detail || "";
+        const titleLines = wrap(title, 58);
+        const detailLines = detail ? wrap(detail, 68) : [];
+        const height = Math.max(64, 30 + titleLines.length * 19 + detailLines.length * 17);
+        return { step, index, titleLines, detailLines, height };
+      });
+      const top = 18, gap = 26;
+      let cursor = top;
+      prepared.forEach(item => { item.y = cursor; cursor += item.height + gap; });
+      const svgHeight = cursor - gap + 18;
+      let svg = `<svg viewBox="0 0 720 ${svgHeight}" role="img" aria-label="${attr(`Secuencia de diagnóstico, ${steps.length} pasos. ${steps.map(step => step.title || step.q || "").join(". ")}`)}" style="display:block;width:100%;height:auto;max-width:100%"><title>Secuencia de pasos documentados</title>`;
+      prepared.forEach((item, index) => {
+        const { y, height, titleLines, detailLines } = item;
+        const active = index === activeIndex;
+        svg += `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" rx="12" fill="${active ? "var(--md-sys-color-secondary-container)" : "var(--md-sys-color-surface-container-low)"}" stroke="${active ? "var(--md-sys-color-primary)" : "var(--md-sys-color-outline-variant)"}" stroke-width="${active ? 3 : 1.5}"/><circle cx="${x + 25}" cy="${y + 26}" r="15" fill="var(--md-sys-color-primary)"/><text x="${x + 25}" y="${y + 31}" text-anchor="middle" font-size="15" font-weight="800" fill="var(--md-sys-color-on-primary)">${item.index + 1}</text>`;
+        const titleX = x + 52;
+        titleLines.forEach((line, lineIndex) => {
+          svg += `<text x="${titleX}" y="${y + 25 + lineIndex * 19}" font-size="15" font-weight="800" fill="var(--md-sys-color-on-surface)">${text(line)}</text>`;
+        });
+        detailLines.forEach((line, lineIndex) => {
+          svg += `<text x="${titleX}" y="${y + 32 + titleLines.length * 19 + lineIndex * 17}" font-size="13" fill="var(--md-sys-color-on-surface-variant)">${text(line)}</text>`;
+        });
+        svg += `</g>`;
+        if (index < prepared.length - 1) {
+          const lineTop = y + height, lineBottom = lineTop + gap;
+          svg += `<path d="M${center} ${lineTop}V${lineBottom - 7}" fill="none" stroke="var(--md-sys-color-primary)" stroke-width="2.5"/><path d="M${center - 6} ${lineBottom - 10}L${center} ${lineBottom - 2}L${center + 6} ${lineBottom - 10}Z" fill="var(--md-sys-color-primary)"/>`;
+        }
+      });
+      svg += `</svg>`;
+      container.innerHTML = `${note ? `<p class="flowchart-source-note">${text(note)}</p>` : ""}${svg}`;
     }
     function renderFlowchart(f) {
       const container = $("mtf-flowchart-diagram");
@@ -2497,7 +2540,7 @@
         return;
       }
       if (f.pdfFlowchartSourceMissing || f.pdfNewCase) {
-        container.innerHTML = `<div class="mtf-no-procedure">No se encontró un diagrama de flujo asociado a esta falla en el PDF fuente. Consulta los pasos mostrados en Troubleshooting Sequence.</div>`;
+        renderStepSequenceSvg(container, steps, Math.max(0, FFDG.state.mtfIndex || 0), "Secuencia basada en los pasos documentados; sin figura fuente asociada.");
         return;
       }
       const s_count = steps.length;
@@ -2588,6 +2631,14 @@
       });
       svg += `</svg>`;
       container.innerHTML = svg;
+      if (window.matchMedia("screen").matches) {
+        container.querySelectorAll("svg text[font-size]").forEach(label => {
+          const currentSize = Number.parseFloat(label.getAttribute("font-size"));
+          if (Number.isFinite(currentSize) && currentSize < 12.5) {
+            label.setAttribute("font-size", (currentSize + 2 * 96 / 72).toFixed(2));
+          }
+        });
+      }
     }
     function renderMtfDetail() {
       const f = FFDG.state.mtfSelected;
@@ -2932,7 +2983,7 @@
         $("excel-file-input").value = "";
       }
     }
-    return { initTheme, toggleTheme, setMode, filterStation, showStep, renderHistory, finish, renderEvidence, renderMtfList, renderMtfDetail, renderBatSelection, advanceBatDetail, retreatBatDetail, loadExcelFile, restoreCatalog, updateStationFilterCounts, getActiveSteps };
+    return { initTheme, toggleTheme, setMode, filterStation, showStep, renderHistory, finish, renderEvidence, renderMtfList, renderMtfDetail, renderBatSelection, setBatCatalogCollapsed, setMtfCatalogCollapsed, advanceBatDetail, retreatBatDetail, loadExcelFile, restoreCatalog, updateStationFilterCounts, getActiveSteps };
   })();
   // 3. PRINT ENGINE
   window.FFDG.reports = (() => {
@@ -3208,10 +3259,14 @@
     }
     employeeIdInput.addEventListener("input", syncAnalystName);
     otherAnalystInput.addEventListener("input", syncAnalystName);
+    let mtfOpenedOnce = false;
     $("nav-bat").addEventListener("click", () => FFDG.ui.setMode("bat"));
     $("nav-mtf").addEventListener("click", () => {
       FFDG.ui.setMode("mtf");
-      document.querySelector('.view-tg button[data-v="board"]')?.click();
+      if (!mtfOpenedOnce) {
+        document.querySelector('.view-tg button[data-v="board"]')?.click();
+        mtfOpenedOnce = true;
+      }
     });
     $("start-btn").addEventListener("click", () => {
       const sn = $("serial").value.trim();
@@ -3319,7 +3374,6 @@
       FFDG.ui.renderEvidence();
     });
     $("pdf-btn").addEventListener("click", FFDG.reports.printBatReport);
-    $("mtf-pdf-btn").addEventListener("click", FFDG.reports.printMtfReport);
     $("mtf-search").addEventListener("input", FFDG.ui.renderMtfList);
     $("excel-file-input").addEventListener("change", (e) => { if (e.target.files.length) FFDG.ui.loadExcelFile(e.target.files[0]); });
     $("mtf-prev").addEventListener("click", () => {
@@ -3349,10 +3403,19 @@
         block: "start"
       })));
     };
-    $("bat-back-to-faults").addEventListener("click", () => scrollToTarget($("bat-failure-board")));
-    $("mtf-back-to-faults").addEventListener("click", () => scrollToTarget(
-      document.querySelector("#mtf-layout.v-board #mtf-board") || $("mtf-fault-list")
-    ));
+    const focusSelectedBatCard = () => document.querySelector("#bat-board .bd-item.selected")?.focus({ preventScroll: true });
+    $("bat-selection-toggle").addEventListener("click", () => {
+      FFDG.ui.setBatCatalogCollapsed(false);
+      focusSelectedBatCard();
+      scrollToTarget($("bat-failure-board"));
+    });
+    $("mtf-selection-toggle").addEventListener("click", () =>
+      FFDG.ui.setMtfCatalogCollapsed(false, FFDG.state.mtfSelected, true));
+    $("bat-back-to-faults").addEventListener("click", () => {
+      FFDG.ui.setBatCatalogCollapsed(false);
+      focusSelectedBatCard();
+      scrollToTarget($("bat-failure-board"));
+    });
     FFDG.ui.setMode("bat");
   })();</script>
 <script src="./bat-pdf-seed.js"></script>
@@ -3843,8 +3906,7 @@ input[type=file]::file-selector-button{border:none;border-radius:999px;padding:8
       "clear-btn": ["M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"],
       "new-btn": ["M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"],
       "yes-btn": ["M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z", "Sí · Pasa verificación"],
-      "no-btn": ["M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z", "No · Presenta anomalía"],
-      "mtf-pdf-btn": ["M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zM18 3H6v4h12V3z"]
+      "no-btn": ["M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z", "No · Presenta anomalía"]
     };
     Object.entries(icons).forEach(([id, [p, label]]) => {
       const b = $(id); if (!b) return;
@@ -4072,7 +4134,6 @@ main{max-width:none!important;width:100%;min-width:0;padding:10px clamp(12px,2vw
 #mtf-detail .btn-row{width:100%;min-width:0;max-width:100%;box-sizing:border-box;flex-wrap:wrap;gap:6px}
 #mtf-detail .btn-row>.m3-btn,#mtf-detail .btn-row>.flowchart-open-btn{flex:0 0 auto;min-width:0;max-width:100%;min-height:36px;padding:6px 8px;font-size:10px;white-space:nowrap}
 #mtf-flowchart-diagram svg{display:block;width:100%;height:100%;max-width:100%;max-height:100%}
-#mtf-detail .btn-row #mtf-pdf-btn{margin-left:auto!important}
 #mtf-layout .mtf-filter-chips{flex-wrap:wrap;overflow:visible}
 #mtf-detail .bento-block-3 .btn-row{justify-content:center}
 @media(max-width:1240px){.mtf-split .mtf-detail-horizontal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mtf-split .bento-block-3{grid-column:1/-1}}
@@ -4233,6 +4294,7 @@ main{padding-top:4px!important}
         g[s].forEach(c => {
           const b = document.createElement("button"); b.type = "button";
           b.className = "bd-item" + (c.classList.contains("selected") ? " selected" : "");
+          b.setAttribute("aria-pressed", String(c.classList.contains("selected")));
           b.innerHTML = "<b></b><span></span><small></small>";
           b.children[0].textContent = c.querySelector(".mtf-item-top span:last-child").textContent;
           b.children[1].textContent = c.querySelector(".mtf-item-title").textContent;
@@ -4917,3 +4979,171 @@ main{padding-top:4px!important}
       if (event.target === dialog) dialog.close();
     });
   })();</script>
+<style id="ffdg-compact-density">
+  @media screen {
+    #mtf-layout #mtf-detail .bento-meta-label,
+    #mtf-layout #mtf-detail .m3-step-kicker { font-size: calc(9.5px + 2pt) !important; }
+    #mtf-layout #mtf-detail .bento-meta-val,
+    #mtf-layout #mtf-detail .m3-action-callout { font-size: calc(11.5px + 2pt) !important; }
+    #mtf-layout #mtf-detail .bento-block-subtitle,
+    #mtf-layout #mtf-detail .m3-step-instruction-line,
+    #mtf-layout #mtf-detail .topology-preview figcaption,
+    #mtf-layout #mtf-detail .topology-open-btn,
+    #mtf-layout #mtf-detail .mtf-pdf-reference-images h3 { font-size: calc(12px + 2pt) !important; }
+    #mtf-layout #mtf-detail .m3-step-pill { font-size: calc(10.5px + 2pt) !important; }
+    #mtf-layout #mtf-detail .mtf-tag,
+    #mtf-layout #mtf-detail .reference-images-grid figcaption,
+    #mtf-layout #mtf-detail .topology-reference-badge,
+    #mtf-layout #mtf-detail .terminal-title,
+    #mtf-layout #mtf-detail .terminal-copy-btn { font-size: calc(10px + 2pt) !important; }
+    #mtf-layout #mtf-detail .topology-reference summary,
+    #mtf-layout #mtf-detail .mtf-source-details summary { font-size: calc(12px + 2pt) !important; }
+    #mtf-layout #mtf-detail .mtf-source-details dl,
+    #mtf-layout #mtf-detail .mtf-source-details-raw pre,
+    #mtf-layout #mtf-detail .mtf-variant-btn,
+    #mtf-layout #mtf-detail .mtf-pdf-reference-images .mtf-tag { font-size: calc(10px + 2pt) !important; }
+    #mtf-layout #mtf-detail .m3-terminal-code { font-size: calc(11.5px + 2pt) !important; }
+    #mtf-layout #mtf-detail .mtf-quality-heading > span:first-child { font-size: calc(11px + 2pt) !important; }
+    #mtf-layout #mtf-detail .btn-row > .m3-btn,
+    #mtf-layout #mtf-detail .btn-row > .flowchart-open-btn { font-size: calc(10px + 2pt) !important; }
+    .catalog-selection-text { flex: 1 1 240px; min-width: 0; color: var(--md-sys-color-on-surface); font-size: 13px; font-weight: 800; line-height: 1.35; overflow-wrap: anywhere; }
+    .catalog-selection-toggle { flex: 0 0 auto; min-height: 44px; padding: 8px 14px; border: 0; border-radius: 999px; background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); font: inherit; font-weight: 800; cursor: pointer; }
+    .catalog-selection-toggle:focus-visible, .mtf-item-card:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset: 3px; }
+    .bat-selection-summary, .mtf-selection-summary { display: none; }
+    #bat-failure-board.catalog-selection-collapsed { padding-block: 10px !important; }
+    #bat-failure-board.catalog-selection-collapsed .bat-board-header { display: flex !important; align-items: center; justify-content: space-between; margin: 0; }
+    #bat-failure-board.catalog-selection-collapsed .bat-board-heading,
+    #bat-failure-board.catalog-selection-collapsed .bat-board-controls,
+    #bat-failure-board.catalog-selection-collapsed #bat-pdf-status { display: none !important; }
+    #bat-failure-board.catalog-selection-collapsed #bat-board,
+    #mtf-layout.mtf-selection-collapsed .mtf-row-2 { display: none; }
+    #bat-failure-board.catalog-selection-collapsed .bat-selection-summary:not(.hidden) { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-width: 0; }
+    #mtf-layout.mtf-selection-collapsed .mtf-row-2-header { display: flex !important; align-items: center; justify-content: space-between; min-width: 0; }
+    #mtf-layout.mtf-selection-collapsed .mtf-catalog-heading,
+    #mtf-layout.mtf-selection-collapsed .mtf-design-controls,
+    #mtf-layout.mtf-selection-collapsed #mtf-notifications-open { display: none !important; }
+    #mtf-layout.mtf-selection-collapsed .mtf-selection-summary:not(.hidden) { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-width: 0; }
+    @media (prefers-reduced-motion: no-preference) {
+      #bat-board, #mtf-row-2, #bat-selection-summary, #mtf-selection-summary, #bat-detail-area, #mtf-detail {
+        transition: opacity 180ms ease, transform 180ms ease, display 180ms allow-discrete;
+        transition-behavior: allow-discrete;
+      }
+      #bat-failure-board.catalog-selection-collapsed #bat-board,
+      #mtf-layout.mtf-selection-collapsed #mtf-row-2,
+      #bat-selection-summary.hidden, #mtf-selection-summary.hidden,
+      #bat-detail-area.hidden, #mtf-detail.hidden { opacity: 0; transform: translateY(8px); }
+      @starting-style {
+        #bat-board, #mtf-row-2, #bat-selection-summary:not(.hidden), #mtf-selection-summary:not(.hidden),
+        #bat-detail-area:not(.hidden), #mtf-detail:not(.hidden) { opacity: 0; transform: translateY(8px); }
+      }
+    }
+    #mtf-selection-toggle { display: flex; flex-direction: column; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; width: 100%; min-width: 0; box-sizing: border-box; border: 1px solid #76b900; border-radius: 12px; background: #1c2616; color: #fff; text-align: center; }
+    #mtf-selection-toggle .catalog-selection-text { flex: 0 1 auto; color: #fff; text-align: center; white-space: normal; }
+    #mtf-selection-toggle .catalog-selection-action { flex: 0 0 auto; padding: 6px 12px; border-radius: 999px; background: #a3d84c; color: #132000; font-weight: 800; }
+    #mtf-selection-toggle:hover { background: #28381d; }
+    body { font-size: 14px; line-height: 1.45; }
+    main { padding: 8px 16px 32px !important; }
+    .m3-card { padding: 18px 20px !important; margin-bottom: 12px !important; }
+    .m3-card-header { gap: 10px; margin-bottom: 10px; }
+    .m3-card-title { font-size: 16px; }
+    .m3-layout#bat-layout { gap: 13px; }
+    #bat-board .bd-col { height: 320px; min-height: 280px; max-height: 320px; }
+    .bat-board-toolbar { gap: 10px; margin-bottom: 9px; }
+    #bat-board .bd-h,
+    #mtf-board .bd-h { padding: 10px 13px !important; font-size: 18px !important; }
+    #bat-board .bd-item,
+    #mtf-board .bd-item { padding: 8px 10px !important; }
+    #mtf-layout .mtf-row-1 { padding-inline: 10px; gap: 6px; }
+    #mtf-layout .mtf-row-2-header { padding: 8px 12px; margin-bottom: 8px; gap: 10px; }
+    #mtf-layout .mtf-detail-horizontal-grid { gap: 12px; align-items: stretch; }
+    #mtf-layout .bento-block-1,
+    #mtf-layout .bento-block-2,
+    #mtf-layout .bento-block-3 { padding: 10px; }
+    #mtf-layout .bento-block-heading { min-height: 80px; padding: 10px 12px; }
+    #mtf-layout .m3-stepper-pills { gap: 3px; margin-bottom: 4px; }
+    #mtf-layout .m3-step-pill { padding: 3px 7px; }
+    #mtf-layout .bento-block-3 { justify-content: flex-start; }
+    #mtf-layout #mtf-flowchart-diagram { flex: 1 1 auto; width: 100%; min-height: 360px; max-width: 100%; max-height: none; box-sizing: border-box; align-items: center !important; overflow: auto !important; }
+    #mtf-layout #mtf-flowchart-diagram > svg { width: 100%; height: auto; max-width: 100%; max-height: none; }
+    #mtf-layout #mtf-disposition-content { display: flex; flex: 1 1 auto; flex-direction: column; width: 100%; min-width: 0; }
+    #mtf-layout .mtf-detail-horizontal-grid > .bento-block-1,
+    #mtf-layout .mtf-detail-horizontal-grid > .bento-block-2,
+    #mtf-layout .mtf-detail-horizontal-grid > .bento-block-3 { min-width: 0; min-height: 0; align-self: stretch; }
+    #mtf-layout .mtf-detail-horizontal-grid > .bento-block-3 { display: flex; flex-direction: column; }
+    #mtf-layout .mtf-detail-controls-right { justify-content: flex-end; align-items: center; gap: 8px; margin-top: 12px; padding-top: 4px; }
+    #mtf-layout .flowchart-source-note,
+    #bat-failure-detail .flowchart-source-note { margin: 0 0 8px; color: var(--md-sys-color-on-surface-variant); font-size: 12px; line-height: 1.45; text-align: center; }
+    #mtf-layout:not(.mtf-split) .mtf-detail-horizontal-grid { min-height: max(560px, calc(100dvh - 300px)); }
+    /* BAT: columnas iguales, altura natural compartida y diagrama alineado arriba. */
+    #bat-failure-detail { height: auto; min-height: 0; overflow: visible; }
+    #bat-failure-detail .bat-detail-grid { height: auto; min-height: 0; grid-template-rows: auto; align-items: stretch; }
+    #bat-failure-detail .bat-detail-grid > .bento-block-1,
+    #bat-failure-detail .bat-detail-grid > .bento-block-2,
+    #bat-failure-detail .bat-detail-grid > .bento-block-3 { height: auto; min-height: 0; overflow: visible; align-self: stretch; }
+    #bat-failure-detail .bat-detail-grid > .bento-block-2 { display: flex; flex-direction: column; }
+    #bat-failure-detail #bat-detail-steps { flex: 0 0 auto; min-height: 0; overflow: visible; align-content: start; }
+    #bat-failure-detail .bat-detail-grid > .bento-block-3 { display: flex; flex-direction: column; justify-content: flex-start; }
+    #bat-failure-detail #bat-disposition-flow { display: block; flex: 0 0 auto; min-height: 0; max-height: none; overflow: visible; }
+    #bat-failure-detail #bat-disposition-flow svg { display: block; width: 100%; height: auto; max-width: 100%; max-height: none; flex: 0 0 auto; }
+    #bat-failure-detail .bat-detail-controls { margin-top: 8px; padding-top: 0; }
+  }
+
+  @media screen and (min-width: 1081px) {
+    #mtf-layout:not(.mtf-split) .mtf-row-3:has(> #mtf-detail:not(.hidden)) {
+      height: auto;
+      max-height: none;
+      overflow: visible;
+    }
+    #mtf-layout:not(.mtf-split) .mtf-row-3:has(> #mtf-detail:not(.hidden)) > #mtf-detail,
+    #mtf-layout:not(.mtf-split) .mtf-row-3:has(> #mtf-detail:not(.hidden)) .mtf-detail-horizontal-grid {
+      height: auto;
+      min-height: 0;
+    }
+    #mtf-layout:not(.mtf-split) .mtf-detail-horizontal-grid { align-items: stretch; }
+  }
+
+  @media screen and (min-width: 701px) {
+    .m3-top-app-bar { padding-block: 6px !important; }
+    .m3-seg-btn { min-height: 54px !important; padding: 7px 12px !important; }
+    .m3-btn { height: 38px; padding-inline: 18px; }
+    .theme-switch-btn { padding: 6px 12px; }
+    .filter-chip-btn { height: 30px; padding-inline: 11px; }
+  }
+
+  @media screen and (max-width: 700px) {
+    main { padding: 6px 12px 24px !important; }
+    .m3-card { padding: 14px 12px !important; margin-bottom: 10px !important; }
+    .m3-btn { min-height: 44px; }
+    .m3-seg-btn { min-height: 54px !important; }
+  }
+
+  @media screen and (max-width: 600px) {
+    #bat-failure-board.catalog-selection-collapsed .bat-selection-summary:not(.hidden),
+    #mtf-layout.mtf-selection-collapsed .mtf-selection-summary:not(.hidden) { align-items: stretch; flex-direction: column; }
+    .catalog-selection-toggle { width: 100%; }
+    #bat-board .bd-col { height: 280px; min-height: 260px; max-height: 280px; }
+  }
+  @media screen and (max-width: 1080px) {
+    #mtf-layout:not(.mtf-split) .mtf-detail-horizontal-grid { min-height: 0; }
+    #mtf-layout #mtf-detail .bento-block-3 { min-height: 0; }
+    #mtf-layout #mtf-flowchart-diagram { min-height: 260px; }
+    #mtf-layout .mtf-detail-controls-right { justify-content: flex-end; }
+  }
+  @media screen and (max-width: 700px) {
+    #mtf-layout #mtf-flowchart-diagram { min-height: 220px; }
+    #mtf-layout .mtf-detail-controls-right { justify-content: center; }
+    #mtf-layout .mtf-detail-controls-right > button { flex: 1 1 calc(50% - 8px); }
+    #mtf-layout .mtf-detail-controls-right > button { min-height: 44px; }
+    #mtf-layout .mtf-detail-controls-right > #mtf-flowchart-open { justify-content: center; }
+  }
+  @media screen and (min-width: 1200px) {
+    #mtf-layout.mtf-selection-collapsed .mtf-row-2-header {
+      width: min(100%, 960px);
+      margin-inline: auto;
+      box-sizing: border-box;
+    }
+  }
+  .v-board #mtf-board { row-gap: 8px; }
+  .v-board #mtf-board .bd-col { height: 316px; min-height: 316px; max-height: 316px; }
+  #mtf-layout.mtf-selection-collapsed .mtf-selection-summary:not(.hidden) { max-width: 940px; margin-inline: auto; }
+</style>

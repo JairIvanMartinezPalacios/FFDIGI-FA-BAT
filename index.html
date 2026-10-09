@@ -2033,6 +2033,7 @@
           flowchartImage: pdfChart.src,
           flowchartImageWidth: pdfChart.width,
           flowchartImageHeight: pdfChart.height,
+          referenceImages: pdfChart.referenceImages || preserved.referenceImages || [],
         } : preserved;
       });
       const ids = new Set(retained.map(item => item.id));
@@ -2671,7 +2672,7 @@
       const referenceHost = $("mtf-reference-images");
       if (referenceHost) {
         referenceHost.replaceChildren();
-        const references = f.pdfNewCase ? (f.referenceImages || []) : [];
+        const references = f.referenceImages || [];
         referenceHost.classList.toggle("hidden", !references.length);
         if (references.length) {
           const heading = document.createElement("h3");

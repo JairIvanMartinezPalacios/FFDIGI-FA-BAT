@@ -4,355 +4,489 @@ window.FFDG_MTF_PDF_EXISTING_FLOWCHARTS = {
     "src": "./assets/mtf-flowcharts/mtf-flow-004.png",
     "width": 1036,
     "height": 967,
-    "sourcePage": 24
+    "sourcePage": 24,
+    "referenceImages": []
   },
   "FLA-17": {
     "src": "./assets/mtf-flowcharts/mtf-flow-005.png",
     "width": 1036,
     "height": 280,
-    "sourcePage": 25
+    "sourcePage": 25,
+    "referenceImages": []
   },
   "FLA-18": {
     "src": "./assets/mtf-flowcharts/mtf-flow-005.png",
     "width": 1036,
     "height": 280,
-    "sourcePage": 25
+    "sourcePage": 25,
+    "referenceImages": []
   },
   "FLA-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-006.png",
     "width": 1036,
     "height": 474,
-    "sourcePage": 26
+    "sourcePage": 26,
+    "referenceImages": []
   },
   "FLA-04": {
     "src": "./assets/mtf-flowcharts/mtf-flow-007.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 28
+    "sourcePage": 28,
+    "referenceImages": []
   },
   "FLA-20": {
     "src": "./assets/mtf-flowcharts/mtf-flow-009.png",
     "width": 1036,
     "height": 316,
-    "sourcePage": 30
+    "sourcePage": 30,
+    "referenceImages": []
   },
   "FLA-03": {
     "src": "./assets/mtf-flowcharts/mtf-flow-010.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 32
+    "sourcePage": 32,
+    "referenceImages": []
   },
   "FLA-05": {
     "src": "./assets/mtf-flowcharts/mtf-flow-012.png",
     "width": 1036,
     "height": 1184,
-    "sourcePage": 35
+    "sourcePage": 35,
+    "referenceImages": []
   },
   "FLA-08": {
     "src": "./assets/mtf-flowcharts/mtf-flow-014.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 39
+    "sourcePage": 39,
+    "referenceImages": []
   },
   "FLA-11": {
     "src": "./assets/mtf-flowcharts/mtf-flow-015.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 41
+    "sourcePage": 41,
+    "referenceImages": []
   },
   "FLA-12": {
     "src": "./assets/mtf-flowcharts/mtf-flow-016.png",
     "width": 1036,
     "height": 444,
-    "sourcePage": 42
+    "sourcePage": 42,
+    "referenceImages": []
   },
   "FLA-14": {
     "src": "./assets/mtf-flowcharts/mtf-flow-017.png",
     "width": 1036,
     "height": 348,
-    "sourcePage": 43
+    "sourcePage": 43,
+    "referenceImages": []
   },
   "AST-04": {
     "src": "./assets/mtf-flowcharts/mtf-flow-019.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 46
+    "sourcePage": 46,
+    "referenceImages": []
   },
   "FTS-10": {
     "src": "./assets/mtf-flowcharts/mtf-flow-067.png",
     "width": 1036,
     "height": 1200,
-    "sourcePage": 128
+    "sourcePage": 128,
+    "referenceImages": []
   },
   "AST-08": {
     "src": "./assets/mtf-flowcharts/mtf-flow-028.png",
     "width": 1036,
     "height": 268,
-    "sourcePage": 61
+    "sourcePage": 61,
+    "referenceImages": []
   },
   "AST-09": {
     "src": "./assets/mtf-flowcharts/mtf-flow-020.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 48
+    "sourcePage": 48,
+    "referenceImages": []
   },
   "RIN-01": {
     "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
     "width": 1036,
     "height": 422,
-    "sourcePage": 50
+    "sourcePage": 50,
+    "referenceImages": []
   },
   "RIN-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
     "width": 1036,
     "height": 422,
-    "sourcePage": 50
+    "sourcePage": 50,
+    "referenceImages": []
   },
   "RIN-03": {
     "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
     "width": 1036,
     "height": 422,
-    "sourcePage": 50
+    "sourcePage": 50,
+    "referenceImages": []
   },
   "RIN-04": {
     "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
     "width": 1036,
     "height": 422,
-    "sourcePage": 50
+    "sourcePage": 50,
+    "referenceImages": []
   },
   "RIN-05": {
     "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
     "width": 1036,
     "height": 422,
-    "sourcePage": 50
+    "sourcePage": 50,
+    "referenceImages": []
   },
   "RIN-06": {
     "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
     "width": 1036,
     "height": 422,
-    "sourcePage": 50
+    "sourcePage": 50,
+    "referenceImages": []
   },
   "RIN-07": {
     "src": "./assets/mtf-flowcharts/mtf-flow-021.png",
     "width": 1036,
     "height": 422,
-    "sourcePage": 50
+    "sourcePage": 50,
+    "referenceImages": []
   },
   "AST-06": {
     "src": "./assets/mtf-flowcharts/mtf-flow-025.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 57
+    "sourcePage": 57,
+    "referenceImages": []
   },
   "AST-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-027.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 60
+    "sourcePage": 60,
+    "referenceImages": []
   },
   "FCT-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-031.png",
     "width": 1036,
     "height": 553,
-    "sourcePage": 65
+    "sourcePage": 65,
+    "referenceImages": []
   },
   "FCT-11": {
     "src": "./assets/mtf-flowcharts/mtf-flow-036.png",
     "width": 1036,
     "height": 357,
-    "sourcePage": 72
+    "sourcePage": 72,
+    "referenceImages": []
   },
   "FCT-13": {
     "src": "./assets/mtf-flowcharts/mtf-flow-040.png",
     "width": 1036,
     "height": 1105,
-    "sourcePage": 80
+    "sourcePage": 80,
+    "referenceImages": [
+      {
+        "src": "./assets/mtf-reference-images/mtf-reference-040-079.png",
+        "width": 790,
+        "height": 443,
+        "caption": "IMAGE_033",
+        "sourcePage": 79
+      }
+    ]
   },
   "FCT-01": {
     "src": "./assets/mtf-flowcharts/mtf-flow-042.png",
     "width": 1036,
     "height": 283,
-    "sourcePage": 82
+    "sourcePage": 82,
+    "referenceImages": []
   },
   "AST-05": {
     "src": "./assets/mtf-flowcharts/mtf-flow-043.png",
     "width": 1036,
     "height": 333,
-    "sourcePage": 83
+    "sourcePage": 83,
+    "referenceImages": []
   },
   "FTS-09": {
     "src": "./assets/mtf-flowcharts/mtf-flow-045.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 86
+    "sourcePage": 86,
+    "referenceImages": []
   },
   "IOT-01": {
     "src": "./assets/mtf-flowcharts/mtf-flow-046.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 90
+    "sourcePage": 90,
+    "referenceImages": [
+      {
+        "src": "./assets/mtf-reference-images/mtf-reference-046-088.png",
+        "width": 787,
+        "height": 775,
+        "caption": "IMAGE_31 · IMAGE_32 · IMAGE_30",
+        "sourcePage": 88
+      },
+      {
+        "src": "./assets/mtf-reference-images/mtf-reference-046-089.png",
+        "width": 1051,
+        "height": 568,
+        "caption": "IMAGE_32",
+        "sourcePage": 89
+      }
+    ]
   },
   "IOT-03": {
     "src": "./assets/mtf-flowcharts/mtf-flow-048.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 94
+    "sourcePage": 94,
+    "referenceImages": []
   },
   "IOT-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-049.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 97
+    "sourcePage": 97,
+    "referenceImages": []
   },
   "FLB-06": {
     "src": "./assets/mtf-flowcharts/mtf-flow-051.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 101
+    "sourcePage": 101,
+    "referenceImages": [
+      {
+        "src": "./assets/mtf-reference-images/mtf-reference-051-100.png",
+        "width": 1051,
+        "height": 863,
+        "caption": "IMAGE_028 · IMAGE_029",
+        "sourcePage": 100
+      }
+    ]
   },
   "FTS-04": {
     "src": "./assets/mtf-flowcharts/mtf-flow-052.png",
     "width": 1036,
     "height": 368,
-    "sourcePage": 102
+    "sourcePage": 102,
+    "referenceImages": []
   },
   "RIN-14": {
     "src": "./assets/mtf-flowcharts/mtf-flow-054.png",
     "width": 1036,
     "height": 1126,
-    "sourcePage": 106
+    "sourcePage": 106,
+    "referenceImages": []
   },
   "RIN-15": {
     "src": "./assets/mtf-flowcharts/mtf-flow-055.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 108
+    "sourcePage": 108,
+    "referenceImages": [
+      {
+        "src": "./assets/mtf-reference-images/mtf-reference-055-107.png",
+        "width": 972,
+        "height": 401,
+        "caption": "IMAGE_034",
+        "sourcePage": 107
+      }
+    ]
   },
   "FTS-01": {
     "src": "./assets/mtf-flowcharts/mtf-flow-057.png",
     "width": 1036,
     "height": 981,
-    "sourcePage": 111
+    "sourcePage": 111,
+    "referenceImages": []
   },
   "FTS-08": {
     "src": "./assets/mtf-flowcharts/mtf-flow-058.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 113
+    "sourcePage": 113,
+    "referenceImages": []
   },
   "FTS-12": {
     "src": "./assets/mtf-flowcharts/mtf-flow-064.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 123
+    "sourcePage": 123,
+    "referenceImages": []
   },
   "FTS-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-068.png",
     "width": 1036,
     "height": 1210,
-    "sourcePage": 130
+    "sourcePage": 130,
+    "referenceImages": []
   },
   "FLB-08": {
     "src": "./assets/mtf-flowcharts/mtf-flow-081.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 151
+    "sourcePage": 151,
+    "referenceImages": []
   },
   "FLC-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-081.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 151
+    "sourcePage": 151,
+    "referenceImages": []
   },
   "FCT-10": {
     "src": "./assets/mtf-flowcharts/mtf-flow-081.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 151
+    "sourcePage": 151,
+    "referenceImages": []
   },
   "FLC-01": {
     "src": "./assets/mtf-flowcharts/mtf-flow-081.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 151
+    "sourcePage": 151,
+    "referenceImages": []
   },
   "FLB-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-083.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 154
+    "sourcePage": 154,
+    "referenceImages": []
   },
   "FLB-09": {
     "src": "./assets/mtf-flowcharts/mtf-flow-092.png",
     "width": 1036,
     "height": 1307,
-    "sourcePage": 168
+    "sourcePage": 168,
+    "referenceImages": []
   },
   "NVL-03": {
     "src": "./assets/mtf-flowcharts/mtf-flow-094.png",
     "width": 1036,
     "height": 345,
-    "sourcePage": 171
+    "sourcePage": 171,
+    "referenceImages": []
   },
   "FLA-21": {
     "src": "./assets/mtf-flowcharts/mtf-flow-096.png",
     "width": 1036,
     "height": 1007,
-    "sourcePage": 174
+    "sourcePage": 174,
+    "referenceImages": []
   },
   "FLB-07": {
     "src": "./assets/mtf-flowcharts/mtf-flow-100.png",
     "width": 1036,
     "height": 1082,
-    "sourcePage": 180
+    "sourcePage": 180,
+    "referenceImages": []
   },
   "PRET-08": {
     "src": "./assets/mtf-flowcharts/mtf-flow-101.png",
     "width": 1036,
     "height": 369,
-    "sourcePage": 181
+    "sourcePage": 181,
+    "referenceImages": []
   },
   "PRET-04": {
     "src": "./assets/mtf-flowcharts/mtf-flow-102.png",
     "width": 1036,
     "height": 1284,
-    "sourcePage": 184
+    "sourcePage": 184,
+    "referenceImages": [
+      {
+        "src": "./assets/mtf-reference-images/mtf-reference-102-183.png",
+        "width": 840,
+        "height": 724,
+        "caption": "IMAGE_027",
+        "sourcePage": 183
+      }
+    ]
   },
   "PRET-02": {
     "src": "./assets/mtf-flowcharts/mtf-flow-103.png",
     "width": 1036,
     "height": 324,
-    "sourcePage": 185
+    "sourcePage": 185,
+    "referenceImages": []
   },
   "PRET-01": {
     "src": "./assets/mtf-flowcharts/mtf-flow-107.png",
     "width": 1036,
     "height": 1163,
-    "sourcePage": 191
+    "sourcePage": 191,
+    "referenceImages": []
   },
   "PRET-03": {
     "src": "./assets/mtf-flowcharts/mtf-flow-107.png",
     "width": 1036,
     "height": 1163,
-    "sourcePage": 191
+    "sourcePage": 191,
+    "referenceImages": []
   },
   "PRET-06": {
     "src": "./assets/mtf-flowcharts/mtf-flow-108.png",
     "width": 1036,
     "height": 1058,
-    "sourcePage": 194
+    "sourcePage": 194,
+    "referenceImages": []
   },
   "PRET-05": {
     "src": "./assets/mtf-flowcharts/mtf-flow-108.png",
     "width": 1036,
     "height": 1058,
-    "sourcePage": 194
+    "sourcePage": 194,
+    "referenceImages": []
   },
   "PRET-07": {
     "src": "./assets/mtf-flowcharts/mtf-flow-108.png",
     "width": 1036,
     "height": 1058,
-    "sourcePage": 194
+    "sourcePage": 194,
+    "referenceImages": []
+  },
+  "AST-07": {
+    "referenceImages": [
+      {
+        "src": "./assets/mtf-reference-images/mtf-reference-024-055.png",
+        "width": 1072,
+        "height": 926,
+        "caption": "IMAGE_015 · IMAGE_016 · IMAGE_017 · IMAGE_018",
+        "sourcePage": 55
+      }
+    ]
+  },
+  "AST-01": {
+    "referenceImages": []
+  },
+  "FLB-13": {
+    "referenceImages": []
+  },
+  "FLA-16": {
+    "referenceImages": [
+      {
+        "src": "./assets/mtf-reference-images/mtf-reference-095-172.png",
+        "width": 998,
+        "height": 633,
+        "caption": "IMAGE_026",
+        "sourcePage": 172
+      }
+    ]
   }
 };
 window.FFDG_MTF_PDF_ADDITIONS = [
@@ -2135,7 +2269,7 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "src": "./assets/mtf-reference-images/mtf-reference-038-075.png",
         "width": 913,
         "height": 1110,
-        "caption": "IMAGE_011 — Physical Locations of the J18 and J125 Leak Sensor Connectors · IMAGE_012 — Example of a Damaged Leak Sensor",
+        "caption": "IMAGE_011 · IMAGE_012",
         "sourcePage": 75
       }
     ],
@@ -2172,7 +2306,7 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "src": "./assets/mtf-reference-images/mtf-reference-038-075.png",
         "width": 913,
         "height": 1110,
-        "caption": "IMAGE_011 — Physical Locations of the J18 and J125 Leak Sensor Connectors · IMAGE_012 — Example of a Damaged Leak Sensor",
+        "caption": "IMAGE_011 · IMAGE_012",
         "sourcePage": 75
       }
     ],
@@ -2209,7 +2343,7 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "src": "./assets/mtf-reference-images/mtf-reference-038-075.png",
         "width": 913,
         "height": 1110,
-        "caption": "IMAGE_011 — Physical Locations of the J18 and J125 Leak Sensor Connectors · IMAGE_012 — Example of a Damaged Leak Sensor",
+        "caption": "IMAGE_011 · IMAGE_012",
         "sourcePage": 75
       }
     ],
@@ -2246,7 +2380,7 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "src": "./assets/mtf-reference-images/mtf-reference-038-075.png",
         "width": 913,
         "height": 1110,
-        "caption": "IMAGE_011 — Physical Locations of the J18 and J125 Leak Sensor Connectors · IMAGE_012 — Example of a Damaged Leak Sensor",
+        "caption": "IMAGE_011 · IMAGE_012",
         "sourcePage": 75
       }
     ],
@@ -2679,7 +2813,7 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "src": "./assets/mtf-reference-images/mtf-reference-046-088.png",
         "width": 787,
         "height": 775,
-        "caption": "See IMAGE_31 below for an example. · See IMAGE_32 below for an example. · IMAGE_30 · IMAGE_31",
+        "caption": "IMAGE_31 · IMAGE_32 · IMAGE_30",
         "sourcePage": 88
       },
       {
@@ -2801,7 +2935,7 @@ window.FFDG_MTF_PDF_ADDITIONS = [
         "src": "./assets/mtf-reference-images/mtf-reference-051-100.png",
         "width": 1051,
         "height": 863,
-        "caption": "IMAGE_028 — BF3 settings reset reference · IMAGE_029 — BF3 network and power cable connections",
+        "caption": "IMAGE_028 · IMAGE_029",
         "sourcePage": 100
       }
     ],

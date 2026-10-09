@@ -1836,10 +1836,6 @@
               </div>
             </header>
             <div id="mtf-disposition-content">
-              <!-- El diagrama PDF queda inmediatamente bajo el encabezado del panel. -->
-              <div id="mtf-flowchart-diagram"
-                style="margin-top:0; background:var(--md-sys-color-surface-container-lowest); border:1px solid var(--md-sys-color-outline-variant); border-radius:var(--md-shape-corner-s); padding:8px; height:auto; min-height:0; max-height:min(68vh,620px); display:flex; align-items:flex-start; justify-content:center; overflow:hidden;">
-              </div>
               <div class="mtf-quality-heading">
                 <span
                   style="font-size:11px; font-weight:800; text-transform:uppercase; color:var(--md-sys-color-primary); letter-spacing:0.06em;">Criterio
@@ -1849,6 +1845,9 @@
               </div>
               <div id="mtf-action-text" class="m3-action-callout" style="margin-top:6px;"></div>
               <div id="mtf-outcome" class="callout-box callout-pass hidden"></div>
+              <div id="mtf-flowchart-diagram"
+                style="margin-top:0; background:var(--md-sys-color-surface-container-lowest); border:1px solid var(--md-sys-color-outline-variant); border-radius:var(--md-shape-corner-s); padding:4px; height:auto; min-height:0; max-height:min(68vh,620px); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              </div>
             </div>
             <div class="btn-row no-print mtf-detail-controls mtf-detail-controls-right">
               <button id="mtf-prev" class="m3-btn m3-btn-tonal" type="button">← Anterior</button>
@@ -5173,23 +5172,62 @@ main{padding-top:4px!important}
     main:has(#mtf-layout.mtf-split:not(.hidden) #mtf-detail:not(.hidden)) { padding-bottom: 0 !important; }
     #mtf-layout.mtf-split #mtf-row-2,
     #mtf-layout.mtf-split .mtf-row-3 {
-      height: calc(100dvh - 240px) !important;
+      height: calc(100dvh - 280px) !important;
       min-height: 0 !important;
-      max-height: calc(100dvh - 240px) !important;
+      max-height: calc(100dvh - 280px) !important;
       box-sizing: border-box;
     }
     #mtf-layout.mtf-split #mtf-row-2 { display: flex; flex-direction: column; align-self: stretch; overflow: hidden; }
     #mtf-layout.mtf-split #mtf-fault-list { flex: 1 1 auto; height: 100% !important; min-height: 0 !important; max-height: none !important; box-sizing: border-box; }
-    #mtf-layout.mtf-split .mtf-row-3 { align-self: stretch; overflow: auto; }
+    #mtf-layout.mtf-split .mtf-row-3 { align-self: stretch; overflow: hidden; }
     #mtf-layout.mtf-split #mtf-detail,
     #mtf-layout.mtf-split .mtf-detail-horizontal-grid { height: 100%; min-height: 0; }
-    #mtf-layout.mtf-split #mtf-disposition-content { flex: 1 1 auto; min-height: 0; }
+    #mtf-layout.mtf-split .mtf-detail-horizontal-grid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr);
+    }
+    #mtf-layout.mtf-split .mtf-detail-horizontal-grid > .bento-block-3 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 0;
+      gap: 4px;
+    }
+    #mtf-layout.mtf-split #mtf-disposition-content {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      min-height: 0;
+      gap: 4px;
+    }
+    #mtf-layout.mtf-split .mtf-quality-heading { flex: 0 0 auto; min-height: 22px; }
+    #mtf-layout.mtf-split #mtf-action-text { flex: 0 0 auto; margin: 0 !important; padding: 6px 8px; }
+    #mtf-layout.mtf-split #mtf-outcome { flex: 0 0 auto; margin: 0; }
     #mtf-layout.mtf-split #mtf-flowchart-diagram {
-      flex: 1 1 0;
+      display: flex;
+      flex: 1 1 0%;
       min-height: 0;
       max-height: none !important;
+      height: 0 !important;
+      padding: 4px !important;
+      align-items: stretch !important;
+      justify-content: center !important;
+      overflow: hidden !important;
+    }
+    #mtf-layout.mtf-split #mtf-flowchart-diagram > svg {
+      display: block;
+      flex: 0 0 auto;
+      width: 100% !important;
       height: auto !important;
-      overflow: auto !important;
+      max-width: 100%;
+      max-height: none;
+      align-self: flex-start;
+    }
+    #mtf-layout.mtf-split .mtf-detail-controls-right {
+      flex: 0 0 auto;
+      gap: 4px;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      justify-content: center;
     }
   }
 </style>

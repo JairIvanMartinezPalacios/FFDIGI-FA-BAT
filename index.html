@@ -2405,7 +2405,6 @@
       const summary = $("mtf-selection-summary");
       const toggle = $("mtf-selection-toggle");
       if (!layout || !summary || !toggle) return;
-      layout.classList.toggle("mtf-detail-expanded", shouldCollapse && layout.classList.contains("mtf-split"));
       layout.classList.toggle("mtf-selection-collapsed", shouldCollapse);
       summary.classList.toggle("hidden", !shouldCollapse);
       $("mtf-selection-text").textContent = shouldCollapse
@@ -2451,7 +2450,7 @@
           f.activeVariant = 0;
           renderMtfList();
           renderMtfDetail();
-          setMtfCatalogCollapsed(true, f);
+          setMtfCatalogCollapsed(!$('mtf-layout').classList.contains("mtf-split"), f);
           $("mtf-detail-title").focus({ preventScroll: true });
           scrollMtfDetailIntoView();
         });
@@ -5187,20 +5186,14 @@ main{padding-top:4px!important}
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.3fr);
     }
     #mtf-layout.mtf-split .mtf-detail-horizontal-grid > .bento-block-3 {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      height: 100%;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      align-content: stretch;
       min-height: 0;
-      box-sizing: border-box;
-      padding-bottom: 58px;
-      overflow: hidden;
       gap: 4px;
     }
     #mtf-layout.mtf-split #mtf-disposition-content {
       display: flex;
-      flex: 1 1 0%;
       min-height: 0;
       flex-direction: column;
       gap: 4px;
@@ -5229,29 +5222,14 @@ main{padding-top:4px!important}
       object-fit: contain;
     }
     #mtf-layout.mtf-split .mtf-detail-controls-right {
-      position: absolute !important;
-      right: 10px;
-      bottom: 10px;
-      left: 10px;
-      z-index: 2;
-      display: flex !important;
       flex: 0 0 auto;
-      align-self: stretch;
+      align-self: center;
       flex-wrap: nowrap;
-      width: auto;
+      width: 100%;
       gap: 4px;
       margin: 0 !important;
       padding: 0 !important;
       justify-content: center;
-      background: var(--md-sys-color-surface-container-lowest);
     }
-  }
-  #mtf-layout.mtf-split.mtf-detail-expanded:not(.hidden) {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  #mtf-layout.mtf-split.mtf-detail-expanded .mtf-row-3 {
-    grid-column: 1 / -1;
-    width: 100%;
-    max-width: 100%;
   }
 </style>
